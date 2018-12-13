@@ -1,0 +1,464 @@
+﻿  VisualGDB: Run "C:\cygwin64\bin\make.exe  clean" in directory "D:\experimental2\learners\C50exact\C50\.." on local computer
+  make -C cpp_wrapper clean
+  make[1]: Entering directory '/cygdrive/d/experimental2/learners/C50exact/cpp_wrapper'
+  rm -rf *.o *.a
+  make[1]: Leaving directory '/cygdrive/d/experimental2/learners/C50exact/cpp_wrapper'
+  rm -rf *.o c5.0dbg.exe  report report.exe
+  # -rm -rf *.o c5.0.dt_penalty c5.0.dt_entropy c5.0dbg.exe  report
+  VisualGDB: Run "C:\cygwin64\bin\make.exe " in directory "D:\experimental2\learners\C50exact\C50\.." on local computer
+  echo gcc -g -ffloat-store
+  gcc -g -ffloat-store
+  make -C cpp_wrapper
+  make[1]: Entering directory '/cygdrive/d/experimental2/learners/C50exact/cpp_wrapper'
+  cc -O3 -c array.c
+  g++ -O3 -c clist.cpp
+  g++ -O3 -c cmap.cpp
+  g++ -O3 -c file_tools.cpp
+  g++ -O3 -I .. -c tree_serializer.cpp
+  ar crs cpp_wrapper.a array.o clist.o cmap.o file_tools.o tree_serializer.o
+  make[1]: Leaving directory '/cygdrive/d/experimental2/learners/C50exact/cpp_wrapper'
+  make c5.0dbg.exe
+  make[1]: Entering directory '/cygdrive/d/experimental2/learners/C50exact'
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c c50.c
+  c50.c: In function â?~mainâ?T:
+d:\experimental2\learners\C50exact\c50.c(286,23): warning : format â?~%dâ?T expects argument of type â?~intâ?T, but argument 3 has type â?~size_t {aka long unsigned int}â?T [-Wformat=]
+     fprintf( Of, "Read %d intervals\n", IntervalsUpperBounds->size);
+                        ~^               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        %ld
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c global.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c construct.c
+  construct.c: In function â?~ConstructClassifiersâ?T:
+d:\experimental2\learners\C50exact\construct.c(249,8): warning : passing argument 1 of â?~freeâ?T discards â?~constâ?T qualifier from pointer target type [-Wdiscarded-qualifiers]
+    free (ser);
+          ^~~
+  d:\experimental2\learners\C50exact\defns.i(46):
+  d:\experimental2\learners\C50exact\construct.c(53):
+  C:\cygwin64\usr\include\stdlib.h(93,6): note :  expected â?~void *â?T but argument is of type â?~const char *â?T
+   void free (void *) _NOTHROW;
+        ^~~~
+d:\experimental2\learners\C50exact\construct.c(331,13): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( Trial && NoStructure || ErrWt / Cases >= 0.49 )
+         ~~~~~~^~~~~~~~~~~~~~
+  d:\experimental2\learners\C50exact\construct.c(53):
+  construct.c: In function â?~EvaluateSingleâ?T:
+d:\experimental2\learners\C50exact\construct.c(683,6): warning : implicit declaration of function â?~TotalTreeSizeâ?T; did you mean â?~TreeSizeâ?T? [-Wimplicit-function-declaration]
+        TotalTreeSize(Raw[0]), TreeSize(Raw[0]), RawErrs, 100 * RawErrs / Tests);
+        ^
+  d:\experimental2\learners\C50exact\defns.i(73,45): note :  in definition of macro â?~Verbosityâ?T
+   #define Verbosity(d,s)  if(VERBOSITY >= d) {s;}
+                                               ^
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c formtree.c
+  formtree.c: In function â?~MyFormTreeâ?T:
+d:\experimental2\learners\C50exact\formtree.c(372,88): warning : format â?~%dâ?T expects argument of type â?~intâ?T, but argument 3 has type â?~size_t {aka long unsigned int}â?T [-Wformat=]
+      printf ("The number of discrete attribute (%d) values and the number of intervals (%d) does not match!\n", MaxAttVal[FirstSplitAttr] - 1, IntervalsLowerBounds->size);
+                                                                                         ~^                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                                         %ld
+  formtree.c: In function â?~FindBestAttNewâ?T:
+d:\experimental2\learners\C50exact\formtree.c(1086,24): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+           NBr == BestNBr && Gain[Att] > Gain[BestAtt] ) )
+           ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\formtree.c(1084,27): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+       Val > 0.999 * BestVal &&
+       ~~~~~~~~~~~~~~~~~~~~~~^~
+        ( NBr < BestNBr ||
+        ~~~~~~~~~~~~~~~~~~    
+           NBr == BestNBr && Gain[Att] > Gain[BestAtt] ) )
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\formtree.c(1124,21): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+        NBr == BestNBr && Gain[Att] > Gain[BestAtt] ) )
+        ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\formtree.c(1122,26): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+      Val > 0.999 * BestVal &&
+      ~~~~~~~~~~~~~~~~~~~~~~^~
+      ( NBr < BestNBr ||
+      ~~~~~~~~~~~~~~~~~~     
+        NBr == BestNBr && Gain[Att] > Gain[BestAtt] ) )
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c info.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c discr.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c contin.c
+  contin.c: In function â?~EvalContinuousAttAlg1â?T:
+d:\experimental2\learners\C50exact\contin.c(220,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~EvalContinuousAttAlg2â?T:
+d:\experimental2\learners\C50exact\contin.c(394,34): warning : unused variable â?~totalImplicationsâ?T [-Wunused-variable]
+       int  numImplicationsCut = 0, totalImplications;
+                                    ^~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(389,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~EvalContinuousAttAlg6â?T:
+d:\experimental2\learners\C50exact\contin.c(570,26): warning : unused variable â?~reductionR2Lâ?T [-Wunused-variable]
+       double reductionL2R, reductionR2L;
+                            ^~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(570,12): warning : unused variable â?~reductionL2Râ?T [-Wunused-variable]
+       double reductionL2R, reductionR2L;
+              ^~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(568,34): warning : unused variable â?~totalImplicationsâ?T [-Wunused-variable]
+       int  numImplicationsCut = 0, totalImplications;
+                                    ^~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(568,10): warning : unused variable â?~numImplicationsCutâ?T [-Wunused-variable]
+       int  numImplicationsCut = 0, totalImplications;
+            ^~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(563,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~EvalContinuousAttAlg3â?T:
+d:\experimental2\learners\C50exact\contin.c(751,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~EvalContinuousAttAlg4â?T:
+d:\experimental2\learners\C50exact\contin.c(944,21): warning : unused variable â?~cut2leftâ?T [-Wunused-variable]
+       int  right2cut, cut2left;  /* counters to track implications as they flow from the
+                       ^~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(944,10): warning : unused variable â?~right2cutâ?T [-Wunused-variable]
+       int  right2cut, cut2left;  /* counters to track implications as they flow from the
+            ^~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(943,33): warning : unused variable â?~numPointsOnRightâ?T [-Wunused-variable]
+       double numPointsOnLeft = 0, numPointsOnRight = 0, totalPoints = 0;
+                                   ^~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(943,12): warning : unused variable â?~numPointsOnLeftâ?T [-Wunused-variable]
+       double numPointsOnLeft = 0, numPointsOnRight = 0, totalPoints = 0;
+              ^~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(942,90): warning : unused variable â?~numImplicationsCutâ?T [-Wunused-variable]
+       double totalImplications = 0, numImplicationsOnLeft = 0, numImplicationsOnRight = 0, numImplicationsCut = 0;
+                                                                                            ^~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(942,62): warning : unused variable â?~numImplicationsOnRightâ?T [-Wunused-variable]
+       double totalImplications = 0, numImplicationsOnLeft = 0, numImplicationsOnRight = 0, numImplicationsCut = 0;
+                                                                ^~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(942,35): warning : unused variable â?~numImplicationsOnLeftâ?T [-Wunused-variable]
+       double totalImplications = 0, numImplicationsOnLeft = 0, numImplicationsOnRight = 0, numImplicationsCut = 0;
+                                     ^~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(942,12): warning : unused variable â?~totalImplicationsâ?T [-Wunused-variable]
+       double totalImplications = 0, numImplicationsOnLeft = 0, numImplicationsOnRight = 0, numImplicationsCut = 0;
+              ^~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(938,57): warning : variable â?~curBestGainâ?T set but not used [-Wunused-but-set-variable]
+     w, BestGain=NegInfinity, BestInfo=1E38, ThreshCost=1, curBestGain;
+                                                           ^~~~~~~~~~~
+d:\experimental2\learners\C50exact\contin.c(937,31): warning : unused variable â?~LHInfoâ?T [-Wunused-variable]
+       double LowInfo, HighInfo, LHInfo, WeightedAvgInfo, LeastInfo=1E38,
+                                 ^~~~~~
+d:\experimental2\learners\C50exact\contin.c(936,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~EvalContinuousAttAlg5â?T:
+d:\experimental2\learners\C50exact\contin.c(1176,15): warning : unused variable â?~jâ?T [-Wunused-variable]
+       CaseNo i, j, BestI = -1, Tries=0;
+                 ^
+  contin.c: In function â?~PrepareForContinAlg2â?T:
+d:\experimental2\learners\C50exact\contin.c(1796,5): warning : implicit declaration of function â?~CachesortWithImplicationsâ?T; did you mean â?~QuicksortWithImplicationsâ?T? [-Wimplicit-function-declaration]
+       CachesortWithImplications(GEnv.Xp, Lp, GEnv.SRec, GEnv.permutation);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~
+       QuicksortWithImplications
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c subset.c
+  subset.c: In function â?~EvalSubsetâ?T:
+d:\experimental2\learners\C50exact\subset.c(134,45): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( GEnv.ValFreq[V1] > Epsilon || V1 == 1 && SomeNA[Att] )
+                                       ~~~~~~~~^~~~~~~~~~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c prune.c
+  prune.c: In function â?~Pruneâ?T:
+d:\experimental2\learners\C50exact\prune.c(115,37): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( Ordered(Att) || Discrete(Att) && SUBSET )
+  prune.c: In function â?~EstimateErrsâ?T:
+d:\experimental2\learners\C50exact\prune.c(344,35): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+         T->Branch[v]->Tested == Att && Continuous(Att) )
+  prune.c: In function â?~FindMinCCâ?T:
+d:\experimental2\learners\C50exact\prune.c(587,16): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+      CC <= MinCC && CC < SaveMinCC /* changed by descendants */ )
+      ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+  prune.c: In function â?~CompressBranchesâ?T:
+d:\experimental2\learners\C50exact\prune.c(981,14): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+      EmptyOnly && Br->Cases >= MinLeaf )
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c p-thresh.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c trees.c
+  trees.c: In function â?~Showâ?T:
+d:\experimental2\learners\C50exact\trees.c(167,32): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+       T->Branch[v]->Utility == 1 && ! T->Branch[v]->Cases )
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c formrules.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c siftrules.c
+  siftrules.c: In function â?~HillClimbâ?T:
+d:\experimental2\learners\C50exact\siftrules.c(619,23): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+      AltCost == NewCost && RuleIn[r] )
+      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+d:\experimental2\learners\C50exact\siftrules.c(634,30): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( ! Toggle || DeleteOnly && RuleCount <= OriginalCount ) break;
+                     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  siftrules.c: In function â?~UpdateDeltaErrsâ?T:
+d:\experimental2\learners\C50exact\siftrules.c(782,46): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+   #define Prefer(d,c1,c2) ((d) > 0 || (d) == 0 && c1 < c2)
+                                       ~~~~~~~~~^~~~~~~~~~~
+   
+                                                 
+   void UpdateDeltaErrs(CaseNo i, double Delta, RuleNo Toggle)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   /*   ---------------  */
+   ~~~~~~~~~~~~~~~~~~~~~~~~                      
+   {
+   ~                                             
+       ClassNo RealClass, Top, Alt, Rhs;
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         
+       RuleNo r;
+       ~~~~~~~~~                                 
+       Byte *p;
+       ~~~~~~~~                                  
+       int  k;
+       ~~~~~~~                                   
+   
+                                                 
+       RealClass = Class(Case[i]);
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~               
+       Top = TopClass[i];
+       ~~~~~~~~~~~~~~~~~~                        
+       Alt = AltClass[i];
+       ~~~~~~~~~~~~~~~~~~                        
+   
+                                                 
+       r = 0;
+       ~~~~~~                                    
+       p = CovByPtr[i];
+       ~~~~~~~~~~~~~~~~                          
+       ForEach(k, 1, CovBy[i])
+       ~~~~~~~~~~~~~~~~~~~~~~~                   
+       {
+       ~                                         
+    /*  Update r to next rule covering case i  */
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+                                                 
+    while ( (*p) & 128 )
+    ~~~~~~~~~~~~~~~~~~~~                         
+    {
+    ~                                            
+        r += ((*p++) & 127) * 128;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~               
+    }
+    ~                                            
+    r += *p++;
+    ~~~~~~~~~~                                   
+   
+                                                 
+    if ( r != Toggle )
+    ~~~~~~~~~~~~~~~~~~                           
+    {
+    ~                                            
+        /*  Examine effect of adding or deleting rule  */
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+                                                 
+        Rhs = Rule[r]->Rhs;
+        ~~~~~~~~~~~~~~~~~~~                      
+   
+                                                 
+        if ( RuleIn[r] )
+        ~~~~~~~~~~~~~~~~                         
+        {
+        ~                                        
+     if ( Rhs == Top &&
+     ~~~~~~~~~~~~~~~~~~                          
+          Prefer(TotVote[i][Alt] - (TotVote[i][Top] - Rule[r]->Vote),
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          Alt, Top) )
+          ~~~~~~                                 
+  d:\experimental2\learners\C50exact\siftrules.c(817,8): note :  in expansion of macro â?~Preferâ?T
+          Prefer(TotVote[i][Alt] - (TotVote[i][Top] - Rule[r]->Vote),
+          ^~~~~~
+d:\experimental2\learners\C50exact\siftrules.c(782,46): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+   #define Prefer(d,c1,c2) ((d) > 0 || (d) == 0 && c1 < c2)
+                                       ~~~~~~~~~^~~~~~~~~~~
+   
+                                                 
+   void UpdateDeltaErrs(CaseNo i, double Delta, RuleNo Toggle)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   /*   ---------------  */
+   ~~~~~~~~~~~~~~~~~~~~~~~~                      
+   {
+   ~                                             
+       ClassNo RealClass, Top, Alt, Rhs;
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         
+       RuleNo r;
+       ~~~~~~~~~                                 
+       Byte *p;
+       ~~~~~~~~                                  
+       int  k;
+       ~~~~~~~                                   
+   
+                                                 
+       RealClass = Class(Case[i]);
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~               
+       Top = TopClass[i];
+       ~~~~~~~~~~~~~~~~~~                        
+       Alt = AltClass[i];
+       ~~~~~~~~~~~~~~~~~~                        
+   
+                                                 
+       r = 0;
+       ~~~~~~                                    
+       p = CovByPtr[i];
+       ~~~~~~~~~~~~~~~~                          
+       ForEach(k, 1, CovBy[i])
+       ~~~~~~~~~~~~~~~~~~~~~~~                   
+       {
+       ~                                         
+    /*  Update r to next rule covering case i  */
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+                                                 
+    while ( (*p) & 128 )
+    ~~~~~~~~~~~~~~~~~~~~                         
+    {
+    ~                                            
+        r += ((*p++) & 127) * 128;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~               
+    }
+    ~                                            
+    r += *p++;
+    ~~~~~~~~~~                                   
+   
+                                                 
+    if ( r != Toggle )
+    ~~~~~~~~~~~~~~~~~~                           
+    {
+    ~                                            
+        /*  Examine effect of adding or deleting rule  */
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+                                                 
+        Rhs = Rule[r]->Rhs;
+        ~~~~~~~~~~~~~~~~~~~                      
+   
+                                                 
+        if ( RuleIn[r] )
+        ~~~~~~~~~~~~~~~~                         
+        {
+        ~                                        
+     if ( Rhs == Top &&
+     ~~~~~~~~~~~~~~~~~~                          
+          Prefer(TotVote[i][Alt] - (TotVote[i][Top] - Rule[r]->Vote),
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          Alt, Top) )
+          ~~~~~~~~~~~                            
+     {
+     ~                                           
+         DeltaErrs[r] +=
+         ~~~~~~~~~~~~~~~                         
+      (NCost[Alt][RealClass] - NCost[Top][RealClass]) * Delta;
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     }
+     ~                                           
+        }
+        ~                                        
+        else
+        ~~~~                                     
+        {
+        ~                                        
+     if ( Rhs != Top &&
+     ~~~~~~~~~~~~~~~~~~                          
+          Prefer(TotVote[i][Rhs] + Rule[r]->Vote - TotVote[i][Top],
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          Rhs, Top) )
+          ~~~~~~                                 
+  d:\experimental2\learners\C50exact\siftrules.c(827,8): note :  in expansion of macro â?~Preferâ?T
+          Prefer(TotVote[i][Rhs] + Rule[r]->Vote - TotVote[i][Top],
+          ^~~~~~
+  siftrules.c: In function â?~CondBitsâ?T:
+d:\experimental2\learners\C50exact\siftrules.c(393,1): warning : control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c ruletree.c
+  ruletree.c: In function â?~SetTestIndexâ?T:
+d:\experimental2\learners\C50exact\ruletree.c(132,26): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+     if ( C->TestValue == 1 && CC->TestValue == 1 ||
+          ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c rules.c
+  d:\experimental2\learners\C50exact\rules.c(35):
+  rules.c: In function â?~NewRuleâ?T:
+d:\experimental2\learners\C50exact\defns.i(177,29): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+      n1->Tested == n2->Tested && n1->Cut < n2->Cut)
+  d:\experimental2\learners\C50exact\rules.c(77,35): note :  in expansion of macro â?~Beforeâ?T
+     if ( ! Deleted[id] && ( ! dd || Before(Cond[id], Cond[dd]) ) )
+                                     ^~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c xval.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c getnames.c
+  getnames.c: In function â?~ListAttsUsedâ?T:
+d:\experimental2\learners\C50exact\getnames.c(623,12): warning : cast from pointer to integer of different size [-Wpointer-to-int-cast]
+        Att = (Attribute) DefSVal(D[e]);
+              ^
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c getdata.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c implicitatt.c
+  implicitatt.c: In function â?~ReadDefinitionâ?T:
+d:\experimental2\learners\C50exact\implicitatt.c(178,29): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( c == EOF || c == '\n' && LastWasPeriod )
+                     ~~~~~~~~~~^~~~~~~~~~~~~~~~
+  implicitatt.c: In function â?~Atomâ?T:
+d:\experimental2\learners\C50exact\implicitatt.c(458,27): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+    if ( ( Buff[BN+4] == '/' && Buff[BN+7] == '/' ||
+           ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c mcost.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c classify.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c confmat.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c sort.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c update.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c utility.c
+  utility.c: In function â?~DateToDayâ?T:
+d:\experimental2\learners\C50exact\utility.c(622,27): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+       if ( ! ( DS[4] == '/' && DS[7] == '/' || DS[4] == '-' && DS[7] == '-' ) ||
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\utility.c(626,12): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+     Day > 30 &&
+     ~~~~~~~~~^~
+        ( Month == 4 || Month == 6 || Month == 9 || Month == 11 ) ||
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\utility.c(631,24): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+          Year % 100 == 0 && Year % 400 != 0 ) ) )
+          ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\utility.c(630,17): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+          Day > 28 && ( Year % 4 != 0 ||
+          ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+          Year % 100 == 0 && Year % 400 != 0 ) ) )
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\utility.c(628,14): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+     Month == 2 &&
+     ~~~~~~~~~~~^~
+        ( Day > 29 ||
+        ~~~~~~~~~~~~~
+          Day > 28 && ( Year % 4 != 0 ||
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          Year % 100 == 0 && Year % 400 != 0 ) ) )
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  utility.c: In function â?~DayToDateâ?T:
+d:\experimental2\learners\C50exact\utility.c(671,46): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+     ( (Year+1) % 4 != 0 || (Year+1) % 100 == 0 && (Year+1) % 400 != 0 ) )
+                            ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+d:\experimental2\learners\C50exact\utility.c(670,14): warning : suggest parentheses around â?~&&â?T within â?~||â?T [-Wparentheses]
+     Day == 366 &&
+     ~~~~~~~~~~~^~
+     ( (Year+1) % 4 != 0 || (Year+1) % 100 == 0 && (Year+1) % 400 != 0 ) )
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  utility.c: In function â?~Pmallocâ?T:
+d:\experimental2\learners\C50exact\utility.c(115,1): warning : control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+  utility.c: In function â?~Preallocâ?T:
+d:\experimental2\learners\C50exact\utility.c(135,1): warning : control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+  utility.c: In function â?~Pcallocâ?T:
+d:\experimental2\learners\C50exact\utility.c(151,1): warning : control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c modelfiles.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c attwinnow.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -c debug.c
+  gcc -g -ffloat-store -g -Wall -DVerbOpt -O0 -DDEBUG -g -o c5.0dbg.exe c50.o global.o construct.o formtree.o info.o discr.o contin.o subset.o prune.o p-thresh.o trees.o formrules.o siftrules.o ruletree.o rules.o xval.o getnames.o getdata.o implicitatt.o mcost.o classify.o confmat.o sort.o update.o utility.o modelfiles.o attwinnow.o debug.o  cpp_wrapper/cpp_wrapper.a -lm -lstdc++
+  make[1]: Leaving directory '/cygdrive/d/experimental2/learners/C50exact'
+  # make c5.0dbg c5.0.dt_penalty c5.0.dt_entropy
+  gcc -g -ffloat-store  -static-libgcc -static-libstdc++ -o report report.c -lm
+  report.c: In function â?~mainâ?T:
+D:\experimental2\learners\C50exact\C50\..\report.c(78,7): warning : implicit declaration of function â?~isdigitâ?T [-Wimplicit-function-declaration]
+    if ( isdigit(*p) )
+         ^~~~~~~
+D:\experimental2\learners\C50exact\C50\..\report.c(89,12): warning : implicit declaration of function â?~memcmpâ?T [-Wimplicit-function-declaration]
+       if ( ! memcmp(Line, "boost", 5) )
+              ^~~~~~

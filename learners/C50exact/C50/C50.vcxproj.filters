@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{4717493a-2088-4178-b5a3-817273bbc503}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{efcbcded-194c-41fb-91d8-b2f237eddf70}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{b0366cf7-011d-4e47-bf6a-7b5eaf07225f}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\cpp_wrapper">
+      <UniqueIdentifier>{b501ecdd-6e43-4074-b1b2-c8c665b7a6cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\cpp_wrapper">
+      <UniqueIdentifier>{30123d79-d366-48de-9284-93124cbfa565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{80eecf9c-d2c1-4efe-bfc7-7344e60c80de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\attwinnow.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c50.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\classify.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\confmat.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\construct.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contin.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\debug.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\discr.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\formrules.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\formtree.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\getdata.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\getnames.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\global.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\implicitatt.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\info.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mcost.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\modelfiles.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\p-thresh.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\prune.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\report.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rules.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ruletree.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\siftrules.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sort.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\subset.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trees.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\update.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xval.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpp_wrapper\array.c">
+      <Filter>Source files\cpp_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpp_wrapper\clist.cpp">
+      <Filter>Source files\cpp_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpp_wrapper\cmap.cpp">
+      <Filter>Source files\cpp_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpp_wrapper\file_tools.cpp">
+      <Filter>Source files\cpp_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpp_wrapper\tree_serializer.cpp">
+      <Filter>Source files\cpp_wrapper</Filter>
+    </ClCompile>
+    <ClInclude Include="..\cpp_wrapper\array.h">
+      <Filter>Header files\cpp_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp_wrapper\clist.h">
+      <Filter>Header files\cpp_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp_wrapper\cmap.h">
+      <Filter>Header files\cpp_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp_wrapper\file_tools.h">
+      <Filter>Header files\cpp_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp_wrapper\tree_serializer.h">
+      <Filter>Header files\cpp_wrapper</Filter>
+    </ClInclude>
+    <None Include="C50-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="C50-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+</Project>
