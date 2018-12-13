@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickGraph", "QuickGraph\QuickGraph.csproj", "{5505B90B-419A-4724-A5F3-2BF131FC0D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickGraphTest", "QuickGraphTest\QuickGraphTest.csproj", "{E5419230-671B-4641-BC9F-FEBD760CA617}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02E3862B-2D35-487C-8A5C-D1E727B51D7A}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		QuickGraph.vsmdi = QuickGraph.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickGraphUnitTest", "QuickGraphUnitTest\QuickGraphUnitTest.csproj", "{6C8E51EC-7C63-4FE8-8AF1-E779F8AF2D04}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = QuickGraph.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5505B90B-419A-4724-A5F3-2BF131FC0D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5505B90B-419A-4724-A5F3-2BF131FC0D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5505B90B-419A-4724-A5F3-2BF131FC0D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5505B90B-419A-4724-A5F3-2BF131FC0D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5419230-671B-4641-BC9F-FEBD760CA617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5419230-671B-4641-BC9F-FEBD760CA617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5419230-671B-4641-BC9F-FEBD760CA617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5419230-671B-4641-BC9F-FEBD760CA617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C8E51EC-7C63-4FE8-8AF1-E779F8AF2D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8E51EC-7C63-4FE8-8AF1-E779F8AF2D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8E51EC-7C63-4FE8-8AF1-E779F8AF2D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8E51EC-7C63-4FE8-8AF1-E779F8AF2D04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

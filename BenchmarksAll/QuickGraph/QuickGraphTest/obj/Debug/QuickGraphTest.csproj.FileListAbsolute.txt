@@ -1,0 +1,11 @@
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\obj\Debug\QuickGraphTest.csprojResolveAssemblyReference.cache
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\QuickGraphTest.dll
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\QuickGraphTest.pdb
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\PexAPIWrapper.dll
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\QuickGraph.dll
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\QuickGraph.pdb
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\PexAPIWrapper.pdb
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\obj\Debug\QuickGraphTest.dll
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\obj\Debug\QuickGraphTest.pdb
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\ReportParserLearning.dll
+D:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\bin\Debug\ReportParserLearning.pdb

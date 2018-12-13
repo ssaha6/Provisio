@@ -1,0 +1,128 @@
+﻿<frameTree version="0.94.51006.1"><frameException type="System.FormatException"><tag exceptionState="unexpected"><generatedTestRef idref="426dd844-131d-42c2-87bb-2cb018924151"/>
+</tag>
+<frameNode><frame value="  at Number.StringToNumber(String, NumberStyles, NumberBuffer&amp;, NumberFormatInfo, Boolean)" method="Number.StringToNumber(String, NumberStyles, NumberBuffer&amp;, NumberFormatInfo, Boolean)" offset="92"><method assemblyName="mscorlib" name="StringToNumber" static="true" token="600109d"><declaringType assemblyName="mscorlib" name="Number" token="2000118" namespace="System"/>
+<parameter name="str" position="0"><type spec="Class"><definition assemblyName="mscorlib" name="String" token="2000073" namespace="System"/>
+</type>
+</parameter>
+<parameter name="options" position="1"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="NumberStyles" token="20003ad" namespace="System.Globalization"/>
+</type>
+</parameter>
+<parameter name="number" position="2"><type spec="ManagedPointer"><elementType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="NumberBuffer" token="2000ac2"><declaringType assemblyName="mscorlib" name="Number" token="2000118" namespace="System"/>
+</definition>
+</elementType>
+</type>
+</parameter>
+<parameter name="info" position="3"><type spec="Class"><definition assemblyName="mscorlib" name="NumberFormatInfo" token="20003ac" namespace="System.Globalization"/>
+</type>
+</parameter>
+<parameter name="parseDecimal" position="4"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Boolean" token="20000b2" namespace="System"/>
+</type>
+</parameter>
+</method>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="426dd844-131d-42c2-87bb-2cb018924151"/>
+</tag>
+<frameNode><frame value="  at Number.ParseInt32(String, NumberStyles, NumberFormatInfo)" method="Number.ParseInt32(String, NumberStyles, NumberFormatInfo)" offset="21"><method assemblyName="mscorlib" name="ParseInt32" static="true" token="6001097"><declaringType assemblyName="mscorlib" name="Number" token="2000118" namespace="System"/>
+<parameter name="s" position="0"><type spec="Class"><definition assemblyName="mscorlib" name="String" token="2000073" namespace="System"/>
+</type>
+</parameter>
+<parameter name="style" position="1"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="NumberStyles" token="20003ad" namespace="System.Globalization"/>
+</type>
+</parameter>
+<parameter name="info" position="2"><type spec="Class"><definition assemblyName="mscorlib" name="NumberFormatInfo" token="20003ac" namespace="System.Globalization"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="426dd844-131d-42c2-87bb-2cb018924151"/>
+</tag>
+<frameNode><frame value="  at Int32.Parse(String, IFormatProvider)" method="Int32.Parse(String, IFormatProvider)" offset="28"><method assemblyName="mscorlib" name="Parse" static="true" token="6000f4a"><declaringType assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+<parameter name="s" position="0"><type spec="Class"><definition assemblyName="mscorlib" name="String" token="2000073" namespace="System"/>
+</type>
+</parameter>
+<parameter name="provider" position="1"><type spec="Class"><definition assemblyName="mscorlib" name="IFormatProvider" token="20000ef" namespace="System"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="426dd844-131d-42c2-87bb-2cb018924151"/>
+</tag>
+<frameNode><frame value="  at Numbers.ToBinary(Int32) in d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Numbers.cs(151)" method="Numbers.ToBinary(Int32)" offset="50" file="d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Numbers.cs" line="151"><method assemblyName="Dsa" name="ToBinary" static="true" token="6000005"><declaringType assemblyName="Dsa" name="Numbers" token="2000003" namespace="Dsa.Algorithms"/>
+<parameter name="value" position="0"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+<beforeSource><![CDATA[                value /= 2;
+            }
+            //NotpAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length <= 10); ]]></beforeSource>
+<source><![CDATA[            return Int32.Parse(sb.ToString().Reverse(), CultureInfo.InvariantCulture);]]></source>
+<afterSource><![CDATA[        }
+
+        /// <summary>]]></afterSource>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="426dd844-131d-42c2-87bb-2cb018924151"/>
+</tag>
+</frameNode>
+</frameNode>
+</frameNode>
+</frameNode>
+</frameException>
+<frameException type="System.OverflowException"><tag exceptionState="unexpected"><generatedTestRef idref="371cc562-55c7-4a1b-8b82-9c5840ecb8bc"/>
+</tag>
+<frameNode><frame value="  at Number.ParseInt32(String, NumberStyles, NumberFormatInfo)" method="Number.ParseInt32(String, NumberStyles, NumberFormatInfo)" offset="94"><method assemblyName="mscorlib" name="ParseInt32" static="true" token="6001097"><declaringType assemblyName="mscorlib" name="Number" token="2000118" namespace="System"/>
+<parameter name="s" position="0"><type spec="Class"><definition assemblyName="mscorlib" name="String" token="2000073" namespace="System"/>
+</type>
+</parameter>
+<parameter name="style" position="1"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="NumberStyles" token="20003ad" namespace="System.Globalization"/>
+</type>
+</parameter>
+<parameter name="info" position="2"><type spec="Class"><definition assemblyName="mscorlib" name="NumberFormatInfo" token="20003ac" namespace="System.Globalization"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="371cc562-55c7-4a1b-8b82-9c5840ecb8bc"/>
+</tag>
+<frameNode><frame value="  at Int32.Parse(String, IFormatProvider)" method="Int32.Parse(String, IFormatProvider)" offset="28"><method assemblyName="mscorlib" name="Parse" static="true" token="6000f4a"><declaringType assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+<parameter name="s" position="0"><type spec="Class"><definition assemblyName="mscorlib" name="String" token="2000073" namespace="System"/>
+</type>
+</parameter>
+<parameter name="provider" position="1"><type spec="Class"><definition assemblyName="mscorlib" name="IFormatProvider" token="20000ef" namespace="System"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="371cc562-55c7-4a1b-8b82-9c5840ecb8bc"/>
+</tag>
+<frameNode><frame value="  at Numbers.ToBinary(Int32) in d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Numbers.cs(151)" method="Numbers.ToBinary(Int32)" offset="50" file="d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Numbers.cs" line="151"><method assemblyName="Dsa" name="ToBinary" static="true" token="6000005"><declaringType assemblyName="Dsa" name="Numbers" token="2000003" namespace="Dsa.Algorithms"/>
+<parameter name="value" position="0"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</resultType>
+</method>
+<beforeSource><![CDATA[                value /= 2;
+            }
+            //NotpAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length <= 10); ]]></beforeSource>
+<source><![CDATA[            return Int32.Parse(sb.ToString().Reverse(), CultureInfo.InvariantCulture);]]></source>
+<afterSource><![CDATA[        }
+
+        /// <summary>]]></afterSource>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="371cc562-55c7-4a1b-8b82-9c5840ecb8bc"/>
+</tag>
+</frameNode>
+</frameNode>
+</frameNode>
+</frameException>
+</frameTree>

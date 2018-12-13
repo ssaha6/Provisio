@@ -1,0 +1,12 @@
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\CodeContracts\QuickGraph.Serialization.Contracts.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\CodeContracts\QuickGraph.Serialization.Contracts.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\QuickGraph.Serialization.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\QuickGraph.Serialization.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\QuickGraph.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\bin\Debug\QuickGraph.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\QuickGraph.Serialization.csprojResolveAssemblyReference.cache
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\Decl\QuickGraph.Serialization.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\Decl\QuickGraph.Serialization.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\QuickGraph.Serializationccrefgen.rsp
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\QuickGraph.Serialization.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph.Serialization\obj\Debug\QuickGraph.Serialization.pdb

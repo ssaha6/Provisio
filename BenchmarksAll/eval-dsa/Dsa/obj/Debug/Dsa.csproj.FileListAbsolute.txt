@@ -1,0 +1,12 @@
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\Dsa.XML
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\Dsa.dll
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\Dsa.pdb
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\Dsa.dll.CodeAnalysisLog.xml
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\Dsa.dll.lastcodeanalysissucceeded
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\PexAPIWrapper.dll
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\bin\Debug\PexAPIWrapper.pdb
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\obj\Debug\Dsa.csprojResolveAssemblyReference.cache
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\obj\Debug\Dsa.Properties.Resources.resources
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\obj\Debug\Dsa.csproj.GenerateResource.Cache
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\obj\Debug\Dsa.dll
+D:\experimental3\BenchmarksAll\eval-dsa\Dsa\obj\Debug\Dsa.pdb

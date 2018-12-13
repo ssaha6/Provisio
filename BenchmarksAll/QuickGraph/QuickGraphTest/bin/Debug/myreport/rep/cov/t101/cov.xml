@@ -1,0 +1,2592 @@
+﻿<documents created="2018-11-16 15:09:36Z"><document src="d:\experimental3\BenchmarksAll\QuickGraph\QuickGraph\BinaryHeap.cs" renderPrefix="s0"><chunk hits="-1" domain="unknown"><source><![CDATA[using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Collections;
+
+using QuickGraph.Utility;
+using QuickGraph.Interfaces;
+using PexAPIWrapper;
+
+namespace QuickGraph
+{
+    /// <summary>
+    /// Binary heap
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
+    /// <remarks>
+    /// Indexing rules:
+    /// 
+    /// parent index: index ¡ 1)/2
+    /// left child: 2 * index + 1
+    /// right child: 2 * index + 2
+    /// 
+    /// Reference:
+    /// http://dotnetslackers.com/Community/files/folders/data-structures-and-algorithms/entry28722.aspx
+    /// </remarks>
+    // [DebuggerDisplay("Count = {Count}")]
+    public class BinaryHeap<TPriority, TValue> :
+        IEnumerable<KeyValuePair<TPriority, TValue>>
+    {
+        readonly Comparison<TPriority> priorityComparison;
+        private KeyValuePair<TPriority, TValue>[] items;
+        private int count;
+        private int version;
+
+        const int DefaultCapacity = 16;
+
+        public BinaryHeap()
+            : this(DefaultCapacity, Comparer<TPriority>.Default.Compare)
+        { }
+
+        public BinaryHeap(Comparison<TPriority> priorityComparison)
+            : this(DefaultCapacity, priorityComparison)
+        { }
+
+        ]]></source>
+</chunk>
+<method name=".ctor" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000003" module="QuickGraph.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="0" total="8" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="0000" domain="usercodeundertest"><source><![CDATA[public BinaryHeap(int capacity, Comparison<TPriority> priorityComparison)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="0007" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0008" domain="usercodeundertest"><source><![CDATA[if (capacity < 0)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0013" domain="usercodeundertest"><source><![CDATA[throw new ArgumentOutOfRangeException("capacity");]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="001e" domain="usercodeundertest"><source><![CDATA[if (priorityComparison == null)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0029" domain="usercodeundertest"><source><![CDATA[throw new ArgumentNullException("priorityComparison");]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0034" domain="usercodeundertest"><source><![CDATA[this.items = new KeyValuePair<TPriority, TValue>[capacity];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0040" domain="usercodeundertest"><source><![CDATA[this.priorityComparison = priorityComparison;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="0047" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public Comparison<TPriority> PriorityComparison
+        {
+            get { return this.priorityComparison; }
+        }
+
+        public int Capacity
+        {
+            get ]]></source>
+</chunk>
+<method name="get_Capacity" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000005" module="QuickGraph.dll"><hits><hit index="0" value="5"/>
+<hit index="1" value="5"/>
+<hit index="2" value="5"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="1" total="1" coveredRatio="1"/>
+</method>
+<chunk hits="5" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="5" offset="0001" domain="usercodeundertest"><source><![CDATA[return this.items.Length;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="5" offset="000c" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        }
+
+        public int Count
+        {
+            get ]]></source>
+</chunk>
+<method name="get_Count" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000006" module="QuickGraph.dll"><hits><hit index="0" value="6"/>
+<hit index="1" value="6"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="1" total="1" coveredRatio="1"/>
+</method>
+<chunk hits="6" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="6" offset="0001" domain="usercodeundertest"><source><![CDATA[return this.count;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="6" offset="000a" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        }
+
+        public void Add(TPriority priority, TValue value)
+        ]]></source>
+</chunk>
+<method name="Add" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000007" module="QuickGraph.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="0" total="4" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //GraphContracts.Assert(count <= this.items.Length);
+
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0001" domain="usercodeundertest"><source><![CDATA[this.version++;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="000f" domain="usercodeundertest"><source><![CDATA[this.ResizeArray();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0016" domain="usercodeundertest"><source><![CDATA[this.items[this.count++] = new KeyValuePair<TPriority, TValue>(priority, value);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="003e" domain="usercodeundertest"><source><![CDATA[this.MinHeapifyDown(this.count - 1);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="004d" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        private void MinHeapifyDown(int start)
+        ]]></source>
+</chunk>
+<method name="MinHeapifyDown" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000008" module="QuickGraph.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="0" total="7" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0001" domain="usercodeundertest"><source><![CDATA[int i = start;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0003" domain="usercodeundertest"><source><![CDATA[int j = (i - 1) / 2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="001e" domain="usercodeundertest"><source><![CDATA[while (i > 0 &&
+                this.Less(i, j))]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="000b" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="000c" domain="usercodeundertest"><source><![CDATA[this.Swap(i, j);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0015" domain="usercodeundertest"><source><![CDATA[i = j;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0017" domain="usercodeundertest"><source><![CDATA[j = (i - 1) / 2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="001d" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="0032" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        private void ResizeArray()
+        ]]></source>
+</chunk>
+<method name="ResizeArray" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000009" module="QuickGraph.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="0" total="4" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0001" domain="usercodeundertest"><source><![CDATA[if (this.count == this.items.Length)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0018" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0019" domain="usercodeundertest"><source><![CDATA[var newItems = new KeyValuePair<TPriority, TValue>[this.count * 2 + 1];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0029" domain="usercodeundertest"><source><![CDATA[Array.Copy(this.items, newItems, this.count);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="003c" domain="usercodeundertest"><source><![CDATA[this.items = newItems;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0043" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="0044" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public KeyValuePair<TPriority, TValue> Minimum()
+        ]]></source>
+</chunk>
+<method name="Minimum" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="600000a" module="QuickGraph.dll"><hits><hit index="0" value="3"/>
+<hit index="1" value="3"/>
+<hit index="2" value="1"/>
+<hit index="3" value="1"/>
+<hit index="5" value="1"/>
+<hit index="6" value="1"/>
+<hit index="7" value="3"/>
+<hit index="8" value="3"/>
+<hit index="9" value="3"/>
+<hit index="10" value="3"/>
+<hit index="11" value="3"/>
+<hit index="12" value="3"/>
+<hit index="16" value="1"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="4" total="4" coveredRatio="1"/>
+</method>
+<chunk hits="3" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //NotpAssume.IsTrue(this.count >0);
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="0001" domain="usercodeundertest"><source><![CDATA[if (this.count == 0)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="1" offset="0011" domain="usercodeundertest"><source><![CDATA[throw new InvalidOperationException();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="0017" domain="usercodeundertest"><source><![CDATA[return this.items[0];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="3" offset="002b" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public KeyValuePair<TPriority, TValue> RemoveMinimum()
+        ]]></source>
+</chunk>
+<method name="RemoveMinimum" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="600000b" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="1" value="2"/>
+<hit index="2" value="2"/>
+<hit index="3" value="2"/>
+<hit index="4" value="2"/>
+<hit index="5" value="2"/>
+<hit index="6" value="2"/>
+<hit index="7" value="2"/>
+<hit index="8" value="2"/>
+<hit index="9" value="2"/>
+<hit index="10" value="2"/>
+<hit index="11" value="2"/>
+<hit index="12" value="2"/>
+<hit index="13" value="2"/>
+<hit index="14" value="2"/>
+<hit index="15" value="2"/>
+<hit index="16" value="2"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="4" total="4" coveredRatio="1"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            // shortcut for heap with 1 element.
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[if (this.count == 1)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0011" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="2" offset="0012" domain="usercodeundertest"><source><![CDATA[this.version++;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="4" offset="0020" domain="usercodeundertest"><source><![CDATA[return this.items[--this.count];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            }
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0044" domain="usercodeundertest"><source><![CDATA[return this.RemoveAt(0);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="4" offset="004e" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public KeyValuePair<TPriority, TValue> RemoveAt(int index)
+        ]]></source>
+</chunk>
+<method name="RemoveAt" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="600000c" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="1" value="2"/>
+<hit index="7" value="2"/>
+<hit index="8" value="2"/>
+<hit index="9" value="2"/>
+<hit index="15" value="2"/>
+<hit index="16" value="2"/>
+<hit index="17" value="2"/>
+<hit index="18" value="2"/>
+<hit index="28" value="2"/>
+<hit index="29" value="2"/>
+<hit index="30" value="2"/>
+<hit index="31" value="2"/>
+<hit index="32" value="2"/>
+<hit index="33" value="2"/>
+<hit index="34" value="2"/>
+<hit index="35" value="2"/>
+<hit index="36" value="2"/>
+<hit index="37" value="2"/>
+<hit index="38" value="2"/>
+<hit index="39" value="2"/>
+<hit index="40" value="2"/>
+<hit index="41" value="2"/>
+<hit index="42" value="2"/>
+<hit index="43" value="2"/>
+<hit index="44" value="2"/>
+<hit index="45" value="2"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="8" total="13" coveredRatio="0.61538461538461542"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //NotpAssume.IsTrue(this.count >0);
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[if (this.count == 0)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0011" domain="usercodeundertest"><source><![CDATA[throw new InvalidOperationException("heap is empty");]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //NotpAssume.IsTrue(index >= 0 || index <this.count || index + this.count >= this.count);
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="001c" domain="usercodeundertest"><source><![CDATA[if (index < 0 | index >= this.count | index + this.count < this.count)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0045" domain="usercodeundertest"><source><![CDATA[throw new ArgumentOutOfRangeException("index");]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0050" domain="usercodeundertest"><source><![CDATA[this.version++;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            // shortcut for heap with 1 element.
+            ]]></source>
+</chunk>
+<chunk hits="4" offset="005e" domain="usercodeundertest"><source><![CDATA[if (this.count == 1)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="006e" domain="usercodeundertest"><source><![CDATA[return this.items[--this.count];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0092" domain="usercodeundertest"><source><![CDATA[if (index < this.count - 1)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="00a4" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="2" offset="00a5" domain="usercodeundertest"><source><![CDATA[this.Swap(index, this.count - 1);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="2" offset="00b5" domain="usercodeundertest"><source><![CDATA[this.MinHeapifyUp(index);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="00bd" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="00be" domain="usercodeundertest"><source><![CDATA[return this.items[--this.count];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="2" offset="00e2" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        private void MinHeapifyUp(int index)
+        ]]></source>
+</chunk>
+<method name="MinHeapifyUp" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="600000d" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="10" value="2"/>
+<hit index="11" value="2"/>
+<hit index="12" value="2"/>
+<hit index="13" value="2"/>
+<hit index="14" value="2"/>
+<hit index="15" value="2"/>
+<hit index="19" value="2"/>
+<hit index="22" value="2"/>
+<hit index="24" value="2"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="6" total="17" coveredRatio="0.35294117647058826"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[var left = 2 * index + 1;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0007" domain="usercodeundertest"><source><![CDATA[var right = 2 * index + 2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0059" domain="usercodeundertest"><source><![CDATA[while (
+                    (left < this.count - 1 && !this.Less(index, left)) ||
+                    (right < this.count - 1 && !this.Less(index, right))
+                   )]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="000f" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0010" domain="usercodeundertest"><source><![CDATA[if (right >= this.count - 1 ||
+                    this.Less(left, right))]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="002e" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="002f" domain="usercodeundertest"><source><![CDATA[this.Swap(left, index);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="0038" domain="usercodeundertest"><source><![CDATA[index = left;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="003b" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                else
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="003e" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="003f" domain="usercodeundertest"><source><![CDATA[this.Swap(right, index);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="0048" domain="usercodeundertest"><source><![CDATA[index = right;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="004b" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="004c" domain="usercodeundertest"><source><![CDATA[left = 2 * index + 1;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0052" domain="usercodeundertest"><source><![CDATA[right = 2 * index + 2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0058" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="2" offset="0093" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public int IndexOf(TValue value)
+        {
+            for (int i = 0; i < this.count; i++)
+            {
+                if (object.Equals(value, this.items[i].Value))
+                    return i;
+            }
+            return -1;
+        }
+
+        public void Update(TPriority priority, TValue value)
+        {
+            // find index
+            var index = this.IndexOf(value);
+            NotpAssume.IsTrue(index >=0);
+            if (index < 0)
+                throw new InvalidOperationException("value was not found in the heap");
+
+            // remove and add
+            this.RemoveAt(index);
+            this.Add(priority, value);
+        }
+
+        private bool Less(int i, int j)
+        ]]></source>
+</chunk>
+<method name="Less" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000010" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="1" value="2"/>
+<hit index="2" value="2"/>
+<hit index="3" value="2"/>
+<hit index="4" value="2"/>
+<hit index="5" value="2"/>
+<hit index="6" value="2"/>
+<hit index="7" value="2"/>
+<hit index="8" value="2"/>
+<hit index="9" value="2"/>
+<hit index="10" value="2"/>
+<hit index="11" value="2"/>
+<hit index="12" value="2"/>
+<hit index="13" value="2"/>
+<hit index="14" value="2"/>
+<hit index="15" value="2"/>
+<hit index="16" value="2"/>
+<hit index="17" value="4"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="4" total="4" coveredRatio="1"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //GraphContracts.Assert(i >= 0 & i < this.count &
+            //             j >= 0 & j < this.count &
+            //             i != j, String.Format("i: {0}, j: {1}", i, j));
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[return this.priorityComparison(this.items[i].Key, this.items[j].Key) <= 0;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="6" offset="0037" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        private void Swap(int i, int j)
+        ]]></source>
+</chunk>
+<method name="Swap" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000011" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="1" value="2"/>
+<hit index="2" value="2"/>
+<hit index="3" value="2"/>
+<hit index="4" value="2"/>
+<hit index="5" value="2"/>
+<hit index="6" value="2"/>
+<hit index="7" value="2"/>
+<hit index="8" value="2"/>
+<hit index="9" value="2"/>
+<hit index="10" value="2"/>
+<hit index="11" value="2"/>
+<hit index="12" value="2"/>
+<hit index="13" value="2"/>
+<hit index="14" value="2"/>
+<hit index="15" value="2"/>
+<hit index="16" value="2"/>
+<hit index="17" value="2"/>
+<hit index="18" value="2"/>
+<hit index="19" value="2"/>
+<hit index="20" value="2"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="1" total="1" coveredRatio="1"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //GraphContracts.Assert(i >= 0 & i < this.count &
+            //             j >= 0 & j < this.count &
+            //             i != j);
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[var kv = this.items[i];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0013" domain="usercodeundertest"><source><![CDATA[this.items[i] = this.items[j];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0035" domain="usercodeundertest"><source><![CDATA[this.items[j] = kv;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="2" offset="0047" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        [Conditional("DEBUG")]
+        public void ObjectInvariant()
+        {
+            GraphContracts.Assert(this.items != null);
+            GraphContracts.Assert(
+                this.count > -1 &
+                this.count <= this.items.Length);
+            for (int index = 0; index < this.count; ++index)
+            {
+                var left = 2 * index + 1;
+                GraphContracts.Assert(left >= count || this.Less(index, left));
+                var right = 2 * index + 2;
+                GraphContracts.Assert(right >= count || this.Less(index, right));
+            }
+        }
+
+        #region IEnumerable<KeyValuePair<TKey,TValue>> Members
+        public IEnumerator<KeyValuePair<TPriority, TValue>> GetEnumerator()
+        {
+            return new Enumerator(this);
+        }
+
+        struct Enumerator :
+            IEnumerator<KeyValuePair<TPriority, TValue>>
+        {
+            BinaryHeap<TPriority, TValue> owner;
+            KeyValuePair<TPriority, TValue>[] items;
+            readonly int count;
+            readonly int version;
+            int index;
+
+            public Enumerator(BinaryHeap<TPriority, TValue> owner)
+            {
+                this.owner = owner;
+                this.items = owner.items;
+                this.count = owner.count;
+                this.version = owner.version;
+                this.index = -1;
+            }
+
+            public KeyValuePair<TPriority, TValue> Current
+            {
+                get
+                {
+                    if (this.version != this.owner.version)
+                        throw new InvalidOperationException();
+                    if (this.index < 0 | this.index == this.count)
+                        throw new InvalidOperationException();
+                    //GraphContracts.Assert(this.index <= this.count);
+                    return this.items[this.index];
+                }
+            }
+
+            void IDisposable.Dispose()
+            {
+                this.owner = null;
+                this.items = null;
+            }
+
+            object IEnumerator.Current
+            {
+                get { return this.Current; }
+            }
+
+            public bool MoveNext()
+            {
+                if (this.version != this.owner.version)
+                    throw new InvalidOperationException();
+                return ++this.index < this.count;
+            }
+
+            public void Reset()
+            {
+                if (this.version != this.owner.version)
+                    throw new InvalidOperationException();
+                this.index = -1;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+        #endregion
+
+        // Shiyu's code
+        public Object Clone()
+        {
+            BinaryHeap<TPriority, TValue> bh = new BinaryHeap<TPriority, TValue>(this.Capacity, Comparer<TPriority>.Default.Compare);
+
+            bh.count = this.count;
+            bh.version = this.version;
+            Array.Copy(this.items, bh.items, this.count);
+            //foreach (var pair in this.items)
+            //{
+            //    bh.Add(pair.Key, pair.Value);
+            //}
+            return bh;
+        }
+
+        /*
+        public virtual BinaryHeap<int,int> Clone()
+        {
+            BinaryHeap<int, int> bh = new BinaryHeap<int, int>(this.Capacity, Comparer<int>.Default.Compare);
+            bh.count = this.count;
+            bh.version = this.version;
+            Array.Copy(this.items, bh.items, this.count);
+            return bh;
+        }*/
+
+        public string ToStringForInts()
+        ]]></source>
+</chunk>
+<method name="ToStringForInts" namespace="QuickGraph" type="QuickGraph.BinaryHeap`2" typeName="BinaryHeap`2" token="6000016" module="QuickGraph.dll"><hits><hit index="0" value="4"/>
+<hit index="2" value="8"/>
+<hit index="3" value="8"/>
+<hit index="4" value="8"/>
+<hit index="5" value="8"/>
+<hit index="6" value="8"/>
+<hit index="7" value="8"/>
+<hit index="8" value="8"/>
+<hit index="9" value="8"/>
+<hit index="10" value="8"/>
+<hit index="11" value="8"/>
+<hit index="12" value="8"/>
+<hit index="13" value="8"/>
+<hit index="14" value="8"/>
+<hit index="15" value="8"/>
+<hit index="16" value="8"/>
+<hit index="17" value="8"/>
+<hit index="18" value="8"/>
+<hit index="19" value="8"/>
+<hit index="20" value="8"/>
+<hit index="21" value="8"/>
+<hit index="22" value="8"/>
+<hit index="23" value="8"/>
+<hit index="24" value="8"/>
+<hit index="25" value="8"/>
+<hit index="26" value="8"/>
+<hit index="27" value="8"/>
+<hit index="28" value="8"/>
+<hit index="29" value="8"/>
+<hit index="30" value="8"/>
+<hit index="31" value="8"/>
+<hit index="32" value="8"/>
+<hit index="33" value="8"/>
+<hit index="34" value="8"/>
+<hit index="35" value="8"/>
+<hit index="36" value="8"/>
+<hit index="37" value="8"/>
+<hit index="38" value="8"/>
+<hit index="39" value="8"/>
+<hit index="40" value="8"/>
+<hit index="41" value="8"/>
+<hit index="42" value="8"/>
+<hit index="43" value="8"/>
+<hit index="44" value="8"/>
+<hit index="45" value="8"/>
+<hit index="46" value="12"/>
+<hit index="47" value="4"/>
+<hit index="48" value="4"/>
+<hit index="49" value="4"/>
+<hit index="50" value="8"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="9" total="9" coveredRatio="1"/>
+</method>
+<chunk hits="4" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="4" offset="0001" domain="usercodeundertest"><source><![CDATA[string ret = "{";]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            for (]]></source>
+</chunk>
+<chunk hits="4" offset="0007" domain="usercodeundertest"><source><![CDATA[int i = 0;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="12" offset="0082" domain="usercodeundertest"><source><![CDATA[i < this.count]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[; ]]></source>
+</chunk>
+<chunk hits="8" offset="007e" domain="usercodeundertest"><source><![CDATA[i++]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[)
+            ]]></source>
+</chunk>
+<chunk hits="8" offset="000b" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="8" offset="000c" domain="usercodeundertest"><source><![CDATA[ret += this.items[i].Key.ToString() + " " + this.items[i].Value.ToString() + " ";]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="8" offset="007d" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="4" offset="0094" domain="usercodeundertest"><source><![CDATA[return ret + "}";]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="4" offset="00a2" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="d:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\Factories\BinaryHeapFactory.cs" renderPrefix="s1"><chunk hits="-1" domain="unknown"><source><![CDATA[using System;
+using Microsoft.Pex.Framework;
+using QuickGraph;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace QuickGraphTest.Factories
+{
+    public static partial class BinaryHeapFactory
+    {
+        /*[PexFactoryMethod(typeof(QuickGraph.BinaryHeap<int, int>))]
+        public static BinaryHeap<int, int> CreateBinaryHeapGeneral(int capacity, int[] priorities, int[] values)
+        {
+            PexAssume.IsTrue( priorities.Length == values.Length);
+            var bh = new BinaryHeap<int, int>(capacity, Comparer<int>.Default.Compare);
+
+            for (int i = 0; i < priorities.Length; i++)
+            {
+                bh.Add(priorities[i], values[i]);
+            }
+
+            return bh;
+        }*/
+
+        /*[PexFactoryMethod(typeof(QuickGraph.BinaryHeap<int, int>))]
+        public static BinaryHeap<int, int> CreateBinaryHeapKeyValPair([PexAssumeNotNull]KeyValuePair<int,int>[] pairs, int capacity)
+        {
+            PexAssume.IsTrue(capacity < 11 && capacity > 0 && pairs.Length <= capacity);
+            //PexAssume.TrueForAll(0, pairs.Length, _i => pairs[_i].Key > -11 && pairs[_i].Key < 11 && pairs[_i].Value > -11 && pairs[_i].Value < 11);
+            PexAssume.TrueForAll(0, pairs.Length, _i => pairs[_i].Key > -101 && pairs[_i].Key < 101);
+            
+            var bh = new BinaryHeap<int, int>(capacity, Comparer<int>.Default.Compare);
+            foreach (var pair in pairs)
+            {
+                bh.Add(pair.Key, pair.Value);
+               
+            }
+
+            return bh;
+        }*/
+
+        [PexFactoryMethod(typeof(Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>>))]
+        public static Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> CreateBinaryHeapKeyValPair([PexAssumeNotNull]KeyValuePair<int, int>[] pairs, int capacity)
+        ]]></source>
+</chunk>
+<method name="CreateBinaryHeapKeyValPair" namespace="QuickGraphTest.Factories" type="QuickGraphTest.Factories.BinaryHeapFactory" typeName="BinaryHeapFactory" token="600002d" module="QuickGraphTest.dll"><hits/>
+<coverage domain="userortestcode" unit="block" covered="0" total="22" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="000f" domain="userortestcode"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0010" domain="userortestcode"><source><![CDATA[PexAssume.IsTrue(capacity < 11 && capacity > 0);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0023" domain="userortestcode"><source><![CDATA[PexAssume.TrueForAll(0, pairs.Length, _i => ]]></source>
+</chunk>
+<method name="&lt;CreateBinaryHeapKeyValPair&gt;b__0" namespace="QuickGraphTest.Factories" type="QuickGraphTest.Factories.BinaryHeapFactory+&lt;&gt;c__DisplayClass1" typeName="BinaryHeapFactory+&lt;&gt;c__DisplayClass1" token="60000e5" module="QuickGraphTest.dll"><hits/>
+<coverage domain="userortestcode" unit="block" covered="0" total="5" coveredRatio="0"/>
+</method>
+<chunk hits="0" offset="0000" domain="userortestcode"><source><![CDATA[pairs[_i].Key > -11 && pairs[_i].Key < 11]]></source>
+</chunk>
+<chunk hits="0" offset="0023" domain="userortestcode"><source><![CDATA[);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0040" domain="userortestcode"><source><![CDATA[var bh1 = new BinaryHeap<int, int>(capacity, Comparer<int>.Default.Compare);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0058" domain="userortestcode"><source><![CDATA[var bh2 = new BinaryHeap<int, int>(capacity, Comparer<int>.Default.Compare);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0070" domain="userortestcode"><source><![CDATA[foreach]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ (]]></source>
+</chunk>
+<chunk hits="0" offset="007f" domain="userortestcode"><source><![CDATA[var pair]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="0" offset="00c0" domain="userortestcode"><source><![CDATA[in]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="0" offset="0071" domain="userortestcode"><source><![CDATA[pairs]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[)
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="008e" domain="userortestcode"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="008f" domain="userortestcode"><source><![CDATA[bh1.Add(pair.Key, pair.Value);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="00a4" domain="userortestcode"><source><![CDATA[bh2.Add(pair.Key, pair.Value);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="00b9" domain="userortestcode"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="00ce" domain="userortestcode"><source><![CDATA[var ret = new Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>>(bh1, bh2);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="00d6" domain="userortestcode"><source><![CDATA[return ret;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="0" offset="00db" domain="userortestcode"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="d:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\BinaryHeapCommuteTest.cs" renderPrefix="s2"><chunk hits="-1" domain="unknown"><source><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using QuickGraph;
+
+using Microsoft.Pex.Framework;
+using Microsoft.Pex.Framework.Settings;
+using Microsoft.Pex.Framework.Exceptions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PexAPIWrapper;
+using QuickGraph.Interfaces;
+using QuickGraph.Utility;
+
+namespace QuickGraphTest
+{
+    [PexClass(typeof(Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>>))]
+    [TestClass]
+    public partial class BinaryHeapCommuteTest
+    {
+        int global = -12;
+        /*[PexMethod]
+        public void TestCloneCompare([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value)
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+            
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("bh1 Count: ", bh1.Count);
+            PexObserve.ValueForViewing("bh2 Count: ", bh2.Count);
+            PexObserve.ValueForViewing("bh1 Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("bh2 Capacity", bh2.Capacity);
+
+            bh1.Add(priority, value);
+            bh2.Add(priority, value);
+
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }*/
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityCapacityComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Capacity;
+            c12 = bh1.Capacity;
+
+            c22 = bh2.Capacity;
+            c21 = bh2.Capacity;
+
+            //NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityCountComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Capacity;
+            c12 = bh1.Count;
+
+            c22 = bh2.Count;
+            c21 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityAddComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value)
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+            
+            //BinaryHeap<int, int> bh2 = (BinaryHeap<int, int>)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count == bh1.Capacity))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity; // == count  --> bh1, bh2
+            bh1.Add(priority, value);// count + n --> bh1 , bh2
+            bh2.Add(priority, value);  //  adds to bh1 and bh2 --> capacity remains unchanged
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityRemoveMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index)
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+            
+            //BinaryHeap<int, int> bh2 = (QuickGraph.BinaryHeap<int, int>)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(((index >= 0) && (-1*index + bh1.Count >= 1) && (bh1.Count >= 1)));
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            c2 = bh2.Capacity;
+
+
+            NotpAssume.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            try{PexAssert.IsTrue(false);}catch{return;}
+            PexAssert.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c1 = 0, c2 = 0;
+            int io1 = 0, io2 = 0;
+
+            c1 = bh1.Capacity;
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            //BinaryHeap<int, int> bh2 = (BinaryHeap<int, int>)bh1.Clone();
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) <= -1))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountCountComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Count;
+            c12 = bh1.Count;
+
+            c22 = bh2.Count;
+            c21 = bh2.Count;
+
+            NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountAddComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            bh1.Add(priority, value);
+
+            bh2.Add(priority, value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple/* */)
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            //BinaryHeap<int, int> bh2 = (QuickGraph.BinaryHeap<int, int>)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            ////PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountRemoveMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c1 = 0, c2 = 0;
+            int io1 = 0, io2 = 0;
+
+            c1 = bh1.Count;
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) <= -1))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddAddComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 > -11 && priority1 < 11);
+            PexAssume.IsTrue(value1 > -11 && value1 < 11);
+            PexAssume.IsTrue(priority2 > -11 && priority2 < 11);
+            PexAssume.IsTrue(value2 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!(true));
+
+            bh1.Add(priority1, value1);
+            bh1.Add(priority2, value2);
+
+            bh2.Add(priority2, value2);
+            bh2.Add(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value/* */)
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+            
+            //BinaryHeap<int, int> bh2 = (QuickGraph.BinaryHeap<int, int>) bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+            bh1.Add(priority, value);
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddRemoveMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!((( false ))));
+
+            bh1.Add(priority, value);
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value, int index )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+
+            bh1.Add(priority, value);
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value1, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+
+            int io1 = 0, io2 = 0;
+
+            bh1.Add(priority, value1);
+            io1 = bh1.IndexOf(value2);
+
+            io2 = bh2.IndexOf(value2);
+            bh2.Add(priority, value1);
+
+            NotpAssume.IsTrue(io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 > -11 && priority1 < 11);
+            PexAssume.IsTrue(value1 > -11 && value1 < 11);
+            PexAssume.IsTrue(priority2 > -11 && priority2 < 11);
+            PexAssume.IsTrue(value2 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!(true));
+
+            bh1.Add(priority1, value1);
+            bh1.Update(priority2, value2);
+
+            bh2.Update(priority2, value2);
+            bh2.Add(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(((bh1.Count >= 1)));
+
+            var m11 = bh1.Minimum();
+            var m12 = bh1.Minimum();
+
+            var m22 = bh2.Minimum();
+            var m21 = bh2.Minimum();
+
+            NotpAssume.IsTrue(m11.Key == m21.Key && m11.Value == m21.Value && m12.Key == m22.Key && m12.Value == m22.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m11.Key == m21.Key && m11.Value == m21.Value && m12.Key == m22.Key && m12.Value == m22.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumRemoveMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        ]]></source>
+</chunk>
+<method name="PUT_CommutativityMinimumRemoveMinimumComm" namespace="QuickGraphTest" type="QuickGraphTest.BinaryHeapCommuteTest" typeName="BinaryHeapCommuteTest" token="6000017" module="QuickGraphTest.dll"><hits><hit index="0" value="1"/>
+<hit index="1" value="1"/>
+<hit index="2" value="1"/>
+<hit index="3" value="1"/>
+<hit index="4" value="2"/>
+<hit index="5" value="1"/>
+<hit index="6" value="1"/>
+<hit index="7" value="1"/>
+<hit index="8" value="2"/>
+<hit index="9" value="1"/>
+<hit index="11" value="1"/>
+<hit index="12" value="1"/>
+<hit index="13" value="1"/>
+<hit index="14" value="1"/>
+<hit index="15" value="2"/>
+<hit index="16" value="1"/>
+<hit index="17" value="1"/>
+<hit index="18" value="1"/>
+<hit index="19" value="1"/>
+<hit index="20" value="1"/>
+<hit index="21" value="2"/>
+<hit index="22" value="1"/>
+<hit index="23" value="1"/>
+<hit index="24" value="1"/>
+<hit index="25" value="1"/>
+<hit index="26" value="1"/>
+<hit index="27" value="2"/>
+<hit index="28" value="1"/>
+<hit index="29" value="1"/>
+<hit index="30" value="1"/>
+<hit index="31" value="1"/>
+<hit index="32" value="1"/>
+<hit index="33" value="1"/>
+<hit index="34" value="1"/>
+<hit index="35" value="2"/>
+<hit index="36" value="1"/>
+<hit index="37" value="1"/>
+<hit index="38" value="1"/>
+<hit index="39" value="1"/>
+<hit index="40" value="1"/>
+<hit index="41" value="1"/>
+<hit index="42" value="1"/>
+<hit index="43" value="1"/>
+<hit index="44" value="1"/>
+<hit index="45" value="2"/>
+<hit index="46" value="1"/>
+<hit index="47" value="1"/>
+<hit index="48" value="1"/>
+<hit index="49" value="2"/>
+<hit index="50" value="1"/>
+<hit index="51" value="1"/>
+<hit index="52" value="1"/>
+<hit index="53" value="2"/>
+<hit index="54" value="1"/>
+<hit index="55" value="1"/>
+<hit index="56" value="1"/>
+<hit index="57" value="2"/>
+<hit index="58" value="1"/>
+<hit index="59" value="1"/>
+<hit index="60" value="1"/>
+<hit index="61" value="1"/>
+<hit index="62" value="1"/>
+<hit index="63" value="1"/>
+<hit index="64" value="1"/>
+<hit index="65" value="1"/>
+<hit index="66" value="1"/>
+<hit index="67" value="1"/>
+<hit index="68" value="1"/>
+<hit index="69" value="1"/>
+<hit index="70" value="1"/>
+<hit index="71" value="1"/>
+<hit index="72" value="1"/>
+<hit index="73" value="1"/>
+<hit index="74" value="1"/>
+<hit index="75" value="1"/>
+<hit index="76" value="1"/>
+<hit index="77" value="1"/>
+<hit index="78" value="1"/>
+<hit index="79" value="1"/>
+<hit index="80" value="1"/>
+<hit index="81" value="2"/>
+<hit index="82" value="1"/>
+<hit index="83" value="1"/>
+<hit index="84" value="1"/>
+<hit index="85" value="1"/>
+<hit index="86" value="1"/>
+<hit index="87" value="1"/>
+<hit index="88" value="1"/>
+<hit index="89" value="1"/>
+<hit index="90" value="1"/>
+<hit index="91" value="1"/>
+<hit index="92" value="1"/>
+<hit index="93" value="1"/>
+<hit index="94" value="1"/>
+<hit index="95" value="1"/>
+<hit index="96" value="1"/>
+<hit index="97" value="1"/>
+<hit index="98" value="1"/>
+<hit index="99" value="1"/>
+<hit index="100" value="1"/>
+<hit index="101" value="1"/>
+<hit index="102" value="1"/>
+<hit index="103" value="1"/>
+<hit index="104" value="1"/>
+<hit index="105" value="1"/>
+<hit index="106" value="1"/>
+<hit index="107" value="2"/>
+<hit index="108" value="1"/>
+<hit index="109" value="1"/>
+<hit index="110" value="1"/>
+<hit index="120" value="1"/>
+</hits>
+<coverage domain="userortestcode" unit="block" covered="47" total="49" coveredRatio="0.95918367346938771"/>
+</method>
+<chunk hits="1" offset="0000" domain="userortestcode"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0001" domain="userortestcode"><source><![CDATA[BinaryHeap<int, int> bh1 = bhTuple.Item1;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="0008" domain="userortestcode"><source><![CDATA[BinaryHeap<int, int> bh2 = bhTuple.Item2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="000f" domain="userortestcode"><source><![CDATA[BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0015" domain="userortestcode"><source><![CDATA[PexObserve.ValueForViewing("$input_Count", bh1.Count);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0026" domain="userortestcode"><source><![CDATA[PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0037" domain="userortestcode"><source><![CDATA[PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0070" domain="userortestcode"><source><![CDATA[AssumePrecondition.IsTrue(!((( false ))));]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0077" domain="userortestcode"><source><![CDATA[var m1 = bh1.Minimum();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="007e" domain="userortestcode"><source><![CDATA[var rm1 = bh1.RemoveMinimum();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="0086" domain="userortestcode"><source><![CDATA[var rm2 = bh2.RemoveMinimum();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="008e" domain="userortestcode"><source><![CDATA[var m2 = bh2.Minimum();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="3" offset="0096" domain="userortestcode"><source><![CDATA[NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="00e8" domain="userortestcode"><source><![CDATA[PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="1" offset="013a" domain="userortestcode"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            var m1 = bh1.Minimum();
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            var m2 = bh2.Minimum();
+
+            //NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (bh1.Count == bh1.Capacity)  );
+
+            int io1 = 0, io2 = 0;
+
+            var m1 = bh1.Minimum();
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var m2 = bh2.Minimum();
+
+            NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            var m1 = bh1.Minimum();
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var m2 = bh2.Minimum();
+
+            //NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumRemoveMinimumComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm11 = bh1.RemoveMinimum();
+            var rm12 = bh1.RemoveMinimum();
+
+            var rm22 = bh2.RemoveMinimum();
+            var rm21 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm11.Key == rm21.Key && rm11.Value == rm21.Value && rm12.Key == rm22.Key && rm12.Value == rm22.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm11.Key == rm21.Key && rm11.Value == rm21.Value && rm12.Key == rm22.Key && rm12.Value == rm22.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm1 = bh1.RemoveMinimum();
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            var rm2 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            int io1 = 0, io2 = 0;
+
+            var rm1 = bh1.RemoveMinimum();
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var rm2 = bh2.RemoveMinimum();
+
+            //NotpAssume.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm1 = bh1.RemoveMinimum();
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var rm2 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtRemoveAtComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index1, int index2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index1 > -11 && index1 < 11);
+            PexAssume.IsTrue(index2 > -11 && index2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index1", index1);
+            PexObserve.ValueForViewing("$input_Index2", index2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var ra11 = bh1.RemoveAt(index1);
+            var ra12 = bh1.RemoveAt(index2);
+
+            var ra22 = bh2.RemoveAt(index2);
+            var ra21 = bh2.RemoveAt(index1);
+
+            NotpAssume.IsTrue(ra11.Key == ra21.Key && ra11.Value == ra21.Value && ra12.Key == ra22.Key && ra12.Value == ra22.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra11.Key == ra21.Key && ra11.Value == ra21.Value && ra12.Key == ra22.Key && ra12.Value == ra22.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (-bh1.Count + bh1.IndexOf(value) <= -2 && (((!(index == value)))))  );
+
+            int io1 = 0, io2 = 0;
+
+            var ra1 = bh1.RemoveAt(index);
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var ra2 = bh2.RemoveAt(index);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int index, int priority, int value )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index > -11 && index < 11);
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value > -11 && value < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var ra1 = bh1.RemoveAt(index);
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var ra2 = bh2.RemoveAt(index);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityIndexOfIndexOfComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value1, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int io11 = 0, io12 = 0;
+            int io21 = 0, io22 = 0;
+
+            io11 = bh1.IndexOf(value1);
+            io12 = bh1.IndexOf(value2);
+
+            io22 = bh2.IndexOf(value2);
+            io21 = bh2.IndexOf(value1);
+
+            NotpAssume.IsTrue(io11 == io21 && io12 == io22 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io11 == io21 && io12 == io22 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityIndexOfUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int value1, int priority, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority > -11 && priority < 11);
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+            PexAssume.IsTrue(value1 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (bh1.Count == bh1.Capacity)  );
+
+            int io1 = 0, io2 = 0;
+
+            io1 = bh1.IndexOf(value1);
+            bh1.Update(priority, value2);
+
+            bh2.Update(priority, value2);
+            io2 = bh2.IndexOf(value1);
+
+            NotpAssume.IsTrue(io1 == io2 && eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io1 == io2 && eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityUpdateUpdateComm([PexAssumeUnderTest] Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap<int, int> bh1 = bhTuple.Item1;
+            BinaryHeap<int, int> bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 > -11 && priority1 < 11);
+            PexAssume.IsTrue(value1 > -11 && value1 < 11);
+            PexAssume.IsTrue(priority2 > -11 && priority2 < 11);
+            PexAssume.IsTrue(value2 > -11 && value2 < 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) && !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            bh1.Update(priority1, value1);
+            bh1.Update(priority2, value2);
+
+            bh2.Update(priority2, value2);
+            bh2.Update(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="d:\experimental3\BenchmarksAll\QuickGraph\QuickGraph\Utility\BinaryHeapEqualityComparer.cs" renderPrefix="s3"><chunk hits="-1" domain="unknown"><source><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace QuickGraph.Utility
+{
+    public class BinaryHeapEqualityComparer : EqualityComparer<BinaryHeap<int ,int>>
+    {
+        public override bool Equals(BinaryHeap<int, int> bh1, BinaryHeap<int, int> bh2)
+        ]]></source>
+</chunk>
+<method name="Equals" namespace="QuickGraph.Utility" type="QuickGraph.Utility.BinaryHeapEqualityComparer" typeName="BinaryHeapEqualityComparer" token="600008e" module="QuickGraph.dll"><hits><hit index="0" value="2"/>
+<hit index="3" value="2"/>
+<hit index="5" value="2"/>
+<hit index="6" value="2"/>
+<hit index="7" value="2"/>
+<hit index="8" value="4"/>
+<hit index="9" value="2"/>
+<hit index="10" value="2"/>
+<hit index="11" value="2"/>
+<hit index="12" value="4"/>
+<hit index="14" value="2"/>
+<hit index="15" value="2"/>
+<hit index="16" value="2"/>
+<hit index="17" value="4"/>
+<hit index="18" value="2"/>
+<hit index="19" value="2"/>
+<hit index="20" value="2"/>
+<hit index="21" value="4"/>
+<hit index="23" value="2"/>
+<hit index="24" value="2"/>
+<hit index="25" value="2"/>
+<hit index="26" value="4"/>
+<hit index="27" value="2"/>
+<hit index="28" value="2"/>
+<hit index="29" value="2"/>
+<hit index="30" value="4"/>
+<hit index="31" value="2"/>
+<hit index="32" value="2"/>
+<hit index="33" value="2"/>
+<hit index="34" value="4"/>
+<hit index="35" value="2"/>
+<hit index="36" value="2"/>
+<hit index="38" value="2"/>
+<hit index="39" value="2"/>
+<hit index="40" value="2"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="14" total="20" coveredRatio="0.7"/>
+</method>
+<chunk hits="2" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="0001" domain="usercodeundertest"><source><![CDATA[if (bh1 == null && bh2 == null)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="0013" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0014" domain="usercodeundertest"><source><![CDATA[return true;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            }
+            else ]]></source>
+</chunk>
+<chunk hits="2" offset="0018" domain="usercodeundertest"><source><![CDATA[if (bh1 == null || bh2 == null)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="0" offset="002a" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="002b" domain="usercodeundertest"><source><![CDATA[return false;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            }
+            else
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="002f" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="2" offset="0030" domain="usercodeundertest"><source><![CDATA[if (bh1.Count != bh2.Count)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0042" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="0043" domain="usercodeundertest"><source><![CDATA[return false;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                }
+
+                ]]></source>
+</chunk>
+<chunk hits="2" offset="0047" domain="usercodeundertest"><source><![CDATA[if (bh1.Capacity != bh2.Capacity)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="0" offset="0059" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                    ]]></source>
+</chunk>
+<chunk hits="0" offset="005a" domain="usercodeundertest"><source><![CDATA[return false;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                }
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="005e" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="2" offset="005f" domain="usercodeundertest"><source><![CDATA[return bh1.ToStringForInts().Equals(bh2.ToStringForInts());]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="6" offset="0073" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        public override int GetHashCode(BinaryHeap<int, int> bh)
+        {
+            int hash = 0;
+
+            foreach (KeyValuePair<int, int> pair in bh)
+            {
+                hash += pair.Key * pair.Value;
+            }
+
+            return hash;
+        }
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="(no sources available for some parts of mscorlib, QuickGraph, QuickGraphTest)" missing="true"><method name="get_Item1" type="System.Tuple`2" token="6000360" module="mscorlib.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="1" total="1" coveredRatio="1"/>
+</method>
+<method name="get_Item2" type="System.Tuple`2" token="6000361" module="mscorlib.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="1" total="1" coveredRatio="1"/>
+</method>
+<method name=".ctor" type="QuickGraph.Utility.BinaryHeapEqualityComparer" token="6000090" module="QuickGraph.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="2" total="2" coveredRatio="1"/>
+</method>
+<method name=".ctor" type="QuickGraphTest.Factories.BinaryHeapFactory+&lt;&gt;c__DisplayClass1" token="60000e4" module="QuickGraphTest.dll"><hits/>
+<coverage domain="userortestcode" unit="block" covered="0" total="2" coveredRatio="0"/>
+</method>
+<method name=".ctor" type="System.Tuple`2" token="6000362" module="mscorlib.dll"><hits/>
+<coverage domain="usercodeundertest" unit="block" covered="0" total="2" coveredRatio="0"/>
+</method>
+</document>
+</documents>

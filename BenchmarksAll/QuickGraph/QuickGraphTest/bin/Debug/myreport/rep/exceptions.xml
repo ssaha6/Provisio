@@ -1,0 +1,33 @@
+﻿<frameTree version="0.94.51006.1"><frameException type="System.InvalidOperationException"><tag exceptionState="unexpected"><generatedTestRef idref="d6531184-befa-48dd-baad-b275baeaa8d8"/>
+</tag>
+<frameNode><frame value="  at BinaryHeap`2.Minimum() in d:\experimental3\BenchmarksAll\QuickGraph\QuickGraph\BinaryHeap.cs(108)" method="BinaryHeap`2.Minimum()" offset="22" file="d:\experimental3\BenchmarksAll\QuickGraph\QuickGraph\BinaryHeap.cs" line="108"><method assemblyName="QuickGraph" name="Minimum" token="600000a"><declaringType assemblyName="QuickGraph" name="BinaryHeap`2" token="2000002" namespace="QuickGraph"><genericParameter value="TPriority"/>
+<genericParameter value="TValue"/>
+</declaringType>
+<parameter this="true" name="this" position="0"><type spec="Class"><definition assemblyName="QuickGraph" name="BinaryHeap`2" token="2000002" namespace="QuickGraph"><genericParameter value="TPriority"/>
+<genericParameter value="TValue"/>
+</definition>
+<genericTypeArgument spec="GenericTypeParameter" index="0"/>
+<genericTypeArgument spec="GenericTypeParameter" index="1"/>
+</type>
+</parameter>
+<resultType spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="KeyValuePair`2" token="20004ae" namespace="System.Collections.Generic"><genericParameter value="TKey"/>
+<genericParameter value="TValue"/>
+</definition>
+<genericTypeArgument spec="GenericTypeParameter" index="0"/>
+<genericTypeArgument spec="GenericTypeParameter" index="1"/>
+</resultType>
+</method>
+<beforeSource><![CDATA[        {
+            //NotpAssume.IsTrue(this.count >0);
+            if (this.count == 0)]]></beforeSource>
+<source><![CDATA[                throw new InvalidOperationException();]]></source>
+<afterSource><![CDATA[            return this.items[0];
+        }
+]]></afterSource>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="d6531184-befa-48dd-baad-b275baeaa8d8"/>
+<generatedTestRef idref="dab44d93-23e6-490e-aee7-a8eda619e54d"/>
+</tag>
+</frameNode>
+</frameException>
+</frameTree>

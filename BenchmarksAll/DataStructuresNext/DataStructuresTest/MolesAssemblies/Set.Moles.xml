@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Set.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:DataTypes.Moles.MSet">
+            <summary>Mole type of <see cref="T:DataTypes.Set"/>
+            .</summary>
+        </member>
+        <member name="M:DataTypes.Moles.MSet.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:DataTypes.Moles.MSet.#ctor(DataTypes.Set)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:DataTypes.Moles.MSet.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:DataTypes.Moles.MSet.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AddInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Add(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.ConstructorInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.#ctor(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.ContainsAddOrder1Int32Int32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ContainsAddOrder1(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.ContainsAddOrder2Int32Int32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ContainsAddOrder2(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.ContainsInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Contains(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.RemoveInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Remove(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.Size">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Size"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.ToString">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ToString"/>
+            </summary>
+        </member>
+        <member name="T:DataTypes.Moles.MSet.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.AddInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Add(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.ContainsAddOrder1Int32Int32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ContainsAddOrder1(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.ContainsAddOrder2Int32Int32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ContainsAddOrder2(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.ContainsInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Contains(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.RemoveInt32">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Remove(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.Size">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.Size"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.MSet.AllInstances.ToString01">
+            <summary>Sets the mole of <see cref="M:DataTypes.Set.ToString"/>
+            </summary>
+        </member>
+        <member name="T:DataTypes.Moles.SSet">
+            <summary>Stub type of <see cref="T:DataTypes.Set"/>
+            .</summary>
+        </member>
+        <member name="M:DataTypes.Moles.SSet.#ctor(System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:DataTypes.Moles.SSet.InitializeStub">
+            <summary>Initializes a new instance of type SSet</summary>
+        </member>
+        <member name="M:DataTypes.Moles.SSet.ToString">
+            <summary>Sets the stub of <see cref="M:DataTypes.Set.ToString"/>
+            </summary>
+        </member>
+        <member name="F:DataTypes.Moles.SSet.ToString01">
+            <summary>Sets the stub of <see cref="M:DataTypes.Set.ToString"/>
+            </summary>
+        </member>
+        <member name="P:DataTypes.Moles.SSet.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:DataTypes.Moles.SSet.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+    </members>
+</doc>

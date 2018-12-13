@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html>
+<!-- saved from url=(0033)http://research.microsoft.com/pex -->
+<head><link rel="StyleSheet" href="../er.common.css" type="text/css" /><script src="../er.common.js" type="text/javascript"> </script><link rel="SHORTCUT ICON" href="favicon.ico" /><link rel="icon" href="favicon.ico" type="image/x-icon" /><link rel="StyleSheet" href="../log.css" type="text/css" /><link rel="StyleSheet" href="../pex.css" type="text/css" /><script src="../pex.js" type="text/javascript"> </script><title>ArrayListTest Pex Report
+   </title></head><body onload="bodyOnLoad()"><div class="banner"><div class="imageleft"><a href="http://beta.research.microsoft.com/en-us/um/redmond/projects/pex/wiki/WebHome.html"><img class="button" src="../reportlogo.png" alt="logo" width="100" height="60" /></a></div>
+  
+  
+  ArrayListTest:
+1 exploration,
+  4 generated tests
+  (2 failing,
+   4 new), 00:00:18.36
+</div><h2 id="xID0EC"><span class="hint">|</span><a class="smallbutton" href="../cov\t102\cov.html">dynamic coverage</a></h2><div class="toggle" id="ID0EC"><table id="testtableID0EC"><tr class="small"><td colspan="6">typeUnderTest:DataStructures.ArrayList, </td></tr><tr><th>
+      Name
+    </th><th>
+      Duration
+    </th><th>Tests</th><th colspan="1"><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Coverage.html">Dynamic Coverage</a></th><th>Log</th><th>Goals</th></tr><tr class="small"><td /><td /><td>total, failures, exceptions, inconclusive, duplicate</td><td>block</td><td>critical, errors, warnings</td><td>missed, reached</td></tr><tr id="ID0EU" class="warning"><td>PUT_CommutativityAddContains(ArrayList, Int32, Int32)<br /><span class="button" onclick="toggleDiv('logID0EU')"><b>log</b></span><span class="hint">|</span><span class="button" onclick="toggleDiv('paramvaluesID0EU')">
+        parameter values
+      </span><span class="hint">|</span><span class="button" onclick="toggleDiv('trajectoriesID0EU')">
+        charts
+      </span><span class="hint">|</span><a class="smallbutton" href="../cov\e304\cov.html">dynamic coverage</a></td><td>00:00:18.13</td><td>4,
+    <span class="bad">2</span>,
+      2,
+      0,
+      0</td><td class="number"><span class="bad">87/134
+      (64.93%)
+  </span></td><td>
+      !<span>0</span>,
+      -<span>0</span>,
+      ~1</td><td>
+      !<span>0</span>,
+      <span>0</span></td></tr><tr><td colspan="8"><div class="closedSection" id="trajectoriesID0EU"><table><tr><th>Charts</th></tr><tr><td><img src="../fix\datastructureste636803008722156346.trajectories.png" width="800" height="1600" /></td></tr></table></div><div class="closedSection" id="paramvaluesID0EU"><table id="tparamvaluesID0EU"><tr><th colspan="100">
+              Parameter Values
+              <span class="button" onclick="copySourceToClipboardFromId('tparamvaluesID0EU')">
+                Copy To Clipboard
+              </span></th></tr><tr><th>Run</th><th>s1</th><th>x</th><th>y</th><th>$input_s1.Count</th><th>$input_x</th><th>$input_y</th><th>$input_s1.IndexOf(x)</th><th>$input_s1.IndexOf(y)</th><th>$input_s1.LastIndexOf(x)</th><th>$input_s1.LastIndexOf(y)</th><th>$input_s1.Contains(x)</th><th>$input_s1.Contains(y)</th><th>result(s1)</th><th>Block</th><th>asserts</th><th>Summary/Exception</th><th>Test Name</th></tr><tr class="error"><td class="number">7</td><td class="number">Count = 0</td><td class="number">0</td><td class="number">0</td><td class="number">0</td><td class="number">0</td><td class="number">0</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">false</td><td class="number">false</td><td class="number"></td><td class="number">41/83(+/- 41/83)
+  </td><td class="number">1/1(+/- 1/1)
+  </td><td><span class="exceptionType">PexAssertFailedException</span>: 
+    Expected true, got false<span class="hint">
+        (Microsoft.Pex.Framework)
+      </span></td><td><span class="link" onclick="goAndShow('0911182e-72c7-418b-8e1d-f89f667d0a24')">test</span></td></tr><tr class="even"><td class="number">9</td><td class="number">Count = 0</td><td class="number">8</td><td class="number">9</td><td class="number">0</td><td class="number">8</td><td class="number">9</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">false</td><td class="number">false</td><td class="number">Count = 1</td><td class="number">58/106(+/- 17/23)
+  </td><td class="number">1/1(+/- 0/0)
+  </td><td></td><td><span class="link" onclick="goAndShow('7ca7adf8-214d-4e4f-b5da-735fea11bd56')">test</span></td></tr><tr class="odd"><td class="number">25</td><td class="number">Count = 1</td><td class="number">2</td><td class="number">2</td><td class="number">1</td><td class="number">2</td><td class="number">2</td><td class="number">0</td><td class="number">0</td><td class="number">0</td><td class="number">0</td><td class="number">true</td><td class="number">true</td><td class="number">Count = 2</td><td class="number">87/134(+/- 29/28)
+  </td><td class="number">1/1(+/- 0/0)
+  </td><td></td><td><span class="link" onclick="goAndShow('a37b47e9-09f4-4b78-a223-22fb2efa3214')">test</span></td></tr><tr class="error"><td class="number">35</td><td class="number">Count = 1</td><td class="number">2</td><td class="number">2</td><td class="number">1</td><td class="number">2</td><td class="number">2</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">-1</td><td class="number">false</td><td class="number">false</td><td class="number"></td><td class="number">87/134(+/- 0/0)
+  </td><td class="number">1/1(+/- 0/0)
+  </td><td><span class="exceptionType">PexAssertFailedException</span>: 
+    Expected true, got false<span class="hint">
+        (Microsoft.Pex.Framework)
+      </span></td><td><span class="link" onclick="goAndShow('3dcadfc3-3e2b-4240-b305-6ac9dc53e5e2')">test</span></td></tr></table></div><div class="closedToggle" id="logID0EU"><table><tr class="repro"><td>repro:
+              pex.exe  /nf:DataStructures.Test /tf:ArrayListTest! /mf:PUT_CommutativityAddContains!
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="message"><td><span class="time">2018-12-13 18:27:35Z&gt;</span>could not load symbols for C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Pex\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.exe</td></tr>
+<tr class="message"><td><span class="time">2018-12-13 18:27:35Z&gt;</span>search path: ;</td></tr>
+
+
+
+
+
+
+<tr class="message"><td><span class="time">2018-12-13 18:27:35Z&gt;</span>could not load symbols for C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Pex.Framework\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.Framework.dll</td></tr>
+
+<tr id="0911182e-72c7-418b-8e1d-f89f667d0a24"><td><div class="testfailure"><span class="emphasis">Failing 
+                    Test</span><span class="hint">(7)</span>
+                  :
+                  PUT_CommutativityAddContainsThrowsPexAssertFailedException27
+                    , <span class="exceptiontype">
+                          unexpected 
+                        PexAssertFailedException</span><div class="toggle"><div>
+                          See
+                          <a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Assertion Violation.html">
+                            Pex documentation on Assertion Violation</a>
+                          for more information why this test fails.
+                        </div><pre class="console">ArrayList arrayList;
+int[] ints = new int[0];
+arrayList = ArrayListFactory.Create(ints);
+this.PUT_CommutativityAddContains(arrayList, 0, 0);
+</pre><div><span class="toggle" id="tgID0EFLAC" onclick="toggle('tgID0EFLAC','ID0EFLAC')">[+]</span><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Path%20Condition.html">
+        Path condition
+      </a></div><div class="closedToggle" id="ID0EFLAC"><pre class="console">ArrayList s2 = new;
+object[] s3 = new;
+ArrayList s4 = new;
+object[] s1 = s1 == s2 ? s3 : s1 == s4 ? (object[])s4 : s1._items;
+object[] s0 = s1;
+int s5 = s1 == s2 ? 0 : s1 == s4 ? 0 : s1._size;
+return elems != (int[])null &amp;&amp; elems.Length &lt; 1 &amp;&amp; -1 &lt; 2 + elems.Length &amp;&amp; s1 != (ArrayList)null &amp;&amp; -11 &lt; x &amp;&amp; x &lt; 11 &amp;&amp; 
+                                                                                                                -11 &lt; y &amp;&amp; y &lt; 11 &amp;&amp; s0 != (object[])null &amp;&amp; s0.Length != 0 &amp;&amp; s0.GetType().GetElementType().IsAssignableFrom(typeof(int)) &amp;&amp; x == y &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; 
+                                                                                                                                                                                                                                                        s5 == 0 &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; methodof(s1.IndexOf) == methodof(ArrayList.IndexOf) &amp;&amp; methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                     methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; methodof(s1.Contains) == methodof(ArrayList.Contains) &amp;&amp; methodof(s1.Add) == methodof(ArrayList.Add);
+</pre></div><div>Exception not caught by test:</div><table><tr class="odd"><td><div class="toggle"><span class="exceptionType">PexAssertFailedException</span>: 
+    Expected true, got false<span class="hint">
+        (Microsoft.Pex.Framework)
+      </span><div class="toggle"><table><tr class="odd"><td><span class="toggle" id="tgID0ETIAC" onclick="toggle('tgID0ETIAC','ID0ETIAC')">[+]</span>ArrayListTest.PUT_CommutativityAddContains(ArrayList, Int32, Int32), d:\MultiLearnerPrecondition\BenchmarksAll\DataStructures\DataStructuresTest\ArrayListTest.cs (98)<div class="closedToggle" id="ID0ETIAC"><pre class="coverage" xml:space="preserve">
+
+            //NotpAssume.IsTrue(a1 == a2 &amp;&amp; ad1 == ad2 &amp;&amp; eq.Equals(s1, s2));
+<span class="emphasized">            PexAssert.IsTrue(a1 == a2 &amp;&amp; ad1 == ad2 &amp;&amp; eq.Equals(s1, s2));</span>
+        }
+
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]</pre></div></td></tr></table></div></div></td></tr></table></div></div></td></tr>
+<tr class="message"><td><span class="time">2018-12-13 18:27:36Z&gt;</span>coverage increased from 0 to 41 blocks (+41) after flipping DataStructures.ArrayList..ctor at 0x0011</td></tr>
+<tr class="message"><td><span class="time">2018-12-13 18:27:36Z&gt;</span>could not load symbols for C:\WINDOWS\assembly\GAC_MSIL\Microsoft.ExtendedReflection\0.94.0.0__31bf3856ad364e35\Microsoft.ExtendedReflection.dll</td></tr>
+
+<tr class="warning"><td><span class="time">2018-12-13 18:27:36Z&gt;</span><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Pex Needs Help To Find Types.html">do not know any type assignable to System.Array; Pex needs help to find types</a></td></tr>
+
+<tr id="7ca7adf8-214d-4e4f-b5da-735fea11bd56"><td><div class="test"><span class="emphasis">
+                    Test</span><span class="hint">(9)</span>
+                  :
+                  PUT_CommutativityAddContains153<div class="toggle"><pre class="console">ArrayList arrayList;
+int[] ints = new int[0];
+arrayList = ArrayListFactory.Create(ints);
+this.PUT_CommutativityAddContains(arrayList, 8, 9);
+Assert.IsNotNull((object)arrayList);
+</pre><div><span class="toggle" id="tgID0EOPAC" onclick="toggle('tgID0EOPAC','ID0EOPAC')">[+]</span><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Path%20Condition.html">
+        Path condition
+      </a></div><div class="closedToggle" id="ID0EOPAC"><pre class="console">ArrayList s2 = new;
+object[] s3 = new;
+ArrayList s4 = new;
+object[] s1 = s1 == s2 ? s3 : s1 == s4 ? (object[])s4 : s1._items;
+object[] s0 = s1;
+object[] s7 = new;
+object[] s6 = s1 == s2 ? s3 : s1 == s4 ? s7 : s1._items;
+object[] s5 = s6;
+int s10 = new;
+object[] s12 = s0 == (object[])s4 ? {null} : s0 == s3 ? {null} : s0;
+int s13 = new;
+object[] s14 = s5 == (object[])s4 ? {null} : s5 == s3 ? {null} : s5;
+object[] s11 = s5 == s0 ? s12{[unchecked(0)] = s13} : s14;
+object[] s9 = s5 == s7 ? {null}{[unchecked(0)] = s10} : s11;
+object s8 = s9[0];
+int s16 = new;
+int s17 = new;
+int s18 = new;
+int s19 = new;
+int s20 = new;
+int s15 = s8 == (object)s16 ? y : s8 == (object)s13 ? x : s8 == (object)s4 ?
+                                                            y : s8 == (object)s7 ? x : s8 == (object)s3 ? x : s8 == (object)s17 ? y : s8 == (object)s18 ? x : s8 == (object)s19 ? y : s8 == (object)s10 ? x : s8 == (object)s20 ? y : s8.Value;
+int s21 = s1 == s2 ? 0 : s1 == s4 ? 0 : s1._size;
+return elems != (int[])null &amp;&amp; elems.Length &lt; 1 &amp;&amp; -1 &lt; 2 + elems.Length &amp;&amp; s1 != (ArrayList)null &amp;&amp; -11 &lt; x &amp;&amp; x &lt; 11 &amp;&amp; 
+                                                                                                                -11 &lt; y &amp;&amp; y &lt; 11 &amp;&amp; s0 != (object[])null &amp;&amp; s0.Length != 0 &amp;&amp; s0.GetType().GetElementType().IsAssignableFrom(typeof(int)) &amp;&amp; s5 != (object[])null &amp;&amp; s5.Length != 0 &amp;&amp; s8 != (object)null &amp;&amp; 
+                                                                                                                                                                                                                                                                                        s15 == x &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; s21 == 0 &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; methodof(s1.IndexOf) == methodof(ArrayList.IndexOf) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                      methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; methodof(s1.Contains) == methodof(ArrayList.Contains) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    methodof(s1.Add) == methodof(ArrayList.Add) &amp;&amp; x != y &amp;&amp; methodof(s1.get_Item) == methodof(ArrayList.get_Item) &amp;&amp; methodof(s8.Equals) == methodof(int.Equals);
+</pre></div></div></div></td></tr>
+<tr class="message"><td><span class="time">2018-12-13 18:27:36Z&gt;</span>coverage increased from 41 to 58 blocks (+17) after flipping DataStructures.ArrayList.Contains at 0x0062</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr id="a37b47e9-09f4-4b78-a223-22fb2efa3214"><td><div class="test"><span class="emphasis">
+                    Test</span><span class="hint">(25)</span>
+                  :
+                  PUT_CommutativityAddContains668<div class="toggle"><pre class="console">ArrayList arrayList;
+int[] ints = new int[1];
+ints[0] = 2;
+arrayList = ArrayListFactory.Create(ints);
+this.PUT_CommutativityAddContains(arrayList, 2, 2);
+Assert.IsNotNull((object)arrayList);
+</pre><div><span class="toggle" id="tgID0ERFAE" onclick="toggle('tgID0ERFAE','ID0ERFAE')">[+]</span><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Path%20Condition.html">
+        Path condition
+      </a></div><div class="closedToggle" id="ID0ERFAE"><pre class="console">ArrayList s2 = new;
+object[] s3 = new;
+ArrayList s4 = new;
+object[] s1 = s1 == s2 ? s3 : s1 == s4 ? (object[])s4 : s1._items;
+object[] s0 = s1;
+int s6 = s1 == s2 ? 1 : s1 == s4 ? 1 : s1._size;
+int s5 = s6;
+object[] s12 = new;
+object[] s11 = s0 == (object[])s4 ? {null} : s0 == s3 ? {null}{[unchecked(0)] = s3} : s0 == s12 ? {null} : s0;
+object[] s10 = s11;
+object[] s9 = s0 == (object[])s4 ? s10 : s0 == s3 ? {null}{[unchecked(0)] = s3} : s0 == s12 ? s10 : s0;
+object[] s8 = s9;
+object s7 = s8[0];
+int s13 = s7 == (object)s4 ? x : s7 == (object)s3 ? elems[0] : s7.Value;
+int s14 = s7 == (object)s4 ? x : s7 == (object)s12 ? y : s7 == (object)s3 ? elems[0] : s7.Value;
+int s16 = new;
+int s17 = s8[-1 + s5].Value;
+int s15 = s8[-1 + s5] == (object)s4 ? x : s8[-1 + s5] == (object)s16 ? x : s8[-1 + s5] == (object)s12 ? y : s8[-1 + s5] == (object)s3 ? elems[0] : s17;
+int s19 = new;
+int s18 = s8[-1 + s5] == (object)s16 ? x : s8[-1 + s5] == (object)s12 ? y : s8[-1 + s5] == (object)s3 ? elems[0] : s8[-1 + s5] == (object)s19 ? y : s8[-1 + s5] == (object)s4 ? x : s17;
+int s21 = new;
+int s20 = s7 == (object)s16 ? x : s7 == (object)s12 ? y : s7 == (object)s3 ? elems[0] : s7 == (object)s4 ? x : s7 == (object)s19 ? y : s7 == (object)s21 ? x : s7.Value;
+int s23 = new;
+int s22 = s7 == (object)s16 ? x : s7 == (object)s12 ? y : s7 == (object)s3 ? elems[0] : s7 == (object)s23 ? y : s7 == (object)s4 ? x : s7 == (object)s19 ? y : s7 == (object)s21 ? x : s7.Value;
+int s26 = new;
+int s25 = -s5 == 0 ? s26 : s7;
+int s24 = s25;
+int s28 = new;
+int s27 = s24 == s26 ? x : s24 == s23 ? y : s24 == s4 ? x : s24 == s16 ? x : s24 == s12 ? y : s24 == s3 ? elems[0] : s24 == s28 ? y : s24 == s19 ? y : s24 == s21 ? x : s24.Value;
+object[] s30 = s4 == (ArrayList)s0 ? __move(__move(s8, s5){[unchecked(0)] = s26}, -s5) : s10;
+object s29 = s30[0];
+int s32 = new;
+int s31 = s29 == (object)s26 ? x : s29 == (object)s23 ? y : s29 == (object)s4 ? x : s29 == (object)s12 ?
+                                                                                      y : s29 == (object)s3 ? elems[0] : s29 == (object)s28 ? y : s29 == (object)s19 ? y : s29 == (object)s21 ? x : s29 == (object)s32 ? y : s29 == (object)s16 ? x : s29.Value;
+int s34 = s1 == s2 ? 1 : s1 == s4 ? 0 : s1._size;
+int s33 = s34;
+object[] s36 = s1 == s2 ? s3 : s1 == s4 ? (object[])s16 : s1._items;
+object[] s35 = s36;
+map&lt;int, object&gt; s41 = __move(__move(s8, unchecked(1)){[unchecked(0)] = s26}, unchecked(-1));
+map&lt;int, object&gt; s40 = s4 == (ArrayList)s0 ? s41 : s10;
+int s42 = new;
+object[] s45 = s35 == (object[])s4 ? s10 : s35 == s3 ? {null}{[unchecked(0)] = s3} : s35 == s12 ? s10 : s35;
+object[] s44 = s45;
+map&lt;int, object&gt; s43 = s35 == s0 ? s41 : s44;
+map&lt;int, object&gt; s39 = s35 == (object[])s16 ? __move(__move(s40, s33){[unchecked(0)] = s42}, -s33) : s43;
+map&lt;int, object&gt; s38 = s39;
+object s37 = s38[0];
+int s47 = -s33 == 0 ? s42 : s10[0];
+int s46 = s47;
+int s48 = s37 == (object)s26 ? x : s37 == (object)s23 ? y : s37 == (object)s42 ? x : s37 == (object)s4 ? x : s37 == (object)s12 ?
+                                                                                                               y : s37 == (object)s3 ? elems[0] : s37 == (object)s28 ? y : s37 == (object)s19 ? y : s37 == (object)s21 ? x : s37 == (object)s32 ? y : s37 == (object)s16 ? x : s37.Value;
+int s49 = s46 == s26 ?
+            x : s46 == s23 ? y : s46 == s42 ? x : s46 == s4 ? x : s46 == s12 ? y : s46 == s3 ? elems[0] : s46 == s28 ? y : s46 == s19 ? y : s46 == s21 ? x : s46 == s32 ? y : s46 == s16 ? x : s46.Value;
+int s51 = 1 - s33 == 0 ? s42 : s10[1];
+int s50 = s51;
+int s52 = s38[1] == (object)s26 ? x : s38[1] == (object)s23 ? y : s38[1] == (object)s42 ? x : s38[1] == (object)s4 ? x : s38[1] == (object)s12 ? y : s38[1] == (object)s3 ?
+                                                                                                                                                       elems[0] : s38[1] == (object)s28 ? y : s38[1] == (object)s19 ? y : s38[1] == (object)s21 ? x : s38[1] == (object)s32 ? y : s38[1] == (object)s16 ? x : s38[1].Value;
+int s53 = s50 == s26 ?
+            x : s50 == s23 ? y : s50 == s42 ? x : s50 == s4 ? x : s50 == s12 ? y : s50 == s3 ? elems[0] : s50 == s28 ? y : s50 == s19 ? y : s50 == s21 ? x : s50 == s32 ? y : s50 == s16 ? x : s50.Value;
+int s55 = s1 == s2 ? 1 : s1 == s4 ? s33 : s1._size;
+int s54 = s55;
+int s56 = -s54 == 0 ? s26 : s7;
+map&lt;int, object&gt; s59 = __move(__move(s8, s54){[unchecked(0)] = s26}, -s54);
+map&lt;int, object&gt; s58 = s4 == (ArrayList)s0 ? s59 : s10;
+map&lt;int, object&gt; s57 = s58;
+map&lt;int, object&gt; s62 = s35 == s0 ? s59 : s44;
+map&lt;int, object&gt; s61 = s35 == (object[])s16 ? __move(__move(s57, s33){[unchecked(0)] = s42}, -s33) : s62;
+map&lt;int, object&gt; s60 = s61;
+return elems != (int[])null &amp;&amp; 
+       -11 &lt; elems[0] &amp;&amp; elems[0] &lt; 11 &amp;&amp; s1 != (ArrayList)null &amp;&amp; s0 != (object[])null &amp;&amp; 0 &lt; s0.Length &amp;&amp; -11 &lt; x &amp;&amp; x &lt; 11 &amp;&amp; -11 &lt; y &amp;&amp; y &lt; 11 &amp;&amp; s0.Length &gt;= s5 &amp;&amp; 0 &lt; s5 &amp;&amp; s7 != (object)null &amp;&amp; 
+                                                                                                                                                                                   s13 == x &amp;&amp; s14 == y &amp;&amp; -1 &lt; -1 + s5 &amp;&amp; -1 + s5 &lt; s5 &amp;&amp; s0.Length != 0 &amp;&amp; -1 + s5 &lt; s0.Length &amp;&amp; s8[-1 + s5] != (object)null &amp;&amp; methodof(s8[-1 + s5].Equals) == methodof(int.Equals) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                   s15 == x &amp;&amp; s18 == y &amp;&amp; s20 == x &amp;&amp; s22 == y &amp;&amp; s5 != s0.Length &amp;&amp; (uint)s5 &lt; (uint)(s0.Length) &amp;&amp; s0.GetType().GetElementType().IsAssignableFrom(typeof(int)) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                      s24 != null &amp;&amp; methodof(s24.Equals) == methodof(int.Equals) &amp;&amp; s27 == y &amp;&amp; s29 != (object)null &amp;&amp; methodof(s29.Equals) == methodof(int.Equals) &amp;&amp; s31 == y &amp;&amp; s33 == 1 &amp;&amp; s35 != (object[])null &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                s37 != (object)null &amp;&amp; methodof(s37.Equals) == methodof(int.Equals) &amp;&amp; (s46 == null || s46 is int ? s46 : null) != null &amp;&amp; s48 == s49 &amp;&amp; 1 &lt; s35.Length &amp;&amp; 1 &lt; 1 + s33 &amp;&amp; 1u &lt; (uint)(2 * s33) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          s38[1] != (object)null &amp;&amp; methodof(s38[1].Equals) == methodof(int.Equals) &amp;&amp; (s50 == null || s50 is int ? s50 : null) != null &amp;&amp; s52 == s53 &amp;&amp; elems.Length == 1 &amp;&amp; s54 == 1 &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; methodof(s1.CopyTo) == methodof(ArrayList.CopyTo) &amp;&amp; s0.Length &gt;= s33 &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  methodof(s1.IndexOf) == methodof(ArrayList.IndexOf) &amp;&amp; s0.Length &gt;= s54 &amp;&amp; methodof(s7.Equals) == methodof(int.Equals) &amp;&amp; methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; methodof(s8[-1 + s54].Equals) == methodof(int.Equals) &amp;&amp; methodof(s1.Contains) == methodof(ArrayList.Contains) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    methodof(s1.Add) == methodof(ArrayList.Add) &amp;&amp; s54 != s0.Length &amp;&amp; methodof(s56.Equals) == methodof(int.Equals) &amp;&amp; methodof(s57[0].Equals) == methodof(int.Equals) &amp;&amp; 2 * s33 &gt;= 1 + s33 &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          2 * s33 &gt;= s33 &amp;&amp; 2 * s33 != s33 &amp;&amp; methodof(s1.get_Item) == methodof(ArrayList.get_Item) &amp;&amp; methodof(s60[0].Equals) == methodof(int.Equals) &amp;&amp; methodof(s60[1].Equals) == methodof(int.Equals);
+</pre></div></div></div></td></tr>
+<tr class="message"><td><span class="time">2018-12-13 18:27:38Z&gt;</span>coverage increased from 58 to 87 blocks (+29) after flipping DataStructures.ArrayList.Add at 0x0034</td></tr>
+
+
+
+
+
+
+
+
+
+
+<tr id="3dcadfc3-3e2b-4240-b305-6ac9dc53e5e2"><td><div class="testfailure"><span class="emphasis">Failing 
+                    Test</span><span class="hint">(35)</span>
+                  :
+                  PUT_CommutativityAddContainsThrowsPexAssertFailedException471
+                    , <span class="exceptiontype">
+                          unexpected 
+                        PexAssertFailedException</span><div class="toggle"><div>
+                          See
+                          <a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Assertion Violation.html">
+                            Pex documentation on Assertion Violation</a>
+                          for more information why this test fails.
+                        </div><pre class="console">ArrayList arrayList;
+int[] ints = new int[1];
+ints[0] = 10;
+arrayList = ArrayListFactory.Create(ints);
+this.PUT_CommutativityAddContains(arrayList, 2, 2);
+</pre><div><span class="toggle" id="tgID0EXNAE" onclick="toggle('tgID0EXNAE','ID0EXNAE')">[+]</span><a href="http://research.microsoft.com/en-us/um/redmond/projects/pex/wiki/Path%20Condition.html">
+        Path condition
+      </a></div><div class="closedToggle" id="ID0EXNAE"><pre class="console">ArrayList s2 = new;
+object[] s3 = new;
+ArrayList s4 = new;
+object[] s1 = s1 == s2 ? s3 : s1 == s4 ? (object[])s4 : s1._items;
+object[] s0 = s1;
+object[] s11 = new;
+object[] s10 = s0 == (object[])s4 ? {null} : s0 == s3 ? {null}{[unchecked(0)] = s3} : s0 == s11 ? {null} : s0;
+object[] s9 = s10;
+object[] s8 = s0 == (object[])s4 ? s9 : s0 == s3 ? {null}{[unchecked(0)] = s3} : s0 == s11 ? s9 : s0;
+object[] s7 = s8;
+object s6 = s7[0];
+int s12 = new;
+int s5 = s6 == (object)s4 ? x : s6 == (object)s12 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6.Value;
+int s14 = new;
+int s13 = s6 == (object)s12 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6 == (object)s14 ? y : s6 == (object)s4 ? x : s6.Value;
+int s16 = new;
+int s17 = new;
+int s18 = new;
+int s19 = new;
+int s15 = s6 == (object)s16 ? x : s6 == (object)s17 ?
+                                    y : s6 == (object)s4 ? x : s6 == (object)s12 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6 == (object)s18 ? y : s6 == (object)s14 ? y : s6 == (object)s19 ? x : s6.Value;
+int s21 = new;
+int s20 = s9[0] == (object)s16 ? x : s9[0] == (object)s17 ? y : s9[0] == (object)s4 ? x : s9[0] == (object)s11 ? y :
+                                                                                                                   s9[0] == (object)s3 ? elems[0] : s9[0] == (object)s18 ? y : s9[0] == (object)s14 ? y : s9[0] == (object)s19 ? x : s9[0] == (object)s21 ? y : s9[0] == (object)s12 ? x : s9[0].Value;
+int s22 = s1 == s2 ? 1 : s1 == s4 ? 1 : s1._size;
+int s24 = s1 == s2 ? 1 : s1 == s4 ? 0 : s1._size;
+int s23 = s24;
+int s26 = s1 == s2 ? 1 : s1 == s4 ? s23 : s1._size;
+int s25 = s26;
+int s27 = s6 == (object)s4 ? x : s6 == (object)s3 ? elems[0] : s6.Value;
+int s28 = s6 == (object)s4 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6.Value;
+int s30 = s7[-1 + s25].Value;
+int s29 = s7[-1 + s25] == (object)s4 ? x : s7[-1 + s25] == (object)s12 ? x : s7[-1 + s25] == (object)s11 ? y : s7[-1 + s25] == (object)s3 ? elems[0] : s30;
+int s31 = s7[-1 + s25] == (object)s12 ? x : s7[-1 + s25] == (object)s11 ? y : s7[-1 + s25] == (object)s3 ? elems[0] : s7[-1 + s25] == (object)s14 ? y : s7[-1 + s25] == (object)s4 ? x : s30;
+int s32 = s6 == (object)s12 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6 == (object)s4 ? x : s6 == (object)s14 ? y : s6 == (object)s19 ? x : s6.Value;
+int s33 = s6 == (object)s12 ? x : s6 == (object)s11 ? y : s6 == (object)s3 ? elems[0] : s6 == (object)s17 ? y : s6 == (object)s4 ? x : s6 == (object)s14 ? y : s6 == (object)s19 ? x : s6.Value;
+int s35 = -s25 == 0 ? s16 : s6;
+int s34 = s35;
+int s36 = s34 == s16 ? x : s34 == s17 ? y : s34 == s4 ? x : s34 == s12 ? x : s34 == s11 ? y : s34 == s3 ? elems[0] : s34 == s18 ? y : s34 == s14 ? y : s34 == s19 ? x : s34.Value;
+int s37 = 1 - s25 == 0 ? s16 : s7[1];
+object[] s39 = s4 == (ArrayList)s0 ? __move(__move(s7, s25){[unchecked(0)] = s16}, -s25) : s9;
+object s38 = s39[0];
+int s40 = s38 == (object)s16 ? x : s38 == (object)s17 ? y : s38 == (object)s4 ? x : s38 == (object)s11 ?
+                                                                                      y : s38 == (object)s3 ? elems[0] : s38 == (object)s18 ? y : s38 == (object)s14 ? y : s38 == (object)s19 ? x : s38 == (object)s21 ? y : s38 == (object)s12 ? x : s38.Value;
+return elems != (int[])null &amp;&amp; -11 &lt; elems[0] &amp;&amp; elems[0] &lt; 11 &amp;&amp; s1 != (ArrayList)null &amp;&amp; s0 != (object[])null &amp;&amp; -11 &lt; x &amp;&amp; x &lt; 11 &amp;&amp; 
+                                                                                                                              -11 &lt; y &amp;&amp; y &lt; 11 &amp;&amp; s5 != x &amp;&amp; s13 != y &amp;&amp; s0.GetType().GetElementType().IsAssignableFrom(typeof(int)) &amp;&amp; s6 != (object)null &amp;&amp; s15 != y &amp;&amp; 1 &lt; s0.Length &amp;&amp; x == y &amp;&amp; s9[0] != (object)null &amp;&amp; 
+                                                                                                                                                                                                                                                                                                      methodof(s9[0].Equals) == methodof(int.Equals) &amp;&amp; s20 != y &amp;&amp; s22 == 1 &amp;&amp; elems.Length == 1 &amp;&amp; s23 == 1 &amp;&amp; s25 == 1 &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                             methodof(s1.CopyTo) == methodof(ArrayList.CopyTo) &amp;&amp; s0.Length &gt;= s23 &amp;&amp; methodof(s1.get_Count) == methodof(ArrayList.get_Count) &amp;&amp; methodof(s1.IndexOf) == methodof(ArrayList.IndexOf) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 s0.Length &gt;= s25 &amp;&amp; methodof(s6.Equals) == methodof(int.Equals) &amp;&amp; s27 != x &amp;&amp; s28 != y &amp;&amp; methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            methodof(s1.LastIndexOf) == methodof(ArrayList.LastIndexOf) &amp;&amp; methodof(s7[-1 + s25].Equals) == methodof(int.Equals) &amp;&amp; s29 != x &amp;&amp; s31 != y &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                methodof(s1.Contains) == methodof(ArrayList.Contains) &amp;&amp; s32 != x &amp;&amp; s33 != y &amp;&amp; methodof(s1.Add) == methodof(ArrayList.Add) &amp;&amp; s25 != s0.Length &amp;&amp; methodof(s34.Equals) == methodof(int.Equals) &amp;&amp; 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    s36 != y &amp;&amp; methodof(s37.Equals) == methodof(int.Equals) &amp;&amp; methodof(s38.Equals) == methodof(int.Equals) &amp;&amp; s40 != y &amp;&amp; 2 * s23 &gt;= 1 + s23 &amp;&amp; 2 * s23 &gt;= s23 &amp;&amp; 2 * s23 != s23;
+</pre></div><div>Exception not caught by test:</div><table><tr class="odd"><td><div class="toggle"><span class="exceptionType">PexAssertFailedException</span>: 
+    Expected true, got false<span class="hint">
+        (Microsoft.Pex.Framework)
+      </span><div class="toggle"><table><tr class="odd"><td><span class="toggle" id="tgID0EFLAE" onclick="toggle('tgID0EFLAE','ID0EFLAE')">[+]</span>ArrayListTest.PUT_CommutativityAddContains(ArrayList, Int32, Int32), d:\MultiLearnerPrecondition\BenchmarksAll\DataStructures\DataStructuresTest\ArrayListTest.cs (98)<div class="closedToggle" id="ID0EFLAE"><pre class="coverage" xml:space="preserve">
+
+            //NotpAssume.IsTrue(a1 == a2 &amp;&amp; ad1 == ad2 &amp;&amp; eq.Equals(s1, s2));
+<span class="emphasized">            PexAssert.IsTrue(a1 == a2 &amp;&amp; ad1 == ad2 &amp;&amp; eq.Equals(s1, s2));</span>
+        }
+
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]</pre></div></td></tr></table></div></div></td></tr></table></div></div></td></tr>
+
+
+
+
+
+
+
+<tr class="message"><td><span class="time">2018-12-13 18:27:40Z&gt;</span>  250 constraint systems (28.40% solved, 71.60% proven unsatisfiable)</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="message"><td><span class="time">2018-12-13 18:27:45Z&gt;</span>   77 runs (42.86% retries), 87/134 blocks covered</td></tr>
+
+
+
+
+
+
+<tr class="message"><td><span class="time">2018-12-13 18:27:45Z&gt;</span>  500 constraint systems (31.20% solved, 68.80% proven unsatisfiable)</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table></div></td></tr></table></div><hr /><table width="100%"><tr><td valign="top"><span class="copyright">Copyright (c) Microsoft Corporation. All rights reserved.</span><br /><span class="button" onclick="copySourceToClipboard()">Copy full source to clipboard</span></td><td align="right" valign="top"><span class="copyright" /><br /></td></tr></table><div id="debugdiv"> </div></body></html>

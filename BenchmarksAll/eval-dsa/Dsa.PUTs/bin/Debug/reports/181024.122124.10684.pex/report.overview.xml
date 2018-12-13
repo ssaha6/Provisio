@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?><pex id="{960531de-dc7a-4e4f-b045-71db77eb8576}" creationTime="2018-10-24 17:21:24Z" configuration="Dsa.PUTs!\NumbersTest!\PUT_ToBinary!" product="Dsa" created="2018-10-24 17:21:24Z" pexVersion="0.94.51006.1" xml="D:\experimental3\BenchmarksAll\eval-dsa\Dsa.PUTs\bin\Debug\reports\181024.122124.10684.pex\report.per" html="D:\experimental3\BenchmarksAll\eval-dsa\Dsa.PUTs\bin\Debug\reports\181024.122124.10684.pex\report.html"><environment commandLine="&quot;C:\install\pex\bin\Microsoft.Pex.x86.exe&quot; BenchmarksAll/eval-dsa/Dsa.PUTs/bin/Debug/DsaPUTs.dll /membernamefilter:M:PUT_ToBinary! /methodnamefilter:PUT_ToBinary! /namespacefilter:Dsa.PUTs! /typefilter:NumbersTest! /noconsole /targetx86 /donotopenreport" machineName="YOGA15" osVersion="Microsoft Windows NT 6.2.9200.0" processorCount="8" clrVersion="4.0.30319.42000" bitness="x86" user="me"><envVars><envVar name="_" value="/cygdrive/c/install/Python27/python"/>
+<envVar name="COR_PROFILER" value="{21bbb412-71ac-41f9-a377-48529a4859cf}"/>
+<envVar name="ConEmuPID" value="6736"/>
+<envVar name="PUBLIC" value="C:\Users\Public"/>
+<envVar name="USERPROFILE" value="C:\Users\me"/>
+<envVar name="ALLUSERSPROFILE" value="C:\ProgramData"/>
+<envVar name="CLRMONITOR_INJECT_NAMESPACES" value=""/>
+<envVar name="LOGONSERVER" value="\\YOGA15"/>
+<envVar name="COMPLUS_ProfAPI_ProfilerCompatibilitySetting" value="EnableV2Profiler"/>
+<envVar name="INFOPATH" value="/usr/local/info:/usr/share/info:/usr/info"/>
+<envVar name="LOCALAPPDATA" value="C:\Users\me\AppData\Local"/>
+<envVar name="ConEmuDir" value="C:\install\cmder\vendor\conemu-maximus5"/>
+<envVar name="ConEmuTask" value="{cygwin}"/>
+<envVar name="CLRMONITOR_INSTRUMENT_ASSEMBLIES" value="Dsa,DsaPUTs,FSharp.Core,FSharp.PowerPack,Microsoft.Contracts,Microsoft.VisualBasic,Microsoft.VisualStudio.QualityTools.UnitTestFramework,System,System.Core,System.Web"/>
+<envVar name="ConEmuHWND" value="0x00030258"/>
+<envVar name="TZ" value="America/Chicago"/>
+<envVar name="OneDrive" value="C:\Users\me\OneDrive"/>
+<envVar name="CLRMONITOR_INITIALIZED" value="0xa"/>
+<envVar name="ORIGINAL_PATH" value="/cygdrive/c/install/cmder/vendor/conemu-maximus5/ConEmu/Scripts:/cygdrive/c/install/cmder/vendor/conemu-maximus5:/cygdrive/c/install/cmder/vendor/conemu-maximus5/ConEmu:/cygdrive/c/install/Python27:/cygdrive/c/install/Python27/Scripts:/cygdrive/c/install/Python37/Scripts:/cygdrive/c/install/Python37:/cygdrive/c/WINDOWS/system32:/cygdrive/c/WINDOWS:/cygdrive/c/WINDOWS/System32/Wbem:/cygdrive/c/WINDOWS/System32/WindowsPowerShell/v1.0:/cygdrive/c/WINDOWS/System32/OpenSSH:/cygdrive/c/install/Git/cmd:/cygdrive/c/install/nodejs:/cygdrive/c/install/cmder:/cygdrive/c/install/subl:/cygdrive/c/install/VSCode-insider/bin:/cygdrive/c/install/calibre:/cygdrive/c/install/cmake/bin:/cygdrive/c/install/go/bin:/cygdrive/c/install/graphviz-2.38/bin:/cygdrive/c/install/Tower:/usr/bin:/:/cygdrive/c/ProgramData/chocolatey/bin:/cygdrive/c/install/lxrunoffline:/cygdrive/d/Chrome/install/texlive/bin/win32:/cygdrive/d/Chrome/install/android-sdk/platform-tools:/cygdrive/d/Chrome/nox/Nox/bin:/cygdrive/c/install/nirsoft:/cygdrive/c/install/doxygen/bin:/cygdrive/c/Program Files/dotnet:/cygdrive/c/Program Files/Microsoft SQL Server/130/Tools/Binn:/cygdrive/c/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn:/cygdrive/c/Program Files/Microsoft SQL Server/100/Tools/Binn:/cygdrive/c/Program Files/Microsoft SQL Server/100/DTS/Binn:/cygdrive/c/Users/me/AppData/Roaming/Composer/vendor/bin:/cygdrive/c/install/pex/bin:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 10.0/Common7/IDE:/cygdrive/c/install/nodejs:/cygdrive/c/Program Files (x86)/Common Files/GTK/2.0/bin:/cygdrive/c/Windows/Microsoft.NET/Framework/v4.0.30319:/cygdrive/c/install/Java/jre1.8.0/bin:/cygdrive/c/install/Java/jdk-11.0.1/bin:/cygdrive/c/install/Meld/Scripts:/cygdrive/c/install/idea/bin:/cygdrive/c/install/CodeCompare:/cygdrive/c/Users/me/AppData/Local/Microsoft/WindowsApps:/cygdrive/c/Users/me/AppData/Roaming/npm:/cygdrive/c/Users/me/.dotnet/tools:/cygdrive/c/Users/me/AppData/Local/Programs/radare2"/>
+<envVar name="ConEmuBaseDir" value="C:\install\cmder\vendor\conemu-maximus5\ConEmu"/>
+<envVar name="VBOX_MSI_INSTALL_PATH" value="C:\Program Files\Oracle\VirtualBox\"/>
+<envVar name="CLRMONITOR_FLAGS" value=""/>
+<envVar name="HOSTNAME" value="Yoga15"/>
+<envVar name="SESSIONNAME" value="Console"/>
+<envVar name="ProgramW6432" value="C:\Program Files"/>
+<envVar name="ConEmuServerPID" value="6016"/>
+<envVar name="SYSTEMROOT" value="C:\WINDOWS"/>
+<envVar name="ConEmuCfgDir" value="C:\install\cmder\vendor\conemu-maximus5"/>
+<envVar name="SHELL" value="/bin/bash"/>
+<envVar name="VISUALGDB_DIR" value="C:\Program Files (x86)\Sysprogs\VisualGDB\"/>
+<envVar name="OS" value="Windows_NT"/>
+<envVar name="PROCESSOR_ARCHITECTURE" value="x86"/>
+<envVar name="ANSICON" value="107x9999 (107x36)"/>
+<envVar name="CLRMONITOR_PROTECT_ALL_CCTORS" value="1"/>
+<envVar name="SHLVL" value="1"/>
+<envVar name="PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW"/>
+<envVar name="JAVA_HOME" value="C:\install\Java\jdk-11.0.1"/>
+<envVar name="CLRMONITOR_PROTECT_TYPES" value="Microsoft.FSharp.Text.Printf,Microsoft.FSharp.Text.PrintfImpl"/>
+<envVar name="CLRMONITOR_INSTRUMENT_NAMESPACES" value="System.Collections,System.Collections.Generic,System.Collections.ObjectModel,System.Collections.Specialized,System.Diagnostics.Contracts"/>
+<envVar name="CommonProgramW6432" value="C:\Program Files\Common Files"/>
+<envVar name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
+<envVar name="COMSPEC" value="C:\WINDOWS\system32\cmd.exe"/>
+<envVar name="USERNAME" value="me"/>
+<envVar name="ANDROID_HOME" value="D:\Chrome\install\android-sdk"/>
+<envVar name="chromedatadir" value="--user-data-dir=&quot;D:\Chrome\chrome_data_dir&quot;"/>
+<envVar name="ConEmuPalette" value="&lt;Tomorrow&gt;"/>
+<envVar name="VS100COMNTOOLS" value="c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\"/>
+<envVar name="TERM" value="cygwin"/>
+<envVar name="LANG" value="en_US.UTF-8"/>
+<envVar name="USER" value="me"/>
+<envVar name="PROMPT" value="$P$G"/>
+<envVar name="ANSICON_DEF" value="7"/>
+<envVar name="PATH" value="C:\Program Files\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin\;C:\cygwin64\usr\local\bin;C:\cygwin64\bin;C:\install\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\install\cmder\vendor\conemu-maximus5;C:\install\cmder\vendor\conemu-maximus5\ConEmu;C:\install\Python27;C:\install\Python27\Scripts;C:\install\Python37\Scripts;C:\install\Python37;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\install\Git\cmd;C:\install\nodejs;C:\install\cmder;C:\install\subl;C:\install\VSCode-insider\bin;C:\install\calibre;C:\install\cmake\bin;C:\install\go\bin;C:\install\graphviz-2.38\bin;C:\install\Tower;C:\cygwin64\bin;C:\cygwin64;C:\ProgramData\chocolatey\bin;C:\install\lxrunoffline;D:\Chrome\install\texlive\bin\win32;D:\Chrome\install\android-sdk\platform-tools;D:\Chrome\nox\Nox\bin;C:\install\nirsoft;C:\install\doxygen\bin;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn;C:\Program Files\Microsoft SQL Server\100\Tools\Binn;C:\Program Files\Microsoft SQL Server\100\DTS\Binn;C:\Users\me\AppData\Roaming\Composer\vendor\bin;C:\install\pex\bin;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE;C:\install\nodejs;C:\Program Files (x86)\Common Files\GTK\2.0\bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\install\Java\jre1.8.0\bin;C:\install\Java\jdk-11.0.1\bin;C:\install\Meld\Scripts;C:\install\idea\bin;C:\install\CodeCompare;C:\Users\me\AppData\Local\Microsoft\WindowsApps;C:\Users\me\AppData\Roaming\npm;C:\Users\me\.dotnet\tools;C:\Users\me\AppData\Local\Programs\radare2"/>
+<envVar name="CLRMONITOR_INSTRUMENT_ASSEMBLIES_EXCLUSIONS" value="Microsoft.VisualBasic"/>
+<envVar name="WINDIR" value="C:\WINDOWS"/>
+<envVar name="ConEmuDrive" value="C:"/>
+<envVar name="PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules"/>
+<envVar name="PROCESSOR_REVISION" value="9e09"/>
+<envVar name="ChocolateyInstall" value="C:\ProgramData\chocolatey"/>
+<envVar name="CLRMONITOR_INSTRUMENT_TYPES" value="System.Array,System.Array+ArrayEnumerator,System.Array+FunctorComparer`1,System.Array+SZArrayEnumerator,System.Array+SorterGenericArray,System.Array+SorterObjectArray,System.Boolean,System.Byte,System.Char,System.CharEnumerator,System.ComponentModel.Component,System.ComponentModel.Container,System.ComponentModel.Container+Site,System.Convert,System.Currency,System.DateTime,System.Decimal,System.Diagnostics.Assert,System.Double,System.Globalization.CharUnicodeInfo,System.Globalization.CultureTableRecord,System.Globalization.TextInfo,System.Guid,System.IO.MemoryStream,System.IO.Stream,System.IO.StreamReader,System.IO.StreamWriter,System.IO.StringReader,System.IO.StringWriter,System.Int16,System.Int32,System.Int64,System.Lazy`1,System.Lazy`1+Boxed,System.Lazy`1+LazyInternalExceptionHolder,System.Linq.Expressions.ExpressionCompiler,System.Math,System.Nullable,System.Nullable`1,System.OrdinalComparer,System.SByte,System.SZArrayHelper,System.SZArrayHelper+SZGenericArrayEnumerator`1,System.Single,System.String,System.StringComparer,System.Text.ASCIIEncoding,System.Text.DecoderNLS,System.Text.Encoding,System.Text.UTF8Encoding,System.TimeSpan,System.Tuple,System.Tuple`1,System.Tuple`2,System.Tuple`3,System.Tuple`4,System.Tuple`5,System.Tuple`6,System.Tuple`7,System.Tuple`8,System.UInt16,System.UInt32,System.UInt64,System.Xml.XmlTextWriter,System.Xml.XmlTextWriter+Namespace,System.Xml.XmlTextWriter+NamespaceState,System.Xml.XmlTextWriter+SpecialAttr,System.Xml.XmlTextWriter+State,System.Xml.XmlTextWriter+TagInfo,System.Xml.XmlTextWriter+Token,System.Xml.XmlWriter,System.Xml.XmlWriter+&lt;WriteAttributeStringAsyncHelper&gt;d__82,System.Xml.XmlWriter+&lt;WriteAttributesAsync&gt;d__102,System.Xml.XmlWriter+&lt;WriteElementStringAsync&gt;d__107,System.Xml.XmlWriter+&lt;WriteLocalNamespacesAsync&gt;d__108,System.Xml.XmlWriter+&lt;WriteNodeAsync&gt;d__106,System.Xml.XmlWriter+&lt;WriteNodeAsync_CallAsyncReader&gt;d__105,System.Xml.XmlWriter+&lt;WriteNodeAsync_CallSyncReader&gt;d__104,System.Xml.XmlWriter+&lt;WriteQualifiedNameAsync&gt;d__101,__Box`1,__SzArrayHelper`1"/>
+<envVar name="COMPUTERNAME" value="YOGA15"/>
+<envVar name="chromeopt" value="--ignore-certificate-errors --purge-memory-button    --emphasize-titles-in-omnibox-dropdown --enable-app-window-cycling --enable-bookmark-reordering --enable-browser-side-navigation --enable-cast-receiver --enable-dom-distiller --enable-distillability-service  --enable-file-manager-touch-mode  --enable-local-file-accesses --enable-longpress-drag-selection  --enable-password-generation --enable-picture-in-picture  --enable-pinch --enable-power-overlay --enable-reader-mode-toolbar-icon --enable-spatial-navigation --enable-tablet-splitview --enable-touch-calibration-setting --enable-touch-drag-drop --enable-touchview  --enable-web-notification-custom-layouts  --enable-zip-archiver-on-file-manager  --material-hybrid  --reader-mode-heuristics --top-chrome-md --windows10-custom-titlebar  "/>
+<envVar name="CLRMONITOR_INJECT_ASSEMBLIES" value=""/>
+<envVar name="TEMP" value="C:\cygwin64\tmp"/>
+<envVar name="CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files"/>
+<envVar name="EXECIGNORE" value="*.dll"/>
+<envVar name="pex_appdir" value="C:\install\pex\bin"/>
+<envVar name="CLRMONITOR_INSTRUMENT_NAMESPACES_EXCLUSIONS" value=""/>
+<envVar name="ConEmuBuild" value="180528"/>
+<envVar name="ChocolateyLastPathUpdate" value="Mon Aug 20 09:30:38 2018"/>
+<envVar name="CLRMONITOR_ERASE_CCTOR_TYPES" value=""/>
+<envVar name="PROCESSOR_LEVEL" value="6"/>
+<envVar name="ProgramData" value="C:\ProgramData"/>
+<envVar name="HOMEDRIVE" value="C:"/>
+<envVar name="CLRMONITOR_INJECT_TYPES" value=""/>
+<envVar name="CLRMONITOR_ERASE_FINALIZER_TYPES" value=""/>
+<envVar name="PROGRAMFILES" value="C:\Program Files (x86)"/>
+<envVar name="OLDPWD" value="/cygdrive/d"/>
+<envVar name="USERDOMAIN_ROAMINGPROFILE" value="YOGA15"/>
+<envVar name="PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 158 Stepping 9, GenuineIntel"/>
+<envVar name="ConEmuWorkDrive" value="C:"/>
+<envVar name="CLRMONITOR_INSTRUMENT_TYPES_EXCLUSIONS" value=""/>
+<envVar name="ChocolateyToolsLocation" value="C:\tools"/>
+<envVar name="CLRMONITOR_INSTRUMENT_ATTRIBUTE" value="Microsoft.Moles.Framework.Moles.MolesInstrumentAttribute"/>
+<envVar name="TMP" value="C:\cygwin64\tmp"/>
+<envVar name="PRINTER" value="Brother HL-L2340D series Printer"/>
+<envVar name="CodeContractsInstallDir" value="c:\Program Files (x86)\Microsoft\Contracts\"/>
+<envVar name="APPDATA" value="C:\Users\me\AppData\Roaming"/>
+<envVar name="ConEmuANSI" value="ON"/>
+<envVar name="ConEmuBaseDirShort" value="C:\install\cmder\vendor\conemu-maximus5\ConEmu"/>
+<envVar name="CLRMONITOR_SUBSTITUTIONS" value="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.ExtendedReflection\0.94.0.0__31bf3856ad364e35\Microsoft.ExtendedReflection.dll,C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Pex.Linq\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.Linq.dll"/>
+<envVar name="USERDOMAIN" value="YOGA15"/>
+<envVar name="NUMBER_OF_PROCESSORS" value="8"/>
+<envVar name="PS1" value="\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "/>
+<envVar name="ConEmuWorkDir" value="C:\Users\me"/>
+<envVar name="SYSTEMDRIVE" value="C:"/>
+<envVar name="PWD" value="/cygdrive/d/experimental3"/>
+<envVar name="pex_instrumentation" value="1"/>
+<envVar name="DriverData" value="C:\Windows\System32\Drivers\DriverData"/>
+<envVar name="COMMONPROGRAMFILES" value="C:\Program Files (x86)\Common Files"/>
+<envVar name="HOMEPATH" value="\Users\me"/>
+<envVar name="JAVA_OPTS" value="-Xlint:none"/>
+<envVar name="CLRMONITOR_CLSID" value="{21bbb412-71ac-41f9-a377-48529a4859cf}"/>
+<envVar name="HOME" value="C:\Users\me"/>
+<envVar name="PROCESSOR_ARCHITEW6432" value="AMD64"/>
+<envVar name="ConEmuBackHWND" value="0x000202DA"/>
+<envVar name="ConEmuDrawHWND" value="0x000602D6"/>
+<envVar name="PROFILEREAD" value="true"/>
+<envVar name="ConEmuHooks" value="Enabled"/>
+<envVar name="PYTHONOPATH" value="D:\experimental2\z3-4.7.1-x64-win\bin\python"/>
+</envVars>
+</environment>
+<settings/>
+<reflection><existingTest method="SequentialSearchseed" type="Dsa.Algorithms.SearchingTest" token="6000008"/>
+<existingTest method="seedReverseWords" type="Dsa.Algorithms.StringsTest" token="6000019"/>
+</reflection>
+<assembly name="DsaPUTs" version="0.0.0.0" fileVersion="0.0.0.0" fullName="DsaPUTs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" location="D:\experimental3\BenchmarksAll\eval-dsa\Dsa.PUTs\bin\Debug\DsaPUTs.dll" fileName="DsaPUTs.dll" testProject="tests\dsaputs.csproj"><settings testFramework="VisualStudioUnitTest"/>
+<fixture name="NumbersTest" type="Dsa.PUTs.NumbersTest" typeName="NumbersTest" token="2000002" href="fix\DsaPUTs.98.html"><type spec="Class"><definition assemblyName="DsaPUTs" name="NumbersTest" token="2000002" namespace="Dsa.PUTs"/>
+</type>
+<settings typeUnderTest="Dsa.Algorithms.Numbers"/>
+<exploration shortName="PUT_ToBinary(Int32)" fullName="Dsa.PUTs.NumbersTest.PUT_ToBinary(Int32)"><log level="message" time="2018-10-24 17:21:25Z" category="symbols" message="could not load symbols for C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll"/>
+<log level="message" time="2018-10-24 17:21:25Z" category="symbols" message="search path: ;"/>
+<log level="message" time="2018-10-24 17:21:25Z" category="symbols" message="could not load symbols for C:\WINDOWS\assembly\GAC_MSIL\Microsoft.ExtendedReflection\0.94.0.0__31bf3856ad364e35\Microsoft.ExtendedReflection.dll"/>
+<log level="message" time="2018-10-24 17:21:25Z" category="symbols" message="could not load symbols for C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Pex\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.exe"/>
+<generatedTest id="426dd844-131d-42c2-87bb-2cb018924151" index="1" run="1" exceptionState="unexpected" status="exception" failed="true" failureText="Exception not validated by documented, contract requires failure at type-under-test surface." generated="true" new="true" assemblyName="DsaPUTs" name="PUT_ToBinaryThrowsFormatException454"/>
+<log level="message" time="2018-10-24 17:21:26Z" category="coverage" message="coverage increased from 0 to 8 blocks (+8) after flipping Dsa.Algorithms.Numbers.ToBinary at 0x0020"/>
+<generatedTest id="de1e78c1-1eb5-4b82-bd14-b584e914c7a4" index="2" run="2" status="normaltermination" generated="true" new="true" assemblyName="DsaPUTs" name="PUT_ToBinary553"/>
+<log level="message" time="2018-10-24 17:21:26Z" category="coverage" message="coverage increased from 8 to 12 blocks (+4) after flipping Dsa.Algorithms.Numbers.ToBinary at 0x0020"/>
+<generatedTest id="fb4d758a-5be9-4556-ae9d-62f0b05ffd05" index="3" run="3" status="normaltermination" generated="true" new="true" assemblyName="DsaPUTs" name="PUT_ToBinary108"/>
+<generatedTest id="371cc562-55c7-4a1b-8b82-9c5840ecb8bc" index="4" run="6" exceptionState="unexpected" status="exception" failed="true" failureText="Exception not validated by documented, contract requires failure at type-under-test surface." generated="true" new="true" assemblyName="DsaPUTs" name="PUT_ToBinaryThrowsOverflowException584"/>
+<log level="message" time="2018-10-24 17:21:28Z" category="progress" message="    7 runs, 12/12 blocks covered"/>
+<log level="message" time="2018-10-24 17:21:41Z" category="progress" message="   23 runs, 12/12 blocks covered"/>
+<log level="message" time="2018-10-24 17:21:49Z" category="progress" message="   34 runs, 12/12 blocks covered"/>
+<coverage domain="usercodeundertest" unit="block" covered="12" total="12" coveredRatio="1"/>
+<sourceCoverage xml="cov\e302\cov.xml" html="cov\e302\cov.html"/>
+<result name="PUT_ToBinary(Int32)" state="success" duration="38.5166186818176"/>
+<duration start="2018-10-24 17:21:24Z" end="2018-10-24 17:22:03Z" seconds="38.5272865"/>
+<trajectory><image src="fix\dsaputsnumberste636759805231458882.trajectories.png" width="800" height="1600"/>
+</trajectory>
+</exploration>
+<generatedFixture type="NumbersTest" src="D:\experimental3\BenchmarksAll\eval-dsa\Dsa.PUTs\bin\Debug\reports\181024.122124.10684.pex\tests\Dsa\PUTs\NumbersTestPUT_ToBinaryInt321.g.cs"/>
+<coverage domain="usercodeundertest" unit="block" covered="12" total="12" coveredRatio="1"/>
+<sourceCoverage xml="cov\t98\cov.xml" html="cov\t98\cov.html"/>
+<duration start="2018-10-24 17:21:24Z" end="2018-10-24 17:22:03Z" seconds="38.6321853"/>
+</fixture>
+<coverage domain="usercodeundertest" unit="block" covered="12" total="12" coveredRatio="1"/>
+<sourceCoverage xml="cov\a38275250\cov.xml" html="cov\a38275250\cov.html"/>
+<duration start="2018-10-24 17:21:24Z" end="2018-10-24 17:22:03Z" seconds="38.6800908"/>
+<frameTreeRef exceptionCount="2"/>
+</assembly>
+<duration start="2018-10-24 17:21:24Z" end="2018-10-24 17:22:03Z" seconds="39.2211157"/>
+<background/>
+</pex>

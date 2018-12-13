@@ -1,0 +1,2073 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dsa</name>
+    </assembly>
+    <members>
+        <member name="T:Dsa.DataStructures.CollectionBase`1">
+            <summary>
+            Base class for all DSA collections.
+            </summary>
+            <typeparam name="T">Type of <see cref="T:System.Collections.CollectionBase"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">Item to add to collection.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.Clear">
+            <summary>
+            Clears all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.Contains(`0)">
+            <summary>
+            Determines whether an item is contained within the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">Item to search the <see cref="T:System.Collections.Generic.ICollection`1"/> for.</param>
+            <returns>True if the item is in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies all the <see cref="T:System.Collections.Generic.ICollection`1"/> items to a compatible one-dimensional <see cref="T:System.Array"/>, 
+            starting at the specified index of the target <see cref="T:System.Array"/>.
+            </summary>
+            <param name="array">A one-dimensional <see cref="T:System.Array"/> to copy the <see cref="T:System.Collections.Generic.ICollection`1"/> items to.</param>
+            <param name="arrayIndex">Index of target <see cref="T:System.Array"/> where copying begins.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.Remove(`0)">
+            <summary>
+            Removes an item from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">Item to remove from collection.</param>
+            <returns>True if the item was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.GetEnumerator">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that iterates through the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the <see cref="T:System.Collections.Generic.ICollection`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.ToArray">
+            <summary>
+            Converts the collection to a single dimension array.
+            </summary>
+            <returns>An array of the items in the collection.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Not Supported in any DSA collection.
+            </summary>
+            <param name="array">Target array to copy items to.</param>
+            <param name="index">Index to start copying items to.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            An <see cref="T:System.Collections.IEnumerator"/> that iterates through the <see cref="T:System.Collections.ICollection"/>.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> that can be used to iterate through the <see cref="T:System.Collections.ICollection"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.ToArray(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Creates an array representation for a datastructure.
+            </summary>
+            <param name="size">Size of the destintation array.</param>
+            <param name="enumerator">Enumerator to use to denote traversal order.</param>
+            <returns>Array of the data structure.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CollectionBase`1.CopyCollection(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Copies the items in an <see cref="T:System.Collections.Generic.IEnumerable`1"/> to the <see cref="T:Dsa.DataStructures.CollectionBase`1"/>.
+            </summary>
+            <param name="collection">Items to copy.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>collection</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="P:Dsa.DataStructures.CollectionBase`1.IsSynchronized">
+            <summary>
+            Gets a value indicating whether the collection is thread safe.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.CollectionBase`1.Count">
+            <summary>
+            Gets the number of items contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.CollectionBase`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+            <summary>
+            Gets a value indicating whether the collection is read only.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.CollectionBase`1.System#Collections#ICollection#SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the collection.
+            </summary>
+            <remarks>
+            Use the object returned by this property for locks rather than this.
+            </remarks>
+        </member>
+        <member name="T:Dsa.Algorithms.SortType">
+            <summary>
+            Sorting order.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.SortType.Ascending">
+            <summary>
+            Sort items in ascending order.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.SortType.Descending">
+            <summary>
+            Sort items in descending order.
+            </summary>
+        </member>
+        <member name="T:Dsa.Utility.Compare">
+            <summary>
+            Methods for comparing generic types.
+            </summary>
+        </member>
+        <member name="M:Dsa.Utility.Compare.IsLessThan``1(``0,``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Determines whether the value of first is less than the value of second.
+            </summary>
+            <typeparam name="T">Type of objects to compare.</typeparam>
+            <param name="first">The first object to compare.</param>
+            <param name="second">The second object to compare.</param>
+            <param name="comparer">Comparer to use to compare the objects.</param>
+            <returns>True is first is less than second, otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.Utility.Compare.IsGreaterThan``1(``0,``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Determines whether the value of first is greater than the value of second.
+            </summary>
+            <typeparam name="T">Type of objects to compare.</typeparam>
+            <param name="first">The first object to compare.</param>
+            <param name="second">The second object to compare.</param>
+            <param name="comparer">Comparer to use to compare the objects.</param>
+            <returns>True if first is greater than second, otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.Utility.Compare.AreEqual``1(``0,``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Determines whether the value of first and the value of second are equal.
+            </summary>
+            <typeparam name="T">Type of objects to compare.</typeparam>
+            <param name="first">The first object to compare.</param>
+            <param name="second">The second object to compare.</param>
+            <param name="comparer">Comparer to use to compare the objects.</param>
+            <returns>True if the value of first and second are equal, false otherwise.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.PriorityQueue`1">
+            <summary>
+            Priority queue.
+            </summary>
+            <remarks>
+            Higher priority given to "lower" value objects by default.
+            </remarks>
+            <typeparam name="T">Type of the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> class, populating it with the items of the 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> with.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.#ctor(Dsa.DataStructures.Strategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> class using a defined priority
+            strategy.
+            </summary>
+            <param name="strategy">Strategy to use to define priority.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable{`0},Dsa.DataStructures.Strategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> class, populating it with the items of the 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>, and using a defined <see cref="T:Dsa.DataStructures.Strategy"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> with.</param>
+            <param name="strategy">Strategy to use to define priority.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Add(`0)">
+            <summary>
+            Adds an item to the queue.
+            </summary>
+            <remarks>
+            This is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to add to the queue.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Clear">
+            <summary>
+            Clears the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.
+            </summary>
+            <remarks>
+            This is an O(1) operation.
+            </remarks>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Contains(`0)">
+            <summary>
+            Determines whether or not the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> contains a specific item.
+            </summary>
+            <remarks>
+            This is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.
+            </remarks>
+            <param name="item">Item to see if the queue contains.</param>
+            <returns>True if the item is in the queue; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Remove(`0)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="item">Item to remove from the collection.</param>
+            <returns>True if the item was removed; otherwise false.</returns>
+            <exception cref="T:System.NotSupportedException">Remove is not supported for <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.ToArray">
+            <summary>
+            Converts the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/> to a one-dimensional array.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.
+            </remarks>
+            <returns>A one-dimensional <see cref="T:System.Array"/> containing the values of the items contained in the 
+            <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Peek">
+            <summary>
+            Peeks at the item at the front of the queue.
+            </summary>
+            <remarks>
+            This is an O(1) operation.
+            </remarks>
+            <returns>The item at the front of the queue.</returns>
+            <exception cref="T:System.InvalidOperationException"><strong>Count</strong> is less than <strong>1</strong>.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Enqueue(`0)">
+            <summary>
+            Adds an item to the queue.
+            </summary>
+            <remarks>
+            This is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to add to the queue.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.Dequeue">
+            <summary>
+            Removes and returns the item at the front of the queue.
+            </summary>
+            <remarks>
+            This is an O(1) operation.
+            </remarks>
+            <returns>The item at the front of the queue.</returns>
+            <exception cref="T:System.InvalidOperationException"><strong>Count</strong> is less than <strong>1</strong>.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.PriorityQueue`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the items in the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.
+            </summary>
+            <remarks>
+            This is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.
+            </remarks>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for the <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.Heap`1">
+            <summary>
+            Heap data structure.
+            </summary>
+            <remarks>
+            Min heap by default.
+            </remarks>
+            <typeparam name="T">Type of heap.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Heap`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Heap`1"/> class, populating it with the items from the 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.Heap`1"/> with.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.#ctor(Dsa.DataStructures.Strategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Heap`1"/> class using a specified <see cref="T:Dsa.DataStructures.Strategy"/>.
+            </summary>
+            <param name="strategy">Strategy of Heap.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.#ctor(System.Collections.Generic.IEnumerable{`0},Dsa.DataStructures.Strategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Heap`1"/> class, populating it with the items from the 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>, and using a specified <see cref="T:Dsa.DataStructures.Strategy"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.Heap`1"/> with.</param>
+            <param name="strategy">Strategy of heap.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to add to the heap.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.Clear">
+            <summary>
+            Clears the <see cref="T:Dsa.DataStructures.Heap`1"/> of its items.
+            </summary>
+            <remarks>
+            Calling this method returns the internal <see cref="T:System.Array"/> to it's original capacity of 4.
+            </remarks>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.Contains(`0)">
+            <summary>
+            Determines whether or not the <see cref="T:Dsa.DataStructures.Heap`1"/> contains a specific item.
+            </summary>
+            <remarks>
+            <para>
+            This is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </para>
+            <para>
+            Algorithm is optimised to categorically rule out a value being in the heap if the value we are looking
+            for is &gt; than the parent of each node at the current level, but less than each node at the current level.
+            The opposite strategy is used when searching a max-heap. Worse case is still linear, but now in some scenarios
+            we can give a definitive answer without traversing all the values in the heap.
+            </para>
+            </remarks>
+            <param name="item">Item to see if the Heap contains.</param>
+            <returns>True is the item if in the Heap; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.Remove(`0)">
+            <summary>
+            Removes an item from the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation.
+            </remarks>
+            <param name="item">Item to remove from the Heap.</param>
+            <returns>True if the item was found and removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.ToArray">
+            <summary>
+            Converts the <see cref="T:Dsa.DataStructures.Heap`1"/> to a one-dimensional array.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </remarks>
+            <returns>A one-dimensional <see cref="T:System.Array"/> containing the values of the nodes contained in the 
+            <see cref="T:Dsa.DataStructures.Heap`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:Dsa.DataStructures.Heap`1"/> in breadth first order.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </remarks>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for the <see cref="T:Dsa.DataStructures.Heap`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.GreaterThanParent(System.Int32,System.Collections.Generic.Comparer{`0})">
+            <summary>
+            Determines whether or not an item at the given index is greater than its parent.
+            </summary>
+            <param name="index">Index of item.</param>
+            <param name="comparer">Comparer to use.</param>
+            <returns>True if the item at the provided index is greater than its parent; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.LessThanParent(System.Int32,System.Collections.Generic.Comparer{`0})">
+            <summary>
+            Determines whether or not an item at the given index is less than its parent.
+            </summary>
+            <param name="index">Index of item.</param>
+            <param name="comparer">Comparer to use.</param>
+            <returns>True if the item at the provided index is less than its parent; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.MinHeapify">
+            <summary>
+            Min heapifies the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(log n) operation.
+            </para>
+            <para>
+            The key of the parent is less than or equal to that of its child, this property holds throughout the Heap :. the key at the root of 
+            the Heap is the smallest key in the Heap.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Dsa.DataStructures.Heap`1.MaxHeapify">
+            <summary>
+            Max heapifies the <see cref="T:Dsa.DataStructures.Heap`1"/>.
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(log n) operation.
+            </para>
+            <para>
+            The key of the parent is greater than or equal to that of its child, this property holds throughout the Heap :. the key at the 
+            root of the Heap is the greatest key in the Heap.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Dsa.DataStructures.Heap`1.Item(System.Int32)">
+            <summary>
+            Gets the item at the specified index.
+            </summary>
+            <param name="index">Index of item.</param>
+            <returns>Item at the specified index.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.Heap`1.ParentHandler">
+            <summary>
+            Used for the first predicate of the <see cref="M:Dsa.DataStructures.Heap`1.Contains(`0)"/> method.
+            </summary>
+            <param name="index">Index of an item.</param>
+            <param name="comparer">Comparer to use.</param>
+            <returns>True if the predicate is satisfied; otherwise false.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.Heap`1.ComparerHandler">
+            <summary>
+            Used for the second predicate of the <see cref="M:Dsa.DataStructures.Heap`1.Contains(`0)"/> method. Determines whether the item
+            is less than or greater than some other item. The behaviour depends on the type of the <see cref="T:Dsa.DataStructures.Heap`1"/>
+            being used.
+            </summary>
+            <param name="x">First item.</param>
+            <param name="y">Second item.</param>
+            <param name="comparer">Comparer to use.</param>
+            <returns>True if the predicate is satisfied; otherwise false.</returns>
+        </member>
+        <member name="T:Dsa.Algorithms.Base">
+            <summary>
+            Number bases.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.Base.Binary">
+            <summary>
+            Binary. Base 2.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.Base.Octal">
+            <summary>
+            Octal. Base 8.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.Base.Decimal">
+            <summary>
+            Decimal. Base 10.
+            </summary>
+        </member>
+        <member name="F:Dsa.Algorithms.Base.Hexadecimal">
+            <summary>
+            Hexadecimal. Base 16.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.SinglyLinkedListNode`1">
+            <summary>
+            Node used in <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <typeparam name="T">Type of the <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedListNode`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/> class with a specified value.
+            </summary>
+            <param name="value">Value of node.</param>
+        </member>
+        <member name="P:Dsa.DataStructures.SinglyLinkedListNode`1.Value">
+            <summary>
+            Gets the value of <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.SinglyLinkedListNode`1.Next">
+            <summary>
+            Gets or sets the pointer to the next <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/>.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.CommonBinaryTree`2">
+            <summary>
+            Base type for common binary tree's. 
+            </summary>
+            <remarks>
+            <para>
+            Exmaples of common binary trees: <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>, <see cref="T:Dsa.DataStructures.AvlTree`1"/>.
+            </para>
+            <para>
+            The nodes that make up what is deemed a <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> must adhere by the contract
+            defined in <see cref="T:Dsa.DataStructures.ICommonBinaryTreeNode`2"/>.
+            </para>
+            </remarks>
+            <typeparam name="TNode">Type of the tree node.</typeparam>
+            <typeparam name="TValue">Type of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.Clear">
+            <summary>
+            Clears all items from the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.GetBreadthFirstEnumerator">
+            <summary>
+            Traverses the items in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> in breadth first order.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> .
+            </remarks>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.GetInorderEnumerator">
+            <summary>
+            Traverses the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> in an in order traversal.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </remarks>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.GetPostorderEnumerator">
+            <summary>
+            Traverses the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> in a postorder fashion.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> .
+            </remarks>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.GetEnumerator">
+            <summary>
+            <para>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that iterates through the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.  
+            </para>
+            <para>
+            The default is preorder traversal of the items in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </para>
+            </summary>
+            <remarks>
+            This method is an O(n) operation.
+            </remarks>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindMax">
+            <summary>
+            Finds the largest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <returns>Largest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindMin">
+            <summary>
+            Finds smallest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <returns>Smallest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`1)">
+            <summary>
+            Finds a node in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> with the specified value.
+            </summary>
+            <param name="value">Value to find.</param>
+            <returns>
+            An instance of the correct node used for the respective tree if the node was found with the value provided; 
+            otherwise null.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`1)">
+            <summary>
+            Finds the parent node of a node with the specified value.
+            </summary>
+            <param name="value">Value of node to find parent of.</param>
+            <returns>
+            An instance of the correct node used for the respective tree if the node was found with the value provided; 
+            otherwise null.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`1)">
+            <summary>
+            Determines whether an item is contained within the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <param name="item">Item to search the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> for.</param>
+            <returns>
+            True if the item is contained within the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>; otherwise false.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.ToArray">
+            <summary>
+            Returns the items in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> as an <see cref="T:System.Array"/> 
+            using <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetBreadthFirstEnumerator"/> traversal.
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(n) operation where n is the number of nodes in the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </para>
+            </remarks>
+            <returns>
+            A one-dimensional <see cref="T:System.Array"/> containing the items of the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.BreadthFirstTraversal(`0)">
+            <summary>
+            Traverse the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> in breadth first order, i.e. each node is visited on 
+            the same depth to depth n, where n is the depth of the tree.
+            </summary>
+            <param name="root">The root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <returns>
+            <see cref="T:System.Collections.Generic.List`1"/> populated with the items from the traversal.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.InorderTraversal(`0,System.Collections.Generic.List{`1})">
+            <summary>
+            Traverses the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> in an in order fashion, i.e. returning the 
+            values of the nodes when a node is passed underneath.
+            </summary>
+            <param name="root">The root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <param name="arrayList"><see cref="T:System.Collections.Generic.List`1"/> to store the traversed node values.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> populated with the items from the traversal.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.PostorderTraversal(`0,System.Collections.Generic.List{`1})">
+            <summary>
+            Traverses the tree in postorder, i.e. returning the values of the nodes passed on the right.
+            </summary>
+            <param name="root">The root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <param name="arrayList"><see cref="T:System.Collections.Generic.List`1"/> to store the traversed node values.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> populated with the items from the traversal.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.PreorderTraveral(`0,System.Collections.Generic.List{`1})">
+            <summary>
+            Traverses the tree in preorder, i.e. returning the values of the nodes passed on the left.
+            </summary>
+            <param name="root">The root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <param name="arrayList"><see cref="T:System.Collections.Generic.List`1"/> to store the traversed node values.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> populated with the items from the traversal.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindMax(`0)">
+            <summary>
+            Finds the largest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <param name="root">Root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <returns>Largest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindMin(`0)">
+            <summary>
+            Finds the smallest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <param name="root">Root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <returns>Smallest value in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`1,`0)">
+            <summary>
+            Finds a node in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/> with the specified value.
+            </summary>
+            <param name="value">Value to find.</param>
+            <param name="root">Node to start the search from.</param>
+            <returns>
+            An instance of the correct node used for the respective tree if the node was found with the value provided; 
+            otherwise null.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`1,`0)">
+            <summary>
+            Finds the parent of a node with the specified value, starting the search from a specified node in the 
+            <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <param name="value">Value of node to find parent of.</param>
+            <param name="root">Node to start the search at.</param>
+            <returns>
+            An instance of the correct node used for the respective tree if the node was found with the value provided; 
+            otherwise null.
+            </returns>
+        </member>
+        <member name="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`0,`1)">
+            <summary>
+            Determines whether an item is contained within the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <param name="root">The root node of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <param name="item">The item to be located in the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.</param>
+            <returns>
+            True if the item is contained within the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>; otherwise false.
+            </returns>
+        </member>
+        <member name="P:Dsa.DataStructures.CommonBinaryTree`2.Root">
+            <summary>
+            Gets the root of the <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.CommonBinaryTree`2.Comparer">
+            <summary>
+            Gets the <see cref="T:System.Collections.Generic.IComparer`1"/> to use for comparisons.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.SinglyLinkedList`1">
+            <summary>
+            Singly linked list.
+            </summary>
+            <typeparam name="T">Type of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> class, populating it with the items from the 
+            provided <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> with.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.AddLast(`0)">
+            <summary>
+            Adds a node to the tail of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</param>
+            <remarks>
+            This method is an O(1) operation, the <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Tail"/> node is always known.
+            </remarks>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.AddFirst(`0)">
+            <summary>
+            Adds a node to the head of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation, the <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Head"/> node is always known.
+            </remarks>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.AddAfter(Dsa.DataStructures.SinglyLinkedListNode{`0},`0)">
+            <summary>
+            Adds a node after the specified <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/> with the value of item.
+            </summary>
+            <remarks>
+            This method is an O(1) operation, the node to add after and new nodes links are updated without having to perform any
+            traversal of the linked list.
+            </remarks>
+            <param name="node">Node in <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> to add node after.</param>
+            <param name="item">Item to add to <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>node</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.AddBefore(Dsa.DataStructures.SinglyLinkedListNode{`0},`0)">
+            <summary>
+            Adds a <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/> before the specified <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/> with the specified value.
+            </summary>
+            <remarks>
+            This method's best case is an O(1) operation where the node to be added before is the <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Head"/> node, otherwise the
+            method is an O(n) operation where n is the number of nodes to be traversed in order to find the node before the node to add before.
+            </remarks>
+            <param name="node">Node in the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> to add node before.</param>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>node</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.IsEmpty">
+            <summary>
+            Determines whether the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> is empty.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <returns>True if the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> is empty; false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.ToArray">
+            <summary>
+            Converts the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> and its items to an <see cref="T:System.Array"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the linked list.
+            </remarks>
+            <returns>A one-dimensional <see cref="T:System.Array"/> containing the items from the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.ToReverseArray">
+            <summary>
+            Converts the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> and its items to an <see cref="T:System.Array"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the linked list.
+            </remarks>
+            <returns>A one-dimensional <see cref="T:System.Array"/> containing the items from the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> in reverse order.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveLast">
+            <summary>
+            Removes the last node from the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method's best case is an O(1) operation when the last node to remove is both the head and tail, i.e. there is only one node
+            in the linked list, otherwise the method is an O(n) operation where n nodes have to be traversed in order to locate the node that
+            precedes the last node.
+            </remarks>
+            <returns>True the last node was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveFirst">
+            <summary>
+            Removes the first node from the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation, the <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Head"/> is always known.
+            </remarks>
+            <returns>True if the first node was removed; otherwise false.</returns>
+            <exception cref="T:System.InvalidOperationException"><see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> contains <strong>0</strong> items.</exception>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.GetEnumerator">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerator`1"/> that iterates through the items in the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the linked list. 
+            </remarks>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.Add(`0)">
+            <summary>
+            Adds an item to the tail of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation, the <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Tail"/> node is always known.
+            </remarks>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.Clear">
+            <summary>
+            Resets the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> to its default state.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.Contains(`0)">
+            <summary>
+            Determines whether a value is in the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the linked list.
+            </remarks>
+            <param name="item">Value to search for.</param>
+            <returns>True if the value is in the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>; false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.Remove(`0)">
+            <summary>
+            Removes the first occurrence of a value from the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method has a best case O(1) operation where te node to be removed is the head node, otherwise the method is an O(n) operation
+            where n represents the number of nodes to traverse in order to update the node pointers appropriately.
+            </remarks>
+            <param name="item">Value to remove.</param>
+            <returns>True if the value was found and removed; false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.SinglyLinkedList`1.GetReverseEnumerator">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1"/> that iterates through the items in the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/> in reverse order.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the linked list.
+            </remarks>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that can be used to iterate through the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.</returns>
+        </member>
+        <member name="P:Dsa.DataStructures.SinglyLinkedList`1.Head">
+            <summary>
+            Gets the node at the head of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.SinglyLinkedList`1.Tail">
+            <summary>
+            Gets the node at the tail of the <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.ICommonBinaryTreeNode`2">
+            <summary>
+            Interface for the nodes that are used in a <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>.
+            </summary>
+            <typeparam name="TNode">Type of the node.</typeparam>
+            <typeparam name="TValue">Type of the value.</typeparam>
+        </member>
+        <member name="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Left">
+            <summary>
+            Gets or sets the left node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Right">
+            <summary>
+            Gets or sets the right node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Value">
+            <summary>
+            Gets or sets the value of the <see cref="T:Dsa.DataStructures.ICommonBinaryTreeNode`2"/>.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.BinaryTreeNode`1">
+            <summary>
+            Node used by <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.
+            </summary>
+            <typeparam name="T">Type of the node.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.BinaryTreeNode`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.BinaryTreeNode`1"/> class.
+            </summary>
+            <param name="value">Value of node.</param>
+        </member>
+        <member name="P:Dsa.DataStructures.BinaryTreeNode`1.Left">
+            <summary>
+            Gets or sets the left node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.BinaryTreeNode`1.Right">
+            <summary>
+            Gets or sets the right node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.BinaryTreeNode`1.Value">
+            <summary>
+            Gets or sets the value of the node.
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Sorting">
+            <summary>
+            Sorting algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.BubbleSort``1(System.Collections.Generic.IList{``0},Dsa.Algorithms.SortType)">
+            <summary>
+            Bubble sorts the items in an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n^2) operation.
+            </remarks>
+            <typeparam name="T">Type of collection to sort.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to sort.</param>
+            <param name="sortType">Order in which the items of the <see cref="T:System.Collections.Generic.IList`1"/> are to be sorted.</param>
+            <returns>The sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.MedianLeft``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Places the median value of 3 keys (left, right, and middle) at index 0 (left) in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to find the median value of.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> with the median key at index 0.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.MergeOrdered``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Merges two ordered <see cref="T:System.Collections.Generic.IList`1"/> collections into a single ordered <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of items in both lists.
+            </remarks>
+            <typeparam name="T">Type of the <see cref="T:System.Collections.Generic.IList`1"/>'s to merge.</typeparam>
+            <param name="first">First <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <param name="second">Second <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <returns>Merged <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>first</strong> or <strong>second</strong> are null.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.MergeSort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Merge sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n log n) operation.
+            </remarks>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to be sorted.</param>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.Concatenate``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Concatenates three <see cref="T:System.Collections.Generic.IList`1"/>'s into a single <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number os items in the three lists combined.
+            </remarks>
+            <typeparam name="T">Type of <see cref="T:System.Collections.Generic.IList`1"/>'s to concatenate.</typeparam>
+            <param name="first">First <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <param name="second">Second <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <param name="third">Third <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <returns>Concatenated <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>first</strong>, <strong>second</strong>, or <strong>third</strong> are <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.QuickSort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Quick sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n log n) operation.
+            </remarks>
+            <typeparam name="T">Type of <see cref="T:System.Collections.Generic.IList`1"/> to sort.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to sort.</param>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.InsertionSort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Insertion sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n^2) operation.
+            </remarks>
+            <typeparam name="T">Type of <see cref="T:System.Collections.Generic.IList`1"/> to sort.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to sort.</param>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.ShellSort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Shell sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n^1.25) operation.
+            </remarks>
+            <typeparam name="T">Type of <see cref="T:System.Collections.Generic.IList`1"/> to sort.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to sort.</param>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.RadixSort(System.Collections.Generic.IList{System.String},System.Int32)">
+            <summary>
+            Radix sorts an array of <see cref="T:System.String"/>. The strings MUST be of the same key size.
+            </summary>
+            <param name="list">List to sort.</param>
+            <param name="keySize">Key size of all strings, e.g. "abc", "bde" both have same key size of 3 chars.</param>
+            <returns>Sorted list.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>keySize</strong> is less than <strong>1</strong>.</exception>
+            <exception cref="T:System.InvalidOperationException"><strong>list</strong> contains a <strong>null</strong> item.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.Exchange``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            <summary>
+            Exchanges two items in an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> that holds the items to be exchanged.</param>
+            <param name="first">Index of first item.</param>
+            <param name="second">Index of second item.</param>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.MergeSortInternal``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Merge sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to be sorted.</param>
+            <typeparam name="T">Type of the list.</typeparam>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.Algorithms.Sorting.QuickSortInternal``1(System.Collections.Generic.IList{``0},System.Collections.Generic.Comparer{``0}@)">
+            <summary>
+            Quick sorts an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <typeparam name="T">Type of <see cref="T:System.Collections.Generic.IList`1"/> to sort.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to sort.</param>
+            <param name="comparer">Comparer to use.</param>
+            <returns>Sorted <see cref="T:System.Collections.Generic.IList`1"/>.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.DoublyLinkedList`1">
+            <summary>
+            Doubly linked list.
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> class, populating it with the items of the 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> with.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.AddLast(`0)">
+            <summary>
+            Adds a node to the tail of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation. The last node is always known.
+            </remarks>
+            <param name="value">Value to add to the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.AddFirst(`0)">
+            <summary>
+            Adds a node to the head of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation. The head node is always known.
+            </remarks>
+            <param name="value">Value to add to the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.AddAfter(Dsa.DataStructures.DoublyLinkedListNode{`0},`0)">
+            <summary>
+            Adds a node after a specified node in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This is an O(1) operation.
+            </remarks>
+            <param name="node">The <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> to add after.</param>
+            <param name="value">The value of the node to add after the specified node.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.AddBefore(Dsa.DataStructures.DoublyLinkedListNode{`0},`0)">
+            <summary>
+            Adds a node before a specified node in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <param name="node">The <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> to add before.</param>
+            <param name="value">The value of the node to add after the specified node.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveLast">
+            <summary>
+            Removes a node from the tail of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <returns>True if the tail node was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveFirst">
+            <summary>
+            Removes the node at the head of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <returns>True if the head node was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.ToArray">
+            <summary>
+            Returns an array containing all the values of the nodes contained within the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of nodes in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </remarks>
+            <returns>A one-dimensional <see cref="T:System.Array"/> containing the values of the nodes contained in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.IsEmpty">
+            <summary>
+            Indicates whether the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> is empty or not.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <returns>Returns true if the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> is empty, or false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation.
+            </remarks>
+            <param name="item">Item to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.Clear">
+            <summary>
+            Resets the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> back to its default state.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.Contains(`0)">
+            <summary>
+            Determines whether a value is in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation.
+            </remarks>
+            <param name="item">Value to search the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/> for.</param>
+            <returns>True if the value was found; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.Remove(`0)">
+            <summary>
+            Removes the first occurrence of a value from the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This is an O(1) operation (best case) when there are only two nodes in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>; otherwise it is an O(n) operation.
+            </remarks>
+            <param name="item">Value to remove from the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</param>
+            <returns>True if the value was removed from the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>; false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.GetEnumerator">
+            <summary>
+            Traverses the items in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation, where n is the number of nodes in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </remarks>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedList`1.ValidateAddArgs(Dsa.DataStructures.DoublyLinkedListNode{`0})">
+            <summary>
+            Method that validates the state of the DoublyLinkedListCollection(Of T) as well as if the node passed in is null.
+            This method is used by AddAfter, and AddBefore.
+            </summary>
+            <param name="node">Node to verify whether or not is null.</param>
+        </member>
+        <member name="P:Dsa.DataStructures.DoublyLinkedList`1.Head">
+            <summary>
+            Gets the node at the head of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.DoublyLinkedList`1.Tail">
+            <summary>
+            Gets the node at the end of the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Strings">
+            <summary>
+            String algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.Reverse(System.String)">
+            <summary>
+            Reverses the characters of a <see cref="T:System.String"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of chars in the string to reverse.
+            </remarks>
+            <param name="value"><see cref="T:System.String"/> to reverse the characters of.</param>
+            <returns><see cref="T:System.String"/> with characters in reverse order.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.Any(System.String,System.String)">
+            <summary>
+            Returns the index of the first character in the match <see cref="T:System.String"/> that matches any character in the word <see cref="T:System.String"/>.
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(n^2) operation.
+            </para>
+            <para>
+            Case sensitive, whitespace is ignored.
+            </para>
+            </remarks>
+            <param name="word">Word to run the any match against.</param>
+            <param name="match">The <see cref="T:System.String"/> of characters to match against the word.</param>
+            <returns>
+            A non-negative <see cref="T:System.Int32"/> index that represents the location of the first character in the match <see cref="T:System.String"/> that was 
+            also in the word <see cref="T:System.String"/>; otherwise -1 if no characters in the match <see cref="T:System.String"/> matched any of the characters in the 
+            word <see cref="T:System.String"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><strong>word</strong> is <strong>null</strong> or <strong>match</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.IsPalindrome(System.String)">
+            <summary>
+            Detects whether or not the input string is a palindrome.
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(n) operation where n is the number of chars to traverse in order to verify the string is a palindrome.
+            </para>
+            <para>
+            Case, whitespace, punctuation and symbols are ignored.
+            </para>
+            </remarks>
+            <param name="word"><see cref="T:System.String"/> that you want to verify is a palindrome.</param>
+            <returns>True if the string is a palindrome; otherwise false.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>word</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.Strip(System.String)">
+            <summary>
+            Takes a <see cref="T:System.String"/> and strips it of whitespace, punctuation and symbols returning the resulting stripped <see cref="T:System.String"/>.
+            </summary>
+            <remarks>
+            This methods is an O(n) operation where n is the number of chars in the string to strip.
+            </remarks>
+            <param name="value"><see cref="T:System.String"/> to strip.</param>
+            <returns>The stripped version of the <see cref="T:System.String"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.WordCount(System.String)">
+            <summary>
+            Counts the number of words in a <see cref="T:System.String"/>.
+            </summary>
+            <remarks>
+            This is an O(n) operation where n is the number of chars in the string to count the words of.
+            </remarks>
+            <param name="value">The <see cref="T:System.String"/> to count the words of.</param>
+            <returns>An <see cref="T:System.Int32"/> indicating the number of words in the <see cref="T:System.String"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.ReverseWords(System.String)">
+            <summary>
+            Reverses the words of a string.
+            </summary>
+            <remarks>
+            This is an O(n) operation where n is the number of chars in the string to reverse the words of.
+            </remarks>
+            <param name="value"><see cref="T:System.String"/> to reverse the words of.</param>
+            <returns><see cref="T:System.String"/> with original words in reverse order.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Strings.RepeatedWordCount(System.String)">
+            <summary>
+            Counts the number of words that are repeated within a string.
+            </summary>
+            <remarks>
+            This method is an O(n) operation where n is the number of words in the string delimited by whitespace.
+            </remarks>
+            <param name="value"><see cref="T:System.String"/> to count repeated words of.</param>
+            <returns>Number of words repeated in the given string.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="T:Dsa.DataStructures.DoublyLinkedListNode`1">
+            <summary>
+            <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> is an implementation of a node used in the <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>.
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.DoublyLinkedListNode`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> class with a specified value.
+            </summary>
+            <param name="value">Value of the node.</param>
+        </member>
+        <member name="P:Dsa.DataStructures.DoublyLinkedListNode`1.Value">
+            <summary>
+            Gets or sets the value of the <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/>.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.DoublyLinkedListNode`1.Next">
+            <summary>
+            Gets or sets the next <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> that this <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> links to.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.DoublyLinkedListNode`1.Previous">
+            <summary>
+            Gets or sets the Previous <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> that this <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/> links to.
+            </summary>
+        </member>
+        <member name="T:Dsa.Utility.Guard">
+            <summary>
+            A series of guard methods to check inputs to algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Utility.Guard.ArgumentNull(System.Object,System.String)">
+            <summary>
+            Guards against a null object reference.
+            </summary>
+            <param name="value">Object to verify is not null.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>value</strong> -- or -- <strong>parameterName</strong> are <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Utility.Guard.InvalidOperation(System.Boolean,System.String)">
+            <summary>
+            Guards against a condition that should yield an <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+            <param name="condition">Condition to satisfy when system is in an invalid state.</param>
+            <param name="message">Message explanation for the invalid state.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>message</strong> is <strong>null</strong>.</exception>
+            <exception cref="T:System.InvalidOperationException"><strong>condition</strong> is <strong>true</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Utility.Guard.OutOfRange(System.Boolean,System.String,System.String)">
+            <summary>
+            Guards against a condition that is outside the valid range the algorithm expects.
+            </summary>
+            <param name="condition">Condition to satisty when the input is outside the valid range.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="message">Message explanation why the value is out of range.</param>
+            <exception cref="T:System.ArgumentNullException"><strong>parameterName</strong> -- or -- <strong>message</strong> is <strong>null</strong>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>condition</strong> is <strong>true</strong>.</exception>
+        </member>
+        <member name="T:Dsa.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.BinarySearchTreeEmpty">
+            <summary>
+              Looks up a localized string similar to BinarySearchTreeCollection(Of T) is empty..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.DequeDequeueEmpty">
+            <summary>
+              Looks up a localized string similar to Cannot dequeue an item from an empty Deque..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.DequePeekEmpty">
+            <summary>
+              Looks up a localized string similar to Cannot peek an item from an empty Deque..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.DoublyLinkedListEmpty">
+            <summary>
+              Looks up a localized string similar to DoublyLinkedListCollection(Of T) is empty..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.FactorialLessThanZero">
+            <summary>
+              Looks up a localized string similar to Factorial cannot be called with an integer value less than 0..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.FibonacciLessThanZero">
+            <summary>
+              Looks up a localized string similar to Fibonacci cannot be called with an integer value less than 0..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.ICollectionCopyToNotSupported">
+            <summary>
+              Looks up a localized string similar to ICollection.CopyTo is not supported.  Use the ICollection(Of T).CopyTo method instead..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.IndexNotWithinBoundsOfHeap">
+            <summary>
+              Looks up a localized string similar to The index provided must be within the bounds of the heap..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.PermutationsKGreaterThanZero">
+            <summary>
+              Looks up a localized string similar to The number of item permutations must be greater than 0..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.PowerExponentLessThanZero">
+            <summary>
+              Looks up a localized string similar to Power cannot be called with an exponent less than 0..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.QueueEmpty">
+            <summary>
+              Looks up a localized string similar to There are no items in the queue..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.RadixItemNullInList">
+            <summary>
+              Looks up a localized string similar to The items within a list to radix sort must not be null..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.RadixKeySizeTooSmall">
+            <summary>
+              Looks up a localized string similar to The size of the key to use for radix sort must be greater than 0..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.RemoveNotSupportedQueues">
+            <summary>
+              Looks up a localized string similar to Remove is not supported on queues..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.SetEmpty">
+            <summary>
+              Looks up a localized string similar to Set(Of T) is empty..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.SinglyLinkedListEmpty">
+            <summary>
+              Looks up a localized string similar to SinglyLinkedListCollection(Of T) is empty..
+            </summary>
+        </member>
+        <member name="P:Dsa.Properties.Resources.ToBaseNIntNegative">
+            <summary>
+              Looks up a localized string similar to Can only convert positive integers..
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.BinarySearchTree`1">
+            <summary>
+            A binary search tree (BST).
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/> class, populating it with the items from the
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.CopyTo(`0[])">
+            <summary>
+            Copies all the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/> items to a compatible one-dimensional <see cref="T:System.Array"/>.
+            </summary>
+            <param name="array">A one-dimensional <see cref="T:System.Array"/> to copy the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/> items to.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.Add(`0)">
+            <summary>
+            Inserts a new node with the specified value at the appropriate location in the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(log n) operation.
+            </remarks>
+            <param name="item">Value to insert.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.Remove(`0)">
+            <summary>
+            Removes a node with the specified value from the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to remove from the the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.</param>
+            <returns>True if the item was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.BinarySearchTree`1.InsertNode(`0)">
+            <summary>
+            Called by the Add method. Finds the location where to put the node in the <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>.
+            </summary>        
+            <param name="value">Value to insert into the Bst.</param>
+        </member>
+        <member name="T:Dsa.DataStructures.Deque`1">
+            <summary>
+            A double ended queue. Deque.
+            </summary>
+            <typeparam name="T">Type of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Deque`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.Deque`1"/> class, populating it with the items from
+            an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Collection of items to add to the <see cref="T:Dsa.DataStructures.Deque`1"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <strong>collection</strong> is <strong>null</strong>.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:Dsa.DataStructures.Deque`1"/>. This calls <see cref="M:Dsa.DataStructures.Deque`1.EnqueueBack(`0)"/> internally.
+            </summary>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.Deque`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.Clear">
+            <summary>
+            Clears all items from the <see cref="T:Dsa.DataStructures.Deque`1"/>.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.Contains(`0)">
+            <summary>
+            Determines whether an item is contained within the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">Item to search the <see cref="T:Dsa.DataStructures.Deque`1"/> for.</param>
+            <returns>True if the item is in the <see cref="T:Dsa.DataStructures.Deque`1"/>; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.Remove(`0)">
+            <summary>
+            Removes an item from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">Item to remove from collection.</param>
+            <returns>True if the item was removed; otherwise false.</returns>
+            <exception cref="T:System.NotSupportedException">
+            Remove is <strong>not</strong> supported for <see cref="T:Dsa.DataStructures.Deque`1"/>.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.ToArray">
+            <summary>
+            Converts the collection to a single dimension array.
+            </summary>
+            <returns>An array of the items in the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.EnqueueFront(`0)">
+            <summary>
+            Enqueues an item into the <see cref="T:Dsa.DataStructures.Deque`1"/> at the front of the queue.
+            </summary>
+            <param name="item">Item to add to the front of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.EnqueueBack(`0)">
+            <summary>
+            Enqueues an item into the <see cref="T:Dsa.DataStructures.Deque`1"/> at the back of the queue.
+            </summary>
+            <param name="item">Item to add to the back of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.DequeueFront">
+            <summary>
+            Returns the item at the front of the <see cref="T:Dsa.DataStructures.Deque`1"/> and then removes that item from the
+            <see cref="T:Dsa.DataStructures.Deque`1"/>.
+            </summary>
+            <returns>Item at the front of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.Deque`1"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.DequeueBack">
+            <summary>
+            Returns the item at the back of the <see cref="T:Dsa.DataStructures.Deque`1"/> and then removes that item from the
+            <see cref="T:Dsa.DataStructures.Deque`1"/>.
+            </summary>
+            <returns>Item at the back of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.Deque`1"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.PeekFront">
+            <summary>
+            Returns the item at the front of the <see cref="T:Dsa.DataStructures.Deque`1"/> without removing it.
+            </summary>
+            <returns>The item at the front of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.Deque`1"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.PeekBack">
+            <summary>
+            Returns the item at the back of the <see cref="T:Dsa.DataStructures.Deque`1"/> without removing it.
+            </summary>
+            <returns>The item at the back of the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="T:Dsa.DataStructures.Deque`1"/> contains <strong>0</strong> items.
+            </exception>
+        </member>
+        <member name="M:Dsa.DataStructures.Deque`1.GetEnumerator">
+            <summary>
+            Traverses the items in the <see cref="T:Dsa.DataStructures.Deque`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation.
+            </remarks>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/> used to traverse the items in the <see cref="T:Dsa.DataStructures.Deque`1"/>.</returns>
+        </member>
+        <member name="T:Dsa.DataStructures.AvlTreeNode`1">
+            <summary>
+            Node used by <see cref="T:Dsa.DataStructures.AvlTree`1"/>.
+            </summary>
+            <typeparam name="T">Type of the node.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTreeNode`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.AvlTreeNode`1"/> class.
+            </summary>
+            <param name="value">Value of node</param>
+        </member>
+        <member name="P:Dsa.DataStructures.AvlTreeNode`1.Left">
+            <summary>
+            Gets or sets the left node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.AvlTreeNode`1.Right">
+            <summary>
+            Gets or sets the right node reference.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.AvlTreeNode`1.Value">
+            <summary>
+            Gets or sets the value of the node.
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.AvlTreeNode`1.Height">
+            <summary>
+            Gets the height of the node.
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Sets">
+            <summary>
+            <see cref="T:Dsa.DataStructures.OrderedSet`1"/> algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Sets.Permutations``1(Dsa.DataStructures.OrderedSet{``0},System.Int32)">
+            <summary>
+            Determines the number of permutations a set of <em>n</em> items can have with different permutations of <em>setCount</em> items.
+            </summary>
+            <remarks>
+            <em>Permutations(n, k) = n!/(n-k)!</em>. 
+            </remarks>
+            <typeparam name="T">Type of <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.</typeparam>
+            <param name="set">Set to count permutations of.</param>
+            <param name="setCount">Permutations of setCount items.</param>
+            <returns>The number of set permutations of <em>setCount</em> items.</returns>
+        </member>
+        <member name="T:Dsa.Algorithms.Searching">
+            <summary>
+            Searching algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Searching.SequentialSearch``1(System.Collections.Generic.IList{``0},``0)">
+            <summary>
+            Sequential search for an item within an <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(n) operation.
+            </remarks>
+            <typeparam name="T">Type of collection to search.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to search item for.</param>
+            <param name="item">Item to search for.</param>
+            <returns>The index of the item if found; otherwise -1.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Searching.ProbabilitySearch``1(System.Collections.Generic.IList{``0},``0)">
+            <summary>
+            Probability search for an item in an <see cref="T:System.Collections.Generic.IList`1"/>.  
+            </summary>
+            <remarks>
+            <para>
+            This method is an O(n) operation.
+            </para>
+            <para>
+            If the item is found in the <see cref="T:System.Collections.Generic.IList`1"/> then it's priority is increased by swapping it with it's predecessor in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </para>
+            </remarks>
+            <typeparam name="T">Type of the collection to search.</typeparam>
+            <param name="list"><see cref="T:System.Collections.Generic.IList`1"/> to search.</param>
+            <param name="item">The item to search the <see cref="T:System.Collections.Generic.IList`1"/> for.</param>
+            <returns>True if the item was found; otherwise false.</returns>
+            <exception cref="T:System.ArgumentNullException"><strong>list</strong> is <strong>null</strong>.</exception>
+        </member>
+        <member name="T:Dsa.DataStructures.Strategy">
+            <summary>
+            Defines the strategy of ordering for a collection.
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Strategy.Min">
+            <summary>
+            Min - objects with the lower value will have a higher priority within the collection.
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Strategy.Max">
+            <summary>
+            Max - objects with the higher value will have a higher priority within the collection.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.OrderedSet`1">
+            <summary>
+            An set where the items are ordered. 
+            </summary>
+            <remarks>
+            In order to check for equality for non-primitve types you must make sure the type implements <see cref="T:System.IComparable`1"/> otherwise
+            the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> cannot guarantee the set contains only unique objects.
+            </remarks>
+            <typeparam name="T">Type of OrderedSet.</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> class populating the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> 
+            with the items withing the provided <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <remarks>
+            <para>
+            Call this constructor if assigning a collection to the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </para>
+            <para>
+            This method is an O(n) operation where n is the number of items in the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </para>
+            </remarks>
+            <param name="collection">Collection of items to populate the set.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </summary>
+            <remarks>
+            This is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to add to the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.Clear">
+            <summary>
+            Clears all the items from the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.Contains(`0)">
+            <summary>
+            Determines whether or not an item is contained within the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </summary>
+            <remarks>
+            This is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to search the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> for.</param>
+            <returns>True if the item is contained within the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.Remove(`0)">
+            <summary>
+            Removes an item from the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </summary>
+            <remarks>
+            This is an O(log n) operation.
+            </remarks>
+            <param name="item">Item to remove from the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.</param>
+            <returns>True if the item was removed; false otherwise.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.ToArray">
+            <summary>
+            Returns the items in the <see cref="T:Dsa.DataStructures.OrderedSet`1"/> as a one-dimensional <see cref="T:System.Array"/>.
+            </summary>
+            <remarks>
+            This is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </remarks>
+            <returns>A one dimensional <see cref="T:System.Array"/> populated with the items from the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.OrderedSet`1.GetEnumerator">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerator`1"/> to provide a simple traversal through the items in the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> to traverse the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.</returns>
+            <remarks>
+            This method is an O(n) operation where n is the number of items in the <see cref="T:Dsa.DataStructures.OrderedSet`1"/>.
+            </remarks>
+        </member>
+        <member name="T:Dsa.DataStructures.CollectionDebugView`1">
+            <summary>
+            Provides a simpler alternative to Raw view in the debugger.
+            </summary>
+            <typeparam name="T">Type of the CollectionDebugView.</typeparam>
+        </member>
+        <member name="P:Dsa.DataStructures.CollectionDebugView`1.Items">
+            <summary>
+            Gets all the items in the collection as an array. By making the RootHidden the debugger doesn't display the items as
+            elements of the property Items, rather just items of the array.
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.AvlTree`1">
+            <summary>
+            AVL balanced tree.
+            </summary>
+            <remarks>
+            AVL tree is a tree that is self balancing.
+            </remarks>
+            <typeparam name="T">Concrete type of AVL Tree</typeparam>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.AvlTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dsa.DataStructures.AvlTree`1"/> class, populating it with the items from the
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="collection">Items to populate <see cref="T:Dsa.DataStructures.AvlTree`1"/>.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.Height(Dsa.DataStructures.AvlTreeNode{`0})">
+            <summary>
+            Retrieves the height of the specified node.
+            </summary>
+            <param name="node">Node to obtain depth.</param>
+            <returns>If the node is null 0; otherwise its proper height.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.GetBalanceFactor(Dsa.DataStructures.AvlTreeNode{`0})">
+            <summary>
+            Get the balance factor for the node
+            Balance factor is defined as the height difference 
+            between left and right subtree if subtrees exist otherwise 
+            for a null node as 0
+            </summary>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.Add(`0)">
+            <summary>
+            Inserts a new node with the specified value at the appropriate location in the <see cref="T:Dsa.DataStructures.AvlTree`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(log n) operation plus constant time due to rebalancing.
+            </remarks>
+            <param name="item">Value to insert.</param>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.InsertNode(Dsa.DataStructures.AvlTreeNode{`0}@,`0)">
+            <summary>
+            Called by the Add method. Finds the location where to put the node in the <see cref="T:Dsa.DataStructures.AvlTree`1"/> and if 
+            necessary rebalance.
+            </summary>
+            <param name="avlNode">Node to start searching from.</param>
+            <param name="value">Value to insert into the Avl.</param>        
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.AdjustHeight(Dsa.DataStructures.AvlTreeNode{`0})">
+            <summary>
+            Set the proper height of a node
+            </summary>
+            <param name="avlNode">the node needing a height fix </param>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.Balance(Dsa.DataStructures.AvlTreeNode{`0}@)">
+            <summary>
+            Function that balance the tree after having updated its height
+            </summary>
+            <param name="node">the root of the tree to balance </param>        
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.Remove(`0)">
+            <summary>
+            Removes a node with the specified value from the <see cref="T:Dsa.DataStructures.AvlTree`1"/>.
+            </summary>
+            <remarks>
+            This method is an O(log n) operation plus if necessary a rebalancing.
+            </remarks>
+            <param name="item">Item to remove from the the <see cref="T:Dsa.DataStructures.AvlTree`1"/>.</param>
+            <returns>True if the item was removed; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.RemoveNode(Dsa.DataStructures.AvlTreeNode{`0},`0)">
+            <summary>
+            Called by remove public method. This removal helper method find the item to 
+            remove and if present remove it rebalancing in case the avl tree
+            </summary>
+            <param name="avlNode">root subtree node to start deleting </param>
+            <param name="item">value to delete</param>
+            <returns>the root of the tree with value removed</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.FindMaxValue(Dsa.DataStructures.AvlTreeNode{`0})">
+            <summary>
+            Get the maximum value of a tree
+            </summary>
+            <param name="avlTreeNode">the root of the tree</param>
+            <returns>the maximum value of the tree</returns>
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.DoubleLeftRightRotation(Dsa.DataStructures.AvlTreeNode{`0}@)">
+            <summary>
+            A Double rotation composed of a left rotation and a right rotation.
+            </summary>
+            <param name="node">The pivoting node involved in rotations.</param>        
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.SingleLeftRotation(Dsa.DataStructures.AvlTreeNode{`0}@)">
+            <summary>
+            A single right rotation composed of a right rotation.
+            </summary>
+            <param name="node">The pivoting node involved in rotations.</param>       
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.DoubleRightLeftRotation(Dsa.DataStructures.AvlTreeNode{`0}@)">
+            <summary>
+            A Double rotation composed of a right rotation and a left rotation.
+            </summary>
+            <param name="node">The pivoting node involved in rotations.</param>        
+        </member>
+        <member name="M:Dsa.DataStructures.AvlTree`1.SingleRightRotation(Dsa.DataStructures.AvlTreeNode{`0}@)">
+            <summary>
+            A Single rotation composed of a left rotation and a right rotation.
+            </summary>
+            <param name="node">The pivoting node involved in rotations.</param>        
+        </member>
+        <member name="T:Dsa.Algorithms.Numbers">
+            <summary>
+            Number algorithms.
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.Fibonacci(System.Int32)">
+            <summary>
+            Computes the fibonacci number of a positive <see cref="T:System.Int32"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation for inputs 0 or 1, O(n) for larger numbers.
+            </remarks>
+            <param name="number">Integer to compute the fibonacci number for.</param>
+            <returns>Fibonacci number for the specified <see cref="T:System.Int32"/>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>number</strong> is less than <strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.Factorial(System.Int32)">
+            <summary>
+            Computes the factorial of an <see cref="T:System.Int32"/>.
+            </summary>
+            <remarks>
+            This method is an O(1) operation for inputs less than 2, O(n) for larger numbers.
+            </remarks>
+            <param name="number">Integer to compute the factorial of.</param>
+            <returns>The factorial of the specified <see cref="T:System.Int32"/>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>number</strong> is less than <strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.Power(System.Int32,System.Int32)">
+            <summary>
+            Computes the power of an <see cref="T:System.Int32"/> to a given exponent.
+            </summary>
+            <remarks>
+            This method is an O(1) method when the exponent is 1; otherwise O(n) for larger exponents.
+            </remarks>
+            <param name="baseNumber">Base number.</param>
+            <param name="exponent">Exponent to use.</param>
+            <returns>The value of the base raised to the exponent.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>exponent</strong> is less than <strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.GreatestCommonDenominator(System.Int32,System.Int32)">
+            <summary>
+            Computes the greatest common denominator of two <see cref="T:System.Int32"/>'s.
+            </summary>
+            <param name="first">First integer.</param>
+            <param name="second">Second integer.</param>
+            <returns>The greatest common denominator of the two <see cref="T:System.Int32"/>'s.</returns>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.ToBinary(System.Int32)">
+            <summary>
+            Converts a positive base 10 integer to it's binary counterpart (base 2).
+            </summary>
+            <param name="value">Integer to convert to binary form.</param>
+            <returns>Binary (base 2) representation of value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>value</strong> is less than<strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.ToOctal(System.Int32)">
+            <summary>
+            Converts a positive base 10 integer into it's octal counterpart (base 8).
+            </summary>
+            <param name="value">Integer to convert to octal form.</param>
+            <returns>Octal (base 8) representation of value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>value</strong> is less than <strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.ToHex(System.Int32)">
+            <summary>
+            Converts a positive base 10 integer into it's hexadecimal counterpart (base 16).
+            </summary>
+            <param name="value">Integer to convert to hexadecimal form.</param>
+            <returns>Hexadecimal (base 16) representation of value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><strong>value</strong> is less than <strong>0</strong>.</exception>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.IsPrime(System.Int32)">
+            <summary>
+            Determines whether or not an integer is a prime number.
+            </summary>
+            <param name="number">Number to check is a prime.</param>
+            <returns>True if the number is a prime; otherwise false.</returns>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.MaxValue(Dsa.Algorithms.Base,System.Int32)">
+            <summary>
+            Computes the maximum value that a given number base can hold for N digits.
+            </summary>
+            <param name="numberBase">Number base to use.</param>
+            <param name="digits">Number of digits.</param>
+            <returns>Maximum value for the given number base with the number of digits specified.</returns>
+        </member>
+        <member name="M:Dsa.Algorithms.Numbers.GetHexSymbol(System.Int32)">
+            <summary>
+            Gets char symbol for hex numbers 10 .. 15 (A .. F).
+            </summary>
+            <param name="result">Integer to get hex symbol for.</param>
+            <returns>Hex symbol for that number.</returns>
+        </member>
+    </members>
+</doc>

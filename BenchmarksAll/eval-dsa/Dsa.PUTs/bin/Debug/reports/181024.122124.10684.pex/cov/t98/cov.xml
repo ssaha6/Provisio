@@ -1,0 +1,849 @@
+﻿<documents created="2018-10-24 17:22:03Z"><document src="d:\experimental3\BenchmarksAll\eval-dsa\Dsa.PUTs\Algorithms\NumbersTest.cs" renderPrefix="s0"><chunk hits="-1" domain="unknown"><source><![CDATA[// <copyright file="NumbersTest.cs"></copyright>
+using System;
+using Dsa.Algorithms;
+using Microsoft.Pex.Framework;
+using Microsoft.Pex.Framework.Validation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Microsoft.Pex.Framework.Settings;
+using PexAPIWrapper;
+
+namespace Dsa.PUTs
+{
+    /// <summary>This class contains parameterized unit tests for Numbers</summary>
+    [PexClass(typeof(Numbers))]
+    //[PexAllowedExceptionFromTypeUnderTest(typeof(InvalidOperationException))]
+    //[PexAllowedExceptionFromTypeUnderTest(typeof(ArgumentException), AcceptExceptionSubtypes = true)]
+    [TestClass]
+    public partial class NumbersTest
+    {
+        /// <summary>Test stub for Factorial(Int32)</summary>
+        //[PexMethod]
+        //public int Factorial(int number)
+        //{
+        //    int result = Numbers.Factorial(number);
+        //    return result;
+        //    // TODO: add assertions to method NumbersTest.Factorial(Int32)
+        //}
+
+        /// <summary>Test stub for Fibonacci(Int32)</summary>
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]
+        [PexMethod]
+        public int PUT_Fibonacci(int number)
+        {
+            /*Change*/PexAssume.IsTrue(!( (( ( number <= -1 )   ) && (  false)) ||  (!( ( number <= -1 )   ) && ( (( ( number <= 248 )   ) && (  true)) ||  (!( ( number <= 248 )   ) && (  false)) )) ));
+            PexObserve.ValueForViewing("$input_number", number);
+            int result = Numbers.Fibonacci(number);
+            return result;
+            // TODO: add assertions to method NumbersTest.Fibonacci(Int32)
+        }
+
+        /// <summary>Test stub for GreatestCommonDenominator(Int32, Int32)</summary>
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]
+        [PexMethod]
+        public int PUT_GreatestCommonDenominator(int first, int second)
+        {
+            /*Change*/PexAssume.IsTrue(( (( ( (-1*first) + (-1*second) <= 2138030000.0 )   ) && (  true)) ||  (!( ( (-1*first) + (-1*second) <= 2138030000.0 )   ) && ( (( ( (-1*first) + (-1*second) <= 2147484000.0 )   ) && ( (( ( (-1*first) + (1*second) <= 0 )   ) && ( (( ( first <= -1 )   ) && (  false)) ||  (!( ( first <= -1 )   ) && (  true)) )) ||  (!( ( (-1*first) + (1*second) <= 0 )   ) && ( (( ( second <= -6 )   ) && (  true)) ||  (!( ( second <= -6 )   ) && ( (( ( second <= 0 )   ) && (  false)) ||  (!( ( second <= 0 )   ) && (  true)) )) )) )) ||  (!( ( (-1*first) + (-1*second) <= 2147484000.0 )   ) && (  true)) )) ));
+            PexObserve.ValueForViewing("$input_first", first);
+            PexObserve.ValueForViewing("$input_second", second);
+            int result = Numbers.GreatestCommonDenominator(first, second);
+            return result;
+            // TODO: add assertions to method NumbersTest.GreatestCommonDenominator(Int32, Int32)
+        }
+
+        /// <summary>Test stub for IsPrime(Int32)</summary>
+        //[PexMethod]
+        //public bool IsPrime(int number)
+        //{
+        //    bool result = Numbers.IsPrime(number);
+        //    return result;
+        //    // TODO: add assertions to method NumbersTest.IsPrime(Int32)
+        //}
+
+        /// <summary>Test stub for MaxValue(Base, Int32)</summary>
+        //[PexMethod]
+        //public int MaxValue(Base numberBase, int digits)
+        //{
+        //    int result = Numbers.MaxValue(numberBase, digits);
+        //    return result;
+        //    // TODO: add assertions to method NumbersTest.MaxValue(Base, Int32)
+        //}
+
+        /// <summary>Test stub for Power(Int32, Int32)</summary>
+        //[PexMethod]
+        //public int Power(int baseNumber, int exponent)
+        //{
+        //    int result = Numbers.Power(baseNumber, exponent);
+        //    return result;
+        //    // TODO: add assertions to method NumbersTest.Power(Int32, Int32)
+        //}
+
+        /// <summary>Test stub for ToBinary(Int32)</summary>
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]
+        [PexMethod]
+        public int PUT_ToBinary(int value)
+        ]]></source>
+</chunk>
+<method name="PUT_ToBinary" namespace="Dsa.PUTs" type="Dsa.PUTs.NumbersTest" typeName="NumbersTest" token="6000003" module="DsaPUTs.dll"><hits><hit index="0" value="1"/>
+<hit index="1" value="1"/>
+<hit index="2" value="1"/>
+<hit index="3" value="1"/>
+<hit index="4" value="1"/>
+<hit index="5" value="1"/>
+<hit index="6" value="1"/>
+<hit index="7" value="1"/>
+</hits>
+<coverage domain="userortestcode" unit="block" covered="4" total="4" coveredRatio="1"/>
+</method>
+<chunk hits="1" offset="0000" domain="userortestcode"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0001" domain="userortestcode"><source><![CDATA[AssumePrecondition.IsTrue(true);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0008" domain="userortestcode"><source><![CDATA[PexObserve.ValueForViewing("$input_value", value);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0014" domain="userortestcode"><source><![CDATA[int result = Numbers.ToBinary(value);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="001b" domain="userortestcode"><source><![CDATA[return result;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            // TODO: add assertions to method NumbersTest.ToBinary(Int32)
+        ]]></source>
+</chunk>
+<chunk hits="1" offset="001f" domain="userortestcode"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        /// <summary>Test stub for ToHex(Int32)</summary>
+        //[PexMethod]
+        //public string ToHex(int value)
+        //{
+        //    string result = Numbers.ToHex(value);
+        //    return result;
+        //    // TODO: add assertions to method NumbersTest.ToHex(Int32)
+        //}
+
+        /// <summary>Test stub for ToOctal(Int32)</summary>
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]
+        [PexMethod]
+        public int PUT_ToOctal(int value)
+        {
+            /*Change*/PexAssume.IsTrue(!( (( ( value <= 10575 )   ) && ( (( ( value <= 0 )   ) && (  false)) ||  (!( ( value <= 0 )   ) && (  true)) )) ||  (!( ( value <= 10575 )   ) && (  false)) ));
+            PexObserve.ValueForViewing("$input_value", value);
+            int result = Numbers.ToOctal(value);
+            return result;
+            // TODO: add assertions to method NumbersTest.ToOctal(Int32)
+        }
+      
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Numbers.cs" renderPrefix="s1"><chunk hits="-1" domain="unknown"><source><![CDATA[// <copyright file="Numbers.cs" company="Data Structures and Algorithms">
+//   Copyright (C) Data Structures and Algorithms Team.
+// </copyright>
+// <summary>
+//   Implementations of algorithms to solve common numeric and mathematical problems.
+//   Extensions methods.
+// </summary>
+using System;
+using System.Globalization;
+using System.Text;
+using Dsa.Properties;
+using Dsa.Utility;
+using Microsoft.Pex.Framework;
+using Dsa.Algorithms;
+using PexAPIWrapper;
+
+namespace Dsa.Algorithms
+{
+    /// <summary>
+    /// Number algorithms.
+    /// </summary>
+    public static class Numbers
+    {
+        /// <summary>
+        /// Computes the fibonacci number of a positive <see cref="System.Int32"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method is an O(1) operation for inputs 0 or 1, O(n) for larger numbers.
+        /// </remarks>
+        /// <param name="number">Integer to compute the fibonacci number for.</param>
+        /// <returns>Fibonacci number for the specified <see cref="Int32"/>.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>number</strong> is less than <strong>0</strong>.</exception>
+        public static int Fibonacci(this int number)
+        {
+            //Guard.OutOfRange(number < 0, "number", Resources.FibonacciLessThanZero);
+
+            switch (number)
+            {
+                case 0:
+                    return 0;
+                case 1:
+                    return 1;
+                default:
+                    {
+                        /*Change*///PexAssume.IsTrue(number > -1 && number <int.MaxValue -1 );
+                        int[] fibs = new int[number + 1];
+                        fibs[0] = 0;
+                        fibs[1] = 1;
+
+                        // populate fibs with fib sequence
+                        for (int i = 2; i <= number; i++)
+                        {
+                            fibs[i] = fibs[i - 1] + fibs[i - 2];
+                        }
+
+                        return fibs[number];
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Computes the factorial of an <see cref="System.Int32"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method is an O(1) operation for inputs less than 2, O(n) for larger numbers.
+        /// </remarks>
+        /// <param name="number">Integer to compute the factorial of.</param>
+        /// <returns>The factorial of the specified <see cref="System.Int32"/>.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>number</strong> is less than <strong>0</strong>.</exception>
+        public static int Factorial(this int number)
+        {
+            //Guard.OutOfRange(number < 0, "number", Resources.FactorialLessThanZero);
+
+            if (number < 2)
+            {
+                return 1;
+            }
+
+            int factorial = 1;
+            for (int i = 2; i <= number; i++)
+            {
+                factorial *= i;
+            }
+
+            return factorial;
+        }
+
+        /// <summary>
+        /// Computes the power of an <see cref="System.Int32"/> to a given exponent.
+        /// </summary>
+        /// <remarks>
+        /// This method is an O(1) method when the exponent is 1; otherwise O(n) for larger exponents.
+        /// </remarks>
+        /// <param name="baseNumber">Base number.</param>
+        /// <param name="exponent">Exponent to use.</param>
+        /// <returns>The value of the base raised to the exponent.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>exponent</strong> is less than <strong>0</strong>.</exception>
+        public static int Power(int baseNumber, int exponent)
+        {
+            //Guard.OutOfRange(exponent < 0, "exponent", Resources.PowerExponentLessThanZero);
+
+            if (exponent == 0)
+            {
+                return 1; // n^0 = 1
+            }
+
+            int power = baseNumber;
+            while (exponent > 1)
+            {
+                power *= baseNumber;
+                exponent--;
+            }
+
+            return power;
+        }
+
+        /// <summary>
+        /// Computes the greatest common denominator of two <see cref="System.Int32"/>'s.
+        /// </summary>
+        /// <param name="first">First integer.</param>
+        /// <param name="second">Second integer.</param>
+        /// <returns>The greatest common denominator of the two <see cref="System.Int32"/>'s.</returns>
+        public static int GreatestCommonDenominator(int first, int second)
+        {
+             
+            //return second == 0 ? first : GreatestCommonDenominator(second, first % second);
+            if (second == 0)
+                return first;
+            else{
+                /*Change*///PexAssume.IsTrue(first != int.MinValue|| second != -1);
+                return GreatestCommonDenominator(second, first % second);
+                }
+        }
+
+        /// <summary>
+        /// Converts a positive base 10 integer to it's binary counterpart (base 2).
+        /// </summary>
+        /// <param name="value">Integer to convert to binary form.</param>
+        /// <returns>Binary (base 2) representation of value.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>value</strong> is less than<strong>0</strong>.</exception>
+        public static int ToBinary(this int value)
+        ]]></source>
+</chunk>
+<method name="ToBinary" namespace="Dsa.Algorithms" type="Dsa.Algorithms.Numbers" typeName="Numbers" token="6000005" module="Dsa.dll"><hits><hit index="0" value="1"/>
+<hit index="1" value="1"/>
+<hit index="3" value="1"/>
+<hit index="4" value="24"/>
+<hit index="5" value="24"/>
+<hit index="6" value="24"/>
+<hit index="7" value="24"/>
+<hit index="8" value="24"/>
+<hit index="9" value="24"/>
+<hit index="10" value="1"/>
+<hit index="11" value="1"/>
+<hit index="12" value="1"/>
+<hit index="13" value="1"/>
+<hit index="14" value="2"/>
+<hit index="15" value="1"/>
+<hit index="16" value="1"/>
+<hit index="17" value="1"/>
+<hit index="18" value="1"/>
+<hit index="19" value="1"/>
+<hit index="20" value="1"/>
+<hit index="21" value="24"/>
+<hit index="24" value="1"/>
+<hit index="25" value="1"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="9" total="9" coveredRatio="1"/>
+</method>
+<chunk hits="1" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //Guard.OutOfRange(value < 0, "value", Resources.ToBaseNIntNegative);
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0001" domain="usercodeundertest"><source><![CDATA[StringBuilder sb = new StringBuilder();]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="49" offset="001a" domain="usercodeundertest"><source><![CDATA[while (value > 0)]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="24" offset="0009" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="24" offset="000a" domain="usercodeundertest"><source><![CDATA[sb.Append(value % 2);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="24" offset="0014" domain="usercodeundertest"><source><![CDATA[value /= 2;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            ]]></source>
+</chunk>
+<chunk hits="48" offset="0019" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //NotpAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length <= 10); 
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0022" domain="usercodeundertest"><source><![CDATA[return Int32.Parse(sb.ToString().Reverse(), CultureInfo.InvariantCulture);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="1" offset="003a" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        /// <summary>
+        /// Converts a positive base 10 integer into it's octal counterpart (base 8).
+        /// </summary>
+        /// <param name="value">Integer to convert to octal form.</param>
+        /// <returns>Octal (base 8) representation of value.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>value</strong> is less than <strong>0</strong>.</exception>
+        public static int ToOctal(this int value)
+        {
+            //Guard.OutOfRange(value < 0, "value", Resources.ToBaseNIntNegative);
+
+            StringBuilder sb = new StringBuilder();
+            while (value > 0)
+            {
+                sb.Append(value % 8);
+                value /= 8;
+            }
+            /*Change*///PexAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length < 10); 
+            return Int32.Parse(sb.ToString().Reverse(), CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Converts a positive base 10 integer into it's hexadecimal counterpart (base 16).
+        /// </summary>
+        /// <param name="value">Integer to convert to hexadecimal form.</param>
+        /// <returns>Hexadecimal (base 16) representation of value.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><strong>value</strong> is less than <strong>0</strong>.</exception>
+        public static string ToHex(this int value)
+        {
+            //Guard.OutOfRange(value < 0, "value", Resources.ToBaseNIntNegative);
+
+            StringBuilder sb = new StringBuilder();
+            while (value > 0)
+            {
+                int result = value % 16;
+                if (result < 10)
+                {
+                    sb.Append(result);
+                }
+                else
+                {
+                    sb.Append(GetHexSymbol(result));
+                }
+
+                value /= 16;
+            }
+
+            return sb.ToString().Reverse();
+        }
+
+        /// <summary>
+        /// Determines whether or not an integer is a prime number.
+        /// </summary>
+        /// <param name="number">Number to check is a prime.</param>
+        /// <returns>True if the number is a prime; otherwise false.</returns>
+        public static bool IsPrime(this int number)
+        {
+            // smallest prime is 2
+            if (number < 2)
+            {
+                return false;
+            }
+
+            // most effecient worst case, if number-1 * sqrt(number) != number then we have a prime
+            int innerLoopBound = (int)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 1; i < number; i++)
+            {
+                for (int j = 1; j <= innerLoopBound; j++)
+                {
+                    if (i * j == number)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Computes the maximum value that a given number base can hold for N digits.
+        /// </summary>
+        /// <param name="numberBase">Number base to use.</param>
+        /// <param name="digits">Number of digits.</param>
+        /// <returns>Maximum value for the given number base with the number of digits specified.</returns>
+        public static int MaxValue(Base numberBase, int digits)
+        {
+            int baseNumber = (int)numberBase;
+
+            // to get the max value for a base: B^n - 1 where B is the base, n is the number of digits
+            return Power(baseNumber, digits) - 1;
+        }
+
+        /// <summary>
+        /// Gets char symbol for hex numbers 10 .. 15 (A .. F).
+        /// </summary>
+        /// <param name="result">Integer to get hex symbol for.</param>
+        /// <returns>Hex symbol for that number.</returns>
+        private static char GetHexSymbol(int result)
+        {
+            char symbol = ' ';
+
+            // match relevent symbol with result
+            switch (result)
+            {
+                case 10:
+                    symbol = 'A';
+                    break;
+                case 11:
+                    symbol = 'B';
+                    break;
+                case 12:
+                    symbol = 'C';
+                    break;
+                case 13:
+                    symbol = 'D';
+                    break;
+                case 14:
+                    symbol = 'E';
+                    break;
+                case 15:
+                    symbol = 'F';
+                    break;
+            }
+
+            return symbol;
+        }
+    }
+}
+]]></source>
+</chunk>
+</document>
+<document src="d:\experimental3\BenchmarksAll\eval-dsa\Dsa\Algorithms\Strings.cs" renderPrefix="s2"><chunk hits="-1" domain="unknown"><source><![CDATA[// <copyright file="Strings.cs" company="Data Structures and Algorithms">
+//   Copyright (C) Data Structures and Algorithms Team.
+// </copyright>
+// <summary>
+//   Algorithms to solve common string problems, implemented as extension methods.
+// </summary>
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
+using Dsa.Utility;
+using Microsoft.Pex.Framework;
+
+namespace Dsa.Algorithms
+{
+    /// <summary>
+    /// String algorithms.
+    /// </summary>
+    public static class Strings
+    {
+        /// <summary>
+        /// Reverses the characters of a <see cref="string"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method is an O(n) operation where n is the number of chars in the string to reverse.
+        /// </remarks>
+        /// <param name="value"><see cref="String"/> to reverse the characters of.</param>
+        /// <returns><see cref="String"/> with characters in reverse order.</returns>
+        /// <exception cref="ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        public static string Reverse(this string value)
+        ]]></source>
+</chunk>
+<method name="Reverse" namespace="Dsa.Algorithms" type="Dsa.Algorithms.Strings" typeName="Strings" token="60000f0" module="Dsa.dll"><hits><hit index="0" value="1"/>
+<hit index="1" value="1"/>
+<hit index="3" value="1"/>
+<hit index="4" value="1"/>
+<hit index="5" value="1"/>
+<hit index="6" value="24"/>
+<hit index="7" value="24"/>
+<hit index="8" value="24"/>
+<hit index="9" value="24"/>
+<hit index="10" value="1"/>
+<hit index="11" value="1"/>
+<hit index="13" value="24"/>
+</hits>
+<coverage domain="usercodeundertest" unit="block" covered="3" total="3" coveredRatio="1"/>
+</method>
+<chunk hits="1" offset="0000" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+            //Guard.ArgumentNull(value, "value");
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="0001" domain="usercodeundertest"><source><![CDATA[char[] buffer = new char[value.Length];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ 
+
+            // place each char from value in its new location within the buffer
+            for (]]></source>
+</chunk>
+<chunk hits="1" offset="000d" domain="usercodeundertest"><source><![CDATA[int i = value.Length - 1,]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="1" offset="0016" domain="usercodeundertest"><source><![CDATA[j = 0;]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ ]]></source>
+</chunk>
+<chunk hits="73" offset="002e" domain="usercodeundertest"><source><![CDATA[i >= 0]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[; ]]></source>
+</chunk>
+<chunk hits="72" offset="0026" domain="usercodeundertest"><source><![CDATA[i--, j++]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[)
+            ]]></source>
+</chunk>
+<chunk hits="24" offset="001a" domain="usercodeundertest"><source><![CDATA[{]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+                ]]></source>
+</chunk>
+<chunk hits="24" offset="001b" domain="usercodeundertest"><source><![CDATA[buffer[j] = value[i];]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[ 
+            ]]></source>
+</chunk>
+<chunk hits="72" offset="0025" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+            ]]></source>
+</chunk>
+<chunk hits="1" offset="003b" domain="usercodeundertest"><source><![CDATA[return new string(buffer);]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+        ]]></source>
+</chunk>
+<chunk hits="1" offset="0044" domain="usercodeundertest"><source><![CDATA[}]]></source>
+</chunk>
+<chunk hits="-1" domain="unknown"><source><![CDATA[
+
+        /// <summary>
+        /// Returns the index of the first character in the match <see cref="string"/> that matches any character in the word <see cref="string"/>.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method is an O(n^2) operation.
+        /// </para>
+        /// <para>
+        /// Case sensitive, whitespace is ignored.
+        /// </para>
+        /// </remarks>
+        /// <param name="word">Word to run the any match against.</param>
+        /// <param name="match">The <see cref="string"/> of characters to match against the word.</param>
+        /// <returns>
+        /// A non-negative <see cref="Int32"/> index that represents the location of the first character in the match <see cref="string"/> that was 
+        /// also in the word <see cref="string"/>; otherwise -1 if no characters in the match <see cref="string"/> matched any of the characters in the 
+        /// word <see cref="string"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><strong>word</strong> is <strong>null</strong> or <strong>match</strong> is <strong>null</strong>.</exception>
+        public static int Any(this string word, string match)
+        {
+            //Guard.ArgumentNull(word, "word");
+            //Guard.ArgumentNull(match, "match");            
+            for (int i = 0; i < word.Length; i++)
+            {
+                while (char.IsWhiteSpace(word[i]))
+                {
+                    i++;
+                }
+
+                // locate, if possible index of first matching character in both strings
+                for (int j = 0; j < match.Length; j++)
+                {
+                    while (char.IsWhiteSpace(match[j]))
+                    {
+                        j++;
+                    }
+
+                    if (match[j] == word[i])
+                    {
+                        return j;
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        /// <summary>
+        /// Detects whether or not the input string is a palindrome.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This method is an O(n) operation where n is the number of chars to traverse in order to verify the string is a palindrome.
+        /// </para>
+        /// <para>
+        /// Case, whitespace, punctuation and symbols are ignored.
+        /// </para>
+        /// </remarks>
+        /// <param name="word"><see cref="String"/> that you want to verify is a palindrome.</param>
+        /// <returns>True if the string is a palindrome; otherwise false.</returns>
+        /// <exception cref="ArgumentNullException"><strong>word</strong> is <strong>null</strong>.</exception>
+        public static bool IsPalindrome(this string word)
+        {
+            //Guard.ArgumentNull(word, "word");
+        
+
+            word = word.Strip().ToUpper(CultureInfo.InvariantCulture); 
+            int left = 0;
+            int right = word.Length - 1;
+
+            // march in from the left and right bounds of the string
+            while (word[left] == word[right] && left < right) 
+            {
+                left++;
+                right--;
+            }
+
+            // if the two chars we are pointing to are equal we have a palindrome
+            return word[left] == word[right];
+        }
+
+        /// <summary>
+        /// Takes a <see cref="string"/> and strips it of whitespace, punctuation and symbols returning the resulting stripped <see cref="string"/>.
+        /// </summary>
+        /// <remarks>
+        /// This methods is an O(n) operation where n is the number of chars in the string to strip.
+        /// </remarks>
+        /// <param name="value"><see cref="String"/> to strip.</param>
+        /// <returns>The stripped version of the <see cref="string"/>.</returns>
+        /// <exception cref="ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        public static string Strip(this string value)
+        {
+            //Guard.ArgumentNull(value, "value");
+
+            StringBuilder sb = new StringBuilder(); 
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (!char.IsWhiteSpace(value[i]) && !char.IsPunctuation(value[i]) && !char.IsSymbol(value[i]))
+                {
+                    sb.Append(value[i]);
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Counts the number of words in a <see cref="string"/>.
+        /// </summary>
+        /// <remarks>
+        /// This is an O(n) operation where n is the number of chars in the string to count the words of.
+        /// </remarks>
+        /// <param name="value">The <see cref="string"/> to count the words of.</param>
+        /// <returns>An <see cref="Int32"/> indicating the number of words in the <see cref="string"/>.</returns>
+        /// <exception cref="ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        public static int WordCount(this string value)
+        {
+            //Guard.ArgumentNull(value, "value");
+            
+            bool inWord = true; 
+            int wordCount = 0; 
+            int index = 0;
+            while (char.IsWhiteSpace(value[index]) && index < value.Length - 1)
+            {
+                index++;
+            }
+
+            // check to see if value was only whitespace, if it was then there are 0 words
+            if (index == value.Length - 1 && char.IsWhiteSpace(value[index]))
+            {
+                return 0;
+            }
+
+            for (; index < value.Length; index++)
+            {
+                if (char.IsWhiteSpace(value[index]))
+                {
+                    // skip all consecutive whitespace
+                    while (char.IsWhiteSpace(value[index]) && index < value.Length - 1)
+                    {
+                        index++;
+                    }
+
+                    inWord = false; // as we are hitting whitespace we are not in a word
+                    wordCount++; // I assume that words are delimited by whitespace, thus wordCount should be incremented
+                }
+                else
+                {
+                    inWord = true; 
+                }
+            }
+
+            // the last word may of not been followed by whitespace, in that case increment wordCount
+            if (inWord)
+            {
+                wordCount++; 
+            }
+
+            return wordCount;
+        }
+
+        /// <summary>
+        /// Reverses the words of a string.
+        /// </summary>
+        /// <remarks>
+        /// This is an O(n) operation where n is the number of chars in the string to reverse the words of.
+        /// </remarks>
+        /// <param name="value"><see cref="String"/> to reverse the words of.</param>
+        /// <returns><see cref="String"/> with original words in reverse order.</returns>
+        /// <exception cref="ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        public static string ReverseWords(this string value)
+        {
+            //Guard.ArgumentNull(value, "value");
+
+            int last = value.Length - 1;
+            int start = last; // will be used to mark the beginning of a word in the string
+            StringBuilder sb = new StringBuilder();
+            while (last >= 0)
+            {
+                while (start >= 0 && char.IsWhiteSpace(value[start]))
+                {
+                    start--;
+                }
+
+                last = start; 
+
+                // march the start index down to the index before a word starts
+                while (start >= 0 && !char.IsWhiteSpace(value[start]))
+                {
+                    start--;
+                }
+
+                for (int i = start + 1; i < last + 1; i++)
+                {
+                    sb.Append(value[i]);
+                }
+
+                // add whitespace to delimit the words in sb if this is not the last word. Whitespace at the beginning of a string is cut.
+                if (start > 0)
+                {
+                    sb.Append(' ');
+                }
+
+                // point last to the index of the last char in the next word
+                last = start - 1;
+                start = last;
+            }
+
+            // check to see if we have added some whitespace at the right of sb if so just cut the sb length by 1
+            if (char.IsWhiteSpace(sb[sb.Length - 1]))
+            {
+                sb.Length = sb.Length - 1;
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Counts the number of words that are repeated within a string.
+        /// </summary>
+        /// <remarks>
+        /// This method is an O(n) operation where n is the number of words in the string delimited by whitespace.
+        /// </remarks>
+        /// <param name="value"><see cref="String"/> to count repeated words of.</param>
+        /// <returns>Number of words repeated in the given string.</returns>
+        /// <exception cref="ArgumentNullException"><strong>value</strong> is <strong>null</strong>.</exception>
+        public static int RepeatedWordCount(this string value)
+        {
+            //Guard.ArgumentNull(value, "value");
+
+            string[] words = value.Split(' ');
+            HashSet<string> uniques = new HashSet<string>();
+            foreach (string s in words)
+            {
+                uniques.Add(s.Strip());
+            }
+
+            return words.Length - uniques.Count;
+        }
+    }
+}]]></source>
+</chunk>
+</document>
+</documents>

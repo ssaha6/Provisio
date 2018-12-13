@@ -1,0 +1,2 @@
+PS C:\Users\astor\PexResearchTools\DataDriven\learning_tools\Benchmarks\nguyenthanhvuh-dig2_hg-0af40089f374\nguyenthanhvuh-dig2_hg-0af40089f374\programs> Get-ChildItem .\hola\ -Filter "*.dig.c" | Foreach-Object { $prog = [regex]::Match($_,"(.*.dig).c").Groups[1].Value; python.exe .\adaptHola.py .\hola\$_ $prog >> dump.txt
+}

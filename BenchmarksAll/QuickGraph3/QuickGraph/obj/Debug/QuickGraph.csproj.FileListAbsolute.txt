@@ -1,0 +1,10 @@
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\bin\Debug\CodeContracts\QuickGraph.Contracts.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\bin\Debug\CodeContracts\QuickGraph.Contracts.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\bin\Debug\QuickGraph.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\bin\Debug\QuickGraph.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\QuickGraph.csprojResolveAssemblyReference.cache
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\Decl\QuickGraph.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\Decl\QuickGraph.pdb
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\QuickGraphccrefgen.rsp
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\QuickGraph.dll
+D:\experimental3\BenchmarksAll\QuickGraph3\QuickGraph\obj\Debug\QuickGraph.pdb

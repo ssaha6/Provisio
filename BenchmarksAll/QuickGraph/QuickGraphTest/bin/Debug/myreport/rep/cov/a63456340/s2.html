@@ -1,0 +1,1165 @@
+﻿<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
+<!-- saved from url=(0033)http://research.microsoft.com/pex -->
+<head><link rel="StyleSheet" href="..\..\er.common.css" type="text/css" /><script src="..\..\er.common.js" type="text/javascript"> </script><link rel="SHORTCUT ICON" href="favicon.ico" /><link rel="icon" href="favicon.ico" type="image/x-icon" /><title>d:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\BinaryHeapCommuteTest.cs</title></head><body><div class="banner"></div><h2 id="top">d:\experimental3\BenchmarksAll\QuickGraph\QuickGraphTest\BinaryHeapCommuteTest.cs</h2><div class="toggle"><p class="copyright"><a class="usercodeundertestcovered">user code under test</a>, 
+  <span class="usercodeundertestnotcovered">user code under test (not covered)</span>, 
+  <a class="userortestcodecovered">user code or test</a>, 
+  <span class="userortestcodenotcovered">user code or test (not covered)</span>,
+  <span class="tagged">tagged</span></p><table><tr><th>Methods</th></tr><tr><th /></tr></table><div class="toggle"><a class="button" href="#ID0EL">first</a><pre class="coverage">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using QuickGraph;
+
+using Microsoft.Pex.Framework;
+using Microsoft.Pex.Framework.Settings;
+using Microsoft.Pex.Framework.Exceptions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PexAPIWrapper;
+using QuickGraph.Interfaces;
+using QuickGraph.Utility;
+
+namespace QuickGraphTest
+{
+    [PexClass(typeof(Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt;))]
+    [TestClass]
+    public partial class BinaryHeapCommuteTest
+    {
+        int global = -12;
+        /*[PexMethod]
+        public void TestCloneCompare([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value)
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+            
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("bh1 Count: ", bh1.Count);
+            PexObserve.ValueForViewing("bh2 Count: ", bh2.Count);
+            PexObserve.ValueForViewing("bh1 Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("bh2 Capacity", bh2.Capacity);
+
+            bh1.Add(priority, value);
+            bh2.Add(priority, value);
+
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }*/
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityCapacityComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Capacity;
+            c12 = bh1.Capacity;
+
+            c22 = bh2.Capacity;
+            c21 = bh2.Capacity;
+
+            //NotpAssume.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityCountComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Capacity;
+            c12 = bh1.Count;
+
+            c22 = bh2.Count;
+            c21 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityAddComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value)
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+            
+            //BinaryHeap&lt;int, int&gt; bh2 = (BinaryHeap&lt;int, int&gt;)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count == bh1.Capacity))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity; // == count  --&gt; bh1, bh2
+            bh1.Add(priority, value);// count + n --&gt; bh1 , bh2
+            bh2.Add(priority, value);  //  adds to bh1 and bh2 --&gt; capacity remains unchanged
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count &lt;= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityRemoveMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count &lt;= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index)
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+            
+            //BinaryHeap&lt;int, int&gt; bh2 = (QuickGraph.BinaryHeap&lt;int, int&gt;)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(((index &gt;= 0) &amp;&amp; (-1*index + bh1.Count &gt;= 1) &amp;&amp; (bh1.Count &gt;= 1)));
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            c2 = bh2.Capacity;
+
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            try{PexAssert.IsTrue(false);}catch{return;}
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c1 = 0, c2 = 0;
+            int io1 = 0, io2 = 0;
+
+            c1 = bh1.Capacity;
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCapacityUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            //BinaryHeap&lt;int, int&gt; bh2 = (BinaryHeap&lt;int, int&gt;)bh1.Clone();
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) &lt;= -1))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Capacity;
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            c2 = bh2.Capacity;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+            //try { PexAssert.IsTrue(false); }catch { return; }
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountCountComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c11 = 0, c12 = 0;
+            int c21 = 0, c22 = 0;
+
+            c11 = bh1.Count;
+            c12 = bh1.Count;
+
+            c22 = bh2.Count;
+            c21 = bh2.Count;
+
+            NotpAssume.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c11 == c21 &amp;&amp; c12 == c22 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountAddComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            bh1.Add(priority, value);
+
+            bh2.Add(priority, value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple/* */)
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            //BinaryHeap&lt;int, int&gt; bh2 = (QuickGraph.BinaryHeap&lt;int, int&gt;)bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            ////PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.Count &lt;= 0))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountRemoveMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int c1 = 0, c2 = 0;
+            int io1 = 0, io2 = 0;
+
+            c1 = bh1.Count;
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityCountUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) &lt;= -1))) );
+
+            int c1 = 0, c2 = 0;
+
+            c1 = bh1.Count;
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            c2 = bh2.Count;
+
+            NotpAssume.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(c1 == c2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddAddComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 &gt; -11 &amp;&amp; priority1 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value1 &lt; 11);
+            PexAssume.IsTrue(priority2 &gt; -11 &amp;&amp; priority2 &lt; 11);
+            PexAssume.IsTrue(value2 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!(true));
+
+            bh1.Add(priority1, value1);
+            bh1.Add(priority2, value2);
+
+            bh2.Add(priority2, value2);
+            bh2.Add(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value/* */)
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+            
+            //BinaryHeap&lt;int, int&gt; bh2 = (QuickGraph.BinaryHeap&lt;int, int&gt;) bh1.Clone();
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+            bh1.Add(priority, value);
+            var m1 = bh1.Minimum();
+
+            var m2 = bh2.Minimum();
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddRemoveMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!((( false ))));
+
+            bh1.Add(priority, value);
+            var rm1 = bh1.RemoveMinimum();
+
+            var rm2 = bh2.RemoveMinimum();
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value, int index )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+
+            bh1.Add(priority, value);
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            bh2.Add(priority, value);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value1, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue((( false )));
+
+            int io1 = 0, io2 = 0;
+
+            bh1.Add(priority, value1);
+            io1 = bh1.IndexOf(value2);
+
+            io2 = bh2.IndexOf(value2);
+            bh2.Add(priority, value1);
+
+            NotpAssume.IsTrue(io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityAddUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 &gt; -11 &amp;&amp; priority1 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value1 &lt; 11);
+            PexAssume.IsTrue(priority2 &gt; -11 &amp;&amp; priority2 &lt; 11);
+            PexAssume.IsTrue(value2 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(!(true));
+
+            bh1.Add(priority1, value1);
+            bh1.Update(priority2, value2);
+
+            bh2.Update(priority2, value2);
+            bh2.Add(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(((bh1.Count &gt;= 1)));
+
+            var m11 = bh1.Minimum();
+            var m12 = bh1.Minimum();
+
+            var m22 = bh2.Minimum();
+            var m21 = bh2.Minimum();
+
+            NotpAssume.IsTrue(m11.Key == m21.Key &amp;&amp; m11.Value == m21.Value &amp;&amp; m12.Key == m22.Key &amp;&amp; m12.Value == m22.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m11.Key == m21.Key &amp;&amp; m11.Value == m21.Value &amp;&amp; m12.Key == m22.Key &amp;&amp; m12.Value == m22.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumRemoveMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        <span id="ID0EL"><a class="button" href="#top">top</a></span><a class="userortestcodecovered">{</a>
+            <a class="userortestcodecovered">BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;</a>
+            <a class="userortestcodecovered">BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;</a>
+
+            <a class="userortestcodecovered">BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();</a>
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            <a class="userortestcodecovered">PexObserve.ValueForViewing("$input_Count", bh1.Count);</a>
+            <a class="userortestcodecovered">PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);</a>
+            <a class="userortestcodecovered">PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);</a>
+
+            <a class="userortestcodecovered">AssumePrecondition.IsTrue(!((( false ))));</a>
+
+            <a class="userortestcodecovered">var m1 = bh1.Minimum();</a>
+            <a class="userortestcodecovered">var rm1 = bh1.RemoveMinimum();</a>
+
+            <a class="userortestcodecovered">var rm2 = bh2.RemoveMinimum();</a>
+            <a class="userortestcodecovered">var m2 = bh2.Minimum();</a>
+
+            <a class="userortestcodecovered">NotpAssume.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));</a>
+            <a class="userortestcodecovered">PexAssert.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));</a>
+        <a class="userortestcodecovered">}</a>
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            var m1 = bh1.Minimum();
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            var m2 = bh2.Minimum();
+
+            //NotpAssume.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (bh1.Count == bh1.Capacity)  );
+
+            int io1 = 0, io2 = 0;
+
+            var m1 = bh1.Minimum();
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var m2 = bh2.Minimum();
+
+            NotpAssume.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityMinimumUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            var m1 = bh1.Minimum();
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var m2 = bh2.Minimum();
+
+            //NotpAssume.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(m1.Key == m2.Key &amp;&amp; m1.Value == m2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumRemoveMinimumComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm11 = bh1.RemoveMinimum();
+            var rm12 = bh1.RemoveMinimum();
+
+            var rm22 = bh2.RemoveMinimum();
+            var rm21 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm11.Key == rm21.Key &amp;&amp; rm11.Value == rm21.Value &amp;&amp; rm12.Key == rm22.Key &amp;&amp; rm12.Value == rm22.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm11.Key == rm21.Key &amp;&amp; rm11.Value == rm21.Value &amp;&amp; rm12.Key == rm22.Key &amp;&amp; rm12.Value == rm22.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm1 = bh1.RemoveMinimum();
+            var ra1 = bh1.RemoveAt(index);
+
+            var ra2 = bh2.RemoveAt(index);
+            var rm2 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(true);
+
+            int io1 = 0, io2 = 0;
+
+            var rm1 = bh1.RemoveMinimum();
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var rm2 = bh2.RemoveMinimum();
+
+            //NotpAssume.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveMinimumUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var rm1 = bh1.RemoveMinimum();
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var rm2 = bh2.RemoveMinimum();
+
+            NotpAssume.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(rm1.Key == rm2.Key &amp;&amp; rm1.Value == rm2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtRemoveAtComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index1, int index2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index1 &gt; -11 &amp;&amp; index1 &lt; 11);
+            PexAssume.IsTrue(index2 &gt; -11 &amp;&amp; index2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index1", index1);
+            PexObserve.ValueForViewing("$input_Index2", index2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var ra11 = bh1.RemoveAt(index1);
+            var ra12 = bh1.RemoveAt(index2);
+
+            var ra22 = bh2.RemoveAt(index2);
+            var ra21 = bh2.RemoveAt(index1);
+
+            NotpAssume.IsTrue(ra11.Key == ra21.Key &amp;&amp; ra11.Value == ra21.Value &amp;&amp; ra12.Key == ra22.Key &amp;&amp; ra12.Value == ra22.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra11.Key == ra21.Key &amp;&amp; ra11.Value == ra21.Value &amp;&amp; ra12.Key == ra22.Key &amp;&amp; ra12.Value == ra22.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (-bh1.Count + bh1.IndexOf(value) &lt;= -2 &amp;&amp; (((!(index == value)))))  );
+
+            int io1 = 0, io2 = 0;
+
+            var ra1 = bh1.RemoveAt(index);
+            io1 = bh1.IndexOf(value);
+
+            io2 = bh2.IndexOf(value);
+            var ra2 = bh2.RemoveAt(index);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityRemoveAtUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int index, int priority, int value )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(index &gt; -11 &amp;&amp; index &lt; 11);
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value &gt; -11 &amp;&amp; value &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Index", index);
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value", value);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            var ra1 = bh1.RemoveAt(index);
+            bh1.Update(priority, value);
+
+            bh2.Update(priority, value);
+            var ra2 = bh2.RemoveAt(index);
+
+            NotpAssume.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(ra1.Key == ra2.Key &amp;&amp; ra1.Value == ra2.Value &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityIndexOfIndexOfComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value1, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  true);
+
+            int io11 = 0, io12 = 0;
+            int io21 = 0, io22 = 0;
+
+            io11 = bh1.IndexOf(value1);
+            io12 = bh1.IndexOf(value2);
+
+            io22 = bh2.IndexOf(value2);
+            io21 = bh2.IndexOf(value1);
+
+            NotpAssume.IsTrue(io11 == io21 &amp;&amp; io12 == io22 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io11 == io21 &amp;&amp; io12 == io22 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityIndexOfUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int value1, int priority, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority &gt; -11 &amp;&amp; priority &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority", priority);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue( (bh1.Count == bh1.Capacity)  );
+
+            int io1 = 0, io2 = 0;
+
+            io1 = bh1.IndexOf(value1);
+            bh1.Update(priority, value2);
+
+            bh2.Update(priority, value2);
+            io2 = bh2.IndexOf(value1);
+
+            NotpAssume.IsTrue(io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(io1 == io2 &amp;&amp; eq.Equals(bh1, bh2));
+        }
+
+        [PexMethod]
+        public void PUT_CommutativityUpdateUpdateComm([PexAssumeUnderTest] Tuple&lt;BinaryHeap&lt;int, int&gt;, BinaryHeap&lt;int, int&gt;&gt; bhTuple, int priority1, int value1, int priority2, int value2 )
+        {
+            BinaryHeap&lt;int, int&gt; bh1 = bhTuple.Item1;
+            BinaryHeap&lt;int, int&gt; bh2 = bhTuple.Item2;
+
+            PexAssume.IsTrue(priority1 &gt; -11 &amp;&amp; priority1 &lt; 11);
+            PexAssume.IsTrue(value1 &gt; -11 &amp;&amp; value1 &lt; 11);
+            PexAssume.IsTrue(priority2 &gt; -11 &amp;&amp; priority2 &lt; 11);
+            PexAssume.IsTrue(value2 &gt; -11 &amp;&amp; value2 &lt; 11);
+
+            BinaryHeapEqualityComparer eq = new BinaryHeapEqualityComparer();
+            //PexAssume.IsTrue(eq.Equals(bh1, bh2) &amp;&amp; !PexAssume.ReferenceEquals(bh1, bh2));
+
+            PexObserve.ValueForViewing("$input_Priority1", priority1);
+            PexObserve.ValueForViewing("$input_Value1", value1);
+            PexObserve.ValueForViewing("$input_Priority2", priority2);
+            PexObserve.ValueForViewing("$input_Value2", value2);
+            PexObserve.ValueForViewing("$input_Count", bh1.Count);
+            PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
+            PexObserve.ValueForViewing("$input_IndexOf1", bh1.IndexOf(value1));
+            PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
+            PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count &gt; 0 ? bh1.Minimum().Key : global--);
+
+            AssumePrecondition.IsTrue(  false);
+
+            bh1.Update(priority1, value1);
+            bh1.Update(priority2, value2);
+
+            bh2.Update(priority2, value2);
+            bh2.Update(priority1, value1);
+
+            NotpAssume.IsTrue(eq.Equals(bh1, bh2));
+            PexAssert.IsTrue(eq.Equals(bh1, bh2));
+        }
+    }
+}
+</pre></div></div><hr /><table width="100%"><tr><td valign="top"><span class="copyright">Copyright (c) Microsoft Corporation. All rights reserved.</span><br /><span class="button" onclick="copySourceToClipboard()">Copy full source to clipboard</span></td></tr></table><div id="debugdiv"> </div></body></html>

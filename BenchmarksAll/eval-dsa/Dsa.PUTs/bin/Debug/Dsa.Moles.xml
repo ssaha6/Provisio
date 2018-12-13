@@ -1,0 +1,2039 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dsa.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Moles.Framework.DsaDelegates">
+            <summary>Contains custom delegates used for the stubs and moles of Dsa</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MAvlTree`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.AvlTree`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.#ctor(Dsa.DataStructures.AvlTree{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTree`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AdjustHeightAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.AdjustHeight(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.BalanceAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Balance(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.DoubleLeftRightRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.DoubleLeftRightRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.DoubleRightLeftRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.DoubleRightLeftRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.FindMaxValueAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.FindMaxValue(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.GetBalanceFactorAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.GetBalanceFactor(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.HeightAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Height(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.RemoveNodeAvlTreeNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.RemoveNode(Dsa.DataStructures.AvlTreeNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.SingleLeftRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.SingleLeftRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.SingleRightRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.SingleRightRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.AdjustHeightAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.AdjustHeight(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.BalanceAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Balance(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.DoubleLeftRightRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.DoubleLeftRightRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.DoubleRightLeftRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.DoubleRightLeftRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.FindMaxValueAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.FindMaxValue(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.GetBalanceFactorAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.GetBalanceFactor(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.HeightAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Height(Dsa.DataStructures.AvlTreeNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.RemoveNodeAvlTreeNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.RemoveNode(Dsa.DataStructures.AvlTreeNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.SingleLeftRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.SingleLeftRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTree`1.AllInstances.SingleRightRotationAvlTreeNodeOfTRef">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTree`1.SingleRightRotation(Dsa.DataStructures.AvlTreeNode`1{`1}@)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MAvlTreeNode`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.AvlTreeNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTreeNode`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTreeNode`1.#ctor(Dsa.DataStructures.AvlTreeNode{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTreeNode`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTreeNode`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MAvlTreeNode`1.Bind(Dsa.DataStructures.ICommonBinaryTreeNode{Dsa.DataStructures.AvlTreeNode{`0},`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.ConstructorT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.AvlTreeNode`1.#ctor(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.HeightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Height"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.HeightSetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Height"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.LeftGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.LeftSetAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.RightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.RightSetAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.HeightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Height"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.HeightSetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Height"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.LeftGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.LeftSetAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.RightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.RightSetAvlTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MAvlTreeNode`1.AllInstances.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.AvlTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MBinarySearchTree`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.BinarySearchTree`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.#ctor(Dsa.DataStructures.BinarySearchTree{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinarySearchTree`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.CopyToTArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.CopyTo(`1[])"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.InsertNodeT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.InsertNode(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MBinarySearchTree`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.AllInstances.CopyToTArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.CopyTo(`1[])"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.AllInstances.InsertNodeT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.InsertNode(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinarySearchTree`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinarySearchTree`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MBinaryTreeNode`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.BinaryTreeNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinaryTreeNode`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinaryTreeNode`1.#ctor(Dsa.DataStructures.BinaryTreeNode{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinaryTreeNode`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinaryTreeNode`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MBinaryTreeNode`1.Bind(Dsa.DataStructures.ICommonBinaryTreeNode{Dsa.DataStructures.BinaryTreeNode{`0},`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.ConstructorT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.BinaryTreeNode`1.#ctor(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.LeftGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.LeftSetBinaryTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.RightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.RightSetBinaryTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.LeftGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.LeftSetBinaryTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.RightGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.RightSetBinaryTreeNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MBinaryTreeNode`1.AllInstances.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.BinaryTreeNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MCollectionBase`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.CollectionBase`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.#ctor(Dsa.DataStructures.CollectionBase{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCollectionBase`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.CopyCollectionIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyCollection(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.CopyToArrayInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyTo(System.Array,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.CopyToTArrayInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyTo(`1[],System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.CountGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.Count"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.CountSetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.Count"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.IsReadOnlySystemCollectionsGenericICollectionTget">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.Generic.ICollection&lt;T&gt;.get_IsReadOnly"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.IsSynchronizedGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.IsSynchronized"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.SyncRootSystemCollectionsICollectionget">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.ICollection.get_SyncRoot"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.IEnumerable.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.ToArrayInt32IEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.ToArray(System.Int32,System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.CopyCollectionIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyCollection(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.CopyToArrayInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyTo(System.Array,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.CopyToTArrayInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.CopyTo(`1[],System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.CountGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.Count"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.CountSetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.Count"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.IsReadOnlySystemCollectionsGenericICollectionTget">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.Generic.ICollection&lt;T&gt;.get_IsReadOnly"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.IsSynchronizedGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CollectionBase`1.IsSynchronized"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.SyncRootSystemCollectionsICollectionget">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.ICollection.get_SyncRoot"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCollectionBase`1.AllInstances.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CollectionBase`1.System.Collections.IEnumerable.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MCommonBinaryTree`2">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.CommonBinaryTree`2"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.#ctor(Dsa.DataStructures.CommonBinaryTree{`0,`1})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Bind(System.Collections.Generic.ICollection{`1})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Bind(System.Collections.Generic.IEnumerable{`1})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.BreadthFirstTraversalTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.BreadthFirstTraversal(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.ComparerGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Comparer"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.ContainsTNodeTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`1,`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.ContainsTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindMax">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMax"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindMaxTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMax(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindMin">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMin"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindMinTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMin(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindNodeTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindNodeTValueTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`2,`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindParentTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.FindParentTValueTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`2,`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.GetBreadthFirstEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetBreadthFirstEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.GetInorderEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetInorderEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.GetPostorderEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetPostorderEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.InorderTraversalTNodeListOfTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.InorderTraversal(`1,System.Collections.Generic.List`1{`2})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.PostorderTraversalTNodeListOfTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.PostorderTraversal(`1,System.Collections.Generic.List`1{`2})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.PreorderTraveralTNodeListOfTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.PreorderTraveral(`1,System.Collections.Generic.List`1{`2})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.RootGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Root"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.RootSetTNode">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Root"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.ComparerGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Comparer"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.ContainsTNodeTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`1,`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.ContainsTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.Contains(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindMax">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMax"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindMin">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindMin"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindNodeTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindNodeTValueTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindNode(`2,`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindParentTValue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`2)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.FindParentTValueTNode">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.FindParent(`2,`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.GetBreadthFirstEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetBreadthFirstEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.GetInorderEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetInorderEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.GetPostorderEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.GetPostorderEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.RootGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Root"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.RootSetTNode">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.CommonBinaryTree`2.Root"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MCommonBinaryTree`2.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.CommonBinaryTree`2.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Utility.Moles.MCompare">
+            <summary>Mole type of <see cref="T:Dsa.Utility.Compare"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.AreEqualTTIComparerOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0,``0,System.Collections.Generic.IComparer{``0},System.Boolean})">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Compare.AreEqual``1(``0,``0,System.Collections.Generic.IComparer`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.IsGreaterThanTTIComparerOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0,``0,System.Collections.Generic.IComparer{``0},System.Boolean})">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Compare.IsGreaterThan``1(``0,``0,System.Collections.Generic.IComparer`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MCompare.IsLessThanTTIComparerOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0,``0,System.Collections.Generic.IComparer{``0},System.Boolean})">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Compare.IsLessThan``1(``0,``0,System.Collections.Generic.IComparer`1{``0})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Utility.Moles.MCompare.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDeque`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.Deque`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.#ctor(Dsa.DataStructures.Deque{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDeque`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.DequeueBack">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.DequeueBack"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.DequeueFront">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.DequeueFront"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.EnqueueBackT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.EnqueueBack(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.EnqueueFrontT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.EnqueueFront(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.PeekBack">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.PeekBack"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.PeekFront">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.PeekFront"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDeque`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.DequeueBack">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.DequeueBack"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.DequeueFront">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.DequeueFront"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.EnqueueBackT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.EnqueueBack(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.EnqueueFrontT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.EnqueueFront(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.PeekBack">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.PeekBack"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.PeekFront">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.PeekFront"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDeque`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Deque`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDoublyLinkedList`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.DoublyLinkedList`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.#ctor(Dsa.DataStructures.DoublyLinkedList{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AddAfterDoublyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddAfter(Dsa.DataStructures.DoublyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AddBeforeDoublyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddBefore(Dsa.DataStructures.DoublyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AddFirstT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddFirst(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AddLastT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddLast(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.HeadGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedList`1.Head"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.IsEmpty">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.IsEmpty"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.RemoveFirst">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveFirst"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.RemoveLast">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveLast"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.TailGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedList`1.Tail"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.ValidateAddArgsDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.ValidateAddArgs(Dsa.DataStructures.DoublyLinkedListNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.AddAfterDoublyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddAfter(Dsa.DataStructures.DoublyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.AddBeforeDoublyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddBefore(Dsa.DataStructures.DoublyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.AddFirstT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddFirst(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.AddLastT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.AddLast(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.HeadGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedList`1.Head"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.IsEmpty">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.IsEmpty"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.RemoveFirst">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveFirst"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.RemoveLast">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.RemoveLast"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.TailGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedList`1.Tail"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedList`1.AllInstances.ValidateAddArgsDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedList`1.ValidateAddArgs(Dsa.DataStructures.DoublyLinkedListNode`1{`1})"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.#ctor(Dsa.DataStructures.DoublyLinkedListNode{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.ConstructorT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.DoublyLinkedListNode`1.#ctor(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.NextGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.NextSetDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.PreviousGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Previous"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.PreviousSetDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Previous"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.NextGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.NextSetDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.PreviousGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Previous"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.PreviousSetDoublyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Previous"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MDoublyLinkedListNode`1.AllInstances.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.DoublyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Utility.Moles.MGuard">
+            <summary>Mole type of <see cref="T:Dsa.Utility.Guard"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MGuard.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MGuard.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Utility.Moles.MGuard.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Utility.Moles.MGuard.ArgumentNullObjectString">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Guard.ArgumentNull(System.Object,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Utility.Moles.MGuard.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Utility.Moles.MGuard.InvalidOperationBooleanString">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Guard.InvalidOperation(System.Boolean,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Utility.Moles.MGuard.OutOfRangeBooleanStringString">
+            <summary>Sets the mole of <see cref="M:Dsa.Utility.Guard.OutOfRange(System.Boolean,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MHeap`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.Heap`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.#ctor(Dsa.DataStructures.Heap{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MHeap`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ConstructorIEnumerableOfTStrategy">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.#ctor(System.Collections.Generic.IEnumerable`1{`1},Dsa.DataStructures.Strategy)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ConstructorStrategy">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.#ctor(Dsa.DataStructures.Strategy)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.GreaterThanParentInt32ComparerOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.GreaterThanParent(System.Int32,System.Collections.Generic.Comparer`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ItemGetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.Heap`1.Item(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.LessThanParentInt32ComparerOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.LessThanParent(System.Int32,System.Collections.Generic.Comparer`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.MaxHeapify">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.MaxHeapify"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.MinHeapify">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.MinHeapify"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MHeap`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.GreaterThanParentInt32ComparerOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.GreaterThanParent(System.Int32,System.Collections.Generic.Comparer`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.ItemGetInt32">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.Heap`1.Item(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.LessThanParentInt32ComparerOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.LessThanParent(System.Int32,System.Collections.Generic.Comparer`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.MaxHeapify">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.MaxHeapify"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.MinHeapify">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.MinHeapify"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MHeap`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.Heap`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Moles.MNumbers">
+            <summary>Mole type of <see cref="T:Dsa.Algorithms.Numbers"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MNumbers.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MNumbers.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MNumbers.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.FactorialInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.Factorial(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.FibonacciInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.Fibonacci(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.GetHexSymbolInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.GetHexSymbol(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.GreatestCommonDenominatorInt32Int32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.GreatestCommonDenominator(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.IsPrimeInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.IsPrime(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.MaxValueBaseInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.MaxValue(Dsa.Algorithms.Base,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.PowerInt32Int32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.Power(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.ToBinaryInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.ToBinary(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.ToHexInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.ToHex(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MNumbers.ToOctalInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Numbers.ToOctal(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MOrderedSet`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.OrderedSet`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.#ctor(Dsa.DataStructures.OrderedSet{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MOrderedSet`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MOrderedSet`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.OrderedSet`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MPriorityQueue`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.PriorityQueue`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.#ctor(Dsa.DataStructures.PriorityQueue{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MPriorityQueue`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.ConstructorIEnumerableOfTStrategy">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable`1{`1},Dsa.DataStructures.Strategy)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.ConstructorStrategy">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.#ctor(Dsa.DataStructures.Strategy)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.Dequeue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Dequeue"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.EnqueueT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Enqueue(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.Peek">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Peek"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.Dequeue">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Dequeue"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.EnqueueT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Enqueue(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.Peek">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Peek"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MPriorityQueue`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.PriorityQueue`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Moles.MSearching">
+            <summary>Mole type of <see cref="T:Dsa.Algorithms.Searching"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSearching.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSearching.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSearching.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSearching.ProbabilitySearchIListOfTT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},``0,System.Boolean})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Searching.ProbabilitySearch``1(System.Collections.Generic.IList`1{``0},``0)"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSearching.SequentialSearchIListOfTT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},``0,System.Int32})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Searching.SequentialSearch``1(System.Collections.Generic.IList`1{``0},``0)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MSearching.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Moles.MSets">
+            <summary>Mole type of <see cref="T:Dsa.Algorithms.Sets"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSets.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSets.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSets.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSets.PermutationsOrderedSetOfTInt32``1(Microsoft.Moles.Framework.MolesDelegates.Func{Dsa.DataStructures.OrderedSet{``0},System.Int32,System.Int32})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sets.Permutations``1(Dsa.DataStructures.OrderedSet`1{``0},System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MSets.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MSinglyLinkedList`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.SinglyLinkedList`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.#ctor(Dsa.DataStructures.SinglyLinkedList{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Bind(System.Collections.ICollection)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AddAfterSinglyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddAfter(Dsa.DataStructures.SinglyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AddBeforeSinglyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddBefore(Dsa.DataStructures.SinglyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AddFirstT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddFirst(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AddLastT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddLast(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.Constructor">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.ConstructorIEnumerableOfT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.#ctor(System.Collections.Generic.IEnumerable`1{`1})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.GetReverseEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.GetReverseEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.HeadGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Head"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.IsEmpty">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.IsEmpty"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.RemoveFirst">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveFirst"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.RemoveLast">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveLast"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.TailGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Tail"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.ToReverseArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.ToReverseArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.AddAfterSinglyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddAfter(Dsa.DataStructures.SinglyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.AddBeforeSinglyLinkedListNodeOfTT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddBefore(Dsa.DataStructures.SinglyLinkedListNode`1{`1},`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.AddFirstT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddFirst(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.AddLastT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.AddLast(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.AddT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Add(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Clear"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.ContainsT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Contains(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.GetEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.GetEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.GetReverseEnumerator">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.GetReverseEnumerator"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.HeadGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Head"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.IsEmpty">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.IsEmpty"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.RemoveFirst">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveFirst"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.RemoveLast">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.RemoveLast"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.RemoveT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.Remove(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.TailGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedList`1.Tail"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.ToArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.ToArray"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedList`1.AllInstances.ToReverseArray">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedList`1.ToReverseArray"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1">
+            <summary>Mole type of <see cref="T:Dsa.DataStructures.SinglyLinkedListNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.#ctor(Dsa.DataStructures.SinglyLinkedListNode{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.ConstructorT">
+            <summary>Sets the mole of <see cref="M:Dsa.DataStructures.SinglyLinkedListNode`1.#ctor(`1)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.NextGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.NextSetSinglyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.AllInstances.NextGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.AllInstances.NextSetSinglyLinkedListNodeOfT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Next"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.AllInstances.ValueGet">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.MSinglyLinkedListNode`1.AllInstances.ValueSetT">
+            <summary>Sets the mole of <see cref="P:Dsa.DataStructures.SinglyLinkedListNode`1.Value"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Moles.MSorting">
+            <summary>Mole type of <see cref="T:Dsa.Algorithms.Sorting"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.BubbleSortIListOfTSortType``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},Dsa.Algorithms.SortType,System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.BubbleSort``1(System.Collections.Generic.IList`1{``0},Dsa.Algorithms.SortType)"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.ConcatenateIListOfTIListOfTIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.Concatenate``1(System.Collections.Generic.IList`1{``0},System.Collections.Generic.IList`1{``0},System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.ExchangeIListOfTInt32Int32``1(Microsoft.Moles.Framework.MolesDelegates.Action{System.Collections.Generic.IList{``0},System.Int32,System.Int32})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.Exchange``1(System.Collections.Generic.IList`1{``0},System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.InsertionSortIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.InsertionSort``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.MedianLeftIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.MedianLeft``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.MergeOrderedIListOfTIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.MergeOrdered``1(System.Collections.Generic.IList`1{``0},System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.MergeSortIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.MergeSort``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.MergeSortInternalIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.MergeSortInternal``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.QuickSortIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.QuickSort``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.QuickSortInternalIListOfTComparerOfTRef``1(Microsoft.Moles.Framework.MolesDelegates.RefFunc{System.Collections.Generic.IList{``0},System.Collections.Generic.Comparer{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.QuickSortInternal``1(System.Collections.Generic.IList`1{``0},System.Collections.Generic.Comparer`1{``0}@)"/>
+            </summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MSorting.ShellSortIListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0}})">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.ShellSort``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MSorting.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MSorting.RadixSortIListOfStringInt32">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Sorting.RadixSort(System.Collections.Generic.IList`1{System.String},System.Int32)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.Algorithms.Moles.MStrings">
+            <summary>Mole type of <see cref="T:Dsa.Algorithms.Strings"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MStrings.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MStrings.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Dsa.Algorithms.Moles.MStrings.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.AnyStringString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.Any(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.IsPalindromeString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.IsPalindrome(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.RepeatedWordCountString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.RepeatedWordCount(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.ReverseString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.Reverse(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.ReverseWordsString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.ReverseWords(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.StripString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.Strip(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.Algorithms.Moles.MStrings.WordCountString">
+            <summary>Sets the mole of <see cref="M:Dsa.Algorithms.Strings.WordCount(System.String)"/>
+            </summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.SAvlTreeNode`1">
+            <summary>Stub type of <see cref="T:Dsa.DataStructures.AvlTreeNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SAvlTreeNode`1.#ctor(`0)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SAvlTreeNode`1.InitializeStub">
+            <summary>Initializes a new instance of type SAvlTreeNode</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SAvlTreeNode`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SAvlTreeNode`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.SBinaryTreeNode`1">
+            <summary>Stub type of <see cref="T:Dsa.DataStructures.BinaryTreeNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SBinaryTreeNode`1.#ctor(`0)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SBinaryTreeNode`1.InitializeStub">
+            <summary>Initializes a new instance of type SBinaryTreeNode</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SBinaryTreeNode`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SBinaryTreeNode`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.SDoublyLinkedListNode`1">
+            <summary>Stub type of <see cref="T:Dsa.DataStructures.DoublyLinkedListNode`1"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SDoublyLinkedListNode`1.#ctor(`0)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SDoublyLinkedListNode`1.InitializeStub">
+            <summary>Initializes a new instance of type SDoublyLinkedListNode</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SDoublyLinkedListNode`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SDoublyLinkedListNode`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2">
+            <summary>Stub type of <see cref="T:Dsa.DataStructures.ICommonBinaryTreeNode`2"/>
+            .</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.#ctor">
+            <summary>Initializes a new instance of type SICommonBinaryTreeNode</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.AttachBackingFieldToLeft">
+            <summary>Attaches delegates to emulate SICommonBinaryTreeNode.Left as a property with a backing field</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.AttachBackingFieldToRight">
+            <summary>Attaches delegates to emulate SICommonBinaryTreeNode.Right as a property with a backing field</summary>
+        </member>
+        <member name="M:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.AttachBackingFieldToValue">
+            <summary>Attaches delegates to emulate SICommonBinaryTreeNode.Value as a property with a backing field</summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.LeftGet">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Left"/>
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.LeftSetTNode">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Left"/>
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.RightGet">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Right"/>
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.RightSetTNode">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Right"/>
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.ValueGet">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Value"/>
+            </summary>
+        </member>
+        <member name="F:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.ValueSetTValue">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Value"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.d::Dsa#DataStructures#ICommonBinaryTreeNode{TNode@TValue}#Left">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Left"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.d::Dsa#DataStructures#ICommonBinaryTreeNode{TNode@TValue}#Right">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Right"/>
+            </summary>
+        </member>
+        <member name="P:Dsa.DataStructures.Moles.SICommonBinaryTreeNode`2.d::Dsa#DataStructures#ICommonBinaryTreeNode{TNode@TValue}#Value">
+            <summary>Sets the stub of <see cref="P:Dsa.DataStructures.ICommonBinaryTreeNode`2.Value"/>
+            </summary>
+        </member>
+    </members>
+</doc>

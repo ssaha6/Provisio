@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15FC3DF0-ED8C-4D48-BF01-55221CC4DBF5}"
+	ProjectSection(SolutionItems) = preProject
+		HolaBenchmarks.vsmdi = HolaBenchmarks.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBenchmarks", "HolaBenchmarks\HolaBenchmarks.csproj", "{969441B9-F81B-41CE-9BBC-399BC1F4C26F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBenchmarksTest", "HolaBenchmarksTest\HolaBenchmarksTest.csproj", "{5E7D7444-21C1-4B31-BFF5-7C31D15A7F01}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = HolaBenchmarks.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{969441B9-F81B-41CE-9BBC-399BC1F4C26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969441B9-F81B-41CE-9BBC-399BC1F4C26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969441B9-F81B-41CE-9BBC-399BC1F4C26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969441B9-F81B-41CE-9BBC-399BC1F4C26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7D7444-21C1-4B31-BFF5-7C31D15A7F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7D7444-21C1-4B31-BFF5-7C31D15A7F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7D7444-21C1-4B31-BFF5-7C31D15A7F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7D7444-21C1-4B31-BFF5-7C31D15A7F01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+﻿<frameTree version="0.94.51006.1"><frameException type="Microsoft.Pex.Framework.Exceptions.PexAssertFailedException"><tag exceptionState="unexpected"><generatedTestRef idref="0911182e-72c7-418b-8e1d-f89f667d0a24"/>
+</tag>
+<frameNode><frame value="  at ArrayListTest.PUT_CommutativityAddContains(ArrayList, Int32, Int32) in d:\MultiLearnerPrecondition\BenchmarksAll\DataStructures\DataStructuresTest\ArrayListTest.cs(98)" method="ArrayListTest.PUT_CommutativityAddContains(ArrayList, Int32, Int32)" offset="326" file="d:\MultiLearnerPrecondition\BenchmarksAll\DataStructures\DataStructuresTest\ArrayListTest.cs" line="98"><method assemblyName="DataStructuresTest" name="PUT_CommutativityAddContains" token="6000002"><declaringType assemblyName="DataStructuresTest" name="ArrayListTest" token="2000002" namespace="DataStructures.Test"/>
+<parameter this="true" name="this" position="0"><type spec="Class"><definition assemblyName="DataStructuresTest" name="ArrayListTest" token="2000002" namespace="DataStructures.Test"/>
+</type>
+</parameter>
+<parameter name="s1" position="1"><type spec="Class"><definition assemblyName="DataStructures" name="ArrayList" token="2000002" namespace="DataStructures"/>
+</type>
+</parameter>
+<parameter name="x" position="2"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</type>
+</parameter>
+<parameter name="y" position="3"><type spec="ValueType"><definition assemblyName="mscorlib" valueType="true" name="Int32" token="20000fb" namespace="System"/>
+</type>
+</parameter>
+</method>
+<beforeSource><![CDATA[
+
+            //NotpAssume.IsTrue(a1 == a2 && ad1 == ad2 && eq.Equals(s1, s2));]]></beforeSource>
+<source><![CDATA[            PexAssert.IsTrue(a1 == a2 && ad1 == ad2 && eq.Equals(s1, s2));]]></source>
+<afterSource><![CDATA[        }
+
+        //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]]]></afterSource>
+</frame>
+<tag exceptionState="unexpected"><generatedTestRef idref="0911182e-72c7-418b-8e1d-f89f667d0a24"/>
+<generatedTestRef idref="3dcadfc3-3e2b-4240-b305-6ac9dc53e5e2"/>
+</tag>
+</frameNode>
+</frameException>
+</frameTree>
