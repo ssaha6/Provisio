@@ -1,0 +1,7 @@
+precondition.
+
+x:  continuous.
+y:  continuous.
+x == y := (x = y) .
+
+precondition:    true,false.

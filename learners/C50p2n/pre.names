@@ -1,0 +1,34 @@
+precondition.
+
+s1.Count:  continuous.
+x:  continuous.
+y:  continuous.
+
+s1.Contains(x):  true, false.
+s1.Contains(y):  true, false.
+
+s1.Count == x := (s1.Count = x) .
+s1.Count == y := (s1.Count = y) .
+x == y := (x = y) .
+-s1.Count + -x + -y := (-s1.Count) + (-x) + (-y) .
+-s1.Count + -x := (-s1.Count) + (-x) .
+-s1.Count + -x + y := (-s1.Count) + (-x) + y .
+-s1.Count + -y := (-s1.Count) + (-y) .
+-s1.Count + y := (-s1.Count) + y .
+-s1.Count + x + -y := (-s1.Count) + x + (-y) .
+-s1.Count + x := (-s1.Count) + x .
+-s1.Count + x + y := (-s1.Count) + x + y .
+-x + -y := (-x) + (-y) .
+-x + y := (-x) + y .
+x + -y := x + (-y) .
+x + y := x + y .
+s1.Count + -x + -y := s1.Count + (-x) + (-y) .
+s1.Count + -x := s1.Count + (-x) .
+s1.Count + -x + y := s1.Count + (-x) + y .
+s1.Count + -y := s1.Count + (-y) .
+s1.Count + y := s1.Count + y .
+s1.Count + x + -y := s1.Count + x + (-y) .
+s1.Count + x := s1.Count + x .
+s1.Count + x + y := s1.Count + x + y .
+
+precondition:    true,false.

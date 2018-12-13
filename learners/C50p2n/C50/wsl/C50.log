@@ -1,0 +1,10 @@
+﻿  VisualGDB: Run "/usr/bin/make all" in directory "/mnt/d/experimental2/learners/C50p2n" on (Windows 10 Linux subsystem)
+  make: *** No rule to make target 'all'.  Stop.
+  -------------------------------------------------------------
+  Command exited with code 2
+  Executable: /usr/bin/make
+  Arguments: all
+  Directory: /mnt/d/experimental2/learners/C50p2n
+VisualGDB : error : Command-line action failed
+VisualGDB : error : Build has failed. See the Output window for more details.
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Microsoft.MakeFile.Targets(44,5): error MSB3073: The command ""C:\Program Files (x86)\Sysprogs\VisualGDB\\VisualGDB.exe" /build "D:\experimental3\learners\C50p2n\C50\C50.vcxproj" "/solution:D:\experimental3\learners\C50p2n\C50\C50.sln"  "/config:wsl" "/platform:Win32"" exited with code 1.
