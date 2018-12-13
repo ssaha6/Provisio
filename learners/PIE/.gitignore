@@ -1,0 +1,47 @@
+config.h
+*.tgz
+starexec*
+
+# - - -
+# OCaml
+# - - -
+
+# Compiler-generated intermediates
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+
+# ocamlbuild working directory
+_build/
+
+# ocamlbuild targets
+*.byte
+*.native
+
+# dune/jbuilder generated files
+.merlin
+*.install
+
+# External
+_dep
+_log*
+_comp
+
+# Temporaries
+ocamlprof.dump
+gmon.out
+_tags
+
+
+
+# - - -
+# Editor/IDE
+# - - -
+
+.vscode
