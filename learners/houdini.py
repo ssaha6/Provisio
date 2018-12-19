@@ -76,24 +76,47 @@ class Houdini(Learner):
         
         return conjunct
         
+def createBooleanPredicate(intVars):
+	names_file = ""
 
+	#createEquality
+	#predValues = map()
+	#if len(intVars) >= 2:
+	#		for i in xrange(0, len(intvars)):
+	#			for n in xrange(i,len(intvars) )
+	#				expr = "(" + intVars[i] + " = " + intVars[n] + ")"
+	if len(intVars) >= 2:
+	    all_combination = itertools.combinations(intVars, 2)
+	    for (var1, var2) in all_combination:
+	       expr = "(" + var1 + " = " + var2 + ")"
+	       name_expr = var1 + " == " + var2
+	       names_file += '\n' + name_expr
+
+	return names_file
 
 if __name__ == '__main__':
-    learner = Houdini("houdini", "", "", "")
-    
-    intVariables = []
-    boolVariables = ['b1', 'b2', ]
-    learner.setVariables(intVariables, boolVariables)
-    dataPoints =[
-                ["false", "false", "true"],
-                ["true", "true", "false"],
-                ["false", "true", "true"],
-                ["true", "false", "false"],
-                ]
-   
-    # learner.setDataPoints(dataPoints)
-    # learner.runLearner()
-    
-    print learner.learn(dataPoints)
+	learner = Houdini("houdini", "", "", "")
+
+	intVariablesTemp = [ 'oldCount' , 's1.Count','oldTop','s1.Peek()', 'oldx','x']
+
+	samples =[ [1,2,10,0,0,0,True], [2,3,10,0,0,0,True] ]
+	print createBooleanPredicate(intVariablesTemp)
+
+
+	intVariables = []
+	boolVariables = ['b1', 'b2', ]
+	learner.setVariables(intVariables, boolVariables)
+
+	dataPoints =[
+	            ["true", "false", "true"],
+	            ["true", "true", "true"],
+	            ["true", "true", "true"],
+	            ["true", "true", "true"],
+	            ]
+
+	# learner.setDataPoints(dataPoints)
+	# learner.runLearner()
+
+	print learner.learn(dataPoints)
     
 
