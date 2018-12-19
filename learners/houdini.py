@@ -77,7 +77,7 @@ class Houdini(Learner):
         return conjunct
         
 def createBooleanPredicate(intVars):
-	names_file = ""
+	names_file = list()
 
 	#createEquality
 	#predValues = map()
@@ -88,9 +88,8 @@ def createBooleanPredicate(intVars):
 	if len(intVars) >= 2:
 	    all_combination = itertools.combinations(intVars, 2)
 	    for (var1, var2) in all_combination:
-	       expr = "(" + var1 + " = " + var2 + ")"
-	       name_expr = var1 + " == " + var2
-	       names_file += '\n' + name_expr
+			name_expr = var1 + " == " + var2
+			names_file.append(name_expr)
 
 	return names_file
 
@@ -98,25 +97,47 @@ if __name__ == '__main__':
 	learner = Houdini("houdini", "", "", "")
 
 	intVariablesTemp = [ 'oldCount' , 's1.Count','oldTop','s1.Peek()', 'oldx','x']
+	boolVariablesTemp = ["s1.Contains(x)"]
 
-	samples =[ [1,2,10,0,0,0,True], [2,3,10,0,0,0,True] ]
-	print createBooleanPredicate(intVariablesTemp)
+	dataPoints = list()
 
 
-	intVariables = []
-	boolVariables = ['b1', 'b2', ]
-	learner.setVariables(intVariables, boolVariables)
+	samples =[ (['1','2','10','0','0','0'],['true'],'true'), (['2','3','10','0','0','0'],['true'],'true') ]
+	#=================================================================================
 
-	dataPoints =[
-	            ["true", "false", "true"],
-	            ["true", "true", "true"],
-	            ["true", "true", "true"],
-	            ["true", "true", "true"],
-	            ]
+	booleanPredicatesFeatures =  createBooleanPredicate(intVariablesTemp)
+	
+	booleanPredicatesFeatures.extend(boolVariablesTemp)
+	
+	for sampInt,sampBool,label in samples:
+		
+		#createBooleanPredicate Assume all variables are integer variables
+		consPredicateStr = createBooleanPredicate(sampInt)
+		
+		onePoint = eval("["+(",".join(consPredicateStr))+"]")
+		onePoint = map((lambda b: "true" if b else "false"), onePoint)
+
+		onePoint.extend(sampBool)
+		onePoint.append(label)
+		# appending to data points
+		dataPoints.append(onePoint)
+	
+	print dataPoints
+	#sys.exit(0)
+	
+	integerFeatures = []
+	#boolVariables = ['b1', 'b2', ]
+	learner.setVariables(integerFeatures, booleanPredicatesFeatures)
+
+	# dataPoints =[
+	#             ["true", "false", "true"],
+	#             ["true", "true", "true"],
+	#             ["true", "true", "true"],
+	#             ["true", "true", "true"],
+	#             ]
 
 	# learner.setDataPoints(dataPoints)
 	# learner.runLearner()
-
 	print learner.learn(dataPoints)
     
 
