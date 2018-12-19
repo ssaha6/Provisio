@@ -101,7 +101,7 @@ if __name__ == '__main__':
 
 	dataPoints = list()
 
-
+	#samples: [(integer values, boolean values, label) ] label should always be true
 	samples =[ (['1','2','10','0','0','0'],['true'],'true'), (['2','3','10','0','0','0'],['true'],'true') ]
 	#=================================================================================
 
