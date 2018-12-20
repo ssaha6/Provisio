@@ -53,12 +53,14 @@ class  Learner:
         indexRange = range(0, length)
         return map(lambda x: "variable" + type + '{0:03d}'.format(x), indexRange)
 
-
+    def sanitizeNames(self, orinigalName):
+        return orinigalName.replace(".","").replace("(","").replace(")","")
 
     def renameVariables(self):
-        self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
-        self.symbolicBoolVariables  = self.generateSymbolicVariables('Bool', len(self.boolVariables))
-
+        #self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
+        #self.symbolicBoolVariables  = self.generateSymbolicVariables('Bool', len(self.boolVariables))
+        self.symbolicIntVariables = map(lambda x: self.sanitizeNames(x), self.intVariables)
+        self.symbolicBoolVariables = map(lambda x: self.sanitizeNames(x), self.boolVariables)
 
     def restoreVariables(self, precondition):
         
@@ -98,9 +100,10 @@ class  Learner:
         self.generateFiles()
         result =  self.runLearner()
         
-        simplifiedResults = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
-          
-        restoredResults = self.restoreVariables(simplifiedResults)
+        #simplifiedResults = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+         
+        restoredResults = self.restoreVariables(result)  
+        #restoredResults = self.restoreVariables(simplifiedResults)
         
         print "******  Round Result: ", restoredResults
         return restoredResults
