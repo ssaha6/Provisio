@@ -100,10 +100,10 @@ class  Learner:
         self.generateFiles()
         result =  self.runLearner()
         
-        #simplifiedResults = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+        simplifiedResults = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
          
-        restoredResults = self.restoreVariables(result)  
-        #restoredResults = self.restoreVariables(simplifiedResults)
+        #restoredResults = self.restoreVariables(result)  
+        restoredResults = self.restoreVariables(simplifiedResults)
         
         print "******  Round Result: ", restoredResults
         return restoredResults
