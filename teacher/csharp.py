@@ -11,8 +11,8 @@ import json
 import time
 import shutil
 import io
-from utilityPython import utils
-from benchmarkSet import BenchmarkSet
+##from utilityPython import utils
+##from benchmarkSet import BenchmarkSet
 from lxml import etree
 import modifycode
 import reportparser

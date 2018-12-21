@@ -11,8 +11,8 @@ import json
 import time
 import shutil
 import io
-from utilityPython import utils
-from benchmarkSet import BenchmarkSet
+##from utilityPython import utils
+##from benchmarkSet import BenchmarkSet
 from lxml import etree
 
 
@@ -94,5 +94,29 @@ def remove_assumes(ClassFilePath, methodUnderTest):
 			    r"(?:(?:public)|(?:private)|(?:static)|(?:protected)\s+).*", line, re.DOTALL
 			):  # if we see the signature for next method, stop collecting assumes
 				begin = False
+
+			fWrite.write("%s\n" % line)
+
+
+def insertPostConditionInPexAssert(CSharpFile, postcondition, methodname):
+	fullPathCsharpFile = os.path.abspath(CSharpFile)
+	file = list()
+	with io.open(fullPathCsharpFile, 'r', encoding = 'utf-8-sig') as f:
+		file = f.read().splitlines()
+
+	begin = False
+	indexPexAssert = -1
+	once = True
+	lineToChange = "PexAssert.IsTrue("
+	with io.open(fullPathCsharpFile, 'w', encoding = 'utf-8-sig') as fWrite:
+		for line in file:
+			if line.find(methodname) != -1 and once:
+				begin = True
+				once = False
+			elif begin and line.find(lineToChange) != -1:
+				indexPexAssert = line.find(lineToChange)
+				line = line[:indexPexAssert + 17] + postcondition + ");"
+				begin = False
+				#print line.encode.encode("utf-8")("utf-8")
 
 			fWrite.write("%s\n" % line)
