@@ -1,8 +1,0 @@
-id="See5/C5.0 2.07 GPL Edition 2018-09-24"
-entries="1"
-rules="2" default="false"
-conds="2" cover="7" ok="7" lift="1.52381" class="true"
-type="2" att="x" cut="-2.1474836e+09" result=">"
-type="1" att="x == y" val="t"
-conds="1" cover="4" ok="4" lift="2" class="false"
-type="1" att="x == y" val="f"

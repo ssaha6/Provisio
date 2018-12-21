@@ -1,1 +1,0 @@
-{"conditions" : [ {"attribute":"x","comparison":">","cut":-2.147484e+09},{"attribute":"x == y","partition":"t"}], "children": [{"conditions":[],"classification":true,"children":null},{"conditions" : [ {"attribute":"x == y","partition":"f"}], "children": [{"conditions":[],"classification":false,"children":null},{"conditions":[],"classification":false,"children":null}]}]}
