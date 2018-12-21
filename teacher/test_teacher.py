@@ -4,7 +4,7 @@ import unittest
 # from analysis import Analysis
 import pprint
 from . import Teacher
-from benchmarkSet import BenchmarkSet
+#from benchmarkSet import BenchmarkSet
 
 
 class TestClass(unittest.TestCase):
