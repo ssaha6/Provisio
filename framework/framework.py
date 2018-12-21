@@ -11,14 +11,23 @@ import json
 import time
 import shutil
 import io
-from utilityPython import utils
-from benchmarkSet import BenchmarkSet
+from os import sys,path
+sys.path.append(path.dirname(path.abspath(__file__)))
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from learner import Learner
-from teacher import Teacher
+import learner
+import teacher
+##from utilityPython import utils
+##from benchmarkSet import BenchmarkSet
+
+#from learner import Learner
+#from teacher import Teacher
 
 
 class Framework:
+
+	def __init__(self):
+		pass
 
 	def __init__(self, learner, teacher):
 		self.learner = learner
@@ -97,7 +106,20 @@ class Framework:
 
 			self.loop += 1
 
+def learnPostcondition():
+	postcondition = "true"
 
+	testClass = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/StackContractTest.cs"
+	putName = "PUT_PushContract"
+	teacher.modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
+
+
+if __name__ == '__main__':
+
+	#framework = Framework()
+	learner = learner.Houdini("","","","")
+
+	learnPostcondition()
 #     #Max Rounds seen in evaluations of data structure 22: so set max rounds to 50.
 #     def dataStructureTest(this, testMethod, boolparams, intparams, vsSolution, vsTestFile, vsTestDll, pexBin, vsNamespace, vsType, c5Bin, typeLearner, threshold, learnerOutDir):
 #         print "Beginning! -- initializing"
