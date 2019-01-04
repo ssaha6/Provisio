@@ -15,19 +15,16 @@ from os import sys,path
 sys.path.append(path.dirname(path.abspath(__file__)))
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-import learner
-import teacher
+#import learner
+#import teacher
 ##from utilityPython import utils
 ##from benchmarkSet import BenchmarkSet
 
 #from learner import Learner
-#from teacher import Teacher
-
+from teacher import *
+from learner import *
 
 class Framework:
-
-	def __init__(self):
-		pass
 
 	def __init__(self, learner, teacher):
 		self.learner = learner
@@ -37,89 +34,98 @@ class Framework:
 		self.loop = 0
 		self.numPredicates = 0
 
-	def runTest(self):
+	#def runTest(self):
 
-		print "Beginning! -- initializing"
+		# print "Beginning! -- initializing"
 
-		#utils.debug_print("cleaning solution...", False)
+		# #utils.debug_print("cleaning solution...", False)
 
-		# part of learner...
-		# self.removeOldPreFiles(testMethod, learnerOutDir)
-		# self.create_names_file_with_bool(boolparams, intparams, -1, 1, '{}\{}'.format(learnerOutDir, 'pre.names'))
+		# # part of learner...
+		# S# self.removeOldPreFiles(testMethod, learnerOutDir)
+		# # self.create_names_file_with_bool(boolparams, intparams, -1, 1, '{}\{}'.format(learnerOutDir, 'pre.names'))
 
-		#part of teacher
-		#remove_assumes(vsClassFile ,mut)
+		# #part of teacher
+		# #remove_assumes(vsClassFile ,mut)
 
-		# intparams
-		# old_precondition = "true"
-		# precondition = "true"
+		# # intparams
+		# # old_precondition = "true"
+		# # precondition = "true"
 
-		#dovetail: part of framework
-		self.learner.setIntLowHigh(-3, 3)
+		# #dovetail: part of framework
+		# self.learner.setIntLowHigh(-3, 3)
 
-		while True:
+		# while True:
 
-			print "loop count: " + str(self.loop)
+		# 	print "loop count: " + str(self.loop)
 
-			negPoints = self.teacher.runPTest(self.precondition)
-			print(negPoints)
+		# 	negPoints = self.teacher.runPTest(self.precondition)
+		# 	print(negPoints)
 
-			# negPoints = self.teacher.getNegetivePoints(self.precondition)
+		# 	# negPoints = self.teacher.getNegetivePoints(self.precondition)
 
-			# posPoints = [[1, 1, "false"],
-			#              [2, 0,  "false"],
-			#              [1, 0, "true"],
-			#              [0, 2,  "false"],
-			#              [0, 2147483647,  "false"],
-			#              [0, 2, "false"],
-			#              [3, 0,  "false"]
-			#              ]
+		# 	# posPoints = [[1, 1, "false"],
+		# 	#              [2, 0,  "false"],
+		# 	#              [1, 0, "true"],
+		# 	#              [0, 2,  "false"],
+		# 	#              [0, 2147483647,  "false"],
+		# 	#              [0, 2, "false"],
+		# 	#              [3, 0,  "false"]
+		# 	#              ]
 
-			# negPoints = [[0, 0,  "true"],
-			#              [2, 0,  "false"],
-			#              [0, 2,  "true"],
-			#              [2, 0,  "false"],
-			#              [],
-			#              [5, 0,  "false"],
-			#              [0, -2147483647,  "false"]
-			#              ]
+		# 	# negPoints = [[0, 0,  "true"],
+		# 	#              [2, 0,  "false"],
+		# 	#              [0, 2,  "true"],
+		# 	#              [2, 0,  "false"],
+		# 	#              [],
+		# 	#              [5, 0,  "false"],
+		# 	#              [0, -2147483647,  "false"]
+		# 	#              ]
 
-			# precondition = self.learner.learn(negPoints + posPoints)
+		# 	# precondition = self.learner.learn(negPoints + posPoints)
 
-			print precondition
-			#part of leraenr
-			# precondition = calllearer(pospts, negpts)
-			# self.call_c50(self.set_c50_args(('{}\{}'.format(learnerOutDir, 'pre')), c5Bin, typeLearner, threshold))
-			# precondition = self.get_pre_from_json('{}\{}'.format(learnerOutDir, 'pre.json'))
-			# utils.debug_print("Precondition Learned: " + str(precondition)+os.linesep, True)
+		# 	print precondition
+		# 	#part of leraenr
+		# 	# precondition = calllearer(pospts, negpts)
+		# 	# self.call_c50(self.set_c50_args(('{}\{}'.format(learnerOutDir, 'pre')), c5Bin, typeLearner, threshold))
+		# 	# precondition = self.get_pre_from_json('{}\{}'.format(learnerOutDir, 'pre.json'))
+		# 	# utils.debug_print("Precondition Learned: " + str(precondition)+os.linesep, True)
 
-			# Def filter part of leaner
-			# num_pred = self.sort_and_unique_preds('{}\{}'.format(learnerOutDir, 'pre.data'), False, loop, testMethod)
+		# 	# Def filter part of leaner
+		# 	# num_pred = self.sort_and_unique_preds('{}\{}'.format(learnerOutDir, 'pre.data'), False, loop, testMethod)
 
-			if self.teacher.stoppingCondition():
-				return  #result ???
+		# 	if self.teacher.stoppingCondition():
+		# 		return  #result ???
 
-			self.precondition = precondition
-			self.dataPoints.append(posPoints)
-			self.dataPoints.append(negPoints)
-			# self.numPredicates = # ?? old_num_pred = num_pred
+		# 	self.precondition = precondition
+		# 	self.dataPoints.append(posPoints)
+		# 	self.dataPoints.append(negPoints)
+		# 	# self.numPredicates = # ?? old_num_pred = num_pred
 
-			self.loop += 1
+		# 	self.loop += 1
 
-def learnPostcondition():
-	postcondition = "true"
-
-	testClass = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/StackContractTest.cs"
-	putName = "PUT_PushContract"
-	teacher.modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
-
+	def learnPostcondition(self):
+		testClass = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/StackContractTest.cs"
+		putName = "PUT_PushContract"
+		solutionFile = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructures.sln"
+		testType = "StackContractTest"
+		testNamespace = "DataStructures.Test"
+		testDll = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/bin/Debug/DataStructuresTest.dll"
+		
+		postcondition = "true"
+		
+		modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
+		modifycode.runCompiler("MSBuild.exe",solutionFile)
+		#def runTeacher(self, dll, testMethod, testNamespace, testType):
+		self.teacher.runTeacher(testDll, putName,testNamespace, testType)
 
 if __name__ == '__main__':
 
-	#framework = Framework()
-	learner = learner.Houdini("","","","")
+	learner = Houdini("houdini","","","")
+	teacher = Pex("pex.exe",['/nor', '/NoConsole',  '/rl:xml', '/ro:myreport', '/rn:rep'])
+	framework = Framework(learner, teacher)
+	framework.learnPostcondition()
 
-	learnPostcondition()
+
 #     #Max Rounds seen in evaluations of data structure 22: so set max rounds to 50.
 #     def dataStructureTest(this, testMethod, boolparams, intparams, vsSolution, vsTestFile, vsTestDll, pexBin, vsNamespace, vsType, c5Bin, typeLearner, threshold, learnerOutDir):
 #         print "Beginning! -- initializing"
