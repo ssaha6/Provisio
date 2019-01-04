@@ -13,56 +13,69 @@ import io
 ##from utilityPython import utils
 ##from benchmarkSet import BenchmarkSet
 from lxml import etree
-import modifycode
-import reportparser
-import pex
-import csharp
+#import modifycode
+#import reportparser
+#import pex
+#import csharp
 
 
 class Teacher:
 
-	def __init__(self, testMethod, benchmarkSet, compilerCommand, pexBinary, precondition = "true"):
-		self.testMethod = testMethod
-		self.benchmarkSet = benchmarkSet
-		self.compilerCommand = compilerCommand
-		self.pexBinary = pexBinary
-		self.precondition = precondition
-		self.num_pred = 0
-		self.done = False
+	#def __init__(self, testMethod, benchmarkSet, compilerCommand, pexBinary, precondition = "true"):
+	#	self.testMethod = testMethod
+	#	self.benchmarkSet = benchmarkSet
+	#	self.compilerCommand = compilerCommand
+	#	self.pexBinary = pexBinary
+	#	self.precondition = precondition
+	#	self.num_pred = 0
+	#	self.done = False
+	binary =""
+	arguments =[]
 
-	def dataPointsContainsNegPoints(self):
+	def __init__(self, binary, arguments):
+		self.binary = binary
+		self.arguments = arguments
+
+	def runTeacher(self):
+		pass
+	
+	def generateSamples(self):
 		pass
 
-	def reCompileAndRunPex(self):
-		utils.resetLocation(re.sub('\\\\rep\\\\report.per$', '', self.benchmarkSet.reportFile))
 
-		csharp.run_compiler(csharp.set_compiler_args(self.compilerCommand, self.benchmarkSet.solutionFile))
+	#def dataPointsContainsNegPoints(self):
+	#	pass
 
-		pex.run_pex(
-		    pex.set_pex_args(
-		        self.pexBinary, self.benchmarkSet.testDll, self.testMethod, self.benchmarkSet.testNamespace,
-		        self.benchmarkSet.testType
-		    )
-		)
+	#def reCompileAndRunPex(self):
+	#	pass
+		#utils.resetLocation(re.sub('\\\\rep\\\\report.per$', '', self.benchmarkSet.reportFile))
 
-		return reportparser.parseReport(self.benchmarkSet.reportPath)
+#		csharp.run_compiler(csharp.set_compiler_args(self.compilerCommand, self.benchmarkSet.solutionFile))
+#		pex.run_pex(
+#	pex.set_pex_args(
+#		        self.pexBinary, self.benchmarkSet.testDll, self.testMethod, self.benchmarkSet.testNamespace,
+#		        self.benchmarkSet.testType
+#		    )
+#		)
 
-	def runPTest(self, precondition):
-		# Remove all assumes
-		modifycode.insert_p_in_put(self.benchmarkSet.testFile, precondition, self.testMethod)
-		ret_p = self.reCompileAndRunPex()
-		return ret_p
+	# 	return reportparser.parseReport(self.benchmarkSet.reportPath)
 
-	def runNotPTest(self, precondition):
-		modifycode.insert_p_in_put(self.benchmarkSet.testFile, "!(" + precondition + ")", self.testMethod)
-		# self.insert_assumes(self.benchmarkSet.testFile, self.testMethod)
-		ret_not_p = self.reCompileAndRunPex()
-		# cleaning up after not p test
-		modifycode.remove_assumes(self.bookmarkSet.testFile, self.testMethod)
-		return ret_not_p
+	# def runPTest(self, precondition):
+	# 	# Remove all assumes
+	# 	modifycode.insert_p_in_put(self.benchmarkSet.testFile, precondition, self.testMethod)
+	# 	ret_p = self.reCompileAndRunPex()
+	# 	return ret_p
+
+	# def runNotPTest(self, precondition):
+	# 	modifycode.insert_p_in_put(self.benchmarkSet.testFile, "!(" + precondition + ")", self.testMethod)
+	# 	# self.insert_assumes(self.benchmarkSet.testFile, self.testMethod)
+	# 	ret_not_p = self.reCompileAndRunPex()
+	# 	# cleaning up after not p test
+	# 	#modifycode.remove_assumes(self.bookmarkSet.testFile, self.testMethod)
+	# 	return ret_not_p
 		
-	def check_precondition(precondition):
-		pass
+	#def check_precondition(precondition):
+	#	pass
 
 	# region: check precondition
 	# def check_precondition(precondition):
@@ -91,8 +104,8 @@ class Teacher:
 	#     #selfrun_compiler(selfset_compiler_args(vsSolution))
 	# endregion
 
-	def stoppingCondition():
-		pass
+	#def stoppingCondition():
+	#	pass
 
 	# def stoppingCondition(old_precondition, precondition, old_num_predicates, num_predicates):
 	#     if old_precondition == precondition and num_pred == old_num_pred:

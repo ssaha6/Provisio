@@ -30,12 +30,15 @@ def set_compiler_args(compilerCommand, solutionFile):
 
 
 def run_compiler(args):
-	try:
-		compilerOutput = executecommand.runCommand(args)
-		if re.match('0 Error\(s\)', compilerOutput):
-			return
-		else:
-			raise ValueError('Compilation has errors')
-	except Exception as e:
-		utils.debug_print("Compilation Exception", True)
-		utils.printExceptionAndExit(e, "Compilation error")
+	
+	compilerOutput = executecommand.runCommand(args)
+	parsedOutput =  (compilerOutput.split(os.linesep))[-4:-2]
+
+	# assert MSBuild.exe output near the  end  [0 Warning(s), 0 Error(s)]
+	assert len(parsedOutput) == 2
+
+	if parsedOutput[1].find("0 Error(s)") != -1:
+		return
+	else:
+		raise ValueError('Compilation Errors')
+

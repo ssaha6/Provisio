@@ -28,6 +28,11 @@ def runCommand(args):
 		executionRun.stdout.close()
 		print(executionOutput)
 		return executionOutput
-	except Exception as e:
-		print(executionOutput)
-		shell.printExceptionAndExit(e, "Execution Error")
+	except OSError as e:
+		print "OSError > ",e.errno
+		print "OSError > ",e.strerror
+		print "OSError > ",e.filename		
+		raise OSError
+	except:
+		print "Error > ", sys.exc_info()[0]
+		raise OSError

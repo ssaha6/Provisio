@@ -13,20 +13,28 @@ import shutil
 import io
 ##from utilityPython import utils
 ##from benchmarkSet import BenchmarkSet
+from teacher import Teacher
 from lxml import etree
 import executecommand
 
+class Pex(Teacher):
 
-def set_pex_args(pexBinary, testDll, testMethod, testNamespace, testType):
-	pex_other_options = ' /nor /NoConsole  /rl:xml   /ro:myreport /rn:rep  '
-	cmd_exec = [
-	    pexBinary, testDll, '/membernamefilter:M:' + testMethod + '!', '/methodnamefilter:' + testMethod + '!',
-	    '/namespacefilter:' + testNamespace + '!', '/typefilter:' + testType + '! ', '/nor', '/NoConsole', '/rl:xml',
-	    '/ro:myreport', '/rn:rep'
-	]
-	#return str(pex_bin + ' ' + test_dll + ' /membernamefilter:M:' + pex_method + '! /methodnamefilter:' + pex_method + '! /namespacefilter:'+namespace+'! /typefilter:'+ typ+ '! ' + pex_other_options)
-	# print(cmd_exec)
-	return cmd_exec
+	def __init__(self, binary, otherArgs):
+		Teacher.__init__(self,binary,otherArgs)
+
+	def runTeacher(self, dll, testMethod, testNamespace, testType):
+		print ' '.join(self.getExecCommand(dll,testMethod,testNamespace,testType))
+	
+	def generateSamples(self):
+		pass
+
+	def getExecCommand(self,testDll, testMethod, testNamespace, testType):
+		
+		cmd_exec = [self.binary, testDll, '/membernamefilter:M:' + testMethod + '!', '/methodnamefilter:' + testMethod + '!',
+	    '/namespacefilter:' + testNamespace + '!', '/typefilter:' + testType + '! ']
+		
+		cmd_exec.extend(self.arguments)
+		return cmd_exec
 
 
 def run_pex(args):

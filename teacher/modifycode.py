@@ -11,6 +11,7 @@ import json
 import time
 import shutil
 import io
+import csharp
 ##from utilityPython import utils
 ##from benchmarkSet import BenchmarkSet
 from lxml import etree
@@ -120,3 +121,10 @@ def insertPostConditionInPexAssert(CSharpFile, postcondition, methodname):
 				#print line.encode.encode("utf-8")("utf-8")
 
 			fWrite.write("%s\n" % line)
+
+def runCompiler(compilerCommand, solutionFile):
+	csharp.run_compiler(csharp.set_compiler_args(compilerCommand, solutionFile))
+
+
+	
+
