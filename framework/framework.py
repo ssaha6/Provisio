@@ -110,18 +110,28 @@ class Framework:
 		testType = "StackContractTest"
 		testNamespace = "DataStructures.Test"
 		testDll = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/bin/Debug/DataStructuresTest.dll"
-		
+		allPostconditions = []
+		allDataPoints = []
 		postcondition = "true"
-		
-		modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
-		modifycode.runCompiler("MSBuild.exe",solutionFile)
-		
-		#def runTeacher(self, dll, testMethod, testNamespace, testType):
-		self.teacher.runTeacher(testDll, putName,testNamespace, testType)
-		datapoints = self.teacher.generateSamples()
-		postcondition = self.learner.learn(datapoints)
-		
-		print postcondition
+		round = 1
+		while True:
+			
+			modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
+			modifycode.runCompiler("MSBuild.exe",solutionFile)
+			
+			#def runTeacher(self, dll, testMethod, testNamespace, testType):
+			self.teacher.runTeacher(testDll, putName,testNamespace, testType)
+			datapoints = self.teacher.generateSamples("houdini")
+			print datapoints
+			allDataPoints.extend(datapoints)
+			postcondition = self.learner.learn(allDataPoints)
+			print "round: "+ str(round) + postcondition
+
+			if postcondition in allPostconditions:
+				break
+			
+			allPostconditions.append(postcondition)
+			round = round +1
 
 if __name__ == '__main__':
 

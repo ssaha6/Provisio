@@ -39,33 +39,37 @@ class Pex(Teacher):
 		#pexOutput = subprocess.check_output(args , shell=True)
 		pexOutput = executecommand.runCommand(args)
 	
-	def generateSamples(self):
-		fullPath = join(self.pexReportPath ,self.pexReportDirName)
-		fullPathName = join(fullPath, "report.per") 
-		tree = etree.parse(fullPathName)
-		dataPoints = []
-		for test in tree.xpath('//generatedTest'):
-			singlePoint = []
-			for value in test.xpath('./value'):
-				if re.match("^\$.*", value.xpath('./@name')[0]):
-					singlePoint.append(str(value.xpath('string()')))
+	# refactor this later
+	def generateSamples(self, learner):
+		
+		if learner == "houdini":
+			fullPath = join(self.pexReportPath ,self.pexReportDirName)
+			fullPathName = join(fullPath, "report.per") 
+			tree = etree.parse(fullPathName)
+			dataPoints = []
+			for test in tree.xpath('//generatedTest'):
+				singlePoint = []
+				for value in test.xpath('./value'):
+					if re.match("^\$.*", value.xpath('./@name')[0]):
+						singlePoint.append(str(value.xpath('string()')))
 
-			if test.get('status') == 'normaltermination':
-				singlePoint.append('true')
+				if test.get('status') == 'normaltermination':
+					singlePoint.append('true')
 
-			elif test.get('status') == 'assumptionviolation':
-				continue
-			elif test.get('status') == 'minimizationrequest':
-				continue
-			# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
-			else:
-				singlePoint.append('false')
-			# alternatives: test.get('failed') => true / None
-			# exceptionState
-			# failureText
-			dataPoints.append(singlePoint)
-		return dataPoints
-
+				elif test.get('status') == 'assumptionviolation':
+					continue
+				elif test.get('status') == 'minimizationrequest':
+					continue
+				# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
+				else:
+					# Houdini - Only positive points
+					singlePoint.append('true')
+				# alternatives: test.get('failed') => true / None
+				# exceptionState
+				# failureText
+				dataPoints.append(singlePoint)
+			return dataPoints
+		return []
 	def getExecCommand(self,testDll, testMethod, testNamespace, testType):
 		
 		cmd_exec =[self.binary,testDll ,'/membernamefilter:M:'+testMethod+'!', '/methodnamefilter:'+testMethod+'!','/namespacefilter:'+testNamespace +'!', '/typefilter:'+testType+'!']
