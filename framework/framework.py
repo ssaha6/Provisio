@@ -115,13 +115,19 @@ class Framework:
 		
 		modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
 		modifycode.runCompiler("MSBuild.exe",solutionFile)
+		
 		#def runTeacher(self, dll, testMethod, testNamespace, testType):
 		self.teacher.runTeacher(testDll, putName,testNamespace, testType)
+		datapoints=self.teacher.generateSamples()
+		print datapoints
 
 if __name__ == '__main__':
 
 	learner = Houdini("houdini","","","")
-	teacher = Pex("pex.exe",['/nor', '/NoConsole',  '/rl:xml', '/ro:myreport', '/rn:rep'])
+	rootPathReport = 'C:\Users\\astor\PexResearchTools\DataDriven\MultiLearnerPrecondition'
+	reportDirName = 'report'
+	reportFormat = 'Xml'
+	teacher = Pex("pex.exe", rootPathReport,reportDirName,reportFormat ,['/nor'])
 	framework = Framework(learner, teacher)
 	framework.learnPostcondition()
 

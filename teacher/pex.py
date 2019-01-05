@@ -2,6 +2,7 @@ import subprocess
 import sys
 import re
 import os
+from os.path import join
 import time
 import argparse
 import collections
@@ -19,35 +20,72 @@ import executecommand
 
 class Pex(Teacher):
 
-	def __init__(self, binary, otherArgs):
+	pexReportPath = ""
+	pexReportDirName = ""
+	pexReportFormat = ""
+	def __init__(self, binary,reportPath,reportDirName,reportFormat,otherArgs):
 		Teacher.__init__(self,binary,otherArgs)
+		self.pexReportPath = reportPath 
+		self.pexReportDirName = reportDirName
+		self.pexReportFormat = reportFormat
 
 	def runTeacher(self, dll, testMethod, testNamespace, testType):
-		print ' '.join(self.getExecCommand(dll,testMethod,testNamespace,testType))
+		
+		args = self.getExecCommand(dll,testMethod,testNamespace,testType)
+		
+		print "pex argument: "+ ' '.join(args)
+
+		#sys.exit(0)
+		#pexOutput = subprocess.check_output(args , shell=True)
+		pexOutput = executecommand.runCommand(args)
 	
 	def generateSamples(self):
-		pass
+		fullPath = join(self.pexReportPath ,self.pexReportDirName)
+		fullPathName = join(fullPath, "report.per") 
+		tree = etree.parse(fullPathName)
+		dataPoints = []
+		for test in tree.xpath('//generatedTest'):
+			singlePoint = []
+			for value in test.xpath('./value'):
+				if re.match("^\$.*", value.xpath('./@name')[0]):
+					singlePoint.append(str(value.xpath('string()')))
+
+			if test.get('status') == 'normaltermination':
+				singlePoint.append('true')
+
+			elif test.get('status') == 'assumptionviolation':
+				continue
+			elif test.get('status') == 'minimizationrequest':
+				continue
+			# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
+			else:
+				singlePoint.append('false')
+			# alternatives: test.get('failed') => true / None
+			# exceptionState
+			# failureText
+			dataPoints.append(singlePoint)
+		return dataPoints
 
 	def getExecCommand(self,testDll, testMethod, testNamespace, testType):
 		
-		cmd_exec = [self.binary, testDll, '/membernamefilter:M:' + testMethod + '!', '/methodnamefilter:' + testMethod + '!',
-	    '/namespacefilter:' + testNamespace + '!', '/typefilter:' + testType + '! ']
-		
+		cmd_exec =[self.binary,testDll ,'/membernamefilter:M:'+testMethod+'!', '/methodnamefilter:'+testMethod+'!','/namespacefilter:'+testNamespace +'!', '/typefilter:'+testType+'!']
+		cmd_exec.extend(['/ro:'+self.pexReportPath, '/rn:'+self.pexReportDirName,'/rl:'+self.pexReportFormat])
 		cmd_exec.extend(self.arguments)
+		
 		return cmd_exec
 
 
-def run_pex(args):
-	try:
-		pexOutput = executecommand.runCommand(args)
-		# ????????????????????
-		# if re.match('0 Error\(s\)', compilerOutput):
-		#         return
-		#     else:
-		#         raise ValueError('Pex Exploration has errors')
-	except Exception as e:
-		utils.debug_print("PEX Exception", True)
-		utils.printExceptionAndExit(e, "PEX error")
+	#def run_pex(args):
+		#try:
+			#pexOutput = executecommand.runCommand(args)
+			# ????????????????????
+			# if re.match('0 Error\(s\)', compilerOutput):
+			#         return
+			#     else:
+			#         raise ValueError('Pex Exploration has errors')
+		#except Exception as e:
+			#utils.debug_print("PEX Exception", True)
+			#utils.printExceptionAndExit(e, "PEX error")
 
 
 #Passing test
