@@ -118,12 +118,18 @@ class Framework:
 		
 		#def runTeacher(self, dll, testMethod, testNamespace, testType):
 		self.teacher.runTeacher(testDll, putName,testNamespace, testType)
-		datapoints=self.teacher.generateSamples()
-		print datapoints
+		datapoints = self.teacher.generateSamples()
+		postcondition = self.learner.learn(datapoints)
+		
+		print postcondition
 
 if __name__ == '__main__':
 
 	learner = Houdini("houdini","","","")
+	intVariables = ['oldCount', 's1.Count','oldTop','s1.Peek()', 'oldx','x']
+	boolVariables = ["s1.Contains(x)"]
+	learner.setVariables(intVariables, boolVariables)
+
 	rootPathReport = 'C:\Users\\astor\PexResearchTools\DataDriven\MultiLearnerPrecondition'
 	reportDirName = 'report'
 	reportFormat = 'Xml'
