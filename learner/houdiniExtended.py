@@ -122,12 +122,22 @@ if __name__ == '__main__':
     
     learner = HoudiniExtended("houdini", "", "", "")
 
-    intVariables = ['oldCount', 's1.Count','oldTop','s1.Peek()', 'oldx','x']
-    boolVariables = ["s1.Contains(x)"]
+    # intVariables = ['oldCount', 's1.Count', 'oldTop', 's1.Peek()', 'oldx', 'x']
+    intVariables = ['Old_s1.Count', 'New_s1.Count', 'Old_s1.Peek()', 'New_s1.Peek()', 'Old_x', 'New_x']
+
+    boolVariables = ["Old_s1.Contains(x)"]
 
     learner.setVariables(intVariables, boolVariables)
     
-    dataPoints = [ ['1','2','10','0','0','0','true','true'],['2','3','10','0','0','0', 'true', 'true'],['1','2','0','0','0','0','true','true'],['1','2','-5','2','2','2','true','true'],['1','2','0','1','1','1','true','true'],['1','2','1','0','0','0','true','true'],['1','2','2','0','0','0','true','true'] ]
+    dataPoints = [
+        ['1', '2', '10', '0', '0', '0', 'true', 'true'],
+        ['2', '3', '10', '0', '0', '0', 'true', 'true'],
+        ['1', '2', '0', '0', '0', '0', 'true', 'true'],
+        ['1', '2', '-5', '2', '2', '2', 'true', 'true'],
+        ['1', '2', '0', '1', '1', '1', 'true', 'true'],
+        ['1', '2', '1', '0', '0', '0', 'true', 'true'],
+        ['1', '2', '2', '0', '0', '0', 'true', 'true']
+    ]
 
     print learner.learn(dataPoints)
     
