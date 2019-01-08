@@ -30,11 +30,19 @@ class Houdini(Learner):
     def readResults(self):
         pass
 
-
+    
+    # TODO: Add sanity Check
     def runLearner(self):
         # Numpy implementation, future work
         # A = np.array(np.array(self.dataPoints) == "true")
         # X, y = A[:, :-1], A[:, -1]
+        
+        
+        #assert there are no integers
+        assert(len(self.intVariables) == 0)
+
+        #asset all data point elements are "true" or "false"
+        assert(all ( all( v == "true" or v == "false" for v in dp) for dp in self.dataPoints))
         
         
         #Assign all predicate to true
@@ -70,101 +78,26 @@ class Houdini(Learner):
         
         return conjunct
         
+       
         
-    def createBooleanPredicateData(self, intVars):
-        names_file = list()
-
-        if len(intVars) >= 2:
-            all_combination = itertools.combinations(intVars, 2)
-            for (var1, var2) in all_combination:
-                name_expr = " ( " + var1 + " == " + var2 + " ) "
-                names_file.append(name_expr)
-                name_expr = "(not ("  + var1 + " == " + var2 + "))"
-                names_file.append(name_expr)
-        return names_file
-        
-        
-    def createBooleanPredicate(self, intVars):
-        names_file = list()
-
-        if len(intVars) >= 2:
-            all_combination = itertools.combinations(intVars, 2)
-            for (var1, var2) in all_combination:
-                name_expr = "(= " + var1 + " " + var2 + ")"
-                names_file.append(name_expr)
-                name_expr = "(not (= "  + var1 + " " + var2 + "))"
-                names_file.append(name_expr)
-
-        return names_file
-        
-        
-        
-    #TODO: NEEDS CLEANUP
-    def learn(self, dataPoints):
-        
-        booleanPredicatesFeatures = list()
-        
-        #Convert Variables
-        self.symbolicIntVariablesBackup = self.symbolicIntVariables
-        booleanPredicatesFeatures =  self.createBooleanPredicate(self.symbolicIntVariables)
-        
-        print "=================="
-        print booleanPredicatesFeatures
-        print "=================="
-        
-        # why clear??
-        self.symbolicIntVariables = []
-
-        self.symbolicBoolVariablesBackup = self.symbolicBoolVariables
-        # extend list of boolean predicates('equality predicates') with boolean observer method such as collection.Contains(item)  
-        booleanPredicatesFeatures.extend(self.symbolicBoolVariables)
-        self.symbolicBoolVariables = booleanPredicatesFeatures
-        
-        newDataPoints = []
-        
-        
-        for dp in dataPoints:
-            
-            #createBooleanPredicate Assume all variables are integer variables
-            consPredicateStr = self.createBooleanPredicateData(dp[0:len(self.symbolicIntVariablesBackup)])
-            
-            onePoint = eval("["+(",".join(consPredicateStr))+"]")
-            onePoint = map((lambda b: "true" if b else "false"), onePoint)
-            
-            onePoint.extend(dp[len(self.symbolicIntVariablesBackup):])
-            # appending to data points
-            newDataPoints.append(onePoint)
-            
-        print "++++++++++++"
-        print newDataPoints
-        print "++++++++++++"
-
-        self.setDataPoints(newDataPoints)
-
-        #self.generateFiles()
-        result =  self.runLearner()
-
-
-        self.symbolicIntVariables = self.symbolicIntVariablesBackup
-        self.symbolicBoolVariables = self.symbolicBoolVariablesBackup
-        
-        
-        simplifiedResults = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)    
-        restoredResults = self.restoreVariables(simplifiedResults)
-
-        
-        print "******  Round Result: "
-        return restoredResults
 
 
 if __name__ == '__main__':
+    
     learner = Houdini("houdini", "", "", "")
-
-    intVariables = ['oldCount', 's1.Count','oldTop','s1.Peek()', 'oldx','x']
-    boolVariables = ["s1.Contains(x)"]
-
+    
+    intVariables = []
+    boolVariables = ['b1', 'b2', ]
     learner.setVariables(intVariables, boolVariables)
-
-    dataPoints = [ ['1','2','10','0','0','0','true','true'],['2','3','10','0','0','0', 'true', 'true'],['1','2','0','0','0','0','true','true'],['1','2','-5','2','2','2','true','true'],['1','2','0','1','1','1','true','true'],['1','2','1','0','0','0','true','true'],['1','2','2','0','0','0','true','true'] ]
-
+    dataPoints =[
+                ["false", "false", "true"],
+                ["true", "true", "false"],
+                ["false", "true", "true"],
+                ["true", "false", "false"],
+                ]
+   
+    # learner.setDataPoints(dataPoints)
+    # learner.runLearner()
+    
     print learner.learn(dataPoints)
+    
