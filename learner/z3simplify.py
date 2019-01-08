@@ -17,6 +17,10 @@ import random
 import shell
 #from os import sys, path
 #sys.path.append((path.dirname(path.abspath(__file__)+'\z3')  ))
+
+# How to import z3
+# 1. Add z3/z3-4.8.1-win/bin to path
+# 2. Copy z3-4.8.1-win/bin/python/z3 folder to Python27/Lib
 from z3 import *
 
 def simplify(intVariables, boolVariables, precondition):
