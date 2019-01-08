@@ -15,9 +15,10 @@ import itertools
 import random
 from os import sys, path
 import reviewData
+import numpy as np
 
 from learner import Learner
-from sygus import Sygus
+from sygusLIA import SygusLIA
 from houdini import Houdini
 
 import z3simplify
@@ -81,6 +82,53 @@ class HoudiniExtended(Learner):
             extendedPoint.append(self.pythonToCSData(eval(predicate)))
         
         return extendedPoint
+       
+        
+
+    def splitNewOldVariables(self, variableList):
+        result = {}
+        for i in range(0, len(variableList)):
+            match = re.search("(New|Old)_(.*)", variableList[i])
+            if match:
+                varState, varName = match.group(1), match.group(2)
+                if not varState in result:
+                    result[varState] = {}
+                result[varState][varName] = i                    
+                
+        return result
+        
+        
+    
+    def createFunctionPredicates(self):
+        
+        intVarSplitByState = self.splitNewOldVariables(self.symbolicIntVariables)
+        
+        npDataPoints = np.array(self.dataPoints)
+
+        #extract columns    
+        intDataPoints = npDataPoints[:, range(0,len(self.symbolicIntVariables))] 
+        oldIntVarData = intDataPoints[:,list(intVarSplitByState['Old'].values())] 
+        
+        result = [] 
+        for newIntVar in intVarSplitByState['New'].keys():
+            fnValue = intDataPoints[:, [intVarSplitByState['New'][newIntVar]]]
+            newdata = np.concatenate((oldIntVarData, fnValue), axis=1) 
+                            
+            sygusLearner = SygusLIA("esolver", "learner/EnumerativeSolver/bin/starexec_run_Default", "grammar=True", "tempLocation")
+            
+            sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByState['Old'].keys()), [])
+            
+            nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
+            
+                  
+            dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
+            
+            result.append((nameExpr, dataExpr))
+            
+        return result
+
+
+    
         
         
     # TODO: Add sanity Check
