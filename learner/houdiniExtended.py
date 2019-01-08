@@ -139,8 +139,8 @@ class HoudiniExtended(Learner):
         # Format: allPredicates  = [ (namesExpr, DataExpr) ] 
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
-        # allPredicates = allPredicates + self.createFunctionPredicates(intvars, boolvars)
-        
+        allPredicates = allPredicates + self.createFunctionPredicates()
+
         predicateNamesExpr, predicatesDataExpr = zip(*allPredicates)
         
         combinedData = []  
