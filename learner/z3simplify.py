@@ -134,6 +134,12 @@ if __name__ == '__main__':
     simplify(synbolicIntVariables, synbolicBoolVariables, precondition)
     
     
+    intVariables = ['Old_s1Count', 'New_s1Count', 'Old_s1Peek', 'New_s1Peek', 'Old_x', 'New_x']
+    boolVariables = ["s1Containsx"]
+    
+    intExpression = "( = New_x (+ Old_s1Count 1) )"
+    simplify(intVariables, boolVariables, intExpression)
+
     
 # LOOK FOR SIMPLIFY PROPAGATE
    
