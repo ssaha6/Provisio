@@ -107,7 +107,7 @@ class Sygus(Learner):
 
     
     def readResults(self, result):
-        resultRegex = '\(\s*define-fun\s+Precondition\s*\((?:\(\s*variable(?:Int|Bool)[\d]{3}\s*(?:Int|Bool)\s*\)\s*)*\)\s*Bool\s+(.*)\)'
+        resultRegex = '\(\s*define-fun\s+Precondition\s*\((?:\(\s*[_0-9A-Za-z]+\s*(?:Int|Bool)\s*\)\s*)*\)\s*(?:Int|Bool)\s+(.*)\)'
         
         regex = re.search(resultRegex, result,  re.MULTILINE | re.DOTALL)
         
