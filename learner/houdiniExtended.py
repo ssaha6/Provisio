@@ -115,7 +115,7 @@ class HoudiniExtended(Learner):
         
         
     # TODO: Add sanity Check
-    def learn(self, dataPoints):
+    def learn(self, dataPoints, simplify=True):
         
         self.setDataPoints(dataPoints)
 
@@ -140,11 +140,12 @@ class HoudiniExtended(Learner):
         result = houdini.learn(combinedData, simplify=False)
         
         
-        result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
-
+        if simplify:
+            result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+        
         restoredResults = self.restoreVariables(result)
         
-        print restoredResults
+        return restoredResults
         
         
         
