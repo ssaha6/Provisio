@@ -55,23 +55,6 @@ class HoudiniExtended(Learner):
         
 
 
-    def csToPythonData(self, dataString):
-        if dataString == "true":
-            return "True"
-        elif dataString == "false":
-            return "False"
-        else:
-            return dataString
-    
-    def pythonToCSData(self, dataValue):
-        if dataValue == True:
-            return "true"
-        elif dataValue == False:
-            return "false"
-        else:
-            return dataValue
-
-
     def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
         
         for i in range(0,  len(allVariables)):

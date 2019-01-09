@@ -83,7 +83,24 @@ class  Learner:
     def readResults(self):
         pass
 
-
+    
+    def csToPythonData(self, dataString):
+        if dataString == "true":
+            return "True"
+        elif dataString == "false":
+            return "False"
+        else:
+            return dataString
+    
+    def pythonToCSData(self, dataValue):
+        if dataValue == True:
+            return "true"
+        elif dataValue == False:
+            return "false"
+        else:
+            return dataValue
+    
+    
 
     def make_linear_combination(self, number_of_variables, low, high):
         init_list = [[i] for i in range(low, high + 1)]
