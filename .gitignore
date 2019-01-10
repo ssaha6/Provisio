@@ -266,3 +266,5 @@ log
 /z3-4.7.1-x64-win
 
 *.cache
+!learner/EnumerativeSolver/*
+!learner/eusolver/*
