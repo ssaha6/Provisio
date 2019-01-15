@@ -125,7 +125,7 @@ class Sygus(Learner):
         absBinary = shell.sanitizePath(self.binary, "win")
         head, tail = os.path.split(absBinary)
 
-        args = " ".join(['wsl', './' + tail, shell.sanitizePath(self.tempLocation + '/precondition.sl', "wsl")]) #redirect?
+        args = " ".join([shell.wslBin(), './' + tail, shell.sanitizePath(self.tempLocation + '/precondition.sl', "wsl")]) #redirect?
         
         result = shell.runCommand(args, head)
         result = self.readResults(result)        

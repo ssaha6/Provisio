@@ -13,6 +13,7 @@ import shutil
 import io
 import itertools
 import random
+import platform
 
 # #from utilityPython import utils
 # #from benchmarkSet import BenchmarkSet
@@ -54,6 +55,14 @@ import random
 # self.osType = "linux"
 
 
+def wslBin():
+    is32bit = (platform.architecture()[0] == '32bit')
+    system32 = os.path.join(os.environ['SystemRoot'], 
+                        'SysNative' if is32bit else 'System32')
+    wsl = os.path.join(system32, 'wsl.exe')
+    return wsl
+    
+
 def sanitizePath(path, osType):
     try:
         absPath = os.path.abspath(path).strip()
@@ -61,9 +70,9 @@ def sanitizePath(path, osType):
         if osType == "windows" or osType == "win":
             return absPath
         elif osType == "linux" or osType == "wsl":
-            return runCommand('wsl wslpath -a \'' + absPath + '\'')
+            return runCommand( wslBin() + ' wslpath -a \'' + absPath + '\'')
 
-    except ex:
+    except Exception as ex:
         printExceptionAndExit(ex, "Error Converting Path")
 
 
