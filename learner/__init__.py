@@ -9,3 +9,4 @@
 
 from learner import Learner
 from houdini import Houdini
+from houdiniExtended import HoudiniExtended
