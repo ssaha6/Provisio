@@ -268,3 +268,4 @@ log
 *.cache
 !learner/EnumerativeSolver/*
 !learner/eusolver/*
+tempLocation/precondition.sl
