@@ -89,16 +89,24 @@ class HoudiniExtended(Learner):
         npDataPoints = np.array(self.dataPoints)
 
         #extract columns    
+        # Assuming: 
+        #       The data points are structured as: 
+        #                  first the integer datapoints, then the boolean datapoints
         intDataPoints = npDataPoints[:, range(0,len(self.symbolicIntVariables))] 
         oldIntVarData = intDataPoints[:,list(intVarSplitByState['Old'].values())] 
         
         result = [] 
+        # all the old and new variables can interleaf but order among new is preserved.
         for newIntVar in intVarSplitByState['New'].keys():
+            #labels of new datapoints
             fnValue = intDataPoints[:, [intVarSplitByState['New'][newIntVar]]]
-            newdata = np.concatenate((oldIntVarData, fnValue), axis=1) 
                             
+            #features of new datapoints
+            newdata = np.concatenate((oldIntVarData, fnValue), axis=1) 
+            
             sygusLearner = SygusLIA("esolver", "learner/EnumerativeSolver/bin/starexec_run_Default", "grammar=True", "tempLocation")
             
+            #variables for new datapoints
             sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByState['Old'].keys()), [])
             
             nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
@@ -108,6 +116,7 @@ class HoudiniExtended(Learner):
             
             result.append((nameExpr, dataExpr))
             
+        #  Results contains the predicate functions.
         return result
 
 
@@ -127,6 +136,7 @@ class HoudiniExtended(Learner):
         predicateNamesExpr, predicatesDataExpr = zip(*allPredicates)
         
         combinedData = []  
+        # iterating over rows
         for point in self.dataPoints:
             combinedData.append(self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesDataExpr) + [point[-1]])
             # all predicates used to evaluate  data in infix
