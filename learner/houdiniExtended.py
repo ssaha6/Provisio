@@ -121,6 +121,35 @@ class HoudiniExtended(Learner):
 
 
     
+    def createThresholdPredicates(self, intVar, dataPoints):
+        result = list()
+        i = 0
+        for i in range(0, len(intVar)):
+            
+            intVarValues = [row[i] for row in dataPoints]
+            maxValue = max(intVarValues)
+            minValue = min(intVarValues)
+            result.append((
+                            "( <= " + intVar[i] + " " + str(maxValue) + ")",
+                            "( " + intVar[i] + " <= " + maxValue + " )"
+                        ))
+                        
+            result.append((
+                            "( >= " + intVar[i] + " " + str(minValue) + ")",
+                            "( " + intVar[i] + " >= " + str(minValue) + ")"
+                        ))            
+            
+        return result
+                
+        
+
+    def createAllPredicates(self):
+        allPredicates = [(x,x) for x in self.symbolicBoolVariables]
+        allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
+        allPredicates = allPredicates + self.createFunctionPredicates()
+        allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)
+        
+        return zip(*allPredicates)
         
         
     # TODO: Add sanity Check
@@ -129,11 +158,7 @@ class HoudiniExtended(Learner):
         self.setDataPoints(dataPoints)
 
         # Format: allPredicates  = [ (namesExpr, DataExpr) ] 
-        allPredicates = [(x,x) for x in self.symbolicBoolVariables]
-        allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
-        allPredicates = allPredicates + self.createFunctionPredicates()
-
-        predicateNamesExpr, predicatesDataExpr = zip(*allPredicates)
+        predicateNamesExpr, predicatesDataExpr = self.createAllPredicates()
         
         combinedData = []  
         # iterating over rows
