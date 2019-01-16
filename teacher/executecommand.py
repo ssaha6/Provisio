@@ -26,7 +26,7 @@ def runCommand(args):
 			executionOutput = executionOutput + os.linesep + str(line.rstrip())
 
 		executionRun.stdout.close()
-		print(executionOutput)
+		# print(executionOutput)
 		return executionOutput
 	except OSError as e:
 		print "OSError > ",e.errno
