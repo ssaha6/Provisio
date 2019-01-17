@@ -26,13 +26,13 @@ from learner import *
 
 class Framework:
 
-	def __init__(self, learner, teacher):
-		self.learner = learner
-		self.teacher = teacher
-		self.dataPoints = []
-		self.precondition = "true"
-		self.loop = 0
-		self.numPredicates = 0
+    def __init__(self, learner, teacher):
+        self.learner = learner
+        self.teacher = teacher
+        self.dataPoints = []
+        self.precondition = "true"
+        self.loop = 0
+        self.numPredicates = 0
 
     def learnPostcondition(self):
         testClass = "../../ContractsSubjects/Stack/StackTest/StackContractTest.cs"

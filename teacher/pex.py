@@ -25,7 +25,7 @@ class Pex(Teacher):
 		Teacher.__init__(self, binary, otherArgs)
 		self.pexReportFile = pexReportFile 
 		self.pexReportFormat = reportFormat
-		self.numVariables = numVariable
+		self.numVariables = numVariables
 		self.rn = os.path.split(os.path.split(self.pexReportFile)[0])[1] 
 		self.ro = os.path.split(os.path.split(os.path.split(self.pexReportFile)[0])[0])[1] 
 		
