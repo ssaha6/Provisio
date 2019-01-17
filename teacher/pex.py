@@ -20,32 +20,29 @@ import executecommand
 
 class Pex(Teacher):
 
-	pexReportPath = ""
-	pexReportDirName = ""
-	pexReportFormat = ""
-	def __init__(self, binary,reportPath,reportDirName,reportFormat,otherArgs):
-		Teacher.__init__(self,binary,otherArgs)
-		self.pexReportPath = reportPath 
-		self.pexReportDirName = reportDirName
+
+	def __init__(self, binary, pexReportFile, reportFormat, numVariables, otherArgs):
+		Teacher.__init__(self, binary, otherArgs)
+		self.pexReportFile = pexReportFile 
 		self.pexReportFormat = reportFormat
+		self.numVariables = numVariable
+		self.rn = os.path.split(os.path.split(self.pexReportFile)[0])[1] 
+		self.ro = os.path.split(os.path.split(os.path.split(self.pexReportFile)[0])[0])[1] 
+		
 
 	def runTeacher(self, dll, testMethod, testNamespace, testType):
 		
 		args = self.getExecCommand(dll,testMethod,testNamespace,testType)
-		
-		print "pex argument: "+ ' '.join(args)
-
+		print "pex argument: " + ' '.join(args)
 		#sys.exit(0)
 		#pexOutput = subprocess.check_output(args , shell=True)
 		pexOutput = executecommand.runCommand(args)
 	
 	# refactor this later
-	def generateSamples(self, learner):
+	def generateSamples(self):
 		
-		if learner == "houdini":
-			fullPath = join(self.pexReportPath ,self.pexReportDirName)
-			fullPathName = join(fullPath, "report.per") 
-			tree = etree.parse(fullPathName)
+		if True: #learner.name == "HoudiniExtended":
+			tree = etree.parse(self.pexReportFile)
 			dataPoints = []
 			for test in tree.xpath('//generatedTest'):
 				singlePoint = []
@@ -64,16 +61,18 @@ class Pex(Teacher):
 				else:
 					# Houdini - Only positive points
 					singlePoint.append('true')
-				# alternatives: test.get('failed') => true / None
-				# exceptionState
-				# failureText
+					
+				if len(singlePoint) < self.numVariables : # len(learner.symbolicBoolVariables) + len(learner.symbolicIntVariables):
+					continue
+				
 				dataPoints.append(singlePoint)
+			
 			return dataPoints
-		return []
+
 	def getExecCommand(self,testDll, testMethod, testNamespace, testType):
 		
 		cmd_exec =[self.binary,testDll ,'/membernamefilter:M:'+testMethod+'!', '/methodnamefilter:'+testMethod+'!','/namespacefilter:'+testNamespace +'!', '/typefilter:'+testType+'!']
-		cmd_exec.extend(['/ro:'+self.pexReportPath, '/rn:'+self.pexReportDirName,'/rl:'+self.pexReportFormat])
+		cmd_exec.extend(['/ro:'+self.ro, '/rn:'+self.rn,'/rl:'+self.pexReportFormat])
 		cmd_exec.extend(self.arguments)
 		
 		return cmd_exec
