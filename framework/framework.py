@@ -74,10 +74,8 @@ if __name__ == '__main__':
     learner.setVariables(intVariables, boolVariables)
     
     # Report path is relative to vscode root dir... 
-    reportFormat = 'Xml'
     teacher = Pex(  "pex.exe",
-                    "../ContractsSubjects/Stack/StackTest/bin/Debug/r1/XmlReport/report.per",
-                    reportFormat,
+                    "../ContractsSubjects/Stack/StackTest/bin/Debug",
                     len(learner.intVariables) + len(learner.boolVariables),
                     ['/nor']
                 )

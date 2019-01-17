@@ -21,14 +21,14 @@ import executecommand
 class Pex(Teacher):
 
 
-	def __init__(self, binary, pexReportFile, reportFormat, numVariables, otherArgs):
+	def __init__(self, binary, pexReportFolder, numVariables, otherArgs):
 		Teacher.__init__(self, binary, otherArgs)
-		self.pexReportFile = pexReportFile 
-		self.pexReportFormat = reportFormat
+		self.pexReportFolder = pexReportFolder 
 		self.numVariables = numVariables
-		self.rn = os.path.split(os.path.split(self.pexReportFile)[0])[1] 
-		self.ro = os.path.split(os.path.split(os.path.split(self.pexReportFile)[0])[0])[1] 
-		
+		self.pexReportFormat = 'Xml'
+		self.rn = "XmlReport"  
+		self.ro = "r1" 
+
 
 	def runTeacher(self, dll, testMethod, testNamespace, testType):
 		
@@ -40,9 +40,9 @@ class Pex(Teacher):
 	
 	# refactor this later
 	def generateSamples(self):
-		
-		if True: #learner.name == "HoudiniExtended":
-			tree = etree.parse(self.pexReportFile)
+		if True:  #learner.name == "HoudiniExtended":
+			pexReportFile = os.path.join(self.pexReportFolder, self.ro, self.rn, "report.per")
+			tree = etree.parse(pexReportFile)
 			dataPoints = []
 			for test in tree.xpath('//generatedTest'):
 				singlePoint = []
@@ -55,6 +55,7 @@ class Pex(Teacher):
 
 				elif test.get('status') == 'assumptionviolation':
 					continue
+				
 				elif test.get('status') == 'minimizationrequest':
 					continue
 				# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
@@ -62,7 +63,7 @@ class Pex(Teacher):
 					# Houdini - Only positive points
 					singlePoint.append('true')
 					
-				if len(singlePoint) < self.numVariables : # len(learner.symbolicBoolVariables) + len(learner.symbolicIntVariables):
+				if len(singlePoint) < self.numVariables:
 					continue
 				
 				dataPoints.append(singlePoint)
