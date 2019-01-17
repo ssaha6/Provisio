@@ -34,50 +34,56 @@ class Framework:
 		self.loop = 0
 		self.numPredicates = 0
 
+    def learnPostcondition(self):
+        testClass = "../../ContractsSubjects/Stack/StackTest/StackContractTest.cs"
+        putName = "PUT_PushContract"
+        solutionFile = "../../ContractsSubjects/Stack/Stack.sln"
+        testType = "StackContractTest"
+        testNamespace = "Stack.Test"
+        testDll = "../../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll"
+        allPostconditions = []
+        allDataPoints = []
+        postcondition = "true"
+        round = 1
+        while True:
+            modifycode.insertPostConditionInPexAssert(testClass, postcondition, putName)
+            modifycode.runCompiler("MSBuild.exe",solutionFile)
+            #def runTeacher(self, dll, testMethod, testNamespace, testType):
+            self.teacher.runTeacher(testDll, putName,testNamespace, testType)
+            
+            datapoints = self.teacher.generateSamples()
+            print "Datapoints in Round: " + str(round)
+            print datapoints
+            allDataPoints.extend(datapoints)
+            print "All Datapoints accumulated: "
+            print allDataPoints
+            postcondition = self.learner.learn(allDataPoints)
+            print "round: "+ str(round) + postcondition
 
-	def learnPostcondition(self):
-		testClass = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/StackContractTest.cs"
-		putName = "PUT_PushContract"
-		solutionFile = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructures.sln"
-		testType = "StackContractTest"
-		testNamespace = "DataStructures.Test"
-		testDll = "C:/Users/astor/PexResearchTools/DataDriven/reportparserlearning/BenchmarksAll/DataStructures/DataStructuresTest/bin/Debug/DataStructuresTest.dll"
-		allPostconditions = []
-		allDataPoints = []
-		postcondition = "true"
-		round = 1
-		while True:
-			
-			modifycode.insertPostConditionInPexAssert(testClass,postcondition,putName)
-			modifycode.runCompiler("MSBuild.exe",solutionFile)
-			
-			#def runTeacher(self, dll, testMethod, testNamespace, testType):
-			self.teacher.runTeacher(testDll, putName,testNamespace, testType)
-			datapoints = self.teacher.generateSamples("houdini")
-			print datapoints
-			allDataPoints.extend(datapoints)
-			postcondition = self.learner.learn(allDataPoints)
-			print "round: "+ str(round) + postcondition
-
-			if postcondition in allPostconditions:
-				break
-			
-			allPostconditions.append(postcondition)
-			round = round +1
+            if postcondition in allPostconditions:
+                break
+            
+            allPostconditions.append(postcondition)
+            round = round +1
 
 if __name__ == '__main__':
 
-	learner = Houdini("houdini","","","")
-	intVariables = ['oldCount', 's1.Count','oldTop','s1.Peek()', 'oldx','x']
-	boolVariables = ["s1.Contains(x)"]
-	learner.setVariables(intVariables, boolVariables)
-
-	rootPathReport = 'C:\Users\\astor\PexResearchTools\DataDriven\MultiLearnerPrecondition'
-	reportDirName = 'report'
-	reportFormat = 'Xml'
-	teacher = Pex("pex.exe", rootPathReport,reportDirName,reportFormat ,['/nor'])
-	framework = Framework(learner, teacher)
-	framework.learnPostcondition()
+    learner = HoudiniExtended("HoudiniExtended","","","")
+    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    learner.setVariables(intVariables, boolVariables)
+    
+    # Report path is relative to vscode root dir... 
+    reportFormat = 'Xml'
+    teacher = Pex(  "pex.exe",
+                    "../ContractsSubjects/Stack/StackTest/bin/Debug/r1/XmlReport/report.per",
+                    reportFormat,
+                    len(learner.intVariables) + len(learner.boolVariables),
+                    ['/nor']
+                )
+    
+    framework = Framework(learner, teacher)
+    framework.learnPostcondition()
 
 
 #     #Max Rounds seen in evaluations of data structure 22: so set max rounds to 50.
