@@ -152,6 +152,9 @@ class HoudiniExtended(Learner):
         return zip(*allPredicates)
         
         
+    
+    # TODO: add bounds
+    # TODO: remove (= x y).. ( = y x)
     # TODO: Add sanity Check
     def learn(self, dataPoints, simplify=True):
         
