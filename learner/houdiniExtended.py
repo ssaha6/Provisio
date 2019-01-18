@@ -82,11 +82,11 @@ class HoudiniExtended(Learner):
         
         
     
-    def createFunctionPredicates(self):
+    def createFunctionPredicates(self, dataPoints):
         
         intVarSplitByState = self.splitNewOldVariables(self.symbolicIntVariables)
         
-        npDataPoints = np.array(self.dataPoints)
+        npDataPoints = np.array(dataPoints)
 
         #extract columns    
         # Assuming: 
@@ -143,11 +143,11 @@ class HoudiniExtended(Learner):
                 
         
 
-    def createAllPredicates(self):
+    def createAllPredicates(self, dataPoints):
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
-        allPredicates = allPredicates + self.createFunctionPredicates()
-        allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)
+        allPredicates = allPredicates + self.createFunctionPredicates(dataPoints)
+        allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, dataPoints)
         
         return zip(*allPredicates)
         
@@ -161,7 +161,7 @@ class HoudiniExtended(Learner):
         self.setDataPoints(dataPoints)
 
         # Format: allPredicates  = [ (namesExpr, DataExpr) ] 
-        predicateNamesExpr, predicatesDataExpr = self.createAllPredicates()
+        predicateNamesExpr, predicatesDataExpr = self.createAllPredicates(self.dataPoints)
         
         combinedData = []  
         # iterating over rows
