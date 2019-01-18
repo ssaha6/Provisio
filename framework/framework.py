@@ -67,11 +67,18 @@ class Framework:
             round = round +1
 
 if __name__ == '__main__':
-
-    learner = HoudiniExtended("HoudiniExtended","","","")
+    
+    # learner = HoudiniExtended("HoudiniExtended","","","")
+    # intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    # boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    # learner.setVariables(intVariables, boolVariables)
+    
+    
+    learner = DisjunctiveLearner("", "", "", "")
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
     learner.setVariables(intVariables, boolVariables)
+
     
     # Report path is relative to vscode root dir... 
     teacher = Pex(  "pex.exe",
