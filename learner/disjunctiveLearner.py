@@ -17,6 +17,7 @@ from os import sys, path
 import reviewData
 import numpy as np
 import math
+import operator
 
 from learner import Learner
 from houdiniExtended import HoudiniExtended
@@ -44,8 +45,172 @@ class DisjunctiveLearner(Learner):
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
         
         
+    # # TODO: extremely inefficient
+    # def evalautePredicate(self, predicate, dataPoint ):
+        
+    #     allVariables = self.symbolicIntVariables + self.symbolicBoolVariables
+    #     for i in range(0,  len(allVariables)):
+    #         exec(allVariables[i] + " = " + self.csToPythonData(dataPoint[i]))
+        
+    #     return eval(predicate)
+        
+            
+            
+    # For any set of (positive) samples S, let me define a similarity measure
+    # Sim(S):   
+    #     Take every predicate r and look at the vector v where
+    #     v[i]=+ if example i has p to be true and 
+    #     v[i]=- if example i has p to be false
+    #     Compute the entropy of this set.
+    #     Sum the above up for every r
+    
+    # def similarity(self, dataPoint, predicateNamesExpr, predicatesDataExpr):
+        
+    #     entropySum = 0
+    #     for predicate in predicatesDataExpr:
+    #         v = []
+    #         for data in dataPoints:
+    #             if self.evalautePredicate(predicate,data):
+    #                 v.append("+")
+    #             else:
+    #                 v.append("-")
+                    
+    #         entropySum = entropySum + self.shannonsEntropy(v)
+    #     return entropySum
+    
+    
+    # TODO: genrate all preedicates
+    
+    
+    def divideData(self, predicate, dataPoints):
+        allVariables = self.symbolicIntVariables + self.symbolicBoolVariables
+        
+        pos = []
+        neg = []
+        for dp in dataPoints:
+            for i in range(0,  len(allVariables)):
+                exec(allVariables[i] + " = " + self.csToPythonData(dp[i]))
+        
+            if eval(predicate):
+                pos.append(dp)
+            else:
+                neg.append(dp)
+              
+        return (pos, neg)  
+    
+    # So the algorithm now does this. It picks each predicate p, and splits the sample
+    # into S_p and S_notp. It then looks at the sum of Sim(S_p) and Sim(S_notp).
+    # Note that this is already quadratic time (so this makes sense perhaps only
+    # when we have more than two variables to choose to split on).
+    # We then choose the p that has the minimum sum of Sims on splits, greedily.
+    # Once we choose p, we dont look back. We examine each remaining set; if its
+    # coverable by a conjunctive formula with a large number of conjuncts, we go ahead
+    # with that conjunct.Otherwise we look for another variable to split on.
+
+    def learn(self, dataPoints, simplify=True):
+        
+        self.setDataPoints(dataPoints)
+
+        houdiniExt = HoudiniExtended("HoudiniExtended", "", "", "")
+        houdiniExt.setVariables(self.symbolicIntVariables, self.symbolicBoolVariables)
+        allPredicates = houdiniExt.createAllPredicates(dataPoints)
+        tightestConjunction = houdiniExt.learn(self.dataPoints, simplify=False, resultList=True)
+        #tightestConjunction = tightestConjunction.replace("((","(").replace("))",")")
+        # allwaysTruePredicate= tightestConjunction
+        
+        # remainingPred = allPredicates[1] - allwaysTruePredicate 
+        sanitizedAllPred = map(lambda x: self.sanitizeNames(x), allPredicates[0])
+        sanitizedAlwaysTruePred = map(lambda x: self.sanitizeNames(x), tightestConjunction)
         
         
+        remainingSanitizedPred = [item for item in sanitizedAllPred if item not in sanitizedAlwaysTruePred]
+          
+        remainingPred = []
+        for i in range(0, len(remainingSanitizedPred)):
+            try: 
+                listIndex = sanitizedAllPred.index(remainingSanitizedPred[i])
+                remainingPred.append(tightestConjunction[listIndex])
+            except:
+                pass
+        print remainingPred
+        
+        # remainingPred = []
+        # for pred in tightestConjunction:
+        #     if not (self.sanitizeNames(pred) in sanitizedAllPred):
+        #         remainingPred.append(pred)
+        
+        # print  remainingPred
+    #     similarityScore = {}
+    #     for pred in remainingPredicates:
+            
+    #         posPredDatPoints, negPredDataPoints = self.divideData(pred, self.dataPoints)
+
+    #         #computeEntropy(posPredDatPoints, negPredDataPoints, r)
+            
+    #         houdiniExt1 = HoudiniExtended("")
+    #         setvariables(remainingpredicates)
+    #         posPredConjunct = houdiniExt1.learn(posPredDataPOints)
+
+    #         negPredConjunct = houdiniExt1.learn(negPredDataPoints)
+            
+    #         similarityScore[pred] = self.score(posPredConjunct , negPredConjunct)
+            
+        
+    #     maxPred =  max(similarityScore.iteritems(), key=operator.itemgetter(1))[0]
+    #     print maxPred
+        
+        
+    # def score(posConjucts, negConjuncts):
+    #     return len(posConjucts.split(",")) + len(negConjuncts.split(","))
+        
+        
+    #     return (maxPred and  posPredConjunct) or (not maxPred and negPredConjunct )
+            
+            
+        """
+        predicateNamesExpr, predicatesDataExpr = self.createAllPredicates()
+        
+        # print self.similarity(self.dataPoints, predicateNamesExpr, predicatesDataExpr)
+        
+        
+        similarityScore = {}
+        for predicate in predicatesDataExpr:
+            posPoints, negPoints = self.dividedata(predicate, self.dataPoints)
+            similarityScore[predicate] = self.similarity(posPoints, predicateNamesExpr, predicatesDataExpr ) + self.similarity(negPoints, predicateNamesExpr, predicatesDataExpr )
+            
+        print similarityScore
+        
+        # for key, value in sorted(x.items(), key=operator.itemgetter(1), reverse=True):
+        #     learner = HoudiniExtended("houdini", "", "", "")
+        #     learner.setVariables(self.symbolicIntVariables, self.symbolicBoolVariables)
+        #     result = learner.learn(self.dataPoints, simplify=False)
+        
+        #     if result != False:
+        #         break
+        
+        
+        
+            
+        # return self.similarity(result)
+        
+        # for predicate in AllPredicate:
+        #     learner.setVariables(intVariables, boolVariables)
+        #     dp, notdp = divide data
+        #     leftPredicate[predicate] = learner.learn(dp, simplify=False)
+        #     rightPredicate[predicate] = learner.learn(notdp, simplify=False)
+        #     score[predicate] = similarity(learnleft) + similarity(learnright)
+        #     maxscore <= score
+        #         maxscore = score
+        #         maxpred = predicate
+        # finalExpression = (or leftPredicate[maxpred] rightPredicate[maxpred])
+        
+        # if simplify:
+        #     result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+        # restoredResults = self.restoreVariables(result)
+        # return finalExpression
+        """
+    
+    
     
 if __name__ == '__main__':
     
