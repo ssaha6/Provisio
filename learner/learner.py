@@ -63,6 +63,7 @@ class  Learner:
         self.symbolicIntVariables = map(lambda x: self.sanitizeNames(x), self.intVariables)
         self.symbolicBoolVariables = map(lambda x: self.sanitizeNames(x), self.boolVariables)
 
+    
     def restoreVariables(self, precondition):
         
         for i in range(0, len(self.symbolicIntVariables)):
@@ -70,6 +71,25 @@ class  Learner:
 
         for i in range(0, len(self.symbolicBoolVariables)):
             precondition = precondition.replace(self.symbolicBoolVariables[i], self.boolVariables[i])
+    
+        return precondition
+        
+        
+    def restoreVariablesList(self, precondition):
+        
+        for i in range(0, len(self.symbolicIntVariables)):
+            try: 
+                listIndex = precondition.index(self.symbolicIntVariables[i])    
+                precondition[listIndex] = self.intVariables[i]
+            except:
+                pass
+        
+        for i in range(0, len(self.symbolicBoolVariables)):
+            try: 
+                listIndex = precondition.index(self.symbolicBoolVariables[i])    
+                precondition[listIndex] = self.boolVariables[i]
+            except:
+                pass
     
         return precondition
         

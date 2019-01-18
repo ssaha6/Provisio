@@ -156,7 +156,7 @@ class HoudiniExtended(Learner):
     # TODO: add bounds
     # TODO: remove (= x y).. ( = y x)
     # TODO: Add sanity Check
-    def learn(self, dataPoints, simplify=True):
+    def learn(self, dataPoints, simplify=True, resultList=False):
         
         self.setDataPoints(dataPoints)
 
@@ -175,14 +175,17 @@ class HoudiniExtended(Learner):
         
         
         #turning simplify off so that it is still in infix form??? 
-        result = houdini.learn(combinedData, simplify=False)
+        result = houdini.learn(combinedData, simplify=False, resultList=resultList)
         
         
-        if simplify:
+        if not resultList and simplify:
             result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
         
-        restoredResults = self.restoreVariables(result)
-        
+        if not resultList: 
+            restoredResults = self.restoreVariables(result)
+        else:
+            restoredResults = self.restoreVariablesList(result)
+                
         return restoredResults
         
         

@@ -32,7 +32,7 @@ class Houdini(Learner):
 
     
     # TODO: Add sanity Check
-    def runLearner(self):
+    def runLearner(self, resultList=False):
         # Numpy implementation, future work
         # A = np.array(np.array(self.dataPoints) == "true")
         # X, y = A[:, :-1], A[:, -1]
@@ -69,16 +69,40 @@ class Houdini(Learner):
             if predAssignment[varIndex]:
                 posPred.append(self.symbolicBoolVariables[varIndex])
         
-        if len(posPred) == 0:
-            conjunct = "false"
-        elif len(posPred) == 1:
-            conjunct = posPred[0]
+        if resultList == False:
+            
+            if len(posPred) == 0:
+                conjunct = "false"
+            elif len(posPred) == 1:
+                conjunct = posPred[0]
+            else: 
+                conjunct = "( and " + " ".join(posPred) + " )"
+            
+            return conjunct
+        
+        else:
+            return posPred
+        
+        
+    def learn(self, dataPoints, simplify=True, resultList=False):
+        self.setDataPoints(dataPoints)
+
+        self.generateFiles()
+        result =  self.runLearner(resultList)
+        
+        #TODO: simplify will crash on resultList=True
+        if simplify and not resultList:
+            result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+
+        if resultList:
+            restoredResults = self.restoreVariablesList(result)
         else: 
-            conjunct = "( and " + " ".join(posPred) + " )"
+            restoredResults = self.restoreVariables(result)
         
-        return conjunct
-        
-       
+        print "******  Round Result: ", restoredResults
+        return restoredResults
+    
+     
         
 
 
