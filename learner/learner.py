@@ -121,9 +121,11 @@ class  Learner:
         if simplify:
             result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
 
+        #print "******  Synthesized Predicate Round Result(Before Restoring): ", result
+
         restoredResults = self.restoreVariables(result)
         
-        print "******  Round Result: ", restoredResults
+        #print "******  Synthesized Predicate Round Result(After Restoring): ", restoredResults
         return restoredResults
         
         

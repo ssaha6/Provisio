@@ -85,7 +85,7 @@ def runCommand(args, directory = '.'):
         # elif self.osType == "linux":
         #     args = re.sub('\s*(wsl\s+)*(.*)', 'wsl \g<2>', args)
 
-        print("Executing:", args)
+        #print("Executing:", args)
         executionOutput = ""
 
         executionRun = subprocess.Popen(args, cwd = directory, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -94,7 +94,7 @@ def runCommand(args, directory = '.'):
         
         executionOutput = executionOutput.strip()
         executionRun.stdout.close()
-        print("Output:", executionOutput)
+        #print("Output:", executionOutput)
         return executionOutput
 
     except Exception as e:
@@ -122,7 +122,7 @@ def printExceptionAndExit(e, msg):
 def writeFile( location, fileName, fileContents):
     absPath = os.path.abspath(location + '/' + fileName).strip()
 
-    print absPath
+    #print absPath
     #wb to output LF, w outputs CRLF
     with open(absPath, 'wb') as outfile:
         outfile.write(fileContents)

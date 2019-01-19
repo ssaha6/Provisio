@@ -98,6 +98,7 @@ class Sygus(Learner):
     def generateFiles(self):
         logic = "(set-logic LIA)"
         checkSynth = "(check-synth)"
+        #print "Generating Files"
 
         program = [logic, self.generateGrammar(), self.generateConstraints(self.dataPoints), checkSynth]
         fileContents = self.formatProgram(program)

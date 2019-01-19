@@ -27,7 +27,7 @@ def simplify(intVariables, boolVariables, precondition):
     set_option(max_args = 10000000, max_lines = 1000000, max_depth = 10000000, max_visited = 1000000)
     set_option(html_mode=False)
     set_fpa_pretty(flag=False)
-    print precondition
+    #print "predicates Before Simplifying: " + precondition
     
     intVars = [ Int(var) for var in intVariables]
     boolVars = [ Bool(var) for var in boolVariables]
@@ -70,7 +70,7 @@ def simplify(intVariables, boolVariables, precondition):
 
     # split_all = 
 
-    print str(result)
+    #print "After simplifying predicates "+ str(result)
     # result = [[ "d1", "d2", "d3"], #= conjunct && conjunct
     #           [ "d4", "d5", "d6"]]
     
@@ -97,8 +97,7 @@ def simplify(intVariables, boolVariables, precondition):
 
     
     # assert ( ( "And" not in simplifiedPrecondition) and ( "Or" not in simplifiedPrecondition ) )
-    
-    print simplifiedPrecondition
+    #print "simplified formula: " +simplifiedPrecondition
     return simplifiedPrecondition
     
     

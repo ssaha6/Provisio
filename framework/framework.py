@@ -54,15 +54,18 @@ class Framework:
             datapoints = self.teacher.generateSamples()
             print "Datapoints in Round: " + str(round)
             print datapoints
+            
             allDataPoints.extend(datapoints)
             print "All Datapoints accumulated: "
             print allDataPoints
+            
             postcondition = self.learner.learn(allDataPoints)
             print "round: "+ str(round) + postcondition
 
             if postcondition in allPostconditions:
                 break
-            
+            if round == 2:
+                break
             allPostconditions.append(postcondition)
             round = round +1
 
@@ -89,4 +92,3 @@ if __name__ == '__main__':
     
     framework = Framework(learner, teacher)
     framework.learnPostcondition()
-    

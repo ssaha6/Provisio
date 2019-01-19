@@ -24,7 +24,8 @@ class SygusLIA(Sygus):
 
     # todo: allow Int flag
     def generateGrammar(self, allowInt=False):
-
+        
+        #print "in generateGrammar SygusLIA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         intConsts = ["0", "1"]
         # boolConsts = ["true", "false"]
 

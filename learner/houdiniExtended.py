@@ -111,7 +111,7 @@ class HoudiniExtended(Learner):
             
             nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
             
-                  
+            #print "function learned: " + nameExpr     
             dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
             
             result.append((nameExpr, dataExpr))

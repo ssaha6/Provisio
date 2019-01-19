@@ -25,7 +25,7 @@ def set_compiler_args(compilerCommand, solutionFile):
 	ignoreWarning = '/property:WarningLevel=2'
 	solutionPath = solutionFile
 	cmd_exec = [compilerCommand, solutionPath, compilerOption, ignoreWarning]
-	# print(cmd_exec)
+
 	return cmd_exec
 
 
@@ -40,5 +40,5 @@ def run_compiler(args):
 	if parsedOutput[1].find("0 Error(s)") != -1:
 		return
 	else:
-		raise ValueError('Compilation Errors')
+		raise ValueError('The input solution did not compile Errors')
 

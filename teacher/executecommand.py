@@ -18,7 +18,6 @@ from lxml import etree
 
 def runCommand(args):
 	try:
-		print(args)
 		executionOutput = ""
 
 		executionRun = subprocess.Popen(args, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -26,7 +25,7 @@ def runCommand(args):
 			executionOutput = executionOutput + os.linesep + str(line.rstrip())
 
 		executionRun.stdout.close()
-		# print(executionOutput)
+		#print(executionOutput)
 		return executionOutput
 	except OSError as e:
 		print "OSError > ",e.errno

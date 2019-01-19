@@ -33,9 +33,7 @@ class Pex(Teacher):
 	def runTeacher(self, dll, testMethod, testNamespace, testType):
 		
 		args = self.getExecCommand(dll,testMethod,testNamespace,testType)
-		print "pex argument: " + ' '.join(args)
-		#sys.exit(0)
-		#pexOutput = subprocess.check_output(args , shell=True)
+		#print "pex argument: " + ' '.join(args)
 		pexOutput = executecommand.runCommand(args)
 	
 	# refactor this later
@@ -64,7 +62,6 @@ class Pex(Teacher):
 					
 				if len(singlePoint) < self.numVariables:
 					continue
-				print "modified: " + str(singlePoint)
 				dataPoints.append(singlePoint)
 			
 			return dataPoints
