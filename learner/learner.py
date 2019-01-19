@@ -53,6 +53,7 @@ class  Learner:
         indexRange = range(0, length)
         return map(lambda x: "variable" + type + '{0:03d}'.format(x), indexRange)
 
+    # we can get rig of fragile code since Houdini doesnt require re-writing
     def sanitizeNames(self, orinigalName):
         return orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","").replace("(","").replace(")","").replace(" ","").replace("notEq", "NEQ")
     
@@ -60,6 +61,7 @@ class  Learner:
     def renameVariables(self):
         #self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
         #self.symbolicBoolVariables  = self.generateSymbolicVariables('Bool', len(self.boolVariables))
+        #print str(self.__class__)
         self.symbolicIntVariables = map(lambda x: self.sanitizeNames(x), self.intVariables)
         self.symbolicBoolVariables = map(lambda x: self.sanitizeNames(x), self.boolVariables)
 
@@ -113,8 +115,9 @@ class  Learner:
 
 
     def learn(self, dataPoints, simplify=True):
+        # converts datapoints to list of tuples
         self.setDataPoints(dataPoints)
-
+        
         self.generateFiles()
         result =  self.runLearner()
         
