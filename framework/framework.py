@@ -42,7 +42,9 @@ class Framework:
         testNamespace = "Stack.Test"
         testDll = "../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll"
         allPostconditions = []
-        allDataPoints = []
+        allDataPoints = [['1', '2', '10', '0', '0', '0', 'false', 'true', 'true'], ['1', '2', '10', '0', '0', '0', 'false', 'true', 'true'], 
+        ['1', '2', '10', '1', '1', '1', 'false', 'true', 'true'],['1', '2', '0', '0', '0', '0', 'true', 'true', 'true'],['1', '2', '1', '1', '1', '1', 'true', 'true', 'true'], 
+        ['2', '3', '10', '0', '0', '0', 'false', 'true', 'true']]
         postcondition = "true"
         round = 1
         while True:
@@ -60,7 +62,7 @@ class Framework:
             print allDataPoints
             
             postcondition = self.learner.learn(allDataPoints)
-            print "round: "+ str(round) + postcondition
+            print "Postcoundition in Round: "+ str(round) + " "+postcondition
 
             if postcondition in allPostconditions:
                 break

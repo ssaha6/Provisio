@@ -68,7 +68,7 @@ class HoudiniExtended(Learner):
        
         
 
-    def splitNewOldVariables(self, variableList):
+    def mappedVariablesPrePostStates(self, variableList):
         result = {}
         for i in range(0, len(variableList)):
             match = re.search("(New|Old)_(.*)", variableList[i])
@@ -83,31 +83,36 @@ class HoudiniExtended(Learner):
         
     
     def createFunctionPredicates(self, dataPoints):
+        # We only learn function on interger variables
+        #splitNewOldVarable returns a map of maps where varibles are first mapped based on their pre and post state 
+        # and then based on the order they appear (index) 
+        intVarSplitByPrePostState = self.mappedVariablesPrePostStates(self.symbolicIntVariables)
         
-        intVarSplitByState = self.splitNewOldVariables(self.symbolicIntVariables)
-        
+        #converting list of tuples two D array
         npDataPoints = np.array(dataPoints)
 
         #extract columns    
         # Assuming: 
         #       The data points are structured as: 
         #                  first the integer datapoints, then the boolean datapoints
-        intDataPoints = npDataPoints[:, range(0,len(self.symbolicIntVariables))] 
-        oldIntVarData = intDataPoints[:,list(intVarSplitByState['Old'].values())] 
+        # below interates consecutatively
+        intDataPoints = npDataPoints[:, range(0,len(self.symbolicIntVariables))]
+        #beloW visit only indexes returned in .values()
+        oldIntVarData = intDataPoints[:,list(intVarSplitByPrePostState['Old'].values())] 
         
         result = [] 
         # all the old and new variables can interleaf but order among new is preserved.
-        for newIntVar in intVarSplitByState['New'].keys():
-            #labels of new datapoints
-            fnValue = intDataPoints[:, [intVarSplitByState['New'][newIntVar]]]
+        for newIntVar in intVarSplitByPrePostState['New'].keys():
+            #labels of new datapoints -
+            fnValueLabel = intDataPoints[:, [intVarSplitByPrePostState['New'][newIntVar]]]
                             
             #features of new datapoints
-            newdata = np.concatenate((oldIntVarData, fnValue), axis=1) 
+            newdata = np.concatenate((oldIntVarData, fnValueLabel), axis=1) 
             
             sygusLearner = SygusLIA("esolver", "learner/EnumerativeSolver/bin/starexec_run_Default", "grammar=True", "tempLocation")
             
             #variables for new datapoints
-            sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByState['Old'].keys()), [])
+            sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByPrePostState['Old'].keys()), [])
             
             nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
             
@@ -130,24 +135,26 @@ class HoudiniExtended(Learner):
             maxValue = max(intVarValues)
             minValue = min(intVarValues)
             result.append((
-                            "( <= " + intVar[i] + " " + str(maxValue) + ")",
-                            "( " + intVar[i] + " <= " + maxValue + " )"
+                            "(<= " + intVar[i] + " " + maxValue + ")",
+                            "(" + intVar[i] + " <= " + maxValue + ")"
                         ))
                         
             result.append((
-                            "( >= " + intVar[i] + " " + str(minValue) + ")",
-                            "( " + intVar[i] + " >= " + str(minValue) + ")"
+                            "(>= " + intVar[i] + " " + minValue + ")",
+                            "(" + intVar[i] + " >= " + minValue + ")"
                         ))            
             
         return result
                 
         
 
-    def createAllPredicates(self, dataPoints):
+    def createAllPredicates(self):
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
-        allPredicates = allPredicates + self.createFunctionPredicates(dataPoints)
-        allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, dataPoints)
+        allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
+        allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)
+        #print " prefix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][0])
+        #print os.linesep+ "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][1])
         
         return zip(*allPredicates)
         
@@ -161,26 +168,30 @@ class HoudiniExtended(Learner):
         self.setDataPoints(dataPoints)
 
         # Format: allPredicates  = [ (namesExpr, DataExpr) ] 
-        predicateNamesExpr, predicatesDataExpr = self.createAllPredicates(self.dataPoints)
+        predicatesPrefix, predicatesInfix = self.createAllPredicates()
         
         combinedData = []  
         # iterating over rows
         for point in self.dataPoints:
-            combinedData.append(self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesDataExpr) + [point[-1]])
+            combinedData.append(self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesInfix) + [point[-1]])
             # all predicates used to evaluate  data in infix
-                    
+
+        #print "boolean predicates for houdini: "+ str(predicatesPrefix)
         houdini = Houdini("houdini", "", "", "")
-        houdini.setVariables([], predicateNamesExpr)
+        houdini.setVariables([], predicatesPrefix)
         # predicates here need to be in prefix...as names
         
         
         #turning simplify off so that it is still in infix form??? 
         result = houdini.learn(combinedData, simplify=False)
-        
+        #print "renamed again result: "+ result
+        #print os.linesep+ "symbolic Int Var: " + str(self.symbolicIntVariables) 
+        #print os.linesep+ "symbolic Bool Var: " + str(self.symbolicBoolVariables) 
         
         if simplify:
             result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
-        
+        #print "simplified renamed variables: " + str(result)
+
         restoredResults = self.restoreVariables(result)
         
         return restoredResults

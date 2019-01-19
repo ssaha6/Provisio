@@ -30,20 +30,26 @@ class Houdini(Learner):
     def readResults(self):
         pass
 
+    #Optimization: No further re-writing needed. Predicates are in z3 format(infix form)
+    def setVariables(self, intVariables = [], boolVariables = []):
+        #TODO:  assert boolVariables are in prefix notation
+        #assert there are no integers
+        assert(len(self.intVariables) == 0)
+        self.symbolicIntVariables = intVariables
+        self.symbolicBoolVariables = boolVariables
     
+    def restoreVariables(self, Conjunction):
+        return Conjunction
+
     # TODO: Add sanity Check
     def runLearner(self):
+        #print os.linesep+ " bool variables renamed again: " + str(self.symbolicBoolVariables)
         # Numpy implementation, future work
         # A = np.array(np.array(self.dataPoints) == "true")
         # X, y = A[:, :-1], A[:, -1]
         
-        
-        #assert there are no integers
-        assert(len(self.intVariables) == 0)
-
         #asset all data point elements are "true" or "false"
         assert(all ( all( v == "true" or v == "false" for v in dp) for dp in self.dataPoints))
-        
         
         #Assign all predicate to true
         predAssignment = {varIndex: True for varIndex in range(0, len(self.symbolicBoolVariables))} 
@@ -54,9 +60,10 @@ class Houdini(Learner):
                 continue
             
             for dp in self.dataPoints:
-                #skip negetive points
-                if dp[-1] == "false": 
-                    continue
+                #There are no negative points for postcondition learning!!!
+                if dp[-1] == "false":
+                    #continue 
+                    raise ValueError("Inspect ME, I may be wrong")
                 
                 #datapoint is posetive 
                 #if datapoint on predicate is false
@@ -69,13 +76,14 @@ class Houdini(Learner):
             if predAssignment[varIndex]:
                 posPred.append(self.symbolicBoolVariables[varIndex])
         
+        # This is also wrong!, if no positive predicates than we should not output false but rather TRUE;
         if len(posPred) == 0:
-            conjunct = "false"
+            conjunct = "true"
         elif len(posPred) == 1:
             conjunct = posPred[0]
         else: 
             conjunct = "( and " + " ".join(posPred) + " )"
-        
+        #print os.linesep+ "conjunct from houdini: "+ conjunct
         return conjunct
         
        
