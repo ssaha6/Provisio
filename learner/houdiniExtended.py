@@ -53,21 +53,6 @@ class HoudiniExtended(Learner):
                 
         return namesDataFile
         
-
-
-    def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
-        
-        for i in range(0,  len(allVariables)):
-            exec(allVariables[i] + " = " + self.csToPythonData(dataPoint[i]))
-        
-        extendedPoint = []
-        for predicate in allPredicates:
-            extendedPoint.append(self.pythonToCSData(eval(predicate)))
-        
-        return extendedPoint
-       
-        
-
     def mappedVariablesPrePostStates(self, variableList):
         result = {}
         for i in range(0, len(variableList)):
@@ -157,8 +142,17 @@ class HoudiniExtended(Learner):
         #print os.linesep+ "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][1])
         
         return zip(*allPredicates)
+
+    def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
         
+        for i in range(0,  len(allVariables)):
+            exec(allVariables[i] + " = " + self.csToPythonData(dataPoint[i]))
         
+        extendedPoint = []
+        for predicate in allPredicates:
+            extendedPoint.append(self.pythonToCSData(eval(predicate)))
+        
+        return extendedPoint
     
     # TODO: add bounds
     # TODO: remove (= x y).. ( = y x)
@@ -167,7 +161,7 @@ class HoudiniExtended(Learner):
         
         self.setDataPoints(dataPoints)
 
-        # Format: allPredicates  = [ (namesExpr, DataExpr) ] 
+        # Format: allPredicates  = [ (predicatesPrefix, predicatesInfix) ] 
         predicatesPrefix, predicatesInfix = self.createAllPredicates()
         
         combinedData = []  
