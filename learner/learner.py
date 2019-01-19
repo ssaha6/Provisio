@@ -48,11 +48,6 @@ class  Learner:
         #remove conflicts
         self.dataPoints = reviewData.filterDataPointConflicts(self.dataPoints)
 
-
-    def generateSymbolicVariables(self, type, length):
-        indexRange = range(0, length)
-        return map(lambda x: "variable" + type + '{0:03d}'.format(x), indexRange)
-
     # we can get rig of fragile code since Houdini doesnt require re-writing
     def sanitizeNames(self, orinigalName):
         return orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","").replace("(","").replace(")","").replace(" ","").replace("notEq", "NEQ")
