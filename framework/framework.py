@@ -11,6 +11,7 @@ import json
 import time
 import shutil
 import io
+import logging
 from os import sys,path
 sys.path.append(path.dirname(path.abspath(__file__)))
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
@@ -23,6 +24,8 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 #from learner import Learner
 from teacher import *
 from learner import *
+
+
 
 class Framework:
 
@@ -42,9 +45,7 @@ class Framework:
         testNamespace = "Stack.Test"
         testDll = "../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll"
         allPostconditions = []
-        allDataPoints = [['1', '2', '10', '0', '0', '0', 'false', 'true', 'true'], ['1', '2', '10', '0', '0', '0', 'false', 'true', 'true'], 
-        ['1', '2', '10', '1', '1', '1', 'false', 'true', 'true'],['1', '2', '0', '0', '0', '0', 'true', 'true', 'true'],['1', '2', '1', '1', '1', '1', 'true', 'true', 'true'], 
-        ['2', '3', '10', '0', '0', '0', 'false', 'true', 'true']]
+        allDataPoints = [['1', '2', '10', '0', '0', '0', 'false', 'true', 'true']]
         postcondition = "true"
         round = 1
         while True:
@@ -54,12 +55,8 @@ class Framework:
             self.teacher.runTeacher(testDll, putName,testNamespace, testType)
             
             datapoints = self.teacher.generateSamples()
-            print "Datapoints in Round: " + str(round)
-            print datapoints
             
             allDataPoints.extend(datapoints)
-            print "All Datapoints accumulated: "
-            print allDataPoints
             
             postcondition = self.learner.learn(allDataPoints)
             print "Postcoundition in Round: "+ str(round) + " "+postcondition
@@ -73,18 +70,15 @@ class Framework:
 
 if __name__ == '__main__':
     
-    learner = HoudiniExtended("HoudiniExtended","","","")
+    #learner = HoudiniExtended("HoudiniExtended","","","")
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+    
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
     learner.setVariables(intVariables, boolVariables)
-    
-    
-    #learner = DisjunctiveLearner("", "", "", "")
-    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
-    #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-    #learner.setVariables(intVariables, boolVariables)
 
-    
     # Report path is relative to vscode root dir... 
     teacher = Pex(  "pex.exe",
                     "../ContractsSubjects/Stack/StackTest/bin/Debug",

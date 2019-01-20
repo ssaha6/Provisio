@@ -95,7 +95,7 @@ class HoudiniExtended(Learner):
             newdata = np.concatenate((oldIntVarData, fnValueLabel), axis=1) 
             
             sygusLearner = SygusLIA("esolver", "learner/EnumerativeSolver/bin/starexec_run_Default", "grammar=True", "tempLocation")
-            
+                
             #variables for new datapoints
             sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByPrePostState['Old'].keys()), [])
             
@@ -132,15 +132,17 @@ class HoudiniExtended(Learner):
         return result
                 
         
-
+    #return list of tuples; list has size two (prefix and infix)
     def createAllPredicates(self):
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
         allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
         allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)
         #print " prefix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][0])
-        #print os.linesep+ "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][1])
-        
+        #print "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][1])
+        #print ""
+        #print "prefix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[1][0])
+        #print "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[1][1])
         return zip(*allPredicates)
 
     def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
@@ -167,7 +169,7 @@ class HoudiniExtended(Learner):
         combinedData = []  
         # iterating over rows
         for point in self.dataPoints:
-            combinedData.append(self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesInfix) + [point[-1]])
+            combinedData.append( self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesInfix) + [point[-1]])
             # all predicates used to evaluate  data in infix
 
         #print "boolean predicates for houdini: "+ str(predicatesPrefix)

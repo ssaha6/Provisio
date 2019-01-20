@@ -21,9 +21,11 @@ import z3simplify
 
 class Houdini(Learner):
 
+    learntConjuction =[]
     def __init__(self, name, binary, parameters, tempLocation):
         Learner.__init__(self, name, binary, parameters, tempLocation)
-        
+
+
     def generateFiles(self):
         pass
 
@@ -34,7 +36,7 @@ class Houdini(Learner):
     def setVariables(self, intVariables = [], boolVariables = []):
         #TODO:  assert boolVariables are in prefix notation
         #assert there are no integers
-        assert(len(self.intVariables) == 0)
+        assert(len(intVariables) == 0)
         self.symbolicIntVariables = intVariables
         self.symbolicBoolVariables = boolVariables
     
@@ -76,13 +78,21 @@ class Houdini(Learner):
             if predAssignment[varIndex]:
                 posPred.append(self.symbolicBoolVariables[varIndex])
         
+
+
         # This is also wrong!, if no positive predicates than we should not output false but rather TRUE;
         if len(posPred) == 0:
             conjunct = "true"
+            # Quick Fix- to return list
+            self.learntConjuction = ["true"]
+        
         elif len(posPred) == 1:
             conjunct = posPred[0]
+            # Quick Fix- to return list
+            self.learntConjuction = posPred[0]
         else: 
-            conjunct = "( and " + " ".join(posPred) + " )"
+            conjunct = "(and " + " ".join(posPred) + ")"
+            self.learntConjuction = posPred
         #print os.linesep+ "conjunct from houdini: "+ conjunct
         return conjunct
         
