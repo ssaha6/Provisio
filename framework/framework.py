@@ -74,7 +74,7 @@ if __name__ == '__main__':
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
     #learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
-    
+    print "starting"
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
     learner.setVariables(intVariables, boolVariables)

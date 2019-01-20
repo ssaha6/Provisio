@@ -146,13 +146,16 @@ class HoudiniExtended(Learner):
         return zip(*allPredicates)
 
     def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
-        
+        state = dict()
         for i in range(0,  len(allVariables)):
-            exec(allVariables[i] + " = " + self.csToPythonData(dataPoint[i]))
+            state[allVariables[i]] = self.csToPythonData(dataPoint[i])
         
         extendedPoint = []
         for predicate in allPredicates:
-            extendedPoint.append(self.pythonToCSData(eval(predicate)))
+            resultEval = eval(predicate,{},state)
+            # Consider having pythontoCSData return a native Bool instead of string representation
+            # Also change houdine to check from native bools instead of "true", false"
+            extendedPoint.append(self.pythonToCSData(resultEval))
         
         return extendedPoint
     
