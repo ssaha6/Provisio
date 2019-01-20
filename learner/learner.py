@@ -83,16 +83,17 @@ class  Learner:
     
     def csToPythonData(self, dataString):
         if dataString == "true":
-            return "True"
+            return True
         elif dataString == "false":
-            return "False"
+            return False
         else:
-            return dataString
+            #we can only have integers
+            return int(dataString)
     
     def pythonToCSData(self, dataValue):
-        if dataValue == True:
+        if dataValue:
             return "true"
-        elif dataValue == False:
+        elif not (dataValue):
             return "false"
         else:
             return dataValue

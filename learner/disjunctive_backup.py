@@ -20,6 +20,8 @@ import math
 
 from houdiniExtended import HoudiniExtended
 import z3simplify
+import logging
+
 
 
 class DisjunctiveLearner(HoudiniExtended):
@@ -105,7 +107,6 @@ class DisjunctiveLearner(HoudiniExtended):
     # with that conjunct.Otherwise we look for another variable to split on.
 
     def learn(self, dataPoints, simplify=True):
-        
         self.setDataPoints(dataPoints)
         
         predicateNamesExpr, predicatesDataExpr = self.createAllPredicates()

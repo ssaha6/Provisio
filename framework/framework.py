@@ -63,17 +63,17 @@ class Framework:
 
             if postcondition in allPostconditions:
                 break
-            if round == 2:
-                break
+            #if round == 2:
+            #    break
             allPostconditions.append(postcondition)
             round = round +1
 
 if __name__ == '__main__':
-    
-    #learner = HoudiniExtended("HoudiniExtended","","","")
+
+    learner = HoudiniExtended("HoudiniExtended","","","")
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-    learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+    #learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
     
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]

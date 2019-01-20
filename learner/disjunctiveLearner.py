@@ -59,33 +59,33 @@ class DisjunctiveLearner(Learner):
         #createAllPredicates() returns 
         allSynthesizedPredicatesPrefix, allSynthesizedPredicatesInfix = houdiniEx.createAllPredicates()
         
-        combinedData = []  
+        booleanData = []  
         # iterating over rows
         for point in self.dataPoints:
             # only give houdiniEx boolean because at this no more integers
-            combinedData.append(houdiniEx.evalauteDataPoint(self.intVariables + self.boolVariables, point[0:-1], allSynthesizedPredicatesInfix) + [point[-1]])
+            booleanData.append(houdiniEx.evalauteDataPoint(self.intVariables + self.boolVariables, point[0:-1], allSynthesizedPredicatesInfix) + [point[-1]])
             # the infix form of the predicates are used to evalute them (into true or false)
 
-        #print combinedData
+        #print booleanData
         #Call Houdini directly
         listAllSynthesizePredInfix = list(allSynthesizedPredicatesInfix)
         houd = Houdini("Houdini","","","")
         houd.setVariables([], listAllSynthesizePredInfix)
 
-        houd.learn(combinedData, simplify=False)
+        houd.learn(booleanData, simplify=False)
         alwaysTruePredicate = []
         if len(houd.learntConjuction) > 0:
             alwaysTruePredicate = houd.learntConjuction
         
         remainingPredicates = list(set(listAllSynthesizePredInfix).symmetric_difference(set(alwaysTruePredicate)))
 
-        
         for i in xrange(0,len(remainingPredicates)):
             predicateToSplitOn = remainingPredicates[i]
+            
             print "splitting on: " + predicateToSplitOn
-            for j in xrange(1,len(remainingPredicates)):
+            for j in xrange(i+1,len(remainingPredicates)):
                 predicateR = remainingPredicates[j]
-                print "entrophy : " + predicateToSplitOn
+                print "entrophy : " + predicateR
 
         #turning simplify off so that it is still in infix form??? 
         #result = houdini.learn(combinedData, simplify=False)
