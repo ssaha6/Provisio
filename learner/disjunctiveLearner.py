@@ -47,7 +47,13 @@ class DisjunctiveLearner(Learner):
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
     
+    def splitSamples(self):
+        pass
+
+
     def learn(self, dataPoints, simplify=True):
+        # Intuition: Only need HoudiniExt to call createAllPredicates()
+        # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
         
         houdiniEx = HoudiniExtended("HoudiniExtended","","","")
@@ -71,8 +77,8 @@ class DisjunctiveLearner(Learner):
         listAllSynthesizePredInfix = list(allSynthesizedPredicatesInfix)
         houd = Houdini("Houdini","","","")
         houd.setVariables([], listAllSynthesizePredInfix)
-
         houd.learn(booleanData, simplify=False)
+        
         alwaysTruePredicate = []
         if len(houd.learntConjuction) > 0:
             alwaysTruePredicate = houd.learntConjuction
@@ -80,12 +86,12 @@ class DisjunctiveLearner(Learner):
         remainingPredicates = list(set(listAllSynthesizePredInfix).symmetric_difference(set(alwaysTruePredicate)))
 
         for i in xrange(0,len(remainingPredicates)):
-            predicateToSplitOn = remainingPredicates[i]
+            predicateSplit = remainingPredicates[i]
             
-            print "splitting on: " + predicateToSplitOn
-            for j in xrange(i+1,len(remainingPredicates)):
-                predicateR = remainingPredicates[j]
-                print "entrophy : " + predicateR
+            #print "splitting on: " + predicateSplit
+            #for j in xrange(i+1,len(remainingPredicates)):
+            #    predicateR = remainingPredicates[j]
+            #    print "entrophy : " + predicateR
 
         #turning simplify off so that it is still in infix form??? 
         #result = houdini.learn(combinedData, simplify=False)

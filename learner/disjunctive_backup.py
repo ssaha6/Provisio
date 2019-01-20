@@ -96,7 +96,7 @@ class DisjunctiveLearner(HoudiniExtended):
                 neg.append(dp)
               
         return (pos, neg)  
-    
+
     # So the algorithm now does this. It picks each predicate p, and splits the sample
     # into S_p and S_notp. It then looks at the sum of Sim(S_p) and Sim(S_notp).
     # Note that this is already quadratic time (so this makes sense perhaps only

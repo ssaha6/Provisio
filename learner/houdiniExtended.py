@@ -145,19 +145,21 @@ class HoudiniExtended(Learner):
         #print "infix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[1][1])
         return zip(*allPredicates)
 
-    def evalauteDataPoint(self, allVariables, dataPoint, allPredicates): 
+    def createStateInformation(self, allVariables, dataPoints):
         state = dict()
         for i in range(0,  len(allVariables)):
-            state[allVariables[i]] = self.csToPythonData(dataPoint[i])
-        
-        extendedPoint = []
+            state[allVariables[i]] = self.csToPythonData(dataPoints[i])
+        return state
+
+    def evalauteDataPoint(self, allPredicates, state): 
+        boolDataPoints = []
         for predicate in allPredicates:
             resultEval = eval(predicate,{},state)
             # Consider having pythontoCSData return a native Bool instead of string representation
             # Also change houdine to check from native bools instead of "true", false"
-            extendedPoint.append(self.pythonToCSData(resultEval))
+            boolDataPoints.append(self.pythonToCSData(resultEval))
         
-        return extendedPoint
+        return boolDataPoints
     
     # TODO: add bounds
     # TODO: remove (= x y).. ( = y x)
@@ -172,7 +174,10 @@ class HoudiniExtended(Learner):
         combinedData = []  
         # iterating over rows
         for point in self.dataPoints:
-            combinedData.append( self.evalauteDataPoint(self.symbolicIntVariables + self.symbolicBoolVariables, point[0:-1], predicatesInfix) + [point[-1]])
+            allInputVariables = self.symbolicIntVariables + self.symbolicBoolVariables
+            state = self.createStateInformation(allInputVariables, point[0:-1])
+            boolDataPoint = self.evalauteDataPoint(predicatesInfix, state) + [point[-1]]
+            combinedData.append(boolDataPoint)
             # all predicates used to evaluate  data in infix
 
         #print "boolean predicates for houdini: "+ str(predicatesPrefix)

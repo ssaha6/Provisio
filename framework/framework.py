@@ -63,8 +63,8 @@ class Framework:
 
             if postcondition in allPostconditions:
                 break
-            #if round == 2:
-            #    break
+            #if round == 1:
+            #s    break
             allPostconditions.append(postcondition)
             round = round +1
 
