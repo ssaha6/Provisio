@@ -45,10 +45,10 @@ class Framework:
         testNamespace = "Stack.Test"
         testDll = "../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll"
         allPostconditions = []
-        #allDataPoints = [('1', '2', '0', '0', '0', '0', 'true', 'true', 'true'),
-        #('2', '3', '10', '0', '0', '0', 'false', 'true', 'true'), 
-        #('1', '2', '10', '0', '0', '0', 'false', 'true', 'true')]
-        allDataPoints = []
+        allDataPoints = [('1', '2', '0', '0', '0', '0', 'true', 'true', 'true'),
+        ('2', '3', '10', '0', '0', '0', 'false', 'true', 'true'), 
+        ('1', '2', '10', '0', '0', '0', 'false', 'true', 'true')]
+        #allDataPoints = []
         postcondition = "true"
         round = 1
         while True:
@@ -74,10 +74,10 @@ class Framework:
 
 if __name__ == '__main__':
 
-    learner = HoudiniExtended("HoudiniExtended","","","")
+    #learner = HoudiniExtended("HoudiniExtended","","","")
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-    #learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+    learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
     print "starting"
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]

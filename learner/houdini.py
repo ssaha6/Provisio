@@ -51,7 +51,11 @@ class Houdini(Learner):
         # X, y = A[:, :-1], A[:, -1]
         
         #asset all data point elements are "true" or "false"
-        assert(all ( all( v == "true" or v == "false" for v in dp) for dp in self.dataPoints))
+        if len(self.dataPoints) == 0:
+            self.learntConjuction = ["true"]
+            return "true"
+
+        assert(len(self.dataPoints) or all ( all( v == "true" or v == "false" for v in dp) for dp in self.dataPoints))
         
         #Assign all predicate to true
         predAssignment = {varIndex: True for varIndex in range(0, len(self.symbolicBoolVariables))} 
@@ -62,7 +66,7 @@ class Houdini(Learner):
                 continue
             
             for dp in self.dataPoints:
-                #There are no negative points for postcondition learning!!!
+                #There are no negative points for postcondition learning!!! Should not check for this
                 if dp[-1] == "false":
                     #continue 
                     raise ValueError("Inspect ME, I may be wrong")
@@ -89,7 +93,7 @@ class Houdini(Learner):
         elif len(posPred) == 1:
             conjunct = posPred[0]
             # Quick Fix- to return list
-            self.learntConjuction = posPred[0]
+            self.learntConjuction = posPred
         else: 
             conjunct = "(and " + " ".join(posPred) + ")"
             self.learntConjuction = posPred

@@ -151,6 +151,7 @@ class HoudiniExtended(Learner):
             state[allVariables[i]] = self.csToPythonData(dataPoints[i])
         return state
 
+    ### TODO: make this return a tuple instead of list
     def evalauteDataPoint(self, allPredicates, state): 
         boolDataPoints = []
         for predicate in allPredicates:

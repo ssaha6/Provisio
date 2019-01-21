@@ -46,19 +46,19 @@ class Pex(Teacher):
 				# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
 				if test.get('status') == 'assumptionviolation' or test.get('status') == 'minimizationrequest':
 					continue
-				singlePoint = []
+				singlePoint = ()
 				for value in test.xpath('./value'):
 					if re.match("^\$.*", value.xpath('./@name')[0]):
 						val = str(value.xpath('string()'))
 						val = self.replaceIntMinAndMax(val)
-						singlePoint.append(val)
+						singlePoint = singlePoint + (val,)
 
 				if test.get('status') == 'normaltermination':
-					singlePoint.append('true')
+					singlePoint = singlePoint + ('true',)
 
 				else:
 					# Houdini - Only positive points
-					singlePoint.append('true')
+					singlePoint = singlePoint +('true',)
 					
 				if len(singlePoint) < self.numVariables:
 					continue
