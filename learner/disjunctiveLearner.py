@@ -96,9 +96,10 @@ class DisjunctiveLearner(Learner):
         # for computing disjunctions, we only need to considr p or not p both not both
         score = []
         sortedScore = []
-
-        for i in xrange(0, len(remainingPredicatesInfix)):
-            predicateSplitP = remainingPredicatesInfix[i]
+        
+        predicatesToSplitOn = remainingPredicatesInfix 
+        for i in xrange(0, len(predicatesToSplitOn)):
+            predicateSplitP = predicatesToSplitOn[i]
             positiveP = []
             negativeP = []
             positiveP, negativeP = self.splitSamples(
@@ -112,16 +113,16 @@ class DisjunctiveLearner(Learner):
                 state = houdiniEx.createStateInformation(
                     allInputVariables, posPoint[0:-1])
                 boolPDatapoints.append(houdiniEx.evalauteDataPoint(
-                    remainingPredicatesInfix, state) + [posPoint[-1]])
+                    predicatesToSplitOn, state) + [posPoint[-1]])
 
             for negPoint in negativeP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, negPoint[0:-1])
                 boolNegPDatapoints.append(houdiniEx.evalauteDataPoint(
-                    remainingPredicatesInfix, state) + [negPoint[-1]])
+                    predicatesToSplitOn, state) + [negPoint[-1]])
 
-            houd.setVariables([], remainingPredicatesInfix)
+            houd.setVariables([], predicatesToSplitOn)
             conjP = houd.learn(boolPDatapoints, simplify=False)
             conjPList = houd.learntConjuction
             conjN = houd.learn(boolNegPDatapoints, simplify=False)
@@ -142,7 +143,7 @@ class DisjunctiveLearner(Learner):
             # score.append({'predicate': predicateSplitP,
             # 'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
             score.append({'predicate': predicateSplitP,
-                          'score': entropyR, 'left': conjPList, 'right': conjNList})
+                        'score': entropyR, 'left': conjPList, 'right': conjNList})
 
             # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
         sortedScore = sorted(score, key=lambda x: x['score'])
@@ -154,6 +155,7 @@ class DisjunctiveLearner(Learner):
                 print pred['left']
                 print "right:"
                 print pred['right']
+        
         return houdiniEx.learn(dataPoints, simplify=True)
         # return "(Old_s1Count != New_s1Count )"
 
@@ -168,7 +170,8 @@ class DisjunctiveLearner(Learner):
         norm_counts = np.true_divide(counts, counts.sum())
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
-
+    
+    def scoreSum(self, remainingPredicates):
 
 if __name__ == '__main__':
 
