@@ -84,7 +84,7 @@ class DisjunctiveLearner(Learner):
                 allSynthesizedPredicatesInfix, state) + [point[-1]])
             # the infix form of the predicates are used to evalute them (into true or false)
 
-        #print booleanData
+        # print booleanData
         # Call Houdini directly
         listAllSynthesizePredInfix = list(allSynthesizedPredicatesInfix)
         houd = Houdini("Houdini", "", "", "")
@@ -98,11 +98,11 @@ class DisjunctiveLearner(Learner):
         # TODO: compute with prefix otherwie z3 throws error
         remainingPredicatesInfix = list(set(
             listAllSynthesizePredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
-        #remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
+        # remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
         # for computing disjunctions, we only need to considr p or not p both not both
         score = []
-        sortedScore =[]
-        
+        sortedScore = []
+
         for i in xrange(0, len(allSynthesizedPredicatesInfix)):
             predicateSplitP = allSynthesizedPredicatesInfix[i]
             positiveP = []
@@ -132,10 +132,10 @@ class DisjunctiveLearner(Learner):
             conjPList = houd.learntConjuction
             conjN = houd.learn(boolNegPDatapoints, simplify=False)
             conjNList = houd.learntConjuction
-            score.append({'predicate': predicateSplitP, 'score': len(
-                conjPList)+len(conjNList), 'left': conjPList, 'right': conjNList})
-            #sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
-        sortedScore = sorted(score, key=lambda x: x['score'] )
+            score.append({'predicate': predicateSplitP, 
+            'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
+            # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
+        sortedScore = sorted(score, key=lambda x: x['score'])
         print "predicate:"
         print sortedScore[-1]['predicate']
         print "left:"
@@ -145,13 +145,15 @@ class DisjunctiveLearner(Learner):
         return houdiniEx.learn(dataPoints, simplify=True)
         # return "(Old_s1Count != New_s1Count )"
 
+    def scoreByLen(self, conjPList, conjNList):
+        return len(conjPList)+len(conjNList)
 
 if __name__ == '__main__':
 
-    learner = DisjunctiveLearner("disjunctiveLearner", "", "", "")
+    learner=DisjunctiveLearner("disjunctiveLearner", "", "", "")
 
     # intVariables = ['oldCount', 's1.Count', 'oldTop', 's1.Peek()', 'oldx', 'x']
-    intVariables = ['Old_s1.Count', 'New_s1.Count',
+    intVariables=['Old_s1.Count', 'New_s1.Count',
                     'Old_s1.Peek()', 'New_s1.Peek()', 'Old_x', 'New_x']
 
     boolVariables = ["Old_s1.Contains(x)"]
