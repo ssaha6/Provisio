@@ -39,12 +39,6 @@ class DisjunctiveLearner(Learner):
     def readResults(self):
         pass
 
-    def shannonsEntropy(self, labels, base=None):
-        value, counts = np.unique(labels, return_counts=True)
-        norm_counts = np.true_divide(counts, counts.sum())
-        base = math.e if base is None else base
-        return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
-
     def splitSamples(self, predicate, houdiniEx, datapoints):
         allInputVariables = self.intVariables + self.boolVariables
         pos = []
@@ -103,8 +97,8 @@ class DisjunctiveLearner(Learner):
         score = []
         sortedScore = []
 
-        for i in xrange(0, len(allSynthesizedPredicatesInfix)):
-            predicateSplitP = allSynthesizedPredicatesInfix[i]
+        for i in xrange(0, len(remainingPredicatesInfix)):
+            predicateSplitP = remainingPredicatesInfix[i]
             positiveP = []
             negativeP = []
             positiveP, negativeP = self.splitSamples(
@@ -118,42 +112,70 @@ class DisjunctiveLearner(Learner):
                 state = houdiniEx.createStateInformation(
                     allInputVariables, posPoint[0:-1])
                 boolPDatapoints.append(houdiniEx.evalauteDataPoint(
-                    allSynthesizedPredicatesInfix, state) + [posPoint[-1]])
+                    remainingPredicatesInfix, state) + [posPoint[-1]])
 
             for negPoint in negativeP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, negPoint[0:-1])
                 boolNegPDatapoints.append(houdiniEx.evalauteDataPoint(
-                    allSynthesizedPredicatesInfix, state) + [negPoint[-1]])
+                    remainingPredicatesInfix, state) + [negPoint[-1]])
 
-            houd.setVariables([], allSynthesizedPredicatesInfix)
+            houd.setVariables([], remainingPredicatesInfix)
             conjP = houd.learn(boolPDatapoints, simplify=False)
             conjPList = houd.learntConjuction
             conjN = houd.learn(boolNegPDatapoints, simplify=False)
             conjNList = houd.learntConjuction
-            score.append({'predicate': predicateSplitP, 
-            'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
+
+            posMultiplier = len(conjPList)
+            negMultiplier = len(conjNList)
+            if len(conjPList) == 1 and 'true' in conjPList:
+                posMultiplier = 0
+            if len(conjNList) == 1 and 'true' in conjPList:
+                negMultiplier = 0
+
+            plusLabel = ['+'] * posMultiplier
+            minusLabel = ['-'] * negMultiplier
+            
+            entropyR = self.shannonsEntropy(plusLabel+minusLabel)
+
+            # score.append({'predicate': predicateSplitP,
+            # 'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
+            score.append({'predicate': predicateSplitP,
+                          'score': entropyR, 'left': conjPList, 'right': conjNList})
+
             # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
         sortedScore = sorted(score, key=lambda x: x['score'])
-        print "predicate:"
-        print sortedScore[-1]['predicate']
-        print "left:"
-        print sortedScore[-1]['left']
-        print "right:"
-        print sortedScore[-1]['right']
+        for pred in sortedScore:
+            if pred['score'] != 0: 
+                print "predicate:"
+                print pred['predicate']
+                print "left:"
+                print pred['left']
+                print "right:"
+                print pred['right']
         return houdiniEx.learn(dataPoints, simplify=True)
         # return "(Old_s1Count != New_s1Count )"
 
     def scoreByLen(self, conjPList, conjNList):
         return len(conjPList)+len(conjNList)
 
+    def scoreByEntropy(self, conjPList, conjNlist):
+        pass
+
+    def shannonsEntropy(self, labels, base=None):
+        value, counts = np.unique(labels, return_counts=True)
+        norm_counts = np.true_divide(counts, counts.sum())
+        base = math.e if base is None else base
+        return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
+
+
 if __name__ == '__main__':
 
-    learner=DisjunctiveLearner("disjunctiveLearner", "", "", "")
+    learner = DisjunctiveLearner("disjunctiveLearner", "", "", "")
 
     # intVariables = ['oldCount', 's1.Count', 'oldTop', 's1.Peek()', 'oldx', 'x']
-    intVariables=['Old_s1.Count', 'New_s1.Count',
+    intVariables = ['Old_s1.Count', 'New_s1.Count',
                     'Old_s1.Peek()', 'New_s1.Peek()', 'Old_x', 'New_x']
 
     boolVariables = ["Old_s1.Contains(x)"]
