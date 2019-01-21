@@ -47,9 +47,18 @@ class DisjunctiveLearner(Learner):
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
     
-    def splitSamples(self):
-        pass
+    def splitSamples(self, predicate, houdiniEx, datapoints):
+        allInputVariables = self.intVariables + self.boolVariables
+        pos =[]
+        neg = []
+        for dp in datapoints:
+            state = houdiniEx.createStateInformation(allInputVariables, dp[0:-1])
+            if eval(predicate,state):
+                pos.append(dp)
+            else:
+                neg.append(dp)
 
+        return pos,neg
 
     def learn(self, dataPoints, simplify=True):
         # Intuition: Only need HoudiniExt to call createAllPredicates()
@@ -59,7 +68,7 @@ class DisjunctiveLearner(Learner):
         houdiniEx = HoudiniExtended("HoudiniExtended","","","")
         houdiniEx.setVariables(self.intVariables , self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
-        if len(dataPoints) == 1:
+        if len(self.dataPoints) == 1:
             return houdiniEx.learn(dataPoints, simplify=True)
 
         #createAllPredicates() returns 
@@ -68,8 +77,10 @@ class DisjunctiveLearner(Learner):
         booleanData = []  
         # iterating over rows
         for point in self.dataPoints:
-            # only give houdiniEx boolean because at this no more integers
-            booleanData.append(houdiniEx.evalauteDataPoint(self.intVariables + self.boolVariables, point[0:-1], allSynthesizedPredicatesInfix) + [point[-1]])
+            allInputVariables = self.intVariables + self.boolVariables
+            state = houdiniEx.createStateInformation(allInputVariables, point[0:-1])
+            # only give houdiniEx boolean because at this point no more integers
+            booleanData.append(houdiniEx.evalauteDataPoint( allSynthesizedPredicatesInfix, state) + [point[-1]])
             # the infix form of the predicates are used to evalute them (into true or false)
 
         #print booleanData
@@ -86,9 +97,14 @@ class DisjunctiveLearner(Learner):
         remainingPredicates = list(set(listAllSynthesizePredInfix).symmetric_difference(set(alwaysTruePredicate)))
 
         for i in xrange(0,len(remainingPredicates)):
-            predicateSplit = remainingPredicates[i]
+            predicateSplitP = remainingPredicates[i]
+            positiveP= []
+            negativeP= []
+            positiveP, negativeP = self.splitSamples(predicateSplitP, houdiniEx, self.dataPoints)
             
-            #print "splitting on: " + predicateSplit
+            print positiveP
+            print negativeP
+            #print "splitting on: " + predicateSplitP
             #for j in xrange(i+1,len(remainingPredicates)):
             #    predicateR = remainingPredicates[j]
             #    print "entrophy : " + predicateR
@@ -96,8 +112,8 @@ class DisjunctiveLearner(Learner):
         #turning simplify off so that it is still in infix form??? 
         #result = houdini.learn(combinedData, simplify=False)
 
-
-        return "(Old_s1Count != New_s1Count )" 
+        return houdiniEx.learn(dataPoints, simplify=True)
+        #return "(Old_s1Count != New_s1Count )" 
     
 if __name__ == '__main__':
     

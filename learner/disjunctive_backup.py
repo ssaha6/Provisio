@@ -83,7 +83,6 @@ class DisjunctiveLearner(HoudiniExtended):
     
     def dividedata(self, predicate, dataPoints):
         allVariables = self.symbolicIntVariables + self.symbolicBoolVariables
-        
         pos = []
         neg = []
         for dp in dataPoints:

@@ -41,7 +41,7 @@ def filterDataPointConflicts(dataPoints):
             if row[-1] == 'true':
                 row_backup[-1] = 'false'
                 if row_backup in inputm:
-                    shell.debug_print("****found conflict****", False)
+                    shell.debug_print("****found conflict****", True)
                 else:
                     finalset.add(tuple(row))
             else:
