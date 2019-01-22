@@ -26,12 +26,19 @@ import z3simplify
 import logging
 
 
+
+
+logger = logging.getLogger("Framework.DisjunctLearner")
 # TODO: calling learner.SetDataPoints changes list of list to list of tuples.
 
 class DisjunctiveLearner(Learner):
 
+
     def __init__(self, name, binary, parameters, tempLocation):
         Learner.__init__(self, name, binary, parameters, tempLocation)
+        self.entropy = True
+        self.numerical = True
+        self.allPredicates = True
 
     def generateFiles(self):
         pass
@@ -57,16 +64,21 @@ class DisjunctiveLearner(Learner):
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
-
+        #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
+        
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
+        
+        # for debugging
+        houdiniEx.numerical = self.numerical
+        
         if len(self.dataPoints) == 1:
             return houdiniEx.learn(dataPoints, simplify=True)
 
         # createAllPredicates() returns
+        #logger.info("houdiniExt: numerical: "+str(houdiniEx.numerical))
         allSynthesizedPredicatesPrefix, allSynthesizedPredicatesInfix = houdiniEx.createAllPredicates()
-
         booleanData = []
         # iterating over rows
         for point in self.dataPoints:
@@ -80,6 +92,7 @@ class DisjunctiveLearner(Learner):
 
         # print booleanData
         # Call Houdini directly
+        # Compute All True predicates
         listAllSynthesizePredInfix = list(allSynthesizedPredicatesInfix)
         houd = Houdini("Houdini", "", "", "")
         houd.setVariables([], listAllSynthesizePredInfix)
@@ -96,16 +109,16 @@ class DisjunctiveLearner(Learner):
         # for computing disjunctions, we only need to considr p or not p both not both
         score = []
         sortedScore = []
-        
-        predicatesToSplitOn = remainingPredicatesInfix 
+
+        predicatesToSplitOn = remainingPredicatesInfix
         for i in xrange(0, len(predicatesToSplitOn)):
             predicateSplitP = predicatesToSplitOn[i]
             positiveP = []
             negativeP = []
             positiveP, negativeP = self.splitSamples(
                 predicateSplitP, houdiniEx, self.dataPoints)
-            print positiveP
-            print negativeP
+            #print positiveP
+            #print negativeP
             boolPDatapoints = []
             boolNegPDatapoints = []
             for posPoint in positiveP:
@@ -137,27 +150,88 @@ class DisjunctiveLearner(Learner):
 
             plusLabel = ['+'] * posMultiplier
             minusLabel = ['-'] * negMultiplier
-            
-            entropyR = self.shannonsEntropy(plusLabel+minusLabel)
-
-            # score.append({'predicate': predicateSplitP,
+            entropyR = 0
+            if self.entropy:
+                entropyR = self.shannonsEntropy(plusLabel+minusLabel)
+            else:
+                entropyR = self.scoreByLen(conjPList,conjNList) 
+            #score.append({'predicate': predicateSplitP,
             # 'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
             score.append({'predicate': predicateSplitP,
-                        'score': entropyR, 'left': conjPList, 'right': conjNList})
+                          'score': entropyR, 'left': conjPList, 'right': conjNList})
 
             # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
         sortedScore = sorted(score, key=lambda x: x['score'])
-        for pred in sortedScore:
-            if pred['score'] != 0: 
-                print "predicate:"
-                print pred['predicate']
-                print "left:"
-                print pred['left']
-                print "right:"
-                print pred['right']
+        leftDisjunct = []
+        rightDisjunct = []
+        choosePtoSplitOn = ""
+        if not self.entropy:
+            choosePtoSplitOn = sortedScore[-1]['predicate']
+            leftDisjunct = sortedScore[-1]['left']
+            rightDisjunct = sortedScore[-1]['right']
+        else:
+            for pred in sortedScore:
+                if pred['score'] != 0:
+                    print "predicate:"
+                    print pred['predicate']
+                    choosePtoSplitOn = pred['predicate']
+                    print "left:"
+                    print pred['left']
+                    leftDisjunct = pred['left']
+                    print "right:"
+                    print pred['right']
+                    rightDisjunct = pred['right']
+                    break
+
+        print "always true: "
+        print alwaysTruePredicateInfix
+        #logger.info(' '.join(alwaysTruePredicateInfix))
+        alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
+                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
-        return houdiniEx.learn(dataPoints, simplify=True)
+        logger.info("predicate to split on:")
+        logger.info(choosePtoSplitOn)
+        
+        #print "or"
+        #print leftDisjunct
+        #logger.info(' '.join(leftDisjunct))
+
+        leftDisjunctPrefix = self.findPrefixForm(leftDisjunct,
+                                                 allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        #print rightDisjunct
+        #logger.info(' '.join(rightDisjunct))
+
+        rightDisjunctPrefix = self.findPrefixForm(
+            rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        
+        if self.allPredicates:
+            z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
+            z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && (" +' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
+        else:
+            z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
+            z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
+
+        #logger.info("unsimplified z3 formula: "+ z3StringFormula)
+        logger.info("unsimplified Z3: ")
+        logger.info(z3FormulaInfix)
+
+        z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+       
+        #logger.info("simplified z3 formula: "+z3StringFormula)
+        logger.info("simplified Z3 Final formula: ")
+        logger.info(z3StringFormula)
+        #print z3StringFormula
+        return z3StringFormula
         # return "(Old_s1Count != New_s1Count )"
+
+    def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
+        prefixForm = []
+
+        for predToConvert in infixForm:
+            indexToConvert = allInFixPredicateList.index(predToConvert)
+            prefixForm.append(allPrefixPredicateList[indexToConvert])
+
+        return prefixForm
 
     def scoreByLen(self, conjPList, conjNList):
         return len(conjPList)+len(conjNList)
@@ -170,8 +244,7 @@ class DisjunctiveLearner(Learner):
         norm_counts = np.true_divide(counts, counts.sum())
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
-    
-    def scoreSum(self, remainingPredicates):
+
 
 if __name__ == '__main__':
 
