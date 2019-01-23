@@ -40,6 +40,8 @@ class Framework:
     def learnPostcondition(self):
         testClass = "../ContractsSubjects/Stack/StackTest/StackContractTest.cs"
         putName = "PUT_PushContract"
+        #putName = "PUT_PeekContract"        
+        #putName = "PUT_PopContract"
         solutionFile = "../ContractsSubjects/Stack/Stack.sln"
         testType = "StackContractTest"
         testNamespace = "Stack.Test"
@@ -98,17 +100,19 @@ if __name__ == '__main__':
         
         logger.info("Program started")
         logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
-        learner = HoudiniExtended("HoudiniExtended","","","")
+        #learner = HoudiniExtended("HoudiniExtended","","","")
         #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
         #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-        #learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+        learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
         learner.entropy = entropy
         learner.numerical = numerical
         learner.allPredicates = allPredicates
 
         print "starting"
         intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+        #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
         boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+        #boolVariables = []
         learner.setVariables(intVariables, boolVariables)
 
         # Report path is relative to vscode root dir... 

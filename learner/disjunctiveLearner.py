@@ -65,7 +65,9 @@ class DisjunctiveLearner(Learner):
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
         #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
-        
+        if len(self.dataPoints) == 0:
+            return "true"
+
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
@@ -99,8 +101,12 @@ class DisjunctiveLearner(Learner):
         houd.learn(booleanData, simplify=False)
 
         alwaysTruePredicateInfix = []
-        if len(houd.learntConjuction) > 0:
-            alwaysTruePredicateInfix = houd.learntConjuction
+        #TODO: if houd.LearntConjunction is true, then either we cannot express post condition
+        #or postcondition requires disjunction; In case it requires disjunction we need to change the format
+        # of output formula at the end of this code
+        assert(not (len(houd.learntConjuction) == 1 and "true" in houd.learntConjuction) )
+        assert(len(houd.learntConjuction) > 0)
+        alwaysTruePredicateInfix = houd.learntConjuction
 
         # TODO: compute with prefix otherwie z3 throws error
         remainingPredicatesInfix = list(set(
@@ -117,6 +123,21 @@ class DisjunctiveLearner(Learner):
             negativeP = []
             positiveP, negativeP = self.splitSamples(
                 predicateSplitP, houdiniEx, self.dataPoints)
+            
+            assert( len(positiveP) + len(negativeP) == len(self.dataPoints) )
+            if len(positiveP) == 0 and len(negativeP) == 0:
+                # a predicate can only be true or false  
+                assert(False)
+
+            elif len(positiveP) > 0 and len(negativeP) == 0:
+                #this should never happen otherwise houidini learner is wrong
+                assert(False)
+            elif len(positiveP) == 0 and len(negativeP) > 0:
+                #predicate is always false:
+                continue
+            
+            elif len(positiveP) > 0 and len(negativeP) > 0:
+                pass
             #print positiveP
             #print negativeP
             boolPDatapoints = []
@@ -161,6 +182,13 @@ class DisjunctiveLearner(Learner):
                           'score': entropyR, 'left': conjPList, 'right': conjNList})
 
             # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
+        if len(score) == 0:
+            alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
+                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+            z3StringFormula = "(and " +' '.join(alwaysTruePrefix)+")"
+            z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+            return z3StringFormula
+                         
         sortedScore = sorted(score, key=lambda x: x['score'])
         leftDisjunct = []
         rightDisjunct = []
@@ -203,7 +231,7 @@ class DisjunctiveLearner(Learner):
 
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-        
+
         if self.allPredicates:
             z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
             z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && (" +' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
@@ -228,6 +256,9 @@ class DisjunctiveLearner(Learner):
         prefixForm = []
 
         for predToConvert in infixForm:
+            assert(not("false" == predToConvert))
+            if "true" == predToConvert:
+                return ["true"]
             indexToConvert = allInFixPredicateList.index(predToConvert)
             prefixForm.append(allPrefixPredicateList[indexToConvert])
 

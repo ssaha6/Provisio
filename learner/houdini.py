@@ -49,11 +49,11 @@ class Houdini(Learner):
         # Numpy implementation, future work
         # A = np.array(np.array(self.dataPoints) == "true")
         # X, y = A[:, :-1], A[:, -1]
-        
+        assert(len(self.dataPoints)> 0 )
         #asset all data point elements are "true" or "false"
-        if len(self.dataPoints) == 0:
-            self.learntConjuction = ["true"]
-            return "true"
+        #if len(self.dataPoints) == 0:
+        #    self.learntConjuction = ["true"]
+        #    return "true"
 
         assert(len(self.dataPoints) or all ( all( v == "true" or v == "false" for v in dp) for dp in self.dataPoints))
         
