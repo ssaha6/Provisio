@@ -71,12 +71,11 @@ class DisjunctiveLearner(Learner):
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
-        
         # for debugging
         houdiniEx.numerical = self.numerical
         
         if len(self.dataPoints) == 1:
-            return houdiniEx.learn(dataPoints, simplify=True)
+            return houdiniEx.learn(self.dataPoints, simplify=True)
 
         # createAllPredicates() returns
         #logger.info("houdiniExt: numerical: "+str(houdiniEx.numerical))
