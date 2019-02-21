@@ -8,6 +8,5 @@
 #sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
 from learner import Learner
-from houdini import Houdini
-from houdiniExtended import HoudiniExtended
-from disjunctiveLearner import DisjunctiveLearner
+from dtlearner import DTLearner
+from reviewData import filterDataPointConflicts

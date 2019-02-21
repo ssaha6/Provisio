@@ -26,14 +26,58 @@ from learner import *
 
 class Framework:
 
-    def __init__(self, learner, teacher):
+    def __init__(self, putName, benchmark, learner, teacher):
+        self.putName = putName
+        self.benchmark = benchmark
         self.learner = learner
         self.teacher = teacher
         self.dataPoints = []
         self.precondition = "true"
-        self.loop = 0
+        self.round = 0
         self.numPredicates = 0
 
+
+
+    def checkPrecondition(self, precondition, PTest):
+        if PTest: 
+            modifycode.remove_assumes(self.benchmark.testFile, self.putName)
+            modifycode.insert_p_in_put(self.benchmark.testFile, self.putName, precondition)
+        else:
+            modifycode.insert_p_in_put(self.benchmark.testFile, self.putName, "!("+precondition+")")
+            modifycode.insert_assumes(self.benchmark.testFile, self.putName)
+
+        modifycode.runCompiler("MSBuild.exe", self.benchmark.solutionFile)
+        self.teacher.runTeacher(self.benchmark.testDll, self.putName, self.benchmark.testNamespace, self.benchmark.testType)
+        return self.teacher.parseReportPre(self.benchmark.pexReportFolder)
+        
+        
+    
+    def learnPrecondition(self):
+        allPreconditions = []
+        self.round = 1
+        while True:
+            PDataPoints = self.checkPrecondition(self.precondition, PTest = True)
+            notPDataPoints = self.checkPrecondition(self.precondition, PTest = False) 
+            self.dataPoints.extend(PDataPoints + notPDataPoints)
+            
+            #conflict Resolver
+            # self.dataPoints = filterDataPointConflicts(self.dataPoints)
+            
+            self.precondition = self.learner.learn(self.dataPoints)
+            
+            if self.precondition in allPreconditions:
+                break
+                
+            if self.round > 30:
+                break
+            
+            allPreconditions.append(self.precondition)
+            self.round = self.round +1
+        
+        return self.precondition
+        
+        
+        
     def learnPostcondition(self):
         testClass = "../../ContractsSubjects/Stack/StackTest/StackContractTest.cs"
         putName = "PUT_PushContract"
@@ -65,6 +109,7 @@ class Framework:
             
             allPostconditions.append(postcondition)
             round = round +1
+
 
 if __name__ == '__main__':
     
