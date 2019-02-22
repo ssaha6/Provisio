@@ -89,7 +89,7 @@ class Framework:
 			allPreconditions.append(self.precondition)
 			self.rounds = self.rounds +1
 		
-		return self.precondition, self.rounds, len(self.dataPoints), self.round(self.learnerTime, 2), round(self.teacherTime, 2)
+		return self.precondition, self.rounds, len(self.dataPoints), round(self.learnerTime, 2), round(self.teacherTime, 2)
 			
 		
 		
