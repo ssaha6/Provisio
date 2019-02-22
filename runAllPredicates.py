@@ -61,13 +61,13 @@ def runner(benchmark, methodParameters, logFile):
 		
 		log.append(putName, precondition, rounds, numDataPoints, learnerTime, teacherTime)
 		print "--------------------------------------------------------------------------------"
-		print "Method Name		: " + putName
+		print "Method Name        : " + putName
 		print "Final Precondition : " + precondition
 		print "Number of rounds   : " + str(rounds)
 		print "Number of Points   : " + str(numDataPoints)
-		print "Learner time(s)	: " + str(learnerTime)
-		print "Teacher time(s)	: " + str(teacherTime)
-		print "Total Time(s)	  : " + str(learnerTime + teacherTime)
+		print "Learner time(s)    : " + str(learnerTime)
+		print "Teacher time(s)    : " + str(teacherTime)
+		print "Total Time(s)      : " + str(learnerTime + teacherTime)
 
 
 
