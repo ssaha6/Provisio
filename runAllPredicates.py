@@ -39,35 +39,43 @@ class Logging:
 
 def runner(benchmark, methodParameters, logFile):
 	
-	learner = DTLearner("dtlearner", "learner/C50exact/c5.0dbg.exe", "", "tempLocation")
-	pexBinary = "pex.exe"
-	
-	log = Logging(logFile)
-	
-	for putName, boolVariables, intVariables  in methodParameters:
-		
-		print "\n\nLearning precondition for method: " + putName
-		print "--------------------------------------------------------------------------------"
+    learner = DTLearner("dtlearner", "learner/C50exact/c5.0dbg.exe", "", "tempLocation")
+    pexBinary = "pex.exe"
 
-		learner.setVariables(intVariables, boolVariables)
-		
-		teacher = Pex( pexBinary,
-					len(learner.intVariables) + len(learner.boolVariables),
-					['/nor']
-				)
-				
-		framework = Framework(putName, benchmark, learner, teacher)
-		precondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPrecondition()
-		
-		log.append(putName, precondition, rounds, numDataPoints, learnerTime, teacherTime)
-		print "--------------------------------------------------------------------------------"
-		print "Method Name        : " + putName
-		print "Final Precondition : " + precondition
-		print "Number of rounds   : " + str(rounds)
-		print "Number of Points   : " + str(numDataPoints)
-		print "Learner time(s)    : " + str(learnerTime)
-		print "Teacher time(s)    : " + str(teacherTime)
-		print "Total Time(s)      : " + str(learnerTime + teacherTime)
+    log = Logging(logFile)
+
+    for putName, boolVariables, intVariables  in methodParameters:
+
+        print "\n\nLearning precondition for method: " + putName
+        print "--------------------------------------------------------------------------------"
+
+        try:
+            learner.setVariables(intVariables, boolVariables)
+
+            teacher = Pex( pexBinary,
+            len(learner.intVariables) + len(learner.boolVariables),
+            ['/nor']
+            )
+
+            framework = Framework(putName, benchmark, learner, teacher)
+
+            precondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPrecondition()
+
+            log.append(putName, precondition, rounds, numDataPoints, learnerTime, teacherTime)
+            print "--------------------------------------------------------------------------------"
+            print "Method Name        : " + putName
+            print "Final Precondition : " + precondition
+            print "Number of rounds   : " + str(rounds)
+            print "Number of Points   : " + str(numDataPoints)
+            print "Learner time(s)    : " + str(learnerTime)
+            print "Teacher time(s)    : " + str(teacherTime)
+            print "Total Time(s)      : " + str(learnerTime + teacherTime)
+
+        except Exception as e:
+            print "\n!!! Exception found !!!"
+            print str(e)
+        
+
 
 
 

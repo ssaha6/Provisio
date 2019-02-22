@@ -113,9 +113,10 @@ def resetFilesByRegex( location, pattern):
 
 
 def printExceptionAndExit(e, msg):
-    print "*** ERROR:" + msg + " ****"
-    print e
-    sys.exit(1)
+    raise Exception(str(e) + ": " + msg)
+    # print "*** ERROR:" + msg + " ****"
+    # print e
+    # sys.exit(1)
 
 
 #writing only in windows
