@@ -33,8 +33,8 @@ class  Learner:
         self.intVariables = []
         self.symbolicBoolVariables = []
         self.symbolicIntVariables = []
-
-
+        self.time  = 0.0
+        
     
 
     def setVariables(self, intVariables = [], boolVariables = []):
@@ -113,6 +113,9 @@ class  Learner:
 
 
     def learn(self, dataPoints, simplify=True):
+        self.time = 0.0
+        start_time = time.time()
+
         self.setDataPoints(dataPoints)
 
         self.generateFiles()
@@ -123,7 +126,8 @@ class  Learner:
 
         restoredResults = self.restoreVariables(result)
         
-        print "******  Round Result: ", restoredResults
+        self.time = time.time() - start_time
+        # print "******  Round Result: ", restoredResults
         return restoredResults
         
         

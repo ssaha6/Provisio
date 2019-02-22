@@ -17,6 +17,7 @@ import io
 from teacher import Teacher
 from lxml import etree
 import executecommand
+import time
 
 from benchmark import Benchmark
 
@@ -30,15 +31,17 @@ class Pex(Teacher):
 		self.pexReportFormat = 'Xml'
 		self.rn = "XmlReport"  
 		self.ro = "r1" 
-		
+		self.time = 0.0
 		
 	def runTeacher(self, dll, testMethod, testNamespace, testType):
-		
-		args = self.getExecCommand(dll,testMethod,testNamespace,testType)
-		print "pex argument: " + ' '.join(args)
+		self.time = 0.0
+		start_time = time.time()
+		args = self.getExecCommand(dll, testMethod, testNamespace, testType)
+		pexOutput = executecommand.runCommand(args)
+		self.time = time.time() - start_time
+		# print "pex argument: " + ' '.join(args)
 		#sys.exit(0)
 		#pexOutput = subprocess.check_output(args , shell=True)
-		pexOutput = executecommand.runCommand(args)
 		
 		
 	def parseReportPre(self, pexReportFolder):

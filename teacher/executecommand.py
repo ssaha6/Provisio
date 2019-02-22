@@ -18,7 +18,7 @@ from lxml import etree
 
 def runCommand(args):
 	try:
-		print(args)
+		# print(args)
 		executionOutput = ""
 
 		executionRun = subprocess.Popen(args, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
