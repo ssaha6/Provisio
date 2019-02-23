@@ -29,7 +29,7 @@ namespace HolaBenchmarks
                 y = t1 + t2;
                 j = j + 1;
             }
-            //NotpAssume.IsTrue(y >= 1);
+            NotpAssume.IsTrue(y >= 1);
             if (y < 1)
                 throw new ArgumentException(); //assert(y >= 1);
             
@@ -154,7 +154,7 @@ namespace HolaBenchmarks
                 i = i + 1;
                 u++;
             }
-            //NotpAssume.IsTrue(a + b == 3 * n);
+            NotpAssume.IsTrue(a + b == 3 * n);
             if (a + b != 3 * n) throw new ArgumentException();
         }
         public void dig08(int u1, int u2, int u3)
@@ -381,7 +381,7 @@ namespace HolaBenchmarks
           }
           //%%%traces: int k, int n
           //assert(k >= 0);
-          //NotpAssume.IsTrue(k>=0);
+          NotpAssume.IsTrue(k>=0);
           
             if (k < 0) throw new ArgumentException();
           //Debug.Assert(false);
@@ -445,7 +445,7 @@ namespace HolaBenchmarks
 
           //%%%traces: int y, int n
           //assert(y == n);
-          //NotpAssume.IsTrue(y == n);
+          NotpAssume.IsTrue(y == n);
           if (y != n)throw new ArgumentException();
         }
 
@@ -500,7 +500,7 @@ namespace HolaBenchmarks
 
           //%%%traces: int k, int n, int j, int v
           // assert(k > n);
-          //NotpAssume.IsTrue(k > n);
+          NotpAssume.IsTrue(k > n);
           if (k <= n) throw new ArgumentException(); 
         }
 
@@ -706,7 +706,7 @@ namespace HolaBenchmarks
           int buf_off = 0;
           int pattern_off = 0;
           
-          NotpAssume.IsTrue(MAXPATHLEN < int.MaxValue );
+          //NotpAssume.IsTrue(MAXPATHLEN < int.MaxValue );
           int bound_off = 0 + (MAXPATHLEN + 1) - 1;
 
           int glob3_pathbuf_off = buf_off;
@@ -729,7 +729,7 @@ namespace HolaBenchmarks
             if (0 > glob3_dc) throw new ArgumentException();
             //assert(glob3_dc < MAXPATHLEN + 1);
             
-            NotpAssume.IsTrue(glob3_dc < MAXPATHLEN + 1);
+            //NotpAssume.IsTrue(glob3_dc < MAXPATHLEN + 1);
             if (glob3_dc >= MAXPATHLEN + 1) throw new ArgumentNullException();
 
             if (u != 0)
@@ -846,87 +846,3 @@ namespace HolaBenchmarks
           while (i < u1) {
             i++;
             if (x > 0) {
-                //NotpAssume.IsTrue(y + x < int.MaxValue);
-                y = y + x; }
-          }
-          //%%%traces: int y, int t, int i
-          //assert(y >= t);
-          //NotpAssume.IsTrue(y >= t);
-          if (y < t) throw new ArgumentException();
-        }
-
-
-        public void dig45(int flag, int u1, int u2, int u3){
-          //assert(u1 > 0 && u2 > 0 && u3 > 0);
-          int x = 0;
-          int y = 0;
-          int j = 0;
-          int i = 0;
-          int c = 0;
-          int d = 1;
-  
-          int i1 = 0;
-          while (i1 < u1) {
-            i1++;
-            x++;
-            y++;
-            i += x;
-            j += y;
-            if (flag != 0) {
-              j += 1;
-            }
-          }
-
-          if (j >= i)
-            x = y;
-          else
-            x = y + 1;
-
-          int w = 1;
-          int z = 0;
-          int i2 = 0;
-          while (i2 < u2 ) {
-            i2++;
-            int i3 = 0;
-            while (i3 < u3) {
-              i3++;
-              if (w % 2 == 1) x++;
-              if (z % 2 == 0) y++;
-            }
-
-            z = x + y;
-            w = z + 1;
-          }
-
-          //%%%traces: int x, int y
-          //assert(x == y);
-          if (x != y) throw new ArgumentException();
-        }
-
-        public void dig46(int u1){
-          //assert(u1 > 0);
-          int w = 1;
-          int z = 0;
-          int x = 0;
-          int y = 0;
-          int i1 = 0;
-          while (i1 < u1) {
-            i1++;
-            if (w % 2 == 1) {
-              x++;
-              w++;
-            };
-            if (z % 2 == 0) {
-              y++;
-              z++;
-            };
-          }
-          //%%%traces: int x, int z, int y, int w
-          //assert(x <= 1);
-          if (x > 1) throw new ArgumentException();
-        }
-
-
-
-    }
-}
