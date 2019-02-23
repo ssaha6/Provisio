@@ -21,7 +21,7 @@ namespace SampleList.Test
             PexObserve.ValueForViewing("$input_x", x);
             PexObserve.ValueForViewing("$input_Count", l.Count());
 
-            AssumePrecondition.IsTrue( (l.Count() <= 1)  );
+            AssumePrecondition.IsTrue(!(((l.Count() <= 1))));
             
             int oldCount = l.Count();
             l.addToEnd(x);
