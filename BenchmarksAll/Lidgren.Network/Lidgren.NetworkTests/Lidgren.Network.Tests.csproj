@@ -53,7 +53,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PexAPIWrapper">
-      <HintPath>..\..\..\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
+      <HintPath>..\..\..\teacher\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
     </Reference>
     <Reference Include="ReportParserLearning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,15 +70,6 @@
     <Compile Include="Factories\NetXorEncriptionFactory.cs" />
     <Compile Include="Factories\NetBigIntegerFactory.cs" />
     <Compile Include="Factories\NetOutgoingMessageFactory.cs" />
-    <Compile Include="NetBigIntegerTest.PUT_Constructor03.g.cs">
-      <DependentUpon>NetBigIntegerTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NetBigIntegerTest.PUT_Constructor05.g.cs">
-      <DependentUpon>NetBigIntegerTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NetOutgoingMessageTest.PUT_WriteSignedSingle.g.cs">
-      <DependentUpon>NetOutgoingMessageTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="NetOutGoingMessageUnitTest.cs" />
     <Compile Include="Properties\PexAssemblyInfo.cs" />
     <Compile Include="Properties\Properties\AssemblyInfo.cs.cs" />

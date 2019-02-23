@@ -32,7 +32,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             NetBigInteger result = target.Abs();
             return result;
         }
@@ -51,10 +51,10 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue( (NetBigIntegerTest.IsNull(value) && ((targetIntValue == targetSignValue && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))))) ||  ((!(NetBigIntegerTest.IsNull(value)))) );
-            
+            AssumePrecondition.IsTrue((NetBigIntegerTest.IsNull(value) && ((targetIntValue == targetSignValue && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))))) || ((!(NetBigIntegerTest.IsNull(value)))));
+
             NetBigInteger result = target.Add(value);
-            
+
             return result;
         }
 
@@ -72,7 +72,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue( (NetBigIntegerTest.IsNull(value) && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))) ||  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue((NetBigIntegerTest.IsNull(value) && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))) || ((!(NetBigIntegerTest.IsNull(value)))));
             NetBigInteger result = target.And(value);
             return result;
         }
@@ -86,7 +86,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             int result = target.BitLength;
             return result;
         }
@@ -102,8 +102,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(obj));
             PexObserve.ValueForViewing("$input_Type", typeEqualTestClass);
-            
-            AssumePrecondition.IsTrue( (typeEqualTestClass)  );
+
+            AssumePrecondition.IsTrue((typeEqualTestClass));
 
             int result = target.CompareTo(obj);
             return result;
@@ -123,7 +123,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value)))));
 
             int result = target.CompareTo(value);
             return result;
@@ -162,14 +162,14 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_isNotBegZero", isNotBegZero);
             PexObserve.ValueForViewing("$input_startWithSign", startWithSign);
 
-            AssumePrecondition.IsTrue( (ulong.TryParse(value, out temp) && (((!(startWithSign)) && ((nullAtEnd && ((isNotBegZero))) ||  ((!(nullAtEnd)))))))  );
-            
+            AssumePrecondition.IsTrue((ulong.TryParse(value, out temp) && (((!(startWithSign)) && ((nullAtEnd && ((isNotBegZero))) || ((!(nullAtEnd))))))));
+
             //AssumePrecondition.IsTrue(!string.IsNullOrEmpty(value) && isNumeric && (isNotBegZero  || !nullAtEnd ));
 
             NetBigInteger target = new NetBigInteger(value);
             return target;
         }
-        
+
         [PexMethod]
         public NetBigInteger PUT_Constructor01(string str, int radix)
         {
@@ -188,7 +188,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_startWithSign", startWithSign);
 
 
-            AssumePrecondition.IsTrue( (ulong.TryParse(str, out temp) && (((!(startWithSign)) && ((radix <= 9 && (((!(isNotBegZero)) && (((!(nullAtEnd)) && ((radix <= 2 && (((!(radix <= 1))))))))))) ||  ((!(radix <= 9)) && ((isNotBegZero && ((nullAtEnd) ||  ((!(nullAtEnd)) && ((radix <= 10) ||  ((!(radix <= 10)) && (((!(radix <= 15)) && ((radix <= 16))))))))) ||  ((!(isNotBegZero)) && (((!(nullAtEnd)) && ((radix <= 10) ||  ((!(radix <= 10)) && (((!(radix <= 15)) && ((radix <= 16)))))))))))))))  );
+            AssumePrecondition.IsTrue((ulong.TryParse(str, out temp) && (((!(startWithSign)) && ((radix <= 9 && (((!(isNotBegZero)) && (((!(nullAtEnd)) && ((radix <= 2 && (((!(radix <= 1))))))))))) || ((!(radix <= 9)) && ((isNotBegZero && ((nullAtEnd) || ((!(nullAtEnd)) && ((radix <= 10) || ((!(radix <= 10)) && (((!(radix <= 15)) && ((radix <= 16))))))))) || ((!(isNotBegZero)) && (((!(nullAtEnd)) && ((radix <= 10) || ((!(radix <= 10)) && (((!(radix <= 15)) && ((radix <= 16))))))))))))))));
 
             NetBigInteger target = new NetBigInteger(str, radix);
             return target;
@@ -203,7 +203,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_bytes", NetBigIntegerTest.IsNull(bytes));
 
 
-            AssumePrecondition.IsTrue( (bytesLength <= 12 && (((!(NetBigIntegerTest.IsNull(bytes))) && ((bytesLength <= 1 && (((!(bytesLength <= 0))))))))) ||  ((!(bytesLength <= 12)) && ((bytesLength <= 14) ||  ((!(bytesLength <= 14)) && (((!(bytesLength <= 15))))))) );
+            AssumePrecondition.IsTrue((bytesLength <= 12 && (((!(NetBigIntegerTest.IsNull(bytes))) && ((bytesLength <= 1 && (((!(bytesLength <= 0))))))))) || ((!(bytesLength <= 12)) && ((bytesLength <= 14) || ((!(bytesLength <= 14)) && (((!(bytesLength <= 15))))))));
 
             NetBigInteger target = new NetBigInteger(bytes);
             return target;
@@ -226,7 +226,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_length", length);
             PexObserve.ValueForViewing("$input_bytes", NetBigIntegerTest.IsNull(bytes));
 
-            AssumePrecondition.IsTrue( (-bytesLength + offset + length <= 0 && (((!(offset <= -1)) && ((-bytesLength + offset <= -1 && ((offset == length && (((!(offset <= 0))))) ||  ((!(offset == length)))))))))  );
+            AssumePrecondition.IsTrue((-bytesLength + offset + length <= 0 && (((!(offset <= -1)) && ((-bytesLength + offset <= -1 && ((offset == length && (((!(offset <= 0))))) || ((!(offset == length))))))))));
             NetBigInteger target = new NetBigInteger(bytes, offset, length);
             return target;
         }
@@ -241,7 +241,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_bytes", bytesLength);
             PexObserve.ValueForViewing("$input_offset", sign);
             PexObserve.ValueForViewing("$input_bytes", NetBigIntegerTest.IsNull(bytes));
-            AssumePrecondition.IsTrue(  ((!(sign <= -2)) && (((!(NetBigIntegerTest.IsNull(bytes))) && ((sign <= 1))))) );
+            AssumePrecondition.IsTrue(((!(sign <= -2)) && (((!(NetBigIntegerTest.IsNull(bytes))) && ((sign <= 1))))));
 
             NetBigInteger target = new NetBigInteger(sign, bytes);
             return target;
@@ -267,7 +267,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_length", length);
 
             PexObserve.ValueForViewing("$input_bytes", NetBigIntegerTest.IsNull(bytes));
-            AssumePrecondition.IsTrue(!( (-bytesLength + -sign + -length <= 1 && ((-bytesLength + sign + offset <= 1)))  ));
+            AssumePrecondition.IsTrue(!((-bytesLength + -sign + -length <= 1 && ((-bytesLength + sign + offset <= 1)))));
 
             NetBigInteger target = new NetBigInteger(sign, bytes, offset, length);
             return target;
@@ -287,7 +287,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value))) && ((valueIntValue == valueSignValue && ((valueIntValue <= 0 && ((valueIntValue <= -1))) ||  ((!(valueIntValue <= 0))))) ||  ((!(valueIntValue == valueSignValue))))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value))) && ((valueIntValue == valueSignValue && ((valueIntValue <= 0 && ((valueIntValue <= -1))) || ((!(valueIntValue <= 0))))) || ((!(valueIntValue == valueSignValue))))));
 
             NetBigInteger result = target.Divide(value);
             return result;
@@ -307,7 +307,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value))) && ((valueIntValue == valueSignValue && ((valueIntValue <= -1) ||  ((!(valueIntValue <= -1)) && (((!(valueIntValue <= 0))))))) ||  ((!(valueIntValue == valueSignValue))))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value))) && ((valueIntValue == valueSignValue && ((valueIntValue <= -1) || ((!(valueIntValue <= -1)) && (((!(valueIntValue <= 0))))))) || ((!(valueIntValue == valueSignValue))))));
 
             NetBigInteger[] result = target.DivideAndRemainder(value);
             return result;
@@ -325,7 +325,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(obj));
             PexObserve.ValueForViewing("$input_Type", typeEqualTestClass);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
 
             bool result = target.Equals(obj);
             return result;
@@ -360,7 +360,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             int result = target.GetHashCode();
             return result;
         }
@@ -374,7 +374,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             int result = target.GetLowestSetBit();
             return result;
         }
@@ -388,7 +388,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             int result = target.IntValue;
             return result;
         }
@@ -407,7 +407,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value)))));
 
 
             NetBigInteger result = target.Max(value);
@@ -428,7 +428,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value)))));
             NetBigInteger result = target.Min(value);
             return result;
         }
@@ -447,8 +447,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(valueSignValue <= 0))) );
-            
+            AssumePrecondition.IsTrue(((!(valueSignValue <= 0))));
+
             NetBigInteger result = target.Mod(value);
             return result;
         }
@@ -460,7 +460,7 @@ namespace Lidgren.Network
             int valueSignValue = !NetBigIntegerTest.IsNull(value) ? value.SignValue : -7;
             int targetIntValue = target.IntValue;
             int targetSignValue = target.SignValue;
-            int intGcd = value != null? NetBigInteger.ExtEuclid(target, value, new NetBigInteger(), null).IntValue: -7;
+            int intGcd = value != null ? NetBigInteger.ExtEuclid(target, value, new NetBigInteger(), null).IntValue : -7;
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_intVal", valueIntValue);
@@ -468,9 +468,9 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_Gcd", intGcd);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue( (valueSignValue == intGcd && (((!(valueIntValue <= 0)))))  );
+            AssumePrecondition.IsTrue((valueSignValue == intGcd && (((!(valueIntValue <= 0))))));
             //AssumePrecondition.IsTrue(!NetBigIntegerTest.IsNull(value) && value.IntValue > 0 && NetBigInteger.ExtEuclid(target, value, new NetBigInteger(), null).Equals(NetBigInteger.One));
-            
+
             NetBigInteger result = target.ModInverse(value);
             return result;
         }
@@ -506,8 +506,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(exponent));
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(valueSignValue <= 0)) && ((NetBigIntegerTest.IsNull(exponent) && ((valueIntValue == valueSignValue))) ||  ((!(NetBigIntegerTest.IsNull(exponent)))))) );
-            
+            AssumePrecondition.IsTrue(((!(valueSignValue <= 0)) && ((NetBigIntegerTest.IsNull(exponent) && ((valueIntValue == valueSignValue))) || ((!(NetBigIntegerTest.IsNull(exponent)))))));
+
             NetBigInteger result = target.ModPow(exponent, value);
             return result;
         }
@@ -526,7 +526,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(valueSignValue <= 0))) );
+            AssumePrecondition.IsTrue(((!(valueSignValue <= 0))));
 
             NetBigInteger result = target.Modulus(value);
             return result;
@@ -546,7 +546,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue( (NetBigIntegerTest.IsNull(value) && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))) ||  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue((NetBigIntegerTest.IsNull(value) && (((!(targetIntValue <= -1)) && ((targetIntValue <= 0))))) || ((!(NetBigIntegerTest.IsNull(value)))));
 
             NetBigInteger result = target.Multiply(value);
             return result;
@@ -558,10 +558,10 @@ namespace Lidgren.Network
             int targetIntValue = target.IntValue;
             int targetSignValue = target.SignValue;
 
-            PexObserve.ValueForViewing("$input_intVal", targetIntValue );
-            PexObserve.ValueForViewing("$input_signVal", targetSignValue );
+            PexObserve.ValueForViewing("$input_intVal", targetIntValue);
+            PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = target.Negate();
             return result;
@@ -575,8 +575,8 @@ namespace Lidgren.Network
 
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
-            
-            AssumePrecondition.IsTrue(  true);
+
+            AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = target.Not();
             return result;
@@ -591,7 +591,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_exp", exp);
-            
+
             AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = target.Pow(exp);
@@ -614,10 +614,10 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
             AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value))) && ((valueIntValue == valueSignValue && ((valueIntValue <= -1) || ((!(valueIntValue <= -1)) && (((!(valueIntValue <= 0))))))) || ((!(valueIntValue == valueSignValue))))));
-            
+
             NetBigInteger result = target.Remainder(value);
             return result;
-        }   
+        }
 
         [PexMethod]
         public NetBigInteger PUT_ShiftLeft([PexAssumeUnderTest]NetBigInteger target, int n)
@@ -629,8 +629,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_n", n);
-            
-            AssumePrecondition.IsTrue(  true);
+
+            AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = target.ShiftLeft(n);
             return result;
@@ -645,8 +645,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_n", n);
-            
-            AssumePrecondition.IsTrue(  true);
+
+            AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = target.ShiftRight(n);
             return result;
@@ -660,8 +660,8 @@ namespace Lidgren.Network
 
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
-            
-            AssumePrecondition.IsTrue(  true);
+
+            AssumePrecondition.IsTrue(true);
 
             int result = target.SignValue;
             return result;
@@ -681,7 +681,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", valueSignValue);
             PexObserve.ValueForViewing("$input_IsNull", NetBigIntegerTest.IsNull(value));
 
-            AssumePrecondition.IsTrue(  ((!(NetBigIntegerTest.IsNull(value)))) );
+            AssumePrecondition.IsTrue(((!(NetBigIntegerTest.IsNull(value)))));
 
 
             NetBigInteger result = target.Subtract(value);
@@ -699,8 +699,8 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_n", n);
-            
-            AssumePrecondition.IsTrue(  ((!(n <= -1))) );
+
+            AssumePrecondition.IsTrue(((!(n <= -1))));
 
             bool result = target.TestBit(n);
             return result;
@@ -714,8 +714,8 @@ namespace Lidgren.Network
 
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
-            
-            AssumePrecondition.IsTrue(  true);
+
+            AssumePrecondition.IsTrue(true);
 
 
             byte[] result = target.ToByteArray();
@@ -731,7 +731,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             byte[] result = target.ToByteArrayUnsigned();
             return result;
         }
@@ -745,7 +745,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_intVal", targetIntValue);
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
             string result = target.ToString();
             return result;
         }
@@ -760,7 +760,7 @@ namespace Lidgren.Network
             PexObserve.ValueForViewing("$input_signVal", targetSignValue);
             PexObserve.ValueForViewing("$input_radix", radix);
 
-            AssumePrecondition.IsTrue( (radix <= 16 && (((!(radix <= 1)) && ((radix <= 2) ||  ((!(radix <= 2)) && (((!(radix <= 9)) && ((radix <= 10) ||  ((!(radix <= 10)) && (((!(radix <= 15)))))))))))))  );
+            AssumePrecondition.IsTrue((radix <= 16 && (((!(radix <= 1)) && ((radix <= 2) || ((!(radix <= 2)) && (((!(radix <= 9)) && ((radix <= 10) || ((!(radix <= 10)) && (((!(radix <= 15))))))))))))));
             string result = target.ToString(radix);
             return result;
         }
@@ -770,7 +770,7 @@ namespace Lidgren.Network
         {
             PexObserve.ValueForViewing("$input_radix", value);
 
-            AssumePrecondition.IsTrue(  true);
+            AssumePrecondition.IsTrue(true);
 
             NetBigInteger result = NetBigInteger.ValueOf(value);
             return result;

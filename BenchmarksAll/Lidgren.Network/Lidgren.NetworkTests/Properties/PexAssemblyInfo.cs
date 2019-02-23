@@ -5,13 +5,13 @@ using Microsoft.Pex.Framework.Instrumentation;
 using Microsoft.Pex.Framework.Settings;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.Pex.Linq;
-using ReportParserLearning;
+//using ReportParserLearning;
 using Microsoft.Pex.Framework.Using;
 using Lidgren.Network;
 using System.Text;
 using System;
 
-[assembly: ReportParserExecution]
+//[assembly: ReportParserExecution]
 // Microsoft.Pex.Framework.Settings
 [assembly: PexAssemblySettings(TestFramework = "VisualStudioUnitTest")]
 
