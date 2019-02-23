@@ -90,10 +90,8 @@ def main():
 	run_ArrayListCommuteOnly()
 	run_QuickGraphCommutivity()
 	run_BinaryHeapCommutativity()
-	run_BinaryHeapCommutativity3()
 	run_PriorityQueueCommutativity()
 	
-	run_BinaryHeapException()
 	run_DSA()
 	run_Hola()
 	run_CodeContracts()
@@ -364,87 +362,6 @@ def run_BinaryHeapCommutativity():
 	]
 
 	runner(benchmark, methodParameters, "results/binaryheap_comm.csv")
-
-
-def run_BinaryHeapCommutativity3():
-
-	benchmark = Benchmark(
-		#Entire quickgraph project is too large; build test project only and compiler will compile needed dependencies
-		solutionFile = 'BenchmarksAll/QuickGraph3/QuickGraph.Tests/QuickGraph.Tests.csproj',
-		testDll = 'BenchmarksAll/QuickGraph3/QuickGraph.Tests/bin/Debug/QuickGraph.Tests.dll',
-		testFile = 'BenchmarksAll/QuickGraph3/QuickGraph.Tests/Collections/BinaryHeapTest.cs',
-		classFile = 'BenchmarksAll/QuickGraph3/QuickGraph/Collections/BinaryHeap.cs',
-		testNamespace = 'QuickGraph.Collections',
-		testType = 'BinaryHeapCommuteTest',
-		pexReportFolder = 'BenchmarksAll/QuickGraph3/QuickGraph.Tests/bin/Debug'
-	)
-
-
-	methodParameters = [
-		('PUT_CommutativityCapacityCapacityComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityCountComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityAddComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityRemoveMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityRemoveAtComm', [ ], ['index', 'bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityIndexOfComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCapacityUpdateComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountCountComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountAddComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountRemoveMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountRemoveAtComm', [ ], ['index', 'bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountIndexOfComm', [ ], ['value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityCountUpdateComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddAddComm', [ ], ['priority1', 'value1', 'priority2', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddMinimumComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddRemoveMinimumComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddRemoveAtComm', [ ], ['priority', 'value', 'index', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddIndexOfComm', [ ], ['priority', 'value1', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityAddUpdateComm', [ ], ['priority1', 'value1', 'priority2', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityMinimumMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityMinimumRemoveMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityMinimumRemoveAtComm', [ ], ['index', 'bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityMinimumIndexOfComm', [ ], ['value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityMinimumUpdateComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveMinimumRemoveMinimumComm', [ ], ['bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveMinimumRemoveAtComm', [ ], ['index', 'bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveMinimumIndexOfComm', [ ], ['value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveMinimumUpdateComm', [ ], ['priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveAtRemoveAtComm', [ ], ['index1', 'index2', 'bh1.Count', 'bh1.Capacity', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveAtIndexOfComm', [ ], ['index', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityRemoveAtUpdateComm', [ ], ['index', 'priority', 'value', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityIndexOfIndexOfComm', [ ], ['value1', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityIndexOfUpdateComm', [ ], ['value1', 'priority', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] ),
-		('PUT_CommutativityUpdateUpdateComm', [ ], ['priority1', 'value1', 'priority2', 'value2', 'bh1.Count', 'bh1.Capacity', 'bh1.IndexOf(value1)', 'bh1.IndexOf(value2)', 'bh1.Minimum().Key'] )
-	]
-
-	runner(benchmark, methodParameters, "results/binaryheap3_comm.csv")
-
- 
-
-def run_BinaryHeapException():
-
-	benchmark = Benchmark(
-		solutionFile = 'BenchmarksAll/QuickGraph/QuickGraph.sln',
-		testDll = 'BenchmarksAll/QuickGraph/QuickGraphTest/bin/Debug/QuickGraphTest.dll',
-		testFile = 'BenchmarksAll/QuickGraph/QuickGraphTest/BinaryHeapTest.cs',
-		classFile = 'BenchmarksAll/QuickGraph/QuickGraph/BinaryHeap.cs',
-		testNamespace = 'QuickGraphTest',
-		testType = 'BinaryHeapTest',
-		pexReportFolder = 'BenchmarksAll/QuickGraph/QuickGraphTest/bin/Debug'
-	)
-   
-	methodParameters = [
-		("PUT_Add", "Add", [ ], ['priority', 'value', 'bh.Count', 'bh.Capacity', 'bh.IndexOf(value)'] ),
-		("PUT_Minimum", "Minimum", [ ], ['bh.Count', 'bh.Capacity'] ),
-		("PUT_RemoveMinimum", "RemoveMinimum",[ ], ['bh.Count', 'bh.Capacity'] ),
-		("PUT_RemoveAt", "RemoveAt" ,[ ], ['index', 'bh.Count', 'bh.Capacity'] ),
-		("PUT_IndexOf", "IndexOf" , [ ], ['value', 'bh.Count', 'bh.Capacity', 'bh.IndexOf(value)'] ),
-		("PUT_Update", "Update", [ ], ['priority', 'value', 'bh.Count', 'bh.Capacity', 'bh.IndexOf(value)'] )
-	]
-
-	runner(benchmark, methodParameters, "results/binaryheap_exception.csv")
 
 
 
