@@ -97,10 +97,10 @@ def run_Sample():
         classFile = 'Sample/List/List.cs',
         testNamespace = 'SampleList.Test',
         testType = 'ListTest',
-        pexReportFolder = "Sample/Sample/bin/Debug"
+        pexReportFolder = "Sample/ListTest/bin/Debug"
     )
     methodParameters = [('CheckSample', [ ], ['x', 'l.Count()'])]    
-    runner(benchmark, methodParameters, "results/Sample.csv")
+    runner(benchmark, methodParameters, "results/sample.csv")
 
 if __name__ == '__main__':
     main()
