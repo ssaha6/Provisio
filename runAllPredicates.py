@@ -422,5 +422,179 @@ def run_CodeContracts():
 
 	runner(benchmark, methodParameters, "results/codecontract_exception.csv")
 
+def run_LidgrenNetworkNetBigInteger(learner, pex, typeLearner, thres, file):
+    SolutionFile = 'BenchmarksAll/Lidgren.Network/Lidgren.Network.Windows.sln'
+    TestDll = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/bin/Debug/Lidgren.Network.Tests.dll'
+    TestFile = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/NetBigIntegerTest.cs'
+    ClassFile = 'BenchmarksAll/Lidgren.Network/NetBigInteger.cs'
+    TestNamespace = 'Lidgren.Network'
+    TestType = 'NetBigIntegerTest'
+    learnerOutputDir = 'BenchmarksAll'
+
+    print "***** Beginning BigNetInteger Analysis *****"
+    print "***** starting Exact *****"
+
+    listOfInputs = [('PUT_Abs','Abs', [ ], ['targetIntValue', 'targetSignValue'], 0),
+ ('PUT_Add','Add', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 1),
+ ('PUT_And','And', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 2),
+ ('PUT_BitLengthGet','BitLengthGet', [ ], ['targetIntValue', 'targetSignValue'], 3),
+ ('PUT_CompareTo','CompareTo', ['NetBigIntegerTest.IsNull(obj)', 'typeEqualTestClass'], ['targetIntValue', 'targetSignValue'], 4),
+ ('PUT_CompareTo01','CompareTo01', ['NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 5),
+ ('PUT_Constructor','Constructor', ['string.IsNullOrEmpty(value)', 'string.IsNullOrWhiteSpace(value)', 'ulong.TryParse(value.out.temp)', 'nullAtEnd', 'isNotBegZero', 'startWithSign'], [], 6),
+ ('PUT_Constructor01','Constructor01', ['string.IsNullOrEmpty(str)', 'string.IsNullOrWhiteSpace(str)', 'ulong.TryParse(str.out.temp)', 'nullAtEnd', 'isNotBegZero', 'startWithSign'], ['radix'], 7),
+ ('PUT_Constructor02','Constructor02', ['NetBigIntegerTest.IsNull(bytes)'], ['bytesLength'], 8),
+ ('PUT_Constructor03','Constructor03', ['NetBigIntegerTest.IsNull(bytes)'], ['bytesLength', 'offset', 'length'], 9),
+ ('PUT_Constructor04','Constructor04', ['NetBigIntegerTest.IsNull(bytes)'], ['bytesLength', 'sign'], 10),
+ ('PUT_Constructor05','Constructor05', ['NetBigIntegerTest.IsNull(bytes)'], ['bytesLength', 'sign', 'offset', 'length'], 11),
+ ('PUT_Divide','Divide', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 12),
+ ('PUT_DivideAndRemainder','DivideAndRemainder', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 13),
+ ('PUT_Equals01','Equals01',['NetBigIntegerTest.IsNull(obj)', 'typeEqualTestClass'], ['targetIntValue', 'targetSignValue'], 14),
+ ('PUT_Gcd','Gcd', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 15),
+ ('PUT_GetHashCode01','GetHashCode01', [ ], ['targetIntValue', 'targetSignValue'], 16),
+ ('PUT_GetLowestSetBit','GetLowestSetBit', [ ], ['targetIntValue', 'targetSignValue'], 17),
+ ('PUT_IntValueGet','IntValueGet', [ ], ['targetIntValue', 'targetSignValue'], 18),
+ ('PUT_Max','Max', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 19),
+ ('PUT_Min','Min', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 20),
+ ('PUT_Mod','Mod', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 21),
+ ('PUT_ModInverse','ModInverse', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue', 'intGcd'], 22),
+ ('PUT_ModPow','ModPow', [ 'NetBigIntegerTest.IsNull(exponent)', 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'exponentIntValue', 'exponentSignValue', 'valueIntValue', 'valueSignValue'], 23),
+ ('PUT_Modulus','Modulus', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 24),
+ ('PUT_Multiply','Multiply', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 25),
+ ('PUT_Negate','Negate', [ ], ['targetIntValue', 'targetSignValue'], 26),
+ ('PUT_Not','Not', [ ], ['targetIntValue', 'targetSignValue'], 27),
+ ('PUT_Pow','Pow', [ ], ['targetIntValue', 'targetSignValue', 'exp'], 28),
+ ('PUT_Remainder','Remainder', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 29),
+ ('PUT_ShiftLeft','ShiftLeft', [ ], ['targetIntValue', 'targetSignValue', 'n'], 30),
+ ('PUT_ShiftRight','ShiftRight', [ ], ['targetIntValue', 'targetSignValue', 'n'], 31),
+ ('PUT_SignValueGet','SignValueGet', [ ], ['targetIntValue', 'targetSignValue'], 32),
+ ('PUT_Subtract','Subtract', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue'], 33),
+ ('PUT_TestBit','TestBit', [ ], ['targetIntValue', 'targetSignValue', 'n'], 34),
+ ('PUT_ToByteArray','ToByteArray', [ ], ['targetIntValue', 'targetSignValue'], 35),
+ ('PUT_ToByteArrayUnsigned','ToByteArrayUnsigned', [ ], ['targetIntValue', 'targetSignValue'], 36),
+ ('PUT_ToString01','ToString01', [ ], ['targetIntValue', 'targetSignValue'], 37),
+ ('PUT_ToString02','ToString02', [ ], ['targetIntValue', 'targetSignValue', 'radix'], 38),
+ ('PUT_ValueOf','ValueOf', [ ], ['value'], 39)]
+    name =""
+    p = ""
+    rounds  = ""
+    data = ""
+    t0 = 0.0
+    t1 = 0.0
+    pexTime = 0.0
+
+    # need to reevaluate cases before PUT_Modulus
+
+    for i in [11]:
+        if len(listOfInputs[i][2])== 0 and len(listOfInputs[i][3]) == 0:
+            printToFile(listOfInputs[i][0], "","","still need to evaluate","",file,"",True)
+            continue
+
+        if os.path.exists(lidgrenNetworkReportLocation):
+            shutil.rmtree(lidgrenNetworkReportLocation)
+        print "Evaluation for method: " + listOfInputs[i][0]
+        try:        
+            t0 = time.time()
+            myAnalysis = Analysis()
+            name,p,rounds,data,pexTime = myAnalysis.learnPreconditionForException(listOfInputs[i][0],listOfInputs[i][1],listOfInputs[i][2],listOfInputs[i][3], SolutionFile, TestFile,
+            ClassFile, TestDll, pex, TestNamespace, TestType, learner, typeLearner,thres, learnerOutputDir)  
+            t1 = time.time()
+            printToFile(name,p,rounds,str(t1-t0),data,file,str(pexTime),True)
+        except Exception as e:
+            t1 = time.time()
+            printToFile(name,p,rounds,str(t1-t0),data,file,str(pexTime),False)
+            print "***************"
+            print e
+            traceback.print_exc()
+
+def run_LidgrenNetworkNetOutgoingMessage(learner, pex, typeLearner, thres, file):
+    SolutionFile = 'BenchmarksAll/Lidgren.Network/Lidgren.Network.Windows.sln'
+    TestDll = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/bin/Debug/Lidgren.Network.Tests.dll'
+    TestFile = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/NetOutgoingMessageTest.cs'
+    ClassFile = 'BenchmarksAll/Lidgren.Network/NetOutgoingMessage.cs'
+    TestNamespace = 'Lidgren.Network'
+    TestType = 'NetOutgoingMessageTest'
+    learnerOutputDir = 'BenchmarksAll'
+
+    print "***** Beginning NetOutgoingMessage Analysis *****"
+    print "***** starting Exact *****"
+
+    listOfInputs =[('PUT_Encrypt','Encrypt', ['NetOutgoingMessageTest.IsNull(encryption)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'encryptionBytesLength'], 0),
+ ('PUT_EnsureBufferSize','EnsureBufferSize', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'numberOfBits'], 1),
+ ('PUT_InternalEnsureBufferSize','InternalEnsureBufferSize', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'numberOfBits'], 2),
+ ('PUT_LengthBitsGet','LengthBitsGet', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 3),
+ ('PUT_LengthBitsSet','LengthBitsSet', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 4),
+ ('PUT_LengthBytesGet','LengthBytesGet', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 5),
+ ('PUT_LengthBytesSet','LengthBytesSet', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 6),
+ ('PUT_PeekDataBuffer','PeekDataBuffer', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 7),
+ ('PUT_ToString01','ToString01', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 8),
+ ('PUT_Write','Write', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 9),
+ ('PUT_Write01','Write01', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 10),
+ ('PUT_Write02','Write02', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 11),
+ ('PUT_Write03','Write03', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'numberOfBits'], 12),
+ ('PUT_Write04','Write04', ['NetOutgoingMessageTest.IsNull(source)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'sourceLength'], 13),
+ ('PUT_Write05','Write05', ['NetOutgoingMessageTest.IsNull(source)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'sourceLength', 'offsetInBytes', 'numberOfBytes'], 14),
+ ('PUT_Write06','Write06', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 15),
+ ('PUT_Write07','Write07', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source', 'numberOfBits'], 16),
+ ('PUT_Write08','Write08', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 17),
+ ('PUT_Write09','Write09', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 18),
+ ('PUT_Write10','Write10', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 19),
+ ('PUT_Write11','Write11', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source', 'numberOfBits'], 20),
+ ('PUT_Write12','Write12', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source', 'numberOfBits'], 21),
+ ('PUT_Write13','Write13', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 22),
+ ('PUT_Write14','Write14', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source', 'numberOfBits'], 23),
+ ('PUT_Write15','Write15', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 24),
+ ('PUT_Write16','Write16', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source', 'numberOfBits'], 25),
+ ('PUT_Write17','Write17', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 26),
+ ('PUT_Write18','Write18', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source'], 27),
+ ('PUT_Write19','Write19', ['string.IsNullOrEmpty(source)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'source.Length'], 28),
+ ('PUT_Write20','Write20', ['IsNull(endPoint)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'endPointPort'], 29),
+ ('PUT_Write21','Write21', ['IsNull(message)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'messageLengthBits', 'messageLengthBytes', 'messageBufferLength'], 30),
+ ('PUT_Write22','Write22', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'messageLengthBits', 'messageLengthBytes', 'messageBufferLength'], 31),
+ ('PUT_WriteAllFields','WriteAllFields', [], ['target.LengthBits', 'target.LengthBytes'], 32),
+ ('PUT_WriteAllFields01','WriteAllFields01', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 33),
+ ('PUT_WriteAllProperties','WriteAllProperties', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 34),
+ ('PUT_WriteAllProperties01','WriteAllProperties01', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 35),
+ ('PUT_WritePadBits','WritePadBits', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length'], 36),
+ ('PUT_WritePadBits01','WritePadBits01', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'numberOfBits'], 37),
+ ('PUT_WriteRangedInteger','WriteRangedInteger', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'min', 'max', 'value'], 38),
+ ('PUT_WriteRangedSingle','WriteRangedSingle', [], ['value', 'min', 'max', 'numberOfBits'], 39),
+ ('PUT_WriteSignedSingle','WriteSignedSingle', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value', 'numberOfBits'], 40),
+ ('PUT_WriteTime','WriteTime', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'localTime', 'highPrecision'], 41),
+ ('PUT_WriteUnitSingle','WriteUnitSingle', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value', 'numberOfBits'], 42),
+ ('PUT_WriteVariableInt32','WriteVariableInt32', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 43),
+ ('PUT_WriteVariableInt64','WriteVariableInt64', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 44),
+ ('PUT_WriteVariableUInt32','WriteVariableUInt32', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 45),
+ ('PUT_WriteVariableUInt64','WriteVariableUInt64', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'], 46)]
+    name =""
+    p = ""
+    rounds  = ""
+    data = ""
+    t0 = 0.0
+    t1 = 0.0
+    pexTime = 0.0
+
+    #for i in xrange(40, 41):
+    for i in [14]:
+        if len(listOfInputs[i][2])== 0 and len(listOfInputs[i][3]) == 0:
+            printToFile(listOfInputs[i][0], "","","still need to evaluate","",file,"",True)
+            continue
+
+        if os.path.exists(lidgrenNetworkReportLocation):
+            shutil.rmtree(lidgrenNetworkReportLocation)
+        print "Evaluation for method: " + listOfInputs[i][0]
+        try:        
+            t0 = time.time()
+            myAnalysis = Analysis()
+            name,p,rounds,data,pexTime = myAnalysis.learnPreconditionForException(listOfInputs[i][0],listOfInputs[i][1],listOfInputs[i][2],listOfInputs[i][3], SolutionFile, TestFile,
+            ClassFile, TestDll, pex, TestNamespace, TestType, learner, typeLearner,thres, learnerOutputDir)  
+            t1 = time.time()
+            printToFile(name,p,rounds,str(t1-t0),data,file,str(pexTime),True)
+        except Exception as e:
+            t1 = time.time()
+            printToFile(name,p,rounds,str(t1-t0),data,file,str(pexTime),False)
+            print "***************"
+            print e
+            traceback.print_exc()
+
 if __name__ == '__main__':
     main()
