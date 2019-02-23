@@ -499,7 +499,7 @@ def run_LidgrenNetworkNetBigInteger():
 
 
 
-def run_LidgrenNetworkNetOutgoingMessage(learner, pex, typeLearner, thres, file):
+def run_LidgrenNetworkNetOutgoingMessage():
     
     benchmark = Benchmark(
         solutionFile = 'BenchmarksAll/Lidgren.Network/Lidgren.Network.Windows.sln',
