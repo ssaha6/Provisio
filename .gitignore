@@ -10,15 +10,15 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+**/[Dd]ebug/*
+**/[Dd]ebugPublic/*
+**/[Rr]elease/*
+**/[Rr]eleases/*
+**/x64/*
+**/x86/*
 bld/
-[Bb]in/
-[Oo]bj/
+**/[Bb]in/*
+**/[Oo]bj/*
 [Ll]og/
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -260,12 +260,19 @@ c5.0dbg.exe
 *.tmp
 *.tree
 log
-\.vscode/
+**/\.vscode
+**/\.vs
 *.pyc
 *.stackdump
 /z3-4.7.1-x64-win
-
 *.cache
 !learner/EnumerativeSolver/*
 !learner/eusolver/*
 tempLocation/precondition.sl
+**/bin/*
+**/obj/*
+results/*
+/learner/LoopInvGen-master.zip
+/submission
+/tool
+/learner/abhishekudupa-eusolver-c1b7357a884e.zip

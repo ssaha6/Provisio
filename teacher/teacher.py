@@ -39,7 +39,7 @@ class Teacher:
 	def runTeacher(self):
 		pass
 	
-	def generateSamples(self):
+	def generateSamples(self, pexReportFolder):
 		pass
 
 

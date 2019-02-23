@@ -12,6 +12,87 @@ namespace QuickGraphTest.Factories
     /// <summary>A factory for QuickGraph.UndirectedGraph`2[System.String,QuickGraph.Edge`1[System.String]] instances</summary>
     public static partial class UndirectedGraphFactory
     {
+        [PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
+        public static UndirectedGraph<int, Edge<int>> CreateEmptyGraph()
+        {
+            UndirectedGraph<int, Edge<int>> g = new UndirectedGraph<int, Edge<int>>(false);
+
+            return g;
+
+        }
+        /*1. Add one Vertex*/
+        [PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
+        public static UndirectedGraph<int, Edge<int>> CreateGraphOneNode(int node1)
+        {
+            UndirectedGraph<int, Edge<int>> g = new UndirectedGraph<int, Edge<int>>(false);
+            g.AddVertex(node1);
+            return g;
+
+        }
+
+        /*2. Add array of vertex (no edges) - check distinct elements and not zero */
+        /*[PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
+        public static UndirectedGraph<int, Edge<int>> CreateGraphArrayOfNodes([PexAssumeNotNull]int[] nodes)
+        {
+            //PexAssume.IsTrue(nodes.Length < 12);
+            PexAssume.AreDistinctValues(nodes);
+            PexAssume.TrueForAll(nodes, e => e != 0);
+            UndirectedGraph<int, Edge<int>> g = new UndirectedGraph<int, Edge<int>>(false);
+            foreach (int ele in nodes)
+                g.AddVertex(ele);
+            return g;
+        }*/
+
+        [PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
+        public static UndirectedGraph<int, Edge<int>> CreateGraphArrayOfNodesAndEdges([PexAssumeNotNull]int[] nodes,
+            [PexAssumeNotNull] bool[] edges)
+        {
+            PexAssume.IsTrue(edges.Length <= nodes.Length);
+            PexAssume.AreDistinctValues(nodes);
+            PexAssume.TrueForAll(nodes, e => e != 0);
+
+            UndirectedGraph<int, Edge<int>> g = new UndirectedGraph<int, Edge<int>>(false);
+            foreach (int ele in nodes)
+            {
+                g.AddVertex(ele);
+            }
+
+            for (int i = 0; i < edges.Length; i++)
+            {
+                int source = PexChoose.IndexValue("indexed value", nodes);
+                if (edges[i] == false)
+                    g.AddEdge(new Edge<int>(nodes[source], nodes[i]));
+            }
+            return g;
+        }
+
+        [PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
+        public static UndirectedGraph<int, Edge<int>> CreateGraphArrayOfNodesAndEdgesAssume([PexAssumeNotNull]int[] nodes,
+            [PexAssumeNotNull] bool[] edges)
+        {
+            //PexAssume.IsTrue(nodes.Length <= 7 || nodes.Length > 7);
+            PexAssume.IsTrue(edges.Length <= 6 || nodes.Length > 6);
+            PexAssume.IsTrue(edges.Length <= nodes.Length);
+            PexAssume.AreDistinctValues(nodes);
+            //PexAssume.TrueForAll(nodes, e => e != 0);
+
+            UndirectedGraph<int, Edge<int>> g = new UndirectedGraph<int, Edge<int>>(false);
+            foreach (int ele in nodes)
+            {
+                g.AddVertex(ele);
+            }
+
+            int source = PexChoose.IndexValue("indexed value", nodes);
+
+            for (int i = 0; i < edges.Length; i++)
+            {
+
+                if (edges[i] == false)
+                    g.AddEdge(new Edge<int>(nodes[source], nodes[i]));
+            }
+            return g;
+        }
+
         /*/// <summary>A factory for QuickGraph.UndirectedGraph`2[System.String,QuickGraph.Edge`1[System.String]] instances</summary>
         [PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
         public static UndirectedGraph<int, Edge<int>> CreateGraphGeneral(int[] nodes, bool parallel)
@@ -89,7 +170,8 @@ namespace QuickGraphTest.Factories
             return g;
 
         }*/
-        public static bool allDistinct(int[] arr)
+        
+        /*public static bool allDistinct(int[] arr)
         {
             
             for (int i = 0; i < arr.Length; i++)
@@ -160,7 +242,7 @@ namespace QuickGraphTest.Factories
             //g.AddEdge(new Edge<int>(7, 8));
             return g;
 
-        }
+        }*/
 
         /*[PexFactoryMethod(typeof(QuickGraph.UndirectedGraph<int, Edge<int>>))]
          public static UndirectedGraph<int, Edge<int>> CreateGraphGeneralWithEdgesNodes(Edge<int>[] edges, int[] nodes)

@@ -248,4 +248,4 @@ if __name__ == '__main__':
     # learner.runLearner()
     # print learner.readResults()
 
-    print learner.learn(dataPoints)
+    # print learner.learn(dataPoints)

@@ -26,7 +26,7 @@ namespace HolaBenchmarks.Test
             PexAssume.IsTrue(n > -101 && n < 101);
             PexObserve.ValueForViewing("$input_n", n);
             
-            AssumePrecondition.IsTrue((n <= 30));
+            AssumePrecondition.IsTrue(!(true));
             target.dig01(n);
         }
 
@@ -45,7 +45,7 @@ namespace HolaBenchmarks.Test
             PexObserve.ValueForViewing("$input_n", n);
             PexObserve.ValueForViewing("$input_u1", u1);
 
-            AssumePrecondition.IsTrue(  (!(n <= -1)) );
+            AssumePrecondition.IsTrue(!(true));
             
             target.dig07(n, u1);
         }
@@ -63,7 +63,7 @@ namespace HolaBenchmarks.Test
             PexAssume.IsTrue(u4 > -101 && u4 < 101);
             PexObserve.ValueForViewing("$input_m", m);
             PexObserve.ValueForViewing("$input_u4", u4); 
-            AssumePrecondition.IsTrue(  ((!(m <= -1))) );
+            AssumePrecondition.IsTrue(!(true));
             
             
             target.dig14(m , u4);
@@ -81,7 +81,7 @@ namespace HolaBenchmarks.Test
             PexAssume.IsTrue(k > -101 && k < 101);
             PexObserve.ValueForViewing("$input_n", n);
             PexObserve.ValueForViewing("$input_k", k);
-            AssumePrecondition.IsTrue(  ((!(k <= -1)) && (((!(-n + k <= -1))))) );
+            AssumePrecondition.IsTrue(!(true));
             
             target.dig15(n,k);
         }
@@ -99,7 +99,7 @@ namespace HolaBenchmarks.Test
             PexAssume.IsTrue(n > -101 && n < 101);
             PexObserve.ValueForViewing("$input_m", m);
             PexObserve.ValueForViewing("$input_n", n);
-            AssumePrecondition.IsTrue( (m <= -1 && ((m == n))) ||  ((!(m <= -1)) && (((!(-m + n <= -1))))) );
+            AssumePrecondition.IsTrue(!(true));
             
             
             target.dig19(m,n);
@@ -122,7 +122,7 @@ namespace HolaBenchmarks.Test
             PexObserve.ValueForViewing("$input_j", j);
             PexObserve.ValueForViewing("$input_v", v);
             PexObserve.ValueForViewing("$input_u4", u4);
-            //AssumePrecondition.IsTrue( (n <= 0 && ((n <= -1))) ||  ((!(n <= 0))) );
+            //AssumePrecondition.IsTrue(!(true));
             
             target.dig21(n,j,v,u4);
         }
@@ -144,7 +144,7 @@ namespace HolaBenchmarks.Test
             PexObserve.ValueForViewing("$input_u1", u1);
             try
             {
-                AssumePrecondition.IsTrue((n <= 13328));
+                AssumePrecondition.IsTrue(true);
             }
             catch (OverflowException)
             {
@@ -167,7 +167,7 @@ namespace HolaBenchmarks.Test
             PexObserve.ValueForViewing("$input_MAXPATHLEN", MAXPATHLEN);
             PexObserve.ValueForViewing("$input_u", u);
 
-            AssumePrecondition.IsTrue( (MAXPATHLEN <= 1121)  );
+            AssumePrecondition.IsTrue(true);
             target.dig39(MAXPATHLEN, u);
         }
 
@@ -185,7 +185,7 @@ namespace HolaBenchmarks.Test
             PexAssume.IsTrue(kt > -101 && kt < 101);
             PexAssume.IsTrue(flag > -101 && flag < 101);
             
-            AssumePrecondition.IsTrue( (kt <= -1 && ((flag <= 0 && (((!(flag <= -1))))))) ||  ((!(kt <= -1))) );
+            AssumePrecondition.IsTrue(true);
 
             PexObserve.ValueForViewing("$input_n", n);
             PexObserve.ValueForViewing("$input_kt", kt);
@@ -213,7 +213,7 @@ namespace HolaBenchmarks.Test
 
             try
             {
-                AssumePrecondition.IsTrue((-x + -y + -u1 <= -1074861000.0 && ((u1 <= 1) ||  ((!(u1 <= 1)) && ((x <= 270606500.0))))) ||  ((!(-x + -y + -u1 <= -1074861000.0)) && ((-x + -u1 <= -458298700.0 && ((u1 <= 3 && ((y <= -843776 && (((!(-x + -y + u1 <= -875366800.0))))) ||  ((!(y <= -843776))))))) ||  ((!(-x + -u1 <= -458298700.0))))) );
+                AssumePrecondition.IsTrue(true);
             }
             catch (OverflowException)
             {

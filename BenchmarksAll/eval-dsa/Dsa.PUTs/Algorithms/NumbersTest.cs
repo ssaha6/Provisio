@@ -31,7 +31,7 @@ namespace Dsa.PUTs
         [PexMethod]
         public int PUT_Fibonacci(int number)
         {
-            AssumePrecondition.IsTrue(!(  ((!(number <= -1)) && ((number <= 248))) ));
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_number", number);
             int result = Numbers.Fibonacci(number);
             return result;
@@ -51,7 +51,7 @@ namespace Dsa.PUTs
             PexObserve.ValueForViewing("$input_first", first);
             PexObserve.ValueForViewing("$input_second", second);
 
-            AssumePrecondition.IsTrue((-first + -second <= 0));            
+            AssumePrecondition.IsTrue(true);
             int result = Numbers.GreatestCommonDenominator(first, second);
             return result;
             // TODO: add assertions to method NumbersTest.GreatestCommonDenominator(Int32, Int32)
@@ -96,7 +96,7 @@ namespace Dsa.PUTs
         public int PUT_ToBinary(int value)
         {
 
-            AssumePrecondition.IsTrue( (value <= 1023 && (((!(value <= 0)))))  );
+            AssumePrecondition.IsTrue(!(((value >= 1) && (value <= 8390653))));
             PexObserve.ValueForViewing("$input_value", value);
             int result = Numbers.ToBinary(value);
             return result;
@@ -117,7 +117,7 @@ namespace Dsa.PUTs
         [PexMethod]
         public int PUT_ToOctal(int value)
         {
-            AssumePrecondition.IsTrue( (value <= 907 && (((!(value <= 0)))))  );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_value", value);
             int result = Numbers.ToOctal(value);
             return result;
