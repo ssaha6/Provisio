@@ -5,8 +5,8 @@ using Microsoft.Pex.Framework.Moles;
 using Microsoft.Pex.Framework.Settings;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.Pex.Framework.Coverage;
-using ReportParserLearning;
-[assembly: ReportParserExecution]
+//using ReportParserLearning;
+//[assembly: ReportParserExecution]
 
 // Microsoft.Pex.Framework.Settings
 [assembly: PexAssemblySettings(TestFramework = "VisualStudioUnitTest")]

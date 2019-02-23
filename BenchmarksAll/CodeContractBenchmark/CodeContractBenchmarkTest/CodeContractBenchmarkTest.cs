@@ -25,7 +25,7 @@ namespace CodeContractBenchmark.Test
         {
             PexAssume.IsTrue(x > -101 && x < 101);
             PexAssume.IsTrue(z > -101 && z < 101);
-            AssumePrecondition.IsTrue( ((z <= -1)) ||  ((!(z <= -1)) && (((!(x <= 11)) && (((x <= 12)))))) );
+            AssumePrecondition.IsTrue(!(true));
             PexObserve.ValueForViewing("$input_x", x);
             PexObserve.ValueForViewing("$input_z", z);
             target.AfterWhileLoop_ConditionAlwaysTrue(x, z);
@@ -37,7 +37,7 @@ namespace CodeContractBenchmark.Test
         public  void PUT_AfterWhileLoop_Symbolic([PexAssumeUnderTest]CodeContractBenchmark target, int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= 0))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             int[] result = target.AfterWhileLoop_Symbolic(x);
             
@@ -49,7 +49,7 @@ namespace CodeContractBenchmark.Test
         public void PUT_AssertGeqZero(int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= -1))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             CodeContractBenchmark.AssertGeqZero(x);
         }
@@ -59,7 +59,7 @@ namespace CodeContractBenchmark.Test
         public void PUT_AssertGTZero(int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= 0))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             CodeContractBenchmark.AssertGTZero(x);
         }
@@ -72,7 +72,7 @@ namespace CodeContractBenchmark.Test
         public void PUT_AssertInsideWhileLoop([PexAssumeUnderTest]CodeContractBenchmark target, int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= -1))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             target.AssertInsideWhileLoop(x);
         }
@@ -83,7 +83,7 @@ namespace CodeContractBenchmark.Test
         public void PUT_AssertLTZero(int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue( ((x <= -1))  );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             CodeContractBenchmark.AssertLTZero(x);
         }
@@ -94,7 +94,7 @@ namespace CodeContractBenchmark.Test
         public int[] PUT_GTZero([PexAssumeUnderTest]CodeContractBenchmark target, int x)
         {
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= -1))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             int[] result = target.GTZero(x);
             return result;
@@ -112,7 +112,7 @@ namespace CodeContractBenchmark.Test
         {
             
             PexAssume.IsTrue(x > -101 && x < 101);
-            AssumePrecondition.IsTrue(  ((!(x <= -1))) );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             PexObserve.ValueForViewing("$input_b", b);
             int[] result = target.GTZeroAfterCondition(b, x);
@@ -131,7 +131,7 @@ namespace CodeContractBenchmark.Test
             PexAssume.IsTrue(x > -101 && x < 101);
             PexObserve.ValueForViewing("$input_x", x);
             PexObserve.ValueForViewing("$input_b", b);
-            AssumePrecondition.IsTrue(  ((!(x <= -2)) && ((b && (((!(x <= -1))))) ||  ((!(b))))) );
+            AssumePrecondition.IsTrue(true);
             int[] result = target.GTZeroInConditional(b, x);
             return result;
         }
@@ -140,7 +140,7 @@ namespace CodeContractBenchmark.Test
         public int[] PUT_InsideWhileLoop([PexAssumeUnderTest]CodeContractBenchmark target, int x)
         {
             PexAssume.IsTrue(x > -200 && x < 200);
-            AssumePrecondition.IsTrue( (x <= 100)  );
+            AssumePrecondition.IsTrue(true);
             PexObserve.ValueForViewing("$input_x", x);
             int[] result = target.InsideWhileLoop(x);
             return result;
