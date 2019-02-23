@@ -24,15 +24,15 @@ from benchmark import Benchmark
 class Logging:
 	def __init__(self, fileName):
 		self.fileName = fileName
-		self.header = ["MethodName", "Precondition", "NumRounds", "NumDataPoints", "LearnerTime", "TeacherTime"]
+		self.header = ["MethodName", "Precondition", "Num. Rounds", "Num. DataPoints", "Learner Time(s)", "Teacher Time(s)", "Total Time(s)"]
 		with open(self.fileName, 'wb') as myfile:
 			wr = csv.writer(myfile)
 			wr.writerow(self.header)
 		
-	def append(self, method, precondition, rounds, numDataPoints, learnerTime, teacherTime):
+	def append(self, method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime):
 		with open(self.fileName, 'a') as myfile:
 			wr = csv.writer(myfile)
-			wr.writerow([method, precondition, rounds, numDataPoints, learnerTime, teacherTime])
+			wr.writerow([method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime])
 			
 
 
@@ -61,7 +61,7 @@ def runner(benchmark, methodParameters, logFile):
 
             precondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPrecondition()
 
-            log.append(putName, precondition, rounds, numDataPoints, learnerTime, teacherTime)
+            log.append(putName, precondition, rounds, numDataPoints, learnerTime, teacherTime, learnerTime + teacherTime)
             print "--------------------------------------------------------------------------------"
             print "Method Name        : " + putName
             print "Final Precondition : " + precondition
@@ -113,11 +113,11 @@ def run_StackCommuteOnly():
 	)
 	
 	methodParameters = [
+        ('PUT_CommutativityPeekPeekComm', [ ], ['s1.Count', 's1.Peek()'] ), 
 		('PUT_CommutativityPeekPopComm', [ ], ['s1.Count', 's1.Peek()'] ), 
 		('PUT_CommutativityPopPopComm', [ ], ['s1.Count', 's1.Peek()'] ), 
 		('PUT_CommutativityPushPopComm', [ 's1.Contains(x)'], ['s1.Count', 'x', 's1.Peek()'] ), 
 		('PUT_CommutativityPushPeekComm', [ 's1.Contains(x)'], ['s1.Count', 'x', 's1.Peek()'] ), 
-		('PUT_CommutativityPeekPeekComm', [ ], ['s1.Count', 's1.Peek()'] ), 
 		('PUT_CommutativityPushPushComm', [ 's1.Contains(x)', 's1.Contains(y)'], ['s1.Count', 'x', 'y', 's1.Peek()'] ), 
 		('PUT_CommutativitySizePeekComm', [], ['s1.Count', 's1.Peek()']),
 		('PUT_CommutativitySizePopComm', [ ], ['s1.Count', 's1.Peek()'] ), 
@@ -186,6 +186,7 @@ def run_SetCommuteOnly():
 	runner(benchmark, methodParameters, "results/set_comm.csv")
 
 
+
 def run_MapCommuteOnly():
 	
 	benchmark = Benchmark(	
@@ -212,6 +213,7 @@ def run_MapCommuteOnly():
 	]
 
 	runner(benchmark, methodParameters, "results/map_comm.csv")
+
 
 
 def run_ArrayListCommuteOnly():
@@ -241,6 +243,7 @@ def run_ArrayListCommuteOnly():
 	]
 
 	runner(benchmark, methodParameters, "results/arraylist_comm.csv")
+
 
 
 def run_QuickGraphCommutivity():
@@ -387,6 +390,7 @@ def run_Hola():
 	runner(benchmark, methodParameters, "results/hola_exception.csv")
 
 
+
 def run_CodeContracts():
 	benchmark = Benchmark(
 		solutionFile = 'BenchmarksAll/CodeContractBenchmark/CodeContractBenchmark.sln',
@@ -424,6 +428,8 @@ def run_CodeContracts():
 
 	runner(benchmark, methodParameters, "results/codecontract_exception.csv")
 
+
+
 def run_LidgrenNetworkNetBigInteger():
 
     benchmark = Benchmark(
@@ -435,7 +441,7 @@ def run_LidgrenNetworkNetBigInteger():
         testType = 'NetBigIntegerTest',
         pexReportFolder = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/bin/Debug'
     )
-
+    
     methodParameters = [
         ('PUT_Abs','Abs', [ ], ['targetIntValue', 'targetSignValue']),
         ('PUT_Add','Add', [ 'NetBigIntegerTest.IsNull(value)'], ['targetIntValue', 'targetSignValue', 'valueIntValue', 'valueSignValue']),
@@ -479,7 +485,7 @@ def run_LidgrenNetworkNetBigInteger():
         ('PUT_ValueOf', 'ValueOf', [], ['value'])
     ]
 
-	runner(benchmark, methodParameters, "results/lidgren_exception.csv")
+    runner(benchmark, methodParameters, "results/lidgren_exception.csv")
 
 
 
@@ -494,7 +500,7 @@ def run_LidgrenNetworkNetOutgoingMessage(learner, pex, typeLearner, thres, file)
         testType = 'NetOutgoingMessageTest',
         pexReportFolder = 'BenchmarksAll/Lidgren.Network/Lidgren.NetworkTests/bin/Debug'
     )
-
+    
     methodParameters = [
         ('PUT_Encrypt','Encrypt', ['NetOutgoingMessageTest.IsNull(encryption)'], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'encryptionBytesLength']),
         ('PUT_EnsureBufferSize','EnsureBufferSize', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'numberOfBits']),

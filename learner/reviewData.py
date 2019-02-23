@@ -41,7 +41,7 @@ def filterDataPointConflicts(dataPoints):
             if row[-1] == 'true':
                 row_backup[-1] = 'false'
                 if row_backup in inputm:
-                    print "****conflict found****"
+                    # print "****conflict found****"
                     # !!! LOG CONFLICT FOUNDS
                     pass
                 else:

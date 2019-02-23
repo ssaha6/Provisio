@@ -83,7 +83,7 @@ class Framework:
 			if self.precondition in allPreconditions:
 				break
 			
-			if self.rounds == 1:
+			if self.rounds >= 50:
 				break
 			
 			allPreconditions.append(self.precondition)
