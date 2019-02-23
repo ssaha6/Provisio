@@ -33,7 +33,7 @@ class Logging:
 		with open(self.fileName, 'a') as myfile:
 			wr = csv.writer(myfile)
 			wr.writerow([method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime])
-			
+
 
 
 
@@ -74,7 +74,7 @@ def runner(benchmark, methodParameters, logFile):
         except Exception as e:
             print "\n!!! Exception found !!!"
             print str(e)
-        
+
 
 
 
@@ -97,9 +97,9 @@ def main():
 	
 	run_LidgrenNetworkNetBigInteger()
     run_LidgrenNetworkNetOutgoingMessage()
-    
-	
-	
+
+
+
 def run_StackCommuteOnly():
 
 	benchmark = Benchmark(
@@ -126,8 +126,8 @@ def run_StackCommuteOnly():
 	]
 	
 	runner(benchmark, methodParameters, "results/stack_comm.csv")
-	
-	
+
+
 
 def run_QueueCommuteOnly():
 
