@@ -37,14 +37,20 @@ class Logging:
 
 
 
-def runner(benchmark, methodParameters, logFile):
+def runner(benchmark, methodParameters, logFile, exception = False):
 	
     learner = DTLearner("dtlearner", "learner/C50exact/c5.0dbg.exe", "", "tempLocation")
     pexBinary = "pex.exe"
 
     log = Logging(logFile)
 
-    for putName, boolVariables, intVariables  in methodParameters:
+    for element in methodParameters:
+        
+        if exception:
+            (putName, methodUnderTest, boolVariables, intVariables) = element 
+        else:
+            (putName, boolVariables, intVariables) = element 
+
 
         print "\n\nLearning precondition for method: " + putName
         print "--------------------------------------------------------------------------------"
@@ -56,8 +62,12 @@ def runner(benchmark, methodParameters, logFile):
             len(learner.intVariables) + len(learner.boolVariables),
             ['/nor']
             )
-
-            framework = Framework(putName, benchmark, learner, teacher)
+            
+            if exception:
+                framework = FrameworkException(putName, methodUnderTest, benchmark, learner, teacher)
+            else: 
+                framework = Framework(putName, benchmark, learner, teacher)
+            
 
             precondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPrecondition()
 
@@ -345,10 +355,10 @@ def run_DSA():
 		solutionFile = 'BenchmarksAll/eval-dsa/Dsa.sln',
 		testFile = 'BenchmarksAll/eval-dsa/Dsa.PUTs/Algorithms/NumbersTest.cs',
 		testDll ='BenchmarksAll/eval-dsa/Dsa.PUTs/bin/Debug/DsaPUTs.dll',
-		classFile = "Benchmarks/eval-dsa/Dsa/Algorithms/Numbers.cs",
+		classFile = "BenchmarksAll/eval-dsa/Dsa/Algorithms/Numbers.cs",
 		testNamespace = 'Dsa.PUTs',
 		testType = 'NumbersTest',
-		pexReportFolder = 'BenchmarksAll/eval-dsa/Dsa.PUTs/bin'
+		pexReportFolder = 'BenchmarksAll/eval-dsa/Dsa.PUTs/bin/Debug'
 	)
    
 
@@ -359,7 +369,7 @@ def run_DSA():
 		("PUT_Fibonacci", "Fibonacci", [], ['number'])
 	]
 
-	runner(benchmark, methodParameters, "results/dsa_exception.csv")
+	runner(benchmark, methodParameters, "results/dsa_exception.csv", exception=True)
 
 
 
@@ -387,7 +397,7 @@ def run_Hola():
 		("PUT_dig43", "dig43", [], ['x', 'y', 'u1'])
 	]
 
-	runner(benchmark, methodParameters, "results/hola_exception.csv")
+	runner(benchmark, methodParameters, "results/hola_exception.csv", exception=True)
 
 
 
@@ -426,7 +436,7 @@ def run_CodeContracts():
 		("PUT_SrivastavaGulwaniPLDI09", "SrivastavaGulwaniPLDI09", [], ['x', 'y'])
 	] 
 
-	runner(benchmark, methodParameters, "results/codecontract_exception.csv")
+	runner(benchmark, methodParameters, "results/codecontract_exception.csv", exception=True)
 
 
 
@@ -485,7 +495,7 @@ def run_LidgrenNetworkNetBigInteger():
         ('PUT_ValueOf', 'ValueOf', [], ['value'])
     ]
 
-    runner(benchmark, methodParameters, "results/lidgren_exception.csv")
+    runner(benchmark, methodParameters, "results/lidgren_exception.csv", exception=True)
 
 
 
@@ -551,7 +561,7 @@ def run_LidgrenNetworkNetOutgoingMessage(learner, pex, typeLearner, thres, file)
         ('PUT_WriteVariableUInt64','WriteVariableUInt64', [], ['target.LengthBits', 'target.LengthBytes', 'target.PeekDataBuffer().Length', 'value'])
     ]
     
-    runner(benchmark, methodParameters, "results/lidgren_outgoing_exception.csv")
+    runner(benchmark, methodParameters, "results/lidgren_outgoing_exception.csv", exception=True)
 
 
 
