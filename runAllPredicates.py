@@ -19,6 +19,7 @@ from teacher import *
 from learner import *
 from framework import *
 from benchmark import Benchmark
+import argparse
 
 
 class Logging:
@@ -93,20 +94,65 @@ def runner(benchmark, methodParameters, logFile, exception = False):
 
 def main():
 	
-	run_StackCommuteOnly()
-	run_QueueCommuteOnly()
-	run_SetCommuteOnly()
-	run_MapCommuteOnly()
-	run_ArrayListCommuteOnly()
-	run_QuickGraphCommutivity()
-	run_BinaryHeapCommutativity()
-	
-	run_DSA()
-	run_Hola()
-	run_CodeContracts()
-	
-	run_LidgrenNetworkNetBigInteger()
-    run_LidgrenNetworkNetOutgoingMessage()
+    
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('--runAll', action='store_true')
+    parser.add_argument('--runCommutative',  choices=['all', 'stack', 'queue', 'set', 'map', 'array_list', 'quick_graph', 'binary_heap'], default=None)
+    parser.add_argument('--runExceptions', choices=['all', 'dsa', 'hola', 'code_contract', 'big_int', 'outgoing_msg' ], default= None)
+
+    args=parser.parse_args()
+    
+    run_benchmarks = []
+    if args.runAll == False and args.runCommutative == None and args.runExceptions == None:
+        run_benchmarks = run_benchmarks + ['stack', 'queue', 'set', 'map', 'array_list', 'quick_graph', 'binary_heap', 'dsa', 'hola', 'code_contract', 'big_int', 'outgoing_msg']
+    
+    elif args.runAll == True:
+        run_benchmarks = run_benchmarks + ['stack', 'queue', 'set', 'map', 'array_list', 'quick_graph', 'binary_heap', 'dsa', 'hola', 'code_contract', 'big_int', 'outgoing_msg']
+    
+    elif args.runAll == False: 
+        if  args.runCommutative :
+            if args.runCommutative == 'all':
+                run_benchmarks = run_benchmarks + ['stack', 'queue', 'set', 'map', 'array_list', 'quick_graph', 'binary_heap']
+            else:
+                run_benchmarks.append(args.runCommutative) 
+            
+        if args.runExceptions:
+            if args.runExceptions == 'all':
+                run_benchmarks = run_benchmarks + ['dsa', 'hola', 'code_contract', 'big_int', 'outgoing_msg' ]
+            else:
+                run_benchmarks.append(args.runExceptions)
+    else:
+        print "invalid prompt"
+        sys.exit(1)
+    
+        
+    
+    for element in run_benchmarks:
+        if element == 'stack':
+            run_StackCommuteOnly()
+        elif element == 'queue':
+            run_QueueCommuteOnly()
+        elif element == 'set':
+            run_SetCommuteOnly()
+        elif element == 'map':
+            run_MapCommuteOnly()
+        elif element == 'array_list':
+            run_ArrayListCommuteOnly()
+        elif element == 'quick_graph':
+            run_QuickGraphCommutivity()
+        elif element == 'binary_heap':
+            run_BinaryHeapCommutativity()
+        elif element == 'dsa':
+            run_DSA()
+        elif element == 'hola':
+            run_Hola()
+        elif element == 'code_contract':
+            run_CodeContracts()
+        elif element == 'big_int':
+            run_LidgrenNetworkNetBigInteger()
+        elif element == 'outgoing_msg':
+            run_LidgrenNetworkNetOutgoingMessage()
 
 
 
