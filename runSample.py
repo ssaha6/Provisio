@@ -22,23 +22,23 @@ from benchmark import Benchmark
 
 
 class Logging:
-	def __init__(self, fileName):
-		self.fileName = fileName
-		self.header = ["MethodName", "Precondition", "Num. Rounds", "Num. DataPoints", "Learner Time(s)", "Teacher Time(s)", "Total Time(s)"]
-		with open(self.fileName, 'wb') as myfile:
-			wr = csv.writer(myfile)
-			wr.writerow(self.header)
-		
-	def append(self, method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime):
-		with open(self.fileName, 'a') as myfile:
-			wr = csv.writer(myfile)
-			wr.writerow([method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime])
+    def __init__(self, fileName):
+        self.fileName = fileName
+        self.header = ["MethodName", "Precondition", "Num. Rounds", "Num. DataPoints", "Learner Time(s)", "Teacher Time(s)", "Total Time(s)"]
+        with open(self.fileName, 'wb') as myfile:
+            wr = csv.writer(myfile)
+            wr.writerow(self.header)
+        
+    def append(self, method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime):
+        with open(self.fileName, 'a') as myfile:
+            wr = csv.writer(myfile)
+            wr.writerow([method, precondition, rounds, numDataPoints, learnerTime, teacherTime, totalTime])
 
 
 
 
 def runner(benchmark, methodParameters, logFile, exception = False):
-	
+    
     learner = DTLearner("dtlearner", "learner/C50exact/c5.0dbg.exe", "", "tempLocation")
     pexBinary = "pex.exe"
 

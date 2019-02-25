@@ -107,31 +107,31 @@ def remove_assumes(ClassFilePath, methodUnderTest):
 
 
 def insertPostConditionInPexAssert(CSharpFile, postcondition, methodname):
-	fullPathCsharpFile = os.path.abspath(CSharpFile)
-	file = list()
-	with io.open(fullPathCsharpFile, 'r', encoding = 'utf-8-sig') as f:
-		file = f.read().splitlines()
+    fullPathCsharpFile = os.path.abspath(CSharpFile)
+    file = list()
+    with io.open(fullPathCsharpFile, 'r', encoding = 'utf-8-sig') as f:
+        file = f.read().splitlines()
 
-	begin = False
-	indexPexAssert = -1
-	once = True
-	lineToChange = "PexAssert.IsTrue("
-	with io.open(fullPathCsharpFile, 'w', encoding = 'utf-8-sig') as fWrite:
-		for line in file:
-			if line.find(methodname) != -1 and once:
-				begin = True
-				once = False
-			elif begin and line.find(lineToChange) != -1:
-				indexPexAssert = line.find(lineToChange)
-				line = line[:indexPexAssert + 17] + postcondition + ");"
-				begin = False
-				#print line.encode.encode("utf-8")("utf-8")
+    begin = False
+    indexPexAssert = -1
+    once = True
+    lineToChange = "PexAssert.IsTrue("
+    with io.open(fullPathCsharpFile, 'w', encoding = 'utf-8-sig') as fWrite:
+        for line in file:
+            if line.find(methodname) != -1 and once:
+                begin = True
+                once = False
+            elif begin and line.find(lineToChange) != -1:
+                indexPexAssert = line.find(lineToChange)
+                line = line[:indexPexAssert + 17] + postcondition + ");"
+                begin = False
+                #print line.encode.encode("utf-8")("utf-8")
 
-			fWrite.write("%s\n" % line)
+            fWrite.write("%s\n" % line)
 
 def runCompiler(compilerCommand, solutionFile):
-	csharp.run_compiler(csharp.set_compiler_args(compilerCommand, solutionFile))
+    csharp.run_compiler(csharp.set_compiler_args(compilerCommand, solutionFile))
 
 
-	
+    
 
