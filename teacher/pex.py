@@ -75,7 +75,7 @@ class Pex(Teacher):
     
     
     # refactor this later
-    def generateSamplesPost(self, pexReportFolder):
+    def parseReportPost(self, pexReportFolder):
         if True:  #learner.name == "HoudiniExtended":
             pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
             tree = etree.parse(pexReportFile)

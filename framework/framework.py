@@ -24,7 +24,7 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 #from learner import Learner
 from teacher import *
 from learner import *
-
+from benchmark import *
 
 
 class Framework:
@@ -36,6 +36,7 @@ class Framework:
         self.teacher = teacher
         self.dataPoints = []
         self.precondition = "true"
+        self.postcondition = "true"
         self.rounds = 0
         self.numPredicates = 0
         self.teacherTime = 0.0
@@ -96,42 +97,54 @@ class Framework:
             
         
         
-    def learnPostcondition(self):
-        testClass = "../../ContractsSubjects/Stack/StackTest/StackContractTest.cs"
-        putName = "PUT_PushContract"
-        solutionFile = "../../ContractsSubjects/Stack/Stack.sln"
-        testType = "StackContractTest"
-        testNamespace = "Stack.Test"
-        testDll = "../../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll"
-        allPostconditions = []
-        allDataPoints = []
-        postcondition = "true"
-        round = 1
-        while True:
-            modifycode.insertPostConditionInPexAssert(testClass, postcondition, putName)
-            modifycode.runCompiler("MSBuild.exe",solutionFile)
-            #def runTeacher(self, dll, testMethod, testNamespace, testType):
-            self.teacher.runTeacher(testDll, putName,testNamespace, testType)
-            
-            datapoints = self.teacher.generateSamples()
-            print "Datapoints in Round: " + str(round)
-            print datapoints
-            allDataPoints.extend(datapoints)
-            print "All Datapoints accumulated: "
-            print allDataPoints
-            postcondition = self.learner.learn(allDataPoints)
-            print "round: "+ str(round) + postcondition
 
-            if postcondition in allPostconditions:
+    def checkPostcondition(self, postcondition):
+        modifycode.insertPostConditionInPexAssert(self.benchmark.testFile, self.putName, postcondition)
+        modifycode.runCompiler("MSBuild.exe", self.benchmark.solutionFile)
+        self.teacher.runTeacher(self.benchmark.testDll, self.putName, self.benchmark.testNamespace, self.benchmark.testType)
+        return self.teacher.parseReportPost(self.benchmark.pexReportFolder)
+    
+        
+    def learnPostcondition(self):
+        allPostconditions = []
+        self.rounds = 1
+        while True:
+            
+            dataPoints = self.checkPostcondition(self.postcondition)
+            print "\nDatapoints in Round: " + str(self.rounds)
+            print dataPoints
+            
+            self.dataPoints.extend(dataPoints)
+            print "\nAll Datapoints accumulated: "
+            print self.dataPoints
+            
+            self.postcondition = self.learner.learn(self.dataPoints)
+            print  "Round " + str(self.rounds) + " : Postcondition Learned: " + self.postcondition
+
+            if self.postcondition in allPostconditions:
                 break
             
-            allPostconditions.append(postcondition)
-            round = round + 1
-        
+            if self.rounds >= 20:
+                break
+            
+            allPostconditions.append(self.postcondition)
+            self.rounds = self.rounds +1        
 
 
 if __name__ == '__main__':
     
+    benchmark = Benchmark(
+        solutionFile = "ContractsSubjects/Stack/Stack.sln",
+        testDll = "ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll",
+        testFile = "ContractsSubjects/Stack/StackTest/StackContractTest.cs",
+        classFile = 'ContractsSubjects/Stack/Stack/Stack.cs',
+        testNamespace = "Stack.Test",
+        testType = "StackContractTest",
+        pexReportFolder = "ContractsSubjects/Stack/StackTest/bin/Debug"
+    )
+    
+    putName = "PUT_PushContract",
+            
     logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
     
@@ -143,20 +156,30 @@ if __name__ == '__main__':
 
     # add handler to logger object
     logger.addHandler(fh)
-    options = [[True,True,True],[True,True,False],[True,False,True],[False,True,True],
-    [False,True,False],[False,False,True],[True,False,False],[False,False,False]]
-
+    options = [
+                [True, True, True],
+                [True, True, False],
+                [True, False, True],
+                [False, True, True],
+                [False, True, False],
+                [False, False, True],
+                [True, False, False],
+                [False, False, False]
+            ]
+            
+            
     for opt in options:
         entropy = opt[0]
         numerical = opt[1]
         allPredicates = opt[2]
-
         
         logger.info("Program started")
         logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
+        
         #learner = HoudiniExtended("HoudiniExtended","","","")
         #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
         #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+        
         learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
         learner.entropy = entropy
         learner.numerical = numerical
@@ -165,19 +188,21 @@ if __name__ == '__main__':
         print "starting"
         intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
         #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
+        
         boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
         #boolVariables = []
+        
         learner.setVariables(intVariables, boolVariables)
-
-        # Report path is relative to vscode root dir... 
+        
         teacher = Pex(  "pex.exe",
-                        "../ContractsSubjects/Stack/StackTest/bin/Debug",
                         len(learner.intVariables) + len(learner.boolVariables),
                         ['/nor']
                     )
         
-        framework = Framework(learner, teacher)
+        framework = Framework(putName, benchmark, learner, teacher)
+        
         framework.learnPostcondition()
         logger.info("Done")
         logger.info("")
         break
+        

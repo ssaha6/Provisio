@@ -15,7 +15,6 @@ import io
 ##from benchmarkSet import BenchmarkSet
 from lxml import etree
 import modifycode
-import reportparser
 import executecommand
 
 

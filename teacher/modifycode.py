@@ -106,7 +106,7 @@ def remove_assumes(ClassFilePath, methodUnderTest):
             fWrite.write("%s\n" % line)
 
 
-def insertPostConditionInPexAssert(CSharpFile, postcondition, methodname):
+def insertPostConditionInPexAssert(CSharpFile, methodname, postcondition):
     fullPathCsharpFile = os.path.abspath(CSharpFile)
     file = list()
     with io.open(fullPathCsharpFile, 'r', encoding = 'utf-8-sig') as f:
