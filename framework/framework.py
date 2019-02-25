@@ -143,7 +143,7 @@ if __name__ == '__main__':
         pexReportFolder = "ContractsSubjects/Stack/StackTest/bin/Debug"
     )
     
-    putName = "PUT_PushContract",
+    putName = "PUT_PushContract"
             
     logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
