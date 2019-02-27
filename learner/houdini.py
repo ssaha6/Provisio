@@ -82,8 +82,6 @@ class Houdini(Learner):
             if predAssignment[varIndex]:
                 posPred.append(self.symbolicBoolVariables[varIndex])
         
-
-
         # This is also wrong!, if no positive predicates than we should not output false but rather TRUE;
         if len(posPred) == 0:
             conjunct = "true"

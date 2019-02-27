@@ -60,6 +60,8 @@ class DisjunctiveLearner(Learner):
 
         return pos, neg
 
+    
+
     def learn(self, dataPoints, simplify=True):
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
@@ -67,7 +69,6 @@ class DisjunctiveLearner(Learner):
         #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
         if len(self.dataPoints) == 0:
             return "true"
-
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
@@ -231,6 +232,19 @@ class DisjunctiveLearner(Learner):
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
 
+        #Debug 
+        logger.info("always True simplified:")
+        alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(alwaysTruePrefix)+" )" )
+        logger.info(alwaysTrueSimp)
+
+        logger.info("left simplified:")
+        alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(leftDisjunctPrefix)+ " )")
+        logger.info(alwaysTrueSimp)
+
+        logger.info("right simplified:")
+        alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  "(and "+ ' '.join(rightDisjunctPrefix)+ " )" )
+        logger.info(alwaysTrueSimp) 
+        #end debug
         if self.allPredicates:
             z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
             z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && (" +' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
