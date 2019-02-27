@@ -52,6 +52,82 @@ namespace DataStructures.Comm.Test
             PexAssert.IsTrue(r1 == r2 && re1 == re2 && eq.Equals(s1, s2));
         }
 
+
+        //[PexMethod]
+        [PexMethod(TestEmissionFilter = PexTestEmissionFilter.FailuresAndUniquePaths, MaxRuns = 100)] // 000, MaxConditions = 2000)] //0000, MaxConditions = 1000000000, MaxBranches = 1000000000, MaxConstraintSolverTime = 10, MaxConstraintSolverMemory = 1000000000)]
+        public void PUT_ExceptionAdd([PexAssumeUnderTest]DataStructures.Dictionary<int, int> s, int x, int y)
+        {
+
+            //Dictionary<int, int> s0 = new Dictionary<int, int>(s, s.Comparer);
+
+            //DictionaryEqualityComparer eq = new DictionaryEqualityComparer();
+            PexAssume.IsTrue(-11 < x && x < 11);
+            PexAssume.IsTrue(-11 < y && y < 11);
+            //PexAssume.IsTrue(-11 < y1 && y1 < 11);
+
+            //PexObserve.ValueForViewing("$input_s1.Count", s1.Count);
+            //PexObserve.ValueForViewing("$input_x", x);
+            //PexObserve.ValueForViewing("$input_y", y);
+            //PexObserve.ValueForViewing("$input_s1.ContainsKey(x)", s1.ContainsKey(x));
+            //PexObserve.ValueForViewing("$input_s1.ContainsKey(y)", s1.ContainsKey(y));
+            //PexObserve.ValueForViewing("$input_s1.ContainsValue(x)", s1.ContainsValue(x));
+            //PexObserve.ValueForViewing("$input_s1.ContainsValue(y)", s1.ContainsValue(y));
+
+
+            int old_s_Count = s.Count;
+            int old_x = x;
+            int old_y = y;
+            bool old_s_ContainsKeyx = s.ContainsKey(x);
+            bool old_s_ContainsKeyy = s.ContainsKey(y);
+            bool old_s_ContainsValue_x = s.ContainsValue(x);
+            bool old_s_ContainsValue_y = s.ContainsValue(y);
+
+
+            //PexAssume.IsTrue(Old_x != Old_Top); 
+
+            PexAssume.IsTrue(!((((s.ContainsKey(x))))));
+            PexAssume.IsTrue(s.ContainsValue(x));
+            PexAssume.IsTrue(!(s.Count == x));
+
+
+            s.Add(x, y);
+
+
+            int new_s_Count = s.Count;
+            int new_x = x;
+            int new_y = y;
+
+            bool new_s_ContainsKeyx = s.ContainsKey(x);
+            bool new_s_ContainsKeyy = s.ContainsKey(y);
+            bool new_s_ContainsValue_x = s.ContainsValue(x);
+            bool new_s_ContainsValue_y = s.ContainsValue(y);
+
+
+
+            PexObserve.ValueForViewing("$old_s_Count", old_s_Count);
+            PexObserve.ValueForViewing("$new_s_Count", new_s_Count);
+            PexObserve.ValueForViewing("$old_x", old_x);
+            PexObserve.ValueForViewing("$new_x", new_x);
+            PexObserve.ValueForViewing("$old_y", old_y);
+            PexObserve.ValueForViewing("$new_y", new_y);
+
+            PexObserve.ValueForViewing("$old_s_ContainsKeyx", old_s_ContainsKeyx);
+            PexObserve.ValueForViewing("$new_s_ContainsKeyx", new_s_ContainsKeyx);
+            PexObserve.ValueForViewing("$old_s_ContainsKeyy", old_s_ContainsKeyy);
+            PexObserve.ValueForViewing("$new_s_ContainsKeyy", new_s_ContainsKeyy);
+
+            PexObserve.ValueForViewing("$old_s_ContainsValue_x", old_s_ContainsValue_x);
+            PexObserve.ValueForViewing("$new_s_ContainsValue_x", new_s_ContainsValue_x);
+            PexObserve.ValueForViewing("$old_s_ContainsValue_y", old_s_ContainsValue_y);
+            PexObserve.ValueForViewing("$new_s_ContainsValue_y", new_s_ContainsValue_y);
+
+
+            PexAssert.IsTrue(((new_s_ContainsKeyx) && (new_s_ContainsValue_y) && (!(old_s_Count == new_s_Count)) && (old_s_ContainsValue_y) && (new_s_ContainsKeyy) && (new_x == old_x) && (new_y == old_x) && (old_x == old_y) && (!(old_s_Count == old_x)) && (old_s_ContainsValue_x) && (!(new_s_Count == old_x)) && (new_s_ContainsValue_x)) || ((new_s_ContainsKeyx) && (new_s_ContainsValue_y) && (!(old_s_Count == new_s_Count)) && (old_x == new_x) && (old_y == new_y)));
+
+        }   
+
+
+
         //[PexMethod(TestEmissionFilter = PexTestEmissionFilter.All)]
         [PexMethod]
         public void PUT_CommutativityRemoveAddComm([PexAssumeUnderTest]DataStructures.Dictionary<int, int> s1, int x, int y, int y1)

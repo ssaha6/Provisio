@@ -28,6 +28,15 @@ namespace DataStructures.Test.Factories
         }*/
 
         [PexFactoryMethod(typeof(DataStructures.Dictionary<int, int>))]
+        public static Dictionary<int, int> CreateEmptyDir()
+        {
+
+            //PexAssume.IsTrue(pairs.Length < 11); 
+            DataStructures.Dictionary<int, int> ret = new DataStructures.Dictionary<int, int>();
+            return ret;
+        }
+
+        [PexFactoryMethod(typeof(DataStructures.Dictionary<int, int>))]
         public static Dictionary<int, int> CreateKeyValPair([PexAssumeNotNull]System.Collections.Generic.KeyValuePair<int,int>[] pairs)
         {
 

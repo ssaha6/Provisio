@@ -139,7 +139,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PexAPIWrapper">
-      <HintPath>..\..\..\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
+      <HintPath>..\..\..\teacher\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
     </Reference>
     <Reference Include="ReportParserLearning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -157,6 +157,9 @@
     <Compile Include="ArrayListTest.cs" />
     <Compile Include="BitArrayTest.cs" />
     <Compile Include="DictionaryCommuteTest.cs" />
+    <Compile Include="DictionaryCommuteTest.PUT_ExceptionAdd.g.cs">
+      <DependentUpon>DictionaryCommuteTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factories\ArrayListFactory.cs" />
     <Compile Include="Factories\DictionaryFactory.cs" />
     <Compile Include="Factories\HashSetFactory.cs" />

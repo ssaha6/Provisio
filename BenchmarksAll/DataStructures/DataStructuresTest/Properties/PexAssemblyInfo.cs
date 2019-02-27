@@ -10,7 +10,7 @@ using DataStructures.Utility;
 using Microsoft.Pex.Linq;
 using Microsoft.Pex.Framework.Explorable;
 using Microsoft.Pex.Framework;
-using ReportParserLearning;
+//using ReportParserLearning;
 //using PexReportParser;
 using DataStructures;
 
@@ -18,7 +18,7 @@ using DataStructures;
 //[assembly: Pexum]
 
 //[assembly: PexReportParserExecution]
-[assembly: ReportParserExecution]
+//[assembly: ReportParserExecution]
 
 
 // Microsoft.Pex.Framework.Settings
