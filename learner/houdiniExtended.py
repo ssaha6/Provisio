@@ -136,7 +136,7 @@ class HoudiniExtended(Learner):
     def createAllPredicates(self):
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
-        allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
+        # allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
         if self.numerical:    
             allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)
         #print " prefix numerical predicates: "+  str(self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)[0][0])

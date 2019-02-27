@@ -36,7 +36,7 @@ class Framework:
         self.teacher = teacher
         self.dataPoints = []
         self.precondition = "true"
-        self.postcondition = "true"
+        self.postcondition = "false"
         self.rounds = 0
         self.numPredicates = 0
         self.teacherTime = 0.0
@@ -45,11 +45,11 @@ class Framework:
 
     def checkPrecondition(self, precondition, PTest):
         if PTest: 
-            modifycode.remove_assumes(self.benchmark.testFile, self.putName)
+            # modifycode.remove_assumes(self.benchmark.testFile, self.putName)
             modifycode.insert_p_in_put(self.benchmark.testFile, self.putName, precondition)
         else:
             modifycode.insert_p_in_put(self.benchmark.testFile, self.putName, "!("+precondition+")")
-            modifycode.insert_assumes(self.benchmark.testFile, self.putName)
+            # modifycode.insert_assumes(self.benchmark.testFile, self.putName)
 
         modifycode.runCompiler("MSBuild.exe", self.benchmark.solutionFile)
         
@@ -107,43 +107,67 @@ class Framework:
         
     def learnPostcondition(self):
         allPostconditions = []
+        PdataPoints = []
+        NdataPoints = []
         self.rounds = 1
         while True:
             
-            dataPoints = self.checkPostcondition(self.postcondition)
-            print "\nDatapoints in Round: " + str(self.rounds)
-            print dataPoints
+            (PdataPoints, NdataPoints) = self.checkPostcondition(self.postcondition)
+            print "\nPdatapoints in Round: " + str(self.rounds)
+            print PdataPoints
+            print "\nNdatapoints in Round: " + str(self.rounds)            
+            print NdataPoints
             
-            self.dataPoints.extend(dataPoints)
+            if len(NdataPoints) == 0:
+                break
+            
+            
+            self.dataPoints.extend(PdataPoints)
+            self.dataPoints.extend(NdataPoints)
+            
             print "\nAll Datapoints accumulated: "
             print self.dataPoints
             
             self.postcondition = self.learner.learn(self.dataPoints)
             print  "Round " + str(self.rounds) + " : Postcondition Learned: " + self.postcondition
 
-            if self.postcondition in allPostconditions:
-                break
+            # if self.postcondition in allPostconditions:
+            #     break
             
-            if self.rounds >= 20:
+            if self.rounds >= 50:
                 break
             
             allPostconditions.append(self.postcondition)
             self.rounds = self.rounds +1        
 
+        return self.postcondition, self.rounds
+
 
 if __name__ == '__main__':
     
-    benchmark = Benchmark(
-        solutionFile = "ContractsSubjects/Stack/Stack.sln",
-        testDll = "ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll",
-        testFile = "ContractsSubjects/Stack/StackTest/StackContractTest.cs",
-        classFile = 'ContractsSubjects/Stack/Stack/Stack.cs',
-        testNamespace = "Stack.Test",
-        testType = "StackContractTest",
-        pexReportFolder = "ContractsSubjects/Stack/StackTest/bin/Debug"
-    )
+    # benchmark = Benchmark(
+    #     solutionFile = "ContractsSubjects/Stack/Stack.sln",
+    #     testDll = "ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll",
+    #     testFile = "ContractsSubjects/Stack/StackTest/StackContractTest.cs",
+    #     classFile = 'ContractsSubjects/Stack/Stack/Stack.cs',
+    #     testNamespace = "Stack.Test",
+    #     testType = "StackContractTest",
+    #     pexReportFolder = "ContractsSubjects/Stack/StackTest/bin/Debug"
+    # )
     
-    putName = "PUT_PushContract"
+    # putName = "PUT_PushContract"
+      
+    benchmark = Benchmark(  
+        solutionFile = 'BenchmarksAll/DataStructures/DataStructures.sln',
+        testDll ='BenchmarksAll/DataStructures/DataStructuresTest/bin/Debug/DataStructuresTest.dll',
+        testFile = 'BenchmarksAll/DataStructures/DataStructuresTest/DictionaryCommuteTest.cs',
+        classFile='BenchmarksAll/DataStructures/DataStructures/Dictionary.cs',
+        testNamespace = 'DataStructures.Comm.Test',
+        testType = 'DictionaryCommuteTest',
+        pexReportFolder = 'BenchmarksAll/DataStructures/DataStructuresTest/bin/Debug'
+    )
+    putName = "PUT_ExceptionAdd"
+         
             
     logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
@@ -157,7 +181,7 @@ if __name__ == '__main__':
     # add handler to logger object
     logger.addHandler(fh)
     options = [
-                [True, True, True],
+                [True, False, True],
                 [True, True, False],
                 [True, False, True],
                 [False, True, True],
@@ -186,11 +210,40 @@ if __name__ == '__main__':
         learner.allPredicates = allPredicates
 
         print "starting"
-        intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+        # intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
         #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
         
-        boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+        # boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
         #boolVariables = []
+        
+        
+        
+        intVariables = ["old_s_Count",
+             "new_s_Count",
+             "old_x",
+             "new_x",
+             "old_y", 
+             "new_y"]
+             
+
+        boolVariables = [
+            "old_s_ContainsKeyx", 
+            "new_s_ContainsKeyx",
+            "old_s_ContainsKeyy", 
+            "new_s_ContainsKeyy", 
+            "old_s_ContainsValue_x",
+            "new_s_ContainsValue_x",
+            "old_s_ContainsValue_y",
+            "new_s_ContainsValue_y"
+        ]
+            
+            
+        
+        
+        
+        
+        
+        
         
         learner.setVariables(intVariables, boolVariables)
         
@@ -201,8 +254,10 @@ if __name__ == '__main__':
         
         framework = Framework(putName, benchmark, learner, teacher)
         
-        framework.learnPostcondition()
+        post, rounds = framework.learnPostcondition()
+        print "final post:" + post
+        logger.info("Final Post" + post)
+        logger.info("Rounds" + str(rounds))
         logger.info("Done")
         logger.info("")
         break
-        

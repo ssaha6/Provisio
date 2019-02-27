@@ -94,6 +94,7 @@ def runner(benchmark, methodParameters, logFile, exception = False):
 
 def main():
     
+    run_MapCommuteOnly()
     
     parser = argparse.ArgumentParser()
     
@@ -256,6 +257,7 @@ def run_MapCommuteOnly():
     )
 
     methodParameters = [
+        ('PUT_ExceptionAdd',['s1.ContainsKey(x)','s1.ContainsKey(y)', 's1.ContainsValue(x)', 's1.ContainsValue(y)'],['s1.Count', 'x', 'y']),
         ('PUT_CommutativityRemoveRemoveComm', [ 's1.ContainsKey(x)', 's1.ContainsKey(y)', 's1.ContainsValue(x)', 's1.ContainsValue(y)'], ['s1.Count', 'x', 'y'] ), 
         ('PUT_CommutativityRemoveAddComm', [ 's1.ContainsKey(x)', 's1.ContainsKey(y)', 's1.ContainsKey(y1)', 's1.ContainsValue(x)', 's1.ContainsValue(y)', 's1.ContainsValue(y1)'], ['s1.Count', 'x', 'y', 'y1'] ), 
         ('PUT_CommutativityAddAddComm', [ 's1.ContainsKey(x)', 's1.ContainsKey(y)', 's1.ContainsKey(x1)', 's1.ContainsKey(y1)', 's1.ContainsValue(x)', 's1.ContainsValue(y)', 's1.ContainsValue(x1)', 's1.ContainsValue(y1)'], ['s1.Count', 'x', 'x1', 'y', 'y1'] ), 

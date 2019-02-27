@@ -13,8 +13,9 @@ namespace Stack.Test.Factories
         public static Stack.Stack<int> Create(int[] elems)
         {
             
-            PexAssume.IsTrue(elems != null && elems.Length < 11);
-            PexAssume.TrueForAll(0, elems.Length, _i => elems[_i] > -11 && elems[_i] < 11);
+            //PexAssume.IsTrue(elems != null && elems.Length < 11);
+            PexAssume.IsTrue(elems != null);
+            //PexAssume.TrueForAll(0, elems.Length, _i => elems[_i] > -11 && elems[_i] < 11);
             Stack.Stack<int> ret = new Stack.Stack<int>(elems.Length+2 );// DataStructure has big enough capacity for Commutativity Test
             for (int i = 0; i < elems.Length; i++)
             {

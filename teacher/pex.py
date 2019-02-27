@@ -53,7 +53,9 @@ class Pex(Teacher):
             singlePoint = []
             for value in test.xpath('./value'):
                 if re.match("^\$.*", value.xpath('./@name')[0]):
-                    singlePoint.append(str(value.xpath('string()')))
+                    val = str(value.xpath('string()'))
+                    val = self.replaceIntMinAndMax(val)
+                    singlePoint.append(val)
 
             if test.get('status') == 'normaltermination':
                 singlePoint.append('true')
@@ -79,30 +81,46 @@ class Pex(Teacher):
         if True:  #learner.name == "HoudiniExtended":
             pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
             tree = etree.parse(pexReportFile)
-            dataPoints = []
+            PdataPoints = []
+            NdataPoints = []
             for test in tree.xpath('//generatedTest'):
                 # REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
                 if test.get('status') == 'assumptionviolation' or test.get('status') == 'minimizationrequest':
                     continue
                 singlePoint = ()
+                saneValue = True
                 for value in test.xpath('./value'):
                     if re.match("^\$.*", value.xpath('./@name')[0]):
                         val = str(value.xpath('string()'))
                         val = self.replaceIntMinAndMax(val)
+                        
+                        try: 
+                            intValue = int(val)
+                            if intValue > 1000 or intValue < -1000:
+                                saneValue = False
+                        except ValueError:
+                            pass
+                            
                         singlePoint = singlePoint + (val,)
 
-                if test.get('status') == 'normaltermination':
-                    singlePoint = singlePoint + ('true',)
+                if not saneValue:
+                    continue 
 
-                else:
-                    # Houdini - Only positive points
-                    singlePoint = singlePoint +('true',)
-                    
+                # no matter what a point is always +ve
+                singlePoint = singlePoint + ('true',)
+
+                
                 if len(singlePoint) < self.numVariables:
                     continue
-                dataPoints.append(singlePoint)
-            
-            return dataPoints
+                
+                if test.get('status') == 'normaltermination':
+                    PdataPoints.append(singlePoint)
+                else:
+                    NdataPoints.append(singlePoint)
+                    
+                    
+            return (PdataPoints, NdataPoints)
+
 
     def getExecCommand(self,testDll, testMethod, testNamespace, testType):
         

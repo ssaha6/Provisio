@@ -13,8 +13,8 @@ namespace Stack.Test
     [PexClass,TestClass]
     public partial class StackContractTest
     {
-        //[PexMethod(TestEmissionFilter= PexTestEmissionFilter.All)]
-        [PexMethod]
+        [PexMethod(TestEmissionFilter = PexTestEmissionFilter.FailuresAndUniquePaths, MaxRuns = 100)]
+        //[PexMethod]
         public void PUT_PushContract([PexAssumeUnderTest]Stack.Stack<int> s1, int x)
         {
             
@@ -28,8 +28,8 @@ namespace Stack.Test
 
             //PexAssume.IsTrue(Old_x != Old_Top); 
 
-            AssumePrecondition.IsTrue(true);
-            
+            AssumePrecondition.IsTrue(true)
+            ;
             s1.Push(x);
 
             int New_s1Count = s1.Count;
@@ -46,7 +46,7 @@ namespace Stack.Test
             PexObserve.ValueForViewing("$old_s1_contains_x", Old_s1ContainsX);
             PexObserve.ValueForViewing("$new_s1_contains_x", New_s1ContainsX);
 
-            PexAssert.IsTrue(((New_s1ContainsX) && (New_x == Old_x) && (New_s1Count == 1 + Old_s1Count) && (New_Top == New_x) && (Old_s1Count >= 1) && (Old_Top >= -10)));
+            PexAssert.IsTrue(((New_s1ContainsX) && (New_x == Old_x) && (New_s1Count == 1 + Old_s1Count) && (New_Top == Old_x) && (Old_s1ContainsX) && (Old_s1Count >= 1) && (Old_Top >= 0) && (Old_x >= 0)) || ((New_s1ContainsX) && (New_x == Old_x) && (New_s1Count == 1 + Old_s1Count) && (New_Top == Old_x) && ( ! (Old_Top == Old_x)) && (Old_s1Count >= 1) && (Old_Top >= 0) && (Old_x >= 0)));
         }
 
 
@@ -83,6 +83,9 @@ namespace Stack.Test
             PexObserve.ValueForViewing("$old_s1_Count", Old_s1Count);
             PexObserve.ValueForViewing("$new_s1_Count", New_s1Count);
             PexObserve.ValueForViewing("$new_ret", New_ret);
+            PexObserve.ValueForViewing("$old_s1_contains_x", Old_s1ContainsX);
+            PexObserve.ValueForViewing("$new_s1_contains_x", New_s1ContainsX);
+
             //PexObserve.ValueForViewing("$old_s1_Peek", Old_Top);
             //PexObserve.ValueForViewing("$new_s1_Peek", New_Top);
 

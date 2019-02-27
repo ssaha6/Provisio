@@ -28,7 +28,7 @@ import logging
 
 
 
-logger = logging.getLogger("Framework.DisjunctLearner")
+# logger = logging.getLogger("Framework.DisjunctLearner")
 # TODO: calling learner.SetDataPoints changes list of list to list of tuples.
 
 class DisjunctiveLearner(Learner):
@@ -199,25 +199,19 @@ class DisjunctiveLearner(Learner):
         else:
             for pred in sortedScore:
                 if pred['score'] != 0:
-                    print "predicate:"
-                    print pred['predicate']
                     choosePtoSplitOn = pred['predicate']
-                    print "left:"
-                    print pred['left']
                     leftDisjunct = pred['left']
-                    print "right:"
-                    print pred['right']
                     rightDisjunct = pred['right']
                     break
 
-        print "always true: "
-        print alwaysTruePredicateInfix
+        # print "always true: "
+        # print alwaysTruePredicateInfix
         #logger.info(' '.join(alwaysTruePredicateInfix))
         alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
                                                allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
-        logger.info("predicate to split on:")
-        logger.info(choosePtoSplitOn)
+        # logger.info("predicate to split on:")
+        # logger.info(choosePtoSplitOn)
         
         #print "or"
         #print leftDisjunct
@@ -231,6 +225,33 @@ class DisjunctiveLearner(Learner):
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
 
+        
+        print "always true:"
+        if len(alwaysTruePrefix) == 1:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  str(alwaysTruePrefix[0]) ) 
+        else:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "( and " + ' '.join(alwaysTruePrefix) + ")") 
+        
+        
+        print "predicate:"
+        print choosePtoSplitOn
+        
+        print "left:"
+        if len(leftDisjunctPrefix) == 1:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, str(leftDisjunctPrefix[0])  ) 
+        else:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "( and " + ' '.join(leftDisjunctPrefix) + ")") 
+        print "right:"
+        
+        if len(rightDisjunctPrefix) == 1:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, str(rightDisjunctPrefix[0]) ) 
+        else:
+            print z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "( and " + ' '.join(rightDisjunctPrefix) + ")") 
+
+
+
+
+
         if self.allPredicates:
             z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
             z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && (" +' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
@@ -239,14 +260,14 @@ class DisjunctiveLearner(Learner):
             z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
 
         #logger.info("unsimplified z3 formula: "+ z3StringFormula)
-        logger.info("unsimplified Z3: ")
-        logger.info(z3FormulaInfix)
+        # logger.info("unsimplified Z3: ")
+        # logger.info(z3FormulaInfix)
 
         z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
        
         #logger.info("simplified z3 formula: "+z3StringFormula)
-        logger.info("simplified Z3 Final formula: ")
-        logger.info(z3StringFormula)
+        # logger.info("simplified Z3 Final formula: ")
+        # logger.info(z3StringFormula)
         #print z3StringFormula
         return z3StringFormula
         # return "(Old_s1Count != New_s1Count )"
