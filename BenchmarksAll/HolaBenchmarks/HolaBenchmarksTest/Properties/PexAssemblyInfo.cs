@@ -5,10 +5,10 @@ using Microsoft.Pex.Framework.Moles;
 using Microsoft.Pex.Framework.Settings;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.Pex.Framework.Coverage;
-using ReportParserLearning;
+//using ReportParserLearning;
 //using Pexum.Framework;
 //[assembly: Pexum]
-[assembly: ReportParserExecution]
+//[assembly: ReportParserExecution]
 //using DySy.Framework;
 
 //[assembly: DySyAnalysis]

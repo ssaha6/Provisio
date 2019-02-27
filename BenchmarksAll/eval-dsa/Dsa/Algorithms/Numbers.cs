@@ -148,7 +148,7 @@ namespace Dsa.Algorithms
                 sb.Append(value % 2);
                 value /= 2;
             }
-            //NotpAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length <= 10); 
+            NotpAssume.IsTrue(sb.ToString().Length > 0 && sb.ToString().Length <= 10); 
             return Int32.Parse(sb.ToString().Reverse(), CultureInfo.InvariantCulture);
         }
 

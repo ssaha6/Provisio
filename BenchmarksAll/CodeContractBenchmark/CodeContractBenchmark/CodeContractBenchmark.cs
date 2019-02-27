@@ -14,7 +14,7 @@ namespace CodeContractBenchmark
         {
             // Should infer x >= 0
 
-            NotpAssume.IsTrue(x >= 0);
+            //NotpAssume.IsTrue(x >= 0);
 
             return new int[x];
         }
@@ -33,7 +33,7 @@ namespace CodeContractBenchmark
             {
                 z = -123;
             }
-            NotpAssume.IsTrue(x >= 0);
+            //NotpAssume.IsTrue(x >= 0);
 
             return new int[x];
         }
@@ -44,12 +44,12 @@ namespace CodeContractBenchmark
             if (b)
             {
 
-                NotpAssume.IsTrue(x >=0);
+                //NotpAssume.IsTrue(x >=0);
                 return new int[x];
             }
             else
             {
-                NotpAssume.IsTrue(x >= -1 && x < int.MaxValue-1);
+                //NotpAssume.IsTrue(x >= -1 && x < int.MaxValue-1);
 
                 return new int[x + 1];
             }
@@ -60,7 +60,7 @@ namespace CodeContractBenchmark
             // but this is out of scope of the preconditions all over the paths
             while (x != 0)
             {
-                NotpAssume.IsTrue(x > 0);
+                //NotpAssume.IsTrue(x > 0);
                 Debug.Assert(x > 0);
                 x--;
             }
@@ -110,28 +110,28 @@ namespace CodeContractBenchmark
             {
                 // empty
             }
-            NotpAssume.IsTrue(i == x);
+            //NotpAssume.IsTrue(i == x);
             //here we know that i == x
             Debug.Assert(i == x);
-            NotpAssume.IsTrue(i > 1);
+            //NotpAssume.IsTrue(i > 1);
 
             return new int[i - 1]; // cannot be read in pre-state immediately
         }
         static public void AssertGTZero(int x)
         {
-            NotpAssume.IsTrue(x > 0);
+            //NotpAssume.IsTrue(x > 0);
 
             Debug.Assert(x > 0);
         }
         public static void AssertLTZero(int x)
         {
-            NotpAssume.IsTrue(x < 0);
+            //NotpAssume.IsTrue(x < 0);
 
             Debug.Assert(x < 0);
         }
         public static void AssertGeqZero(int x)
         {
-            NotpAssume.IsTrue(x >= 0);
+            //NotpAssume.IsTrue(x >= 0);
 
             Debug.Assert(x >= 0);
         }
