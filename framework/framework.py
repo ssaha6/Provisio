@@ -134,13 +134,13 @@ class Framework:
 if __name__ == '__main__':
     
     benchmark = Benchmark(
-        solutionFile = "ContractsSubjects/Stack/Stack.sln",
-        testDll = "ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll",
-        testFile = "ContractsSubjects/Stack/StackTest/StackContractTest.cs",
-        classFile = 'ContractsSubjects/Stack/Stack/Stack.cs',
+        solutionFile = "../ContractsSubjects/Stack/Stack.sln",
+        testDll = "../ContractsSubjects/Stack/StackTest/bin/Debug/StackTest.dll",
+        testFile = "../ContractsSubjects/Stack/StackTest/StackContractTest.cs",
+        classFile = '../ContractsSubjects/Stack/Stack/Stack.cs',
         testNamespace = "Stack.Test",
         testType = "StackContractTest",
-        pexReportFolder = "ContractsSubjects/Stack/StackTest/bin/Debug"
+        pexReportFolder = "../ContractsSubjects/Stack/StackTest/bin/Debug"
     )
     
     putName = "PUT_PushContract"
@@ -156,53 +156,53 @@ if __name__ == '__main__':
 
     # add handler to logger object
     logger.addHandler(fh)
-    options = [
-                [True, True, True],
-                [True, True, False],
-                [True, False, True],
-                [False, True, True],
-                [False, True, False],
-                [False, False, True],
-                [True, False, False],
-                [False, False, False]
-            ]
+    # options = [
+    #             [True, True, True],
+    #             [True, True, False],
+    #             [True, False, True],
+    #             [False, True, True],
+    #             [False, True, False],
+    #             [False, False, True],
+    #             [True, False, False],
+    #             [False, False, False]
+    #        ]
             
             
-    for opt in options:
-        entropy = opt[0]
-        numerical = opt[1]
-        allPredicates = opt[2]
-        
-        logger.info("Program started")
-        logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
-        
-        #learner = HoudiniExtended("HoudiniExtended","","","")
-        #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
-        #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-        
-        learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
-        learner.entropy = entropy
-        learner.numerical = numerical
-        learner.allPredicates = allPredicates
+    #for opt in options:
+    entropy = True
+    numerical = False
+    allPredicates = True
+    
+    logger.info("Program started")
+    logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
+    
+    #learner = HoudiniExtended("HoudiniExtended","","","")
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    
+    learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+    learner.entropy = entropy
+    learner.numerical = numerical
+    learner.allPredicates = allPredicates
 
-        print "starting"
-        intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
-        #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
-        
-        boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-        #boolVariables = []
-        
-        learner.setVariables(intVariables, boolVariables)
-        
-        teacher = Pex(  "pex.exe",
-                        len(learner.intVariables) + len(learner.boolVariables),
-                        ['/nor']
-                    )
-        
-        framework = Framework(putName, benchmark, learner, teacher)
-        
-        framework.learnPostcondition()
-        logger.info("Done")
-        logger.info("")
-        break
+    print "starting"
+    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
+    
+    boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    #boolVariables = []
+    
+    learner.setVariables(intVariables, boolVariables)
+    
+    teacher = Pex(  "pex.exe",
+                    len(learner.intVariables) + len(learner.boolVariables),
+                    ['/nor']
+                )
+    
+    framework = Framework(putName, benchmark, learner, teacher)
+    
+    framework.learnPostcondition()
+    logger.info("Done")
+    logger.info("")
+    #break
         
