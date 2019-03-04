@@ -250,7 +250,6 @@ report
 report.exe
 cpp_wrapper.a
 c5.0dbg.exe
-*Makefile*
 ## input files forlearner
 *.data
 *.names
