@@ -15,30 +15,30 @@ import io
 ##from benchmarkSet import BenchmarkSet
 from lxml import etree
 import modifycode
-import reportparser
+# import reportparser
 import executecommand
 
 
 def set_compiler_args(compilerCommand, solutionFile):
-	compilerOption = '/t:rebuild'
-	build_mode = 'debug'
-	ignoreWarning = '/property:WarningLevel=2'
-	solutionPath = solutionFile
-	cmd_exec = [compilerCommand, solutionPath, compilerOption, ignoreWarning]
-	# print(cmd_exec)
-	return cmd_exec
+    compilerOption = '/t:rebuild'
+    build_mode = 'debug'
+    ignoreWarning = '/property:WarningLevel=2'
+    solutionPath = solutionFile
+    cmd_exec = [compilerCommand, solutionPath, compilerOption, ignoreWarning]
+    # print(cmd_exec)
+    return cmd_exec
 
 
 def run_compiler(args):
-	
-	compilerOutput = executecommand.runCommand(args)
-	parsedOutput =  (compilerOutput.split(os.linesep))[-4:-2]
+    
+    compilerOutput = executecommand.runCommand(args)
+    parsedOutput =  (compilerOutput.split(os.linesep))[-4:-2]
 
-	# assert MSBuild.exe output near the  end  [0 Warning(s), 0 Error(s)]
-	assert len(parsedOutput) == 2
+    # assert MSBuild.exe output near the  end  [0 Warning(s), 0 Error(s)]
+    assert len(parsedOutput) == 2
 
-	if parsedOutput[1].find("0 Error(s)") != -1:
-		return
-	else:
-		raise ValueError('Compilation Errors')
+    if parsedOutput[1].find("0 Error(s)") != -1:
+        return
+    else:
+        raise ValueError('Compilation Errors')
 

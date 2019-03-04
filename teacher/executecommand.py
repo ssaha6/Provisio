@@ -17,22 +17,22 @@ from lxml import etree
 
 
 def runCommand(args):
-	try:
-		# print(args)
-		executionOutput = ""
+    try:
+        # print(args)
+        executionOutput = ""
 
-		executionRun = subprocess.Popen(args, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-		for line in executionRun.stdout:
-			executionOutput = executionOutput + os.linesep + str(line.rstrip())
+        executionRun = subprocess.Popen(args, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        for line in executionRun.stdout:
+            executionOutput = executionOutput + os.linesep + str(line.rstrip())
 
-		executionRun.stdout.close()
-		# print(executionOutput)
-		return executionOutput
-	except OSError as e:
-		print "OSError > ",e.errno
-		print "OSError > ",e.strerror
-		print "OSError > ",e.filename		
-		raise OSError
-	except:
-		print "Error > ", sys.exc_info()[0]
-		raise OSError
+        executionRun.stdout.close()
+        # print(executionOutput)
+        return executionOutput
+    except OSError as e:
+        print "OSError > ",e.errno
+        print "OSError > ",e.strerror
+        print "OSError > ",e.filename       
+        raise OSError
+    except:
+        print "Error > ", sys.exc_info()[0]
+        raise OSError

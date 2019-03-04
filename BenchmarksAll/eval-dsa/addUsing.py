@@ -20,6 +20,6 @@ outf = open(sys.argv[1],'w')
 outf.write("using Microsoft.Pex.Framework;\n")
 outf.write("using DySy.Framework;\n")
 for line in l:
-	outf.write(line+"\n")
+    outf.write(line+"\n")
 
 outf.close()
