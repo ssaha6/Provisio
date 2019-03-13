@@ -61,15 +61,12 @@ class DisjunctiveLearner(Learner):
         return pos, neg
 
     def learn(self, dataPoints, simplify=True):
-        assert (len(self.dataPoints) == 0)
-            
-
+        assert (len(dataPoints) != 0)
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
         #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
         
-
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
         houdiniEx.setDataPoints(self.dataPoints)
@@ -78,20 +75,14 @@ class DisjunctiveLearner(Learner):
         
         if len(self.dataPoints) == 1:
             return houdiniEx.learn(self.dataPoints, simplify=True)
-
         # createAllPredicates() returns
-        #logger.info("houdiniExt: numerical: "+str(houdiniEx.numerical))
         allSynthesizedPredicatesPrefix, allSynthesizedPredicatesInfix = houdiniEx.createAllPredicates()
         booleanData = []
-        # iterating over rows
-        for point in self.dataPoints:
-            allInputVariables = self.intVariables + self.boolVariables
-            state = houdiniEx.createStateInformation(
-                allInputVariables, point[0:-1])
-            # only give houdiniEx boolean because at this point no more integers
-            booleanData.append(houdiniEx.evalauteDataPoint(
-                allSynthesizedPredicatesInfix, state) + [point[-1]])
-            # the infix form of the predicates are used to evalute them (into true or false)
+        allInputVars = []
+        allInputVars = self.intVariables+self.boolVariables
+        # the infix form of the predicates are used to evalute them (into true or false)
+        
+        booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix)
 
         # print booleanData
         # Call Houdini directly
@@ -147,14 +138,14 @@ class DisjunctiveLearner(Learner):
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, posPoint[0:-1])
-                boolPDatapoints.append(houdiniEx.evalauteDataPoint(
+                boolPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
                     predicatesToSplitOn, state) + [posPoint[-1]])
 
             for negPoint in negativeP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, negPoint[0:-1])
-                boolNegPDatapoints.append(houdiniEx.evalauteDataPoint(
+                boolNegPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
                     predicatesToSplitOn, state) + [negPoint[-1]])
             
             assert(len(boolPDatapoints) > 0)

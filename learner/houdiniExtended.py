@@ -153,7 +153,7 @@ class HoudiniExtended(Learner):
         return state
 
     ### TODO: make this return a tuple instead of list
-    def evalauteDataPoint(self, allPredicates, state): 
+    def evalauteBooleanPredicates(self, allPredicates, state): 
         boolDataPoints = []
         for predicate in allPredicates:
             resultEval = eval(predicate,{},state)
@@ -163,6 +163,17 @@ class HoudiniExtended(Learner):
         
         return boolDataPoints
     
+    def computeBooleanDataPoints(self,allInputVariables, allInfixPredicates):
+        boolData = []
+        # iterating over rows
+        for point in self.dataPoints:
+            state = self.createStateInformation(
+                allInputVariables, point[0:-1])
+            # only give houdiniEx boolean because at this point no more integers
+            boolData.append(self.evalauteBooleanPredicates(
+                allInfixPredicates, state) + [point[-1]])
+        return boolData
+
     # TODO: add bounds
     # TODO: remove (= x y).. ( = y x)
     # TODO: Add sanity Check
@@ -178,7 +189,7 @@ class HoudiniExtended(Learner):
         for point in self.dataPoints:
             allInputVariables = self.symbolicIntVariables + self.symbolicBoolVariables
             state = self.createStateInformation(allInputVariables, point[0:-1])
-            boolDataPoint = self.evalauteDataPoint(predicatesInfix, state) + [point[-1]]
+            boolDataPoint = self.evalauteBooleanPredicates(predicatesInfix, state) + [point[-1]]
             combinedData.append(boolDataPoint)
             # all predicates used to evaluate  data in infix
 
