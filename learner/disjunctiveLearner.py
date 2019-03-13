@@ -61,12 +61,14 @@ class DisjunctiveLearner(Learner):
         return pos, neg
 
     def learn(self, dataPoints, simplify=True):
+        assert (len(self.dataPoints) == 0)
+            
+
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
         #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
-        if len(self.dataPoints) == 0:
-            return "true"
+        
 
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
@@ -186,7 +188,7 @@ class DisjunctiveLearner(Learner):
             conjNList = houd.learntConjuction
             
             #add predicateSplit back to list otherwise indexOutRangeException at loopheader
-            predicatesToSplitOn.insert(i,predicateSplitP)
+            #predicatesToSplitOn.insert(i,predicateSplitP)
             #boolPDatapoints.insert(i,columnPredicateSplitPosEval)
             #boolNegPDatapoints.insert(i,columnPredicateSplitNegEval)
 

@@ -37,10 +37,10 @@ def simplify(intVariables, boolVariables, precondition):
     declareBools = "\n".join([ "(declare-const " + var + " Bool)" for var in boolVariables ])
     stringToParse = "\n".join([declareInts,  declareBools, "( assert " + precondition + ")"])
     
-    logger = logging.getLogger("Framework.z3Simplify")
+    #logger = logging.getLogger("Framework.z3Simplify")
     
-    logger.info("############ z3 program")
-    logger.info("############ " + stringToParse)
+    #logger.info("############ z3 program")
+    #logger.info("############ " + stringToParse)
     
     expr = parse_smt2_string(stringToParse)
     
@@ -56,7 +56,7 @@ def simplify(intVariables, boolVariables, precondition):
     #OrElse(Tactic('ctx-simplify'),Tactic('skip')),
     #OrElse(Tactic('dom-simplify'),Tactic('skip')),
     #OrElse(Tactic('propagate-values'),Tactic('skip')),
-    #OrElse(Tactic('simplify'),Tactic('skip')),
+    OrElse(Tactic('simplify'),Tactic('skip')),
     #OrElse(Tactic('aig'),Tactic('skip')),
     #OrElse(Tactic('degree-shift'),Tactic('skip')),
     #OrElse(Tactic('factor'),Tactic('skip')),
