@@ -48,29 +48,31 @@ def simplify(intVariables, boolVariables, precondition):
     g.add(expr)
     
     works = Repeat(Then( 
-    Repeat(OrElse(Tactic('split-clause'),Tactic('skip'))),
+    
     OrElse(Tactic('ctx-solver-simplify'),Tactic('skip')),
-    OrElse(Tactic('unit-subsume-simplify'),Tactic('skip')),
-    OrElse(Tactic('propagate-ineqs'),Tactic('skip')),
-    OrElse(Tactic('purify-arith'),Tactic('skip')),
-    OrElse(Tactic('ctx-simplify'),Tactic('skip')),
-    OrElse(Tactic('dom-simplify'),Tactic('skip')),
-    OrElse(Tactic('propagate-values'),Tactic('skip')),
-    OrElse(Tactic('simplify'),Tactic('skip')),
-    OrElse(Tactic('aig'),Tactic('skip')),
-    OrElse(Tactic('degree-shift'),Tactic('skip')),
-    OrElse(Tactic('factor'),Tactic('skip')),
-    OrElse(Tactic('lia2pb'),Tactic('skip')),
-    OrElse(Tactic('recover-01'),Tactic('skip')),
+    #OrElse(Tactic('unit-subsume-simplify'),Tactic('skip')),
+    #OrElse(Tactic('propagate-ineqs'),Tactic('skip')),
+    #OrElse(Tactic('purify-arith'),Tactic('skip')),
+    #OrElse(Tactic('ctx-simplify'),Tactic('skip')),
+    #OrElse(Tactic('dom-simplify'),Tactic('skip')),
+    #OrElse(Tactic('propagate-values'),Tactic('skip')),
+    #OrElse(Tactic('simplify'),Tactic('skip')),
+    #OrElse(Tactic('aig'),Tactic('skip')),
+    #OrElse(Tactic('degree-shift'),Tactic('skip')),
+    #OrElse(Tactic('factor'),Tactic('skip')),
+    #OrElse(Tactic('lia2pb'),Tactic('skip')),
+    #OrElse(Tactic('recover-01'),Tactic('skip')),
     OrElse(Tactic('elim-term-ite'),Tactic('skip')), #must to remove ite
-    OrElse(Tactic('injectivity'),Tactic('skip')),
-    OrElse(Tactic('snf'),Tactic('skip')),
-    OrElse(Tactic('reduce-args'),Tactic('skip')),
-    OrElse(Tactic('elim-and'),Tactic('skip')),
-    OrElse(Tactic('symmetry-reduce'),Tactic('skip')),
-    OrElse(Tactic('macro-finder'),Tactic('skip')),
-    OrElse(Tactic('quasi-macros'),Tactic('skip')),
+    #OrElse(Tactic('injectivity'),Tactic('skip')),
+    #OrElse(Tactic('snf'),Tactic('skip')),
+    #OrElse(Tactic('reduce-args'),Tactic('skip')),
+    #OrElse(Tactic('elim-and'),Tactic('skip')),
+    #OrElse(Tactic('symmetry-reduce'),Tactic('skip')),
+    #OrElse(Tactic('macro-finder'),Tactic('skip')),
+    #OrElse(Tactic('quasi-macros'),Tactic('skip')),
+    Repeat(OrElse(Tactic('split-clause'),Tactic('skip'))),
     ))
+    
 
     result = works(g)
 

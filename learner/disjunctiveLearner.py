@@ -308,8 +308,8 @@ class DisjunctiveLearner(Learner):
         logger.info("###### Simplified Z3 Final formula: ")
         logger.info("###### "+z3StringFormula+ os.linesep)
         #print z3StringFormula
-        return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
-        #return z3StringFormula
+        #return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
+        return z3StringFormula
         # return "(Old_s1Count != New_s1Count )"
 
     def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
