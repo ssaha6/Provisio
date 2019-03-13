@@ -79,7 +79,7 @@ class Pex(Teacher):
         if True:  #learner.name == "HoudiniExtended":
             pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
             tree = etree.parse(pexReportFile)
-            dataPoints = []
+            dataPoints = set()
             for test in tree.xpath('//generatedTest'):
                 # REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
                 if test.get('status') == 'assumptionviolation' or test.get('status') == 'minimizationrequest':
@@ -100,7 +100,7 @@ class Pex(Teacher):
                     
                 if len(singlePoint) < self.numVariables:
                     continue
-                dataPoints.append(singlePoint)
+                dataPoints.add(singlePoint)
             
             return dataPoints
 

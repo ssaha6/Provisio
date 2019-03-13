@@ -74,7 +74,7 @@ class HoudiniExtended(Learner):
         intVarSplitByPrePostState = self.mappedVariablesPrePostStates(self.symbolicIntVariables)
         
         #converting list of tuples two D array
-        npDataPoints = np.array(dataPoints)
+        npDataPoints = np.array(list(dataPoints))
 
         #extract columns    
         # Assuming: 

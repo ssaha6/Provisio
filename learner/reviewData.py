@@ -34,14 +34,15 @@ def uniqueDataPoints(dataPoints):
 # also removes empty points and duplicates
 def filterDataPointConflicts(dataPoints):
     try:
-        inputm = removeEmptyPoints(dataPoints)
+        #inputm = removeEmptyPoints(dataPoints) //no need to check for empty data points. Teacher should take care of this
+        inputm = list(dataPoints)
         finalset = set()
         for row in inputm:
             row_backup = list(row)
             if row[-1] == 'true':
                 row_backup[-1] = 'false'
                 if row_backup in inputm:
-                    # print "****conflict found****"
+                    print "****conflict found****"
                     # !!! LOG CONFLICT FOUNDS
                     pass
                 else:
@@ -49,7 +50,7 @@ def filterDataPointConflicts(dataPoints):
             else:
                 finalset.add(tuple(row))
 
-        return list(finalset)
+        return finalset
 
     except Exception as e:
         shell.printExceptionAndExit(e, "Error Filtering Data Points For Conflicts")

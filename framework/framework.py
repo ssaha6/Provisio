@@ -34,7 +34,7 @@ class Framework:
         self.benchmark = benchmark
         self.learner = learner
         self.teacher = teacher
-        self.dataPoints = []
+        self.dataPoints = set()
         self.precondition = "true"
         self.postcondition = "false"
         self.rounds = 0
@@ -109,13 +109,13 @@ class Framework:
         allPostconditions = []
         self.rounds = 1
         while True:
-            
+            currentDataPoints = set()
             currentDataPoints = self.checkPostcondition(self.postcondition)
             print "\nDatapoints in Round: " + str(self.rounds)
             logger.info("# Round: "+ str(self.rounds))
             print currentDataPoints
             
-            self.dataPoints.extend(currentDataPoints)
+            self.dataPoints = self.dataPoints.union(currentDataPoints)
             print "\nAll Datapoints accumulated: "
             print self.dataPoints
             

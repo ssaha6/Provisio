@@ -28,7 +28,7 @@ class  Learner:
         self.binary = binary
         self.parameters = parameters
         self.tempLocation = tempLocation
-        self.dataPoints = []
+        self.dataPoints = set()
         self.boolVariables = []
         self.intVariables = []
         self.symbolicBoolVariables = []
@@ -43,7 +43,7 @@ class  Learner:
         self.renameVariables()
 
 
-    def setDataPoints(self, dataPoints = []):
+    def setDataPoints(self, dataPoints = set()):
         self.dataPoints = dataPoints
         #remove conflicts
         self.dataPoints = reviewData.filterDataPointConflicts(self.dataPoints)
