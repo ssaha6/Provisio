@@ -13,7 +13,7 @@ import shutil
 import io
 import itertools
 import random
-
+import logging
 import shell
 #from os import sys, path
 #sys.path.append((path.dirname(path.abspath(__file__)+'\z3')  ))
@@ -22,6 +22,7 @@ import shell
 # 1. Add z3/z3-4.8.1-win/bin to path
 # 2. Copy z3-4.8.1-win/bin/python/z3 folder to Python27/Lib
 from z3 import *
+
 
 def simplify(intVariables, boolVariables, precondition):
     set_option(max_args = 10000000, max_lines = 1000000, max_depth = 10000000, max_visited = 1000000)
@@ -35,6 +36,11 @@ def simplify(intVariables, boolVariables, precondition):
     declareInts = "\n".join([ "(declare-const " + var + " Int)" for var in intVariables ])
     declareBools = "\n".join([ "(declare-const " + var + " Bool)" for var in boolVariables ])
     stringToParse = "\n".join([declareInts,  declareBools, "( assert " + precondition + ")"])
+    
+    logger = logging.getLogger("Framework.z3Simplify")
+    
+    logger.info("############ z3 program")
+    logger.info("############ " + stringToParse)
     
     expr = parse_smt2_string(stringToParse)
     

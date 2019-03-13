@@ -1,5 +1,6 @@
 #TODO
 
+## BUG1: tempLocation
 In shell.py line 123:
 
 ```
@@ -13,5 +14,15 @@ def writeFile( location, fileName, fileContents):
 
 check if `tempLocation` dir exist otherwise create it. Currently, the above code will throw exception.
 
+## BUG2: wsl dos2unix
+when cloning the repo for the first time
 
+execute 
+```
+
+wsl
+dos2unix learner/EnumerativeSolver/bin/starexec_run_Default
+
+
+```
 

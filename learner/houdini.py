@@ -49,7 +49,7 @@ class Houdini(Learner):
         # Numpy implementation, future work
         # A = np.array(np.array(self.dataPoints) == "true")
         # X, y = A[:, :-1], A[:, -1]
-        assert(len(self.dataPoints)> 0 )
+        assert(len(self.dataPoints)> 0)
         #asset all data point elements are "true" or "false"
         #if len(self.dataPoints) == 0:
         #    self.learntConjuction = ["true"]

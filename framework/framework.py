@@ -36,7 +36,7 @@ class Framework:
         self.teacher = teacher
         self.dataPoints = []
         self.precondition = "true"
-        self.postcondition = "true"
+        self.postcondition = "false"
         self.rounds = 0
         self.numPredicates = 0
         self.teacherTime = 0.0
@@ -110,11 +110,12 @@ class Framework:
         self.rounds = 1
         while True:
             
-            dataPoints = self.checkPostcondition(self.postcondition)
+            currentDataPoints = self.checkPostcondition(self.postcondition)
             print "\nDatapoints in Round: " + str(self.rounds)
-            print dataPoints
+            logger.info("# Round: "+ str(self.rounds))
+            print currentDataPoints
             
-            self.dataPoints.extend(dataPoints)
+            self.dataPoints.extend(currentDataPoints)
             print "\nAll Datapoints accumulated: "
             print self.dataPoints
             
@@ -151,7 +152,7 @@ if __name__ == '__main__':
     # create the logging file handler
     fh = logging.FileHandler("information")
 
-    formatter = logging.Formatter('%(name)s- %(message)s')
+    formatter = logging.Formatter('%(message)s')
     fh.setFormatter(formatter)
 
     # add handler to logger object
