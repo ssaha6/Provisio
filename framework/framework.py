@@ -143,8 +143,8 @@ if __name__ == '__main__':
         testType = "StackContractTest",
         pexReportFolder = "../ContractsSubjects/Stack/StackTest/bin/Debug"
     )
-    
-    putName = "PUT_PushContract"
+    #putName = "PUT_PushContract"
+    putName = "PUT_PopContract"
             
     logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
@@ -157,22 +157,13 @@ if __name__ == '__main__':
 
     # add handler to logger object
     logger.addHandler(fh)
-    # options = [
-    #             [True, True, True],
-    #             [True, True, False],
-    #             [True, False, True],
-    #             [False, True, True],
-    #             [False, True, False],
-    #             [False, False, True],
-    #             [True, False, False],
-    #             [False, False, False]
-    #        ]
-            
             
     #for opt in options:
     entropy = True
     numerical = False
     allPredicates = True
+    
+    logging.disable(logging.NOTSET)
     
     logger.info("Program started")
     logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
@@ -186,12 +177,11 @@ if __name__ == '__main__':
     learner.numerical = numerical
     learner.allPredicates = allPredicates
 
-    print "starting"
-    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
-    #intVariables = ['Old_s1Count', 'New_s1Count','Old_ret','New_ret']
-    
-    boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-    #boolVariables = []
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_ret','New_ret']
+    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top']
+    #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    boolVariables = []
     
     learner.setVariables(intVariables, boolVariables)
     

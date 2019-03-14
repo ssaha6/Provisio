@@ -93,14 +93,14 @@ class HoudiniExtended(Learner):
                             
             #features of new datapoints
             newdata = np.concatenate((oldIntVarData, fnValueLabel), axis=1) 
-            
             sygusLearner = SygusLIA("esolver", "learner/EnumerativeSolver/bin/starexec_run_Default", "grammar=True", "tempLocation")
                 
             #variables for new datapoints
             sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByPrePostState['Old'].keys()), [])
-            
+            print "before sygus solver learn"
             nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
-            
+            print nameExpr
+            print "after sygus solver learns"
             #print "function learned: " + nameExpr     
             dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
             

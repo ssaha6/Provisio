@@ -143,7 +143,7 @@ class DisjunctiveLearner(Learner):
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
-        #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
+        ##logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
         
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)
@@ -182,6 +182,7 @@ class DisjunctiveLearner(Learner):
         # for computing disjunctions, we only need to considr p or not p both not both
         mapPredicateScores = []
         sorteMapPredicateScores = []
+
         mapPredicateScores = self.scorePredicatesToSplitOn(remainingPredicatesInfix, houdiniEx, houd)
         
         if len(mapPredicateScores) == 0:
@@ -236,32 +237,33 @@ class DisjunctiveLearner(Learner):
         
         #Debug 
         alwaysTrueSimp =""
-        logger.info("### Always True Simplified:")
+        #logger.info("### Always True Simplified:")
         alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(alwaysTruePrefix)+" )" )
-        logger.info(alwaysTrueSimp+ os.linesep )
+        #logger.info(alwaysTrueSimp+ os.linesep )
 
-        logger.info("############ Predicate to split on:")
-        logger.info("############ "+ choosePtoSplitOn+ os.linesep )
+        #logger.info("############ Predicate to split on:")
+        #logger.info("############ "+ choosePtoSplitOn+ os.linesep )
+        print "here D"
 
         leftRaw=""
-        logger.info("### Left Raw:")
+        #logger.info("### Left Raw:")
         leftRaw = "("+' && '.join(leftDisjunct)+")"
-        logger.info(leftRaw)
+        #logger.info(leftRaw)
 
         leftSimp =""
-        logger.info("### Left Simplified:")
+        #logger.info("### Left Simplified:")
         leftSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(leftDisjunctPrefix)+ " )")
-        logger.info(leftSimp+ os.linesep )
+        #logger.info(leftSimp+ os.linesep )
 
         rightRaw = ""
-        logger.info("### Right Raw:")
+        #logger.info("### Right Raw:")
         rightRaw = "("+' && '.join(rightDisjunct)+")"
-        logger.info(rightRaw)
+        #logger.info(rightRaw)
         
         rightSimp =""
-        logger.info("### Right Simplified:")
+        #logger.info("### Right Simplified:")
         rightSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  "(and "+ ' '.join(rightDisjunctPrefix)+ " )" )
-        logger.info(rightSimp+ os.linesep) 
+        #logger.info(rightSimp+ os.linesep) 
         #end debug
 
         if self.allPredicates:
@@ -271,15 +273,15 @@ class DisjunctiveLearner(Learner):
             z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
             z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
 
-        #logger.info("Raw z3 formula: "+ z3StringFormula)
-        logger.info("###### Raw Z3: ")
-        logger.info("###### "+z3FormulaInfix)
+        ##logger.info("Raw z3 formula: "+ z3StringFormula)
+        #logger.info("###### Raw Z3: ")
+        #logger.info("###### "+z3FormulaInfix)
 
         z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
        
-        #logger.info("Simplified z3 formula: "+z3StringFormula)
-        logger.info("###### Simplified Z3 Final formula: ")
-        logger.info("###### "+z3StringFormula+ os.linesep)
+        ##logger.info("Simplified z3 formula: "+z3StringFormula)
+        #logger.info("###### Simplified Z3 Final formula: ")
+        #logger.info("###### "+z3StringFormula+ os.linesep)
         #print z3StringFormula
         #return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
         return z3StringFormula
