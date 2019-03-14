@@ -60,6 +60,32 @@ class DisjunctiveLearner(Learner):
 
         return pos, neg
 
+            #remove the predicate we are splitting on from vocabulary
+            #predicatesToSplitOnCopy = list(predicatesToSplitOn)
+            
+            #predicatesToSplitOn.remove(predicateSplitP)
+            #columnsToKeep = range(i)
+            #columnsToKeep.extend(range(i+1,len(boolPDatapoints[0])))
+            
+            #numpyBoolPDatapoints = np.array(boolPDatapoints)[:,columnsToKeep]
+            #numpyBoolNegPDatapoints = np.array(boolNegPDatapoints)[:,columnsToKeep]
+
+            #columnPredicateSplitPosEval= 
+            #columnPredicateSplitNegEval= boolNegPDatapoints[i]
+
+            #add predicateSplit back to list otherwise indexOutRangeException at loopheader
+            #predicatesToSplitOn.insert(i,predicateSplitP)
+            #
+            #houd.setVariables([], remainingPredicatesInfix)
+            #conjP = houd.learn(numpyBoolPDatapoints.tolist(), simplify=False)
+            # add predicate we are splitting on to left side of disjunction
+            #conjPList = [predicateSplitP] + conjPList
+            #conjN = houd.learn(numpyBoolNegPDatapoints.tolist(), simplify=False)
+            
+            #add predicateSplit back to list otherwise indexOutRangeException at loopheader
+            #predicatesToSplitOn.insert(i,predicateSplitP)
+            #boolPDatapoints.insert(i,columnPredicateSplitPosEval)
+            #boolNegPDatapoints.insert(i,columnPredicateSplitNegEval)
     def scorePredicatesToSplitOn(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
@@ -78,55 +104,19 @@ class DisjunctiveLearner(Learner):
             # if we don't fail then we are in this case: len(positiveP) > 0 and len(negativeP) > 0:
             boolPositiveDatapoints = []
             boolNegativeDatapoints = []
-            for posPoint in positiveP:
-                allInputVariables = self.intVariables + self.boolVariables
-                state = houdiniEx.createStateInformation(
-                    allInputVariables, posPoint[0:-1])
-                boolPositiveDatapoints.append(houdiniEx.evalauteBooleanPredicates(
-                    candidatePredicatesToSplitOn, state) + [posPoint[-1]])
-
-            for negPoint in negativeP:
-                allInputVariables = self.intVariables + self.boolVariables
-                state = houdiniEx.createStateInformation(
-                    allInputVariables, negPoint[0:-1])
-                boolNegativeDatapoints.append(houdiniEx.evalauteBooleanPredicates(
-                    candidatePredicatesToSplitOn, state) + [negPoint[-1]])
+            allInputVariables = self.intVariables + self.boolVariables
+            boolPositiveDatapoints = houdiniEx.computeBooleanDataPoints(allInputVariables,candidatePredicatesToSplitOn, positiveP)
+            boolNegativeDatapoints = houdiniEx.computeBooleanDataPoints(allInputVariables,candidatePredicatesToSplitOn, negativeP)
             
             assert(len(boolPositiveDatapoints) > 0)
             assert(len(boolNegativeDatapoints) > 0)
-            # remove the predicate we are splitting on from vocabulary
-            #predicatesToSplitOnCopy = list(predicatesToSplitOn)
             
-            #predicatesToSplitOn.remove(predicateSplitP)
-            #columnsToKeep = range(i)
-            #columnsToKeep.extend(range(i+1,len(boolPDatapoints[0])))
-            
-            #numpyBoolPDatapoints = np.array(boolPDatapoints)[:,columnsToKeep]
-            #numpyBoolNegPDatapoints = np.array(boolNegPDatapoints)[:,columnsToKeep]
-
-            #columnPredicateSplitPosEval= 
-            #columnPredicateSplitNegEval= boolNegPDatapoints[i]
-
-            #
             houd.setVariables([], candidatePredicatesToSplitOn)
-            #add predicateSplit back to list otherwise indexOutRangeException at loopheader
-            #predicatesToSplitOn.insert(i,predicateSplitP)
-            #
-            #houd.setVariables([], remainingPredicatesInfix)
             conjP = houd.learn(boolPositiveDatapoints, simplify=False)
-            #conjP = houd.learn(numpyBoolPDatapoints.tolist(), simplify=False)
             conjPList = houd.learntConjuction
-            # add predicate we are splitting on to left side of disjunction
-            #conjPList = [predicateSplitP] + conjPList
-            #conjN = houd.learn(numpyBoolNegPDatapoints.tolist(), simplify=False)
             conjN = houd.learn(boolNegativeDatapoints, simplify=False)
             conjNList = houd.learntConjuction
             
-            #add predicateSplit back to list otherwise indexOutRangeException at loopheader
-            #predicatesToSplitOn.insert(i,predicateSplitP)
-            #boolPDatapoints.insert(i,columnPredicateSplitPosEval)
-            #boolNegPDatapoints.insert(i,columnPredicateSplitNegEval)
-
             posMultiplier = len(conjPList)
             negMultiplier = len(conjNList)
             if len(conjPList) == 1 and 'true' in conjPList:
@@ -146,7 +136,6 @@ class DisjunctiveLearner(Learner):
             score.append({'predicate': predicateSplitP,
                           'score': entropyR, 'left': conjPList, 'right': conjNList})
 
-            # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
         return score
 
     def learn(self, dataPoints, simplify=True):
@@ -169,8 +158,8 @@ class DisjunctiveLearner(Learner):
         booleanData = []
         allInputVars = []
         allInputVars = self.intVariables+self.boolVariables
-        # the infix form of the predicates are used to evalute them (into true or false)
-        booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix)
+        # the infix form of the predicates are used to evalute them (into true or false
+        booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix, self.dataPoints)
 
         # Call Houdini directly
         # Compute All True predicates

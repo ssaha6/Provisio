@@ -163,10 +163,10 @@ class HoudiniExtended(Learner):
         
         return boolDataPoints
     
-    def computeBooleanDataPoints(self,allInputVariables, allInfixPredicates):
+    def computeBooleanDataPoints(self,allInputVariables, allInfixPredicates, dataPoints):
         boolData = []
         # iterating over rows
-        for point in self.dataPoints:
+        for point in dataPoints:
             state = self.createStateInformation(
                 allInputVariables, point[0:-1])
             # only give houdiniEx boolean because at this point no more integers
