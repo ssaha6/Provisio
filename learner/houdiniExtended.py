@@ -97,10 +97,10 @@ class HoudiniExtended(Learner):
                 
             #variables for new datapoints
             sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByPrePostState['Old'].keys()), [])
-            print "before sygus solver learn"
+            print "In file: houdiniExtended: before sygus solver learn"
             nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
             print nameExpr
-            print "after sygus solver learns"
+            print "In file: houdiniExtended: after sygus solver learns"
             #print "function learned: " + nameExpr     
             dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
             
