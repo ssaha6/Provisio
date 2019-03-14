@@ -60,51 +60,10 @@ class DisjunctiveLearner(Learner):
 
         return pos, neg
 
-    def learn(self, dataPoints, simplify=True):
-        assert (len(dataPoints) != 0)
-        # Intuition: Only need HoudiniExt to call createAllPredicates()
-        # Need Houdini to Learn conjunction
-        self.setDataPoints(dataPoints)
-        #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
-        
-        houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
-        houdiniEx.setVariables(self.intVariables, self.boolVariables)
-        houdiniEx.setDataPoints(self.dataPoints)
-        # for debugging
-        houdiniEx.numerical = self.numerical
-        
-        if len(self.dataPoints) == 1:
-            return houdiniEx.learn(self.dataPoints, simplify=True)
-        # createAllPredicates() returns
-        allSynthesizedPredicatesPrefix, allSynthesizedPredicatesInfix = houdiniEx.createAllPredicates()
-        booleanData = []
-        allInputVars = []
-        allInputVars = self.intVariables+self.boolVariables
-        # the infix form of the predicates are used to evalute them (into true or false)
-        booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix)
-
-        # Call Houdini directly
-        # Compute All True predicates
-        listAllSynthesizedPredInfix = list(allSynthesizedPredicatesInfix)
-        houd = Houdini("Houdini", "", "", "")
-        houd.setVariables([], listAllSynthesizedPredInfix)
-        houd.learn(booleanData, simplify=False)
-        #TODO: if houd.LearntConjunction is true, then either we cannot express post condition
-        #or postcondition requires disjunction; In case it requires disjunction we need to change the format
-        # of output formula at the end of this code
-        assert(not (len(houd.learntConjuction) == 1 and "true" in houd.learntConjuction))
-        assert(len(houd.learntConjuction) > 0)
-        alwaysTruePredicateInfix = []        
-        alwaysTruePredicateInfix = houd.learntConjuction
-
-        # TODO: compute with prefix otherwie z3 throws error
-        remainingPredicatesInfix = list(set(
-            listAllSynthesizedPredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
-        # remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
-        # for computing disjunctions, we only need to considr p or not p both not both
+    def scorePredicatesToSplitOn(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
         sortedScore = []
-        candidatePredicatesToSplitOn = remainingPredicatesInfix
+        
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
             predicateSplitP = candidatePredicatesToSplitOn[i]
             positiveP = []
@@ -199,8 +158,55 @@ class DisjunctiveLearner(Learner):
                           'score': entropyR, 'left': conjPList, 'right': conjNList})
 
             # sortedScore = sorted(score.iteritems(), key=lambda (k,v): v['score'])
+        return score
+
+    def learn(self, dataPoints, simplify=True):
+        assert (len(dataPoints) != 0)
+        # Intuition: Only need HoudiniExt to call createAllPredicates()
+        # Need Houdini to Learn conjunction
+        self.setDataPoints(dataPoints)
+        #logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
         
-        if len(score) == 0:
+        houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
+        houdiniEx.setVariables(self.intVariables, self.boolVariables)
+        houdiniEx.setDataPoints(self.dataPoints)
+        # for debugging
+        houdiniEx.numerical = self.numerical
+        
+        if len(self.dataPoints) == 1:
+            return houdiniEx.learn(self.dataPoints, simplify=True)
+        # createAllPredicates() returns
+        allSynthesizedPredicatesPrefix, allSynthesizedPredicatesInfix = houdiniEx.createAllPredicates()
+        booleanData = []
+        allInputVars = []
+        allInputVars = self.intVariables+self.boolVariables
+        # the infix form of the predicates are used to evalute them (into true or false)
+        booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix)
+
+        # Call Houdini directly
+        # Compute All True predicates
+        listAllSynthesizedPredInfix = list(allSynthesizedPredicatesInfix)
+        houd = Houdini("Houdini", "", "", "")
+        houd.setVariables([], listAllSynthesizedPredInfix)
+        houd.learn(booleanData, simplify=False)
+        #TODO: if houd.LearntConjunction is true, then either we cannot express post condition
+        #or postcondition requires disjunction; In case it requires disjunction we need to change the format
+        # of output formula at the end of this code
+        assert(not (len(houd.learntConjuction) == 1 and "true" in houd.learntConjuction))
+        assert(len(houd.learntConjuction) > 0)
+        alwaysTruePredicateInfix = []        
+        alwaysTruePredicateInfix = houd.learntConjuction
+
+        # TODO: compute with prefix otherwie z3 throws error
+        remainingPredicatesInfix = list(set(
+            listAllSynthesizedPredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
+        # remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
+        # for computing disjunctions, we only need to considr p or not p both not both
+        mapPredicateScores = []
+        sorteMapPredicateScores = []
+        mapPredicateScores = self.scorePredicatesToSplitOn(remainingPredicatesInfix, houdiniEx, houd)
+        
+        if len(mapPredicateScores) == 0:
             # This is the case where we could not find a predicate to split on
             alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
                                                allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
@@ -208,16 +214,16 @@ class DisjunctiveLearner(Learner):
             z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
             return z3StringFormula
                          
-        sortedScore = sorted(score, key=lambda x: x['score'])
+        mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
         leftDisjunct = []
         rightDisjunct = []
         choosePtoSplitOn = ""
         if not self.entropy:
-            choosePtoSplitOn = sortedScore[-1]['predicate']
-            leftDisjunct = sortedScore[-1]['left']
-            rightDisjunct = sortedScore[-1]['right']
+            choosePtoSplitOn = mapPredicateScores[-1]['predicate']
+            leftDisjunct = mapPredicateScores[-1]['left']
+            rightDisjunct = mapPredicateScores[-1]['right']
         else:
-            for pred in sortedScore:
+            for pred in mapPredicateScores:
                 if pred['score'] != 0:
                     #print "predicate:"
                     #print pred['predicate']
