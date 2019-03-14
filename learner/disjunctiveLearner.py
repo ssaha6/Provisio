@@ -81,36 +81,32 @@ class DisjunctiveLearner(Learner):
         allInputVars = []
         allInputVars = self.intVariables+self.boolVariables
         # the infix form of the predicates are used to evalute them (into true or false)
-        
         booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix)
 
-        # print booleanData
         # Call Houdini directly
         # Compute All True predicates
-        listAllSynthesizePredInfix = list(allSynthesizedPredicatesInfix)
+        listAllSynthesizedPredInfix = list(allSynthesizedPredicatesInfix)
         houd = Houdini("Houdini", "", "", "")
-        houd.setVariables([], listAllSynthesizePredInfix)
+        houd.setVariables([], listAllSynthesizedPredInfix)
         houd.learn(booleanData, simplify=False)
-
-        alwaysTruePredicateInfix = []
         #TODO: if houd.LearntConjunction is true, then either we cannot express post condition
         #or postcondition requires disjunction; In case it requires disjunction we need to change the format
         # of output formula at the end of this code
-        assert(not (len(houd.learntConjuction) == 1 and "true" in houd.learntConjuction) )
+        assert(not (len(houd.learntConjuction) == 1 and "true" in houd.learntConjuction))
         assert(len(houd.learntConjuction) > 0)
+        alwaysTruePredicateInfix = []        
         alwaysTruePredicateInfix = houd.learntConjuction
 
         # TODO: compute with prefix otherwie z3 throws error
         remainingPredicatesInfix = list(set(
-            listAllSynthesizePredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
+            listAllSynthesizedPredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
         # remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
         # for computing disjunctions, we only need to considr p or not p both not both
         score = []
         sortedScore = []
-
-        predicatesToSplitOn = remainingPredicatesInfix
-        for i in xrange(0, len(predicatesToSplitOn)):
-            predicateSplitP = predicatesToSplitOn[i]
+        candidatePredicatesToSplitOn = remainingPredicatesInfix
+        for i in xrange(0, len(candidatePredicatesToSplitOn)):
+            predicateSplitP = candidatePredicatesToSplitOn[i]
             positiveP = []
             negativeP = []
             positiveP, negativeP = self.splitSamples(
@@ -139,14 +135,14 @@ class DisjunctiveLearner(Learner):
                 state = houdiniEx.createStateInformation(
                     allInputVariables, posPoint[0:-1])
                 boolPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
-                    predicatesToSplitOn, state) + [posPoint[-1]])
+                    candidatePredicatesToSplitOn, state) + [posPoint[-1]])
 
             for negPoint in negativeP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, negPoint[0:-1])
                 boolNegPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
-                    predicatesToSplitOn, state) + [negPoint[-1]])
+                    candidatePredicatesToSplitOn, state) + [negPoint[-1]])
             
             assert(len(boolPDatapoints) > 0)
             assert(len(boolNegPDatapoints) > 0)
@@ -164,7 +160,7 @@ class DisjunctiveLearner(Learner):
             #columnPredicateSplitNegEval= boolNegPDatapoints[i]
 
             #
-            houd.setVariables([], predicatesToSplitOn)
+            houd.setVariables([], candidatePredicatesToSplitOn)
             #add predicateSplit back to list otherwise indexOutRangeException at loopheader
             #predicatesToSplitOn.insert(i,predicateSplitP)
             #
