@@ -62,49 +62,38 @@ class DisjunctiveLearner(Learner):
 
     def scorePredicatesToSplitOn(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
-        sortedScore = []
-        
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
-            predicateSplitP = candidatePredicatesToSplitOn[i]
             positiveP = []
             negativeP = []
-            positiveP, negativeP = self.splitSamples(
-                predicateSplitP, houdiniEx, self.dataPoints)
-            
-            assert( len(positiveP) + len(negativeP) == len(self.dataPoints) )
-            if len(positiveP) == 0 and len(negativeP) == 0:
-                # a predicate can only be true or false  
-                assert(False)
-
-            elif len(positiveP) > 0 and len(negativeP) == 0:
-                #this should never happen otherwise houidini learner is wrong
-                assert(False)
-            elif len(positiveP) == 0 and len(negativeP) > 0:
-                #predicate is always false:
-                continue
-            
-            elif len(positiveP) > 0 and len(negativeP) > 0:
-                pass
-            #print positiveP
-            #print negativeP
-            boolPDatapoints = []
-            boolNegPDatapoints = []
+            predicateSplitP = candidatePredicatesToSplitOn[i]
+            positiveP, negativeP = self.splitSamples(predicateSplitP, houdiniEx, self.dataPoints)
+            assert(len(positiveP) + len(negativeP) == len(self.dataPoints))
+            if len(positiveP) == 0 and len(negativeP) > 0:
+                #predicate is always false so skip it:
+                continue            
+            # a predicate can only be true or false  
+            assert( (not (len(positiveP) == 0 and len(negativeP) == 0)) )
+            #this should never happen otherwise. We are only dealing with predicates that are not always true.
+            assert((not (len(positiveP) > 0 and len(negativeP) == 0 )) )
+            # if we don't fail then we are in this case: len(positiveP) > 0 and len(negativeP) > 0:
+            boolPositiveDatapoints = []
+            boolNegativeDatapoints = []
             for posPoint in positiveP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, posPoint[0:-1])
-                boolPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
+                boolPositiveDatapoints.append(houdiniEx.evalauteBooleanPredicates(
                     candidatePredicatesToSplitOn, state) + [posPoint[-1]])
 
             for negPoint in negativeP:
                 allInputVariables = self.intVariables + self.boolVariables
                 state = houdiniEx.createStateInformation(
                     allInputVariables, negPoint[0:-1])
-                boolNegPDatapoints.append(houdiniEx.evalauteBooleanPredicates(
+                boolNegativeDatapoints.append(houdiniEx.evalauteBooleanPredicates(
                     candidatePredicatesToSplitOn, state) + [negPoint[-1]])
             
-            assert(len(boolPDatapoints) > 0)
-            assert(len(boolNegPDatapoints) > 0)
+            assert(len(boolPositiveDatapoints) > 0)
+            assert(len(boolNegativeDatapoints) > 0)
             # remove the predicate we are splitting on from vocabulary
             #predicatesToSplitOnCopy = list(predicatesToSplitOn)
             
@@ -124,13 +113,13 @@ class DisjunctiveLearner(Learner):
             #predicatesToSplitOn.insert(i,predicateSplitP)
             #
             #houd.setVariables([], remainingPredicatesInfix)
-            conjP = houd.learn(boolPDatapoints, simplify=False)
+            conjP = houd.learn(boolPositiveDatapoints, simplify=False)
             #conjP = houd.learn(numpyBoolPDatapoints.tolist(), simplify=False)
             conjPList = houd.learntConjuction
             # add predicate we are splitting on to left side of disjunction
             #conjPList = [predicateSplitP] + conjPList
             #conjN = houd.learn(numpyBoolNegPDatapoints.tolist(), simplify=False)
-            conjN = houd.learn(boolNegPDatapoints, simplify=False)
+            conjN = houd.learn(boolNegativeDatapoints, simplify=False)
             conjNList = houd.learntConjuction
             
             #add predicateSplit back to list otherwise indexOutRangeException at loopheader
