@@ -143,8 +143,8 @@ if __name__ == '__main__':
         testType = "StackContractTest",
         pexReportFolder = "../ContractsSubjects/Stack/StackTest/bin/Debug"
     )
-    #putName = "PUT_PushContract"
-    putName = "PUT_PopContract"
+    putName = "PUT_PushContract"
+    #putName = "PUT_PopContract"
             
     logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
@@ -177,11 +177,11 @@ if __name__ == '__main__':
     learner.numerical = numerical
     learner.allPredicates = allPredicates
 
-    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
+    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_ret','New_ret']
-    intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top']
-    #boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
-    boolVariables = []
+    #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top']
+    boolVariables = ["Old_s1ContainsX", "New_s1ContainsX"]
+    #boolVariables = []
     
     learner.setVariables(intVariables, boolVariables)
     

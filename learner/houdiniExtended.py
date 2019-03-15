@@ -97,14 +97,15 @@ class HoudiniExtended(Learner):
                 
             #variables for new datapoints
             sygusLearner.setVariables( map(lambda x: "Old_" + x, intVarSplitByPrePostState['Old'].keys()), [])
-            print "In file: houdiniExtended: before sygus solver learn"
-            nameExpr = " ".join(["(", "=", str("New_" + newIntVar), sygusLearner.learn(newdata.tolist(), simplify=False), ")"])
-            print nameExpr
-            print "In file: houdiniExtended: after sygus solver learns"
-            #print "function learned: " + nameExpr     
-            dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
-            
-            result.append((nameExpr, dataExpr))
+            #print "In file: houdiniExtended: before sygus solver learn"
+            sygusOutput = sygusLearner.learn(newdata.tolist(), simplify=False)
+            if sygusOutput.find("No Solution") == -1:
+                nameExpr = " ".join(["(", "=", str("New_" + newIntVar),sygusOutput , ")"])
+                #print nameExpr
+                #print "In file: houdiniExtended: after sygus solver learns"
+                #print "function learned: " + nameExpr     
+                dataExpr = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, nameExpr)
+                result.append((nameExpr, dataExpr))
             
         #  Results contains the predicate functions.
         return result

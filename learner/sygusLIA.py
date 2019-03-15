@@ -81,12 +81,14 @@ class SygusLIA(Sygus):
 
     
     def readResults(self, result):
-        resultRegex = '\(\s*define-fun\s+Precondition\s*\((?:\(\s*[_0-9A-Za-z]+\s*(?:Int)\s*\)\s*)*\)\s*Int\s+(.*)\)'
+        resultRegex = '(\(\s*define-fun\s+Precondition\s*\((?:\(\s*[_0-9A-Za-z]+\s*(?:Int)\s*\)\s*)*\)\s*Int\s+(.*)\)|(No\s*Solutions!))'
         
         regex = re.search(resultRegex, result,  re.MULTILINE | re.DOTALL)
         
         if regex:
-            program  = regex.group(1)
+            program  = regex.group(2)
+            if program is None:
+                program = regex.group(3)
             return program
         else:
             raise(NameError("couldnot parse sygus output:" +result ))

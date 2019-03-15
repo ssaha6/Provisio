@@ -235,37 +235,8 @@ class DisjunctiveLearner(Learner):
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
-        #Debug 
-        alwaysTrueSimp =""
-        #logger.info("### Always True Simplified:")
-        alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(alwaysTruePrefix)+" )" )
-        #logger.info(alwaysTrueSimp+ os.linesep )
-
-        #logger.info("############ Predicate to split on:")
-        #logger.info("############ "+ choosePtoSplitOn+ os.linesep )
-        print "here D"
-
-        leftRaw=""
-        #logger.info("### Left Raw:")
-        leftRaw = "("+' && '.join(leftDisjunct)+")"
-        #logger.info(leftRaw)
-
-        leftSimp =""
-        #logger.info("### Left Simplified:")
-        leftSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(leftDisjunctPrefix)+ " )")
-        #logger.info(leftSimp+ os.linesep )
-
-        rightRaw = ""
-        #logger.info("### Right Raw:")
-        rightRaw = "("+' && '.join(rightDisjunct)+")"
-        #logger.info(rightRaw)
+        self.debugSplitDisjunction(leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn)
         
-        rightSimp =""
-        #logger.info("### Right Simplified:")
-        rightSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  "(and "+ ' '.join(rightDisjunctPrefix)+ " )" )
-        #logger.info(rightSimp+ os.linesep) 
-        #end debug
-
         if self.allPredicates:
             z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
             z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
@@ -273,15 +244,15 @@ class DisjunctiveLearner(Learner):
             z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
             z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
 
-        ##logger.info("Raw z3 formula: "+ z3StringFormula)
-        #logger.info("###### Raw Z3: ")
-        #logger.info("###### "+z3FormulaInfix)
+        #logger.info("Raw z3 formula: "+ z3StringFormula)
+        logger.info("###### Raw Z3: ")
+        logger.info("###### "+z3FormulaInfix)
 
         z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
        
-        ##logger.info("Simplified z3 formula: "+z3StringFormula)
-        #logger.info("###### Simplified Z3 Final formula: ")
-        #logger.info("###### "+z3StringFormula+ os.linesep)
+        #logger.info("Simplified z3 formula: "+z3StringFormula)
+        logger.info("###### Simplified Z3 Final formula: ")
+        logger.info("###### "+z3StringFormula+ os.linesep)
         #print z3StringFormula
         #return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
         return z3StringFormula
@@ -307,10 +278,42 @@ class DisjunctiveLearner(Learner):
 
     def shannonsEntropy(self, labels, base=None):
         value, counts = np.unique(labels, return_counts=True)
-        norm_counts = np.true_divide(counts, counts.sum())
+        totalSample = counts.sum()
+        norm_counts = np.true_divide(counts,totalSample )
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
 
+    def debugSplitDisjunction(self,leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn):
+        #Debug 
+        alwaysTrueSimp =""
+        logger.info("### Always True Simplified:")
+        alwaysTrueSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(alwaysTruePrefix)+" )" )
+        logger.info(alwaysTrueSimp+ os.linesep )
+
+        logger.info("############ Predicate to split on:")
+        logger.info("############ "+ choosePtoSplitOn+ os.linesep )
+        #
+        
+        leftRaw=""
+        logger.info("### Left Raw:")
+        leftRaw = "("+' && '.join(leftDisjunct)+")"
+        logger.info(leftRaw)
+
+        leftSimp =""
+        logger.info("### Left Simplified:")
+        leftSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, "(and "+ ' '.join(leftDisjunctPrefix)+ " )")
+        logger.info(leftSimp+ os.linesep )
+
+        rightRaw = ""
+        logger.info("### Right Raw:")
+        rightRaw = "("+' && '.join(rightDisjunct)+")"
+        logger.info(rightRaw)
+        
+        rightSimp =""
+        logger.info("### Right Simplified:")
+        rightSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  "(and "+ ' '.join(rightDisjunctPrefix)+ " )" )
+        logger.info(rightSimp+ os.linesep) 
+        #end debug
 
 if __name__ == '__main__':
 

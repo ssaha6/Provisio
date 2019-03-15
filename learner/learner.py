@@ -118,13 +118,16 @@ class  Learner:
         
         self.generateFiles()
         result = self.runLearner()
-        
-        if simplify:
-            result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
+        restoredResults =""
+        if result.find("No Solution") == -1:
+            if simplify:
+                result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
 
-        #print "******  Synthesized Predicate Round Result(Before Restoring): ", result
+            #print "******  Synthesized Predicate Round Result(Before Restoring): ", result
 
-        restoredResults = self.restoreVariables(result)
+            restoredResults = self.restoreVariables(result)
+        else:
+            restoredResults = result
         
         self.time = time.time() - start_time
         # print "******  Round Result: ", restoredResults
