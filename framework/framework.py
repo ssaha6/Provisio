@@ -102,12 +102,16 @@ class Framework:
         modifycode.insertPostConditionInPexAssert(self.benchmark.testFile, self.putName, postcondition)
         modifycode.runCompiler("MSBuild.exe", self.benchmark.solutionFile)
         self.teacher.runTeacher(self.benchmark.testDll, self.putName, self.benchmark.testNamespace, self.benchmark.testType)
+        self.teacherTime += self.teacher.time
         return self.teacher.parseReportPost(self.benchmark.pexReportFolder)
     
         
     def learnPostcondition(self):
+        logger = logging.getLogger("LearnPost")
         allPostconditions = []
         self.rounds = 1
+        self.learnerTime = 0.0
+        self.teacherTime = 0.0
         while True:
             currentDataPoints = set()
             currentDataPoints = self.checkPostcondition(self.postcondition)
@@ -120,13 +124,15 @@ class Framework:
             print self.dataPoints
             
             self.postcondition = self.learner.learn(self.dataPoints)
+            self.learnerTime += self.learner.time
             print  "Round " + str(self.rounds) + " : Postcondition Learned: " + self.postcondition
 
             if self.postcondition in allPostconditions:
-                break
+                return self.postcondition, self.rounds, len(self.dataPoints), round(self.learnerTime, 2), round(self.teacherTime, 2)
             
             if self.rounds >= 20:
-                break
+                return self.postcondition, self.rounds, len(self.dataPoints), round(self.learnerTime, 2), round(self.teacherTime, 2)
+
             
             allPostconditions.append(self.postcondition)
             self.rounds = self.rounds +1        
@@ -163,7 +169,7 @@ if __name__ == '__main__':
     numerical = False
     allPredicates = True
     
-    logging.disable(logging.NOTSET)
+    
     
     logger.info("Program started")
     logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )

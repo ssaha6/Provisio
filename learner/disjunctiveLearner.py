@@ -139,6 +139,8 @@ class DisjunctiveLearner(Learner):
         return score
 
     def learn(self, dataPoints, simplify=True):
+        start_time = time.time()
+
         assert (len(dataPoints) != 0)
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
@@ -255,6 +257,7 @@ class DisjunctiveLearner(Learner):
         logger.info("###### "+z3StringFormula+ os.linesep)
         #print z3StringFormula
         #return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
+        self.time = time.time() - start_time
         return z3StringFormula
         # return "(Old_s1Count != New_s1Count )"
 
