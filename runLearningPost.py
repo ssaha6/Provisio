@@ -67,35 +67,35 @@ def runnerPost(benchmark, methodParameters, logFile, exception=False):
         print "\n\nLearning postcondition for method: " + putName
         print "--------------------------------------------------------------------------------"
 
-        try:
-            learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
-            # debug
-            learner.entropy = entropy
-            learner.numerical = numerical
-            learner.allPredicates = allPredicates
-            #enddebug
-            learner.setVariables(intVariables, boolVariables)
-            teacher = Pex(pexBinary, len(learner.intVariables) +
-                  len(learner.boolVariables), ['/nor'])
-            # if exception:
-            #    framework = FrameworkException(putName, methodUnderTest, benchmark, learner, teacher)
-            framework = Framework(putName, benchmark, learner, teacher)
-            postcondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPostcondition()
-            log.append(putName, postcondition, rounds, numDataPoints,
-                       learnerTime, teacherTime, learnerTime + teacherTime)
+        #try:
+        learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
+        # debug
+        learner.entropy = entropy
+        learner.numerical = numerical
+        learner.allPredicates = allPredicates
+        #enddebug
+        learner.setVariables(intVariables, boolVariables)
+        teacher = Pex(pexBinary, len(learner.intVariables) +
+                len(learner.boolVariables), ['/nor'])
+        # if exception:
+        #    framework = FrameworkException(putName, methodUnderTest, benchmark, learner, teacher)
+        framework = Framework(putName, benchmark, learner, teacher)
+        postcondition, rounds, numDataPoints, learnerTime, teacherTime = framework.learnPostcondition()
+        #log.append(putName, postcondition, rounds, numDataPoints,
+        #           learnerTime, teacherTime, learnerTime + teacherTime)
+        log.append(putName, postcondition, "","","","","")
+        print "--------------------------------------------------------------------------------"
+        print "Method Name        : " + putName
+        print "Final PostCondition : " + postcondition
+        print "Number of rounds   : " + str(rounds)
+        print "Number of Points   : " + str(numDataPoints)
+        print "Learner time(s)    : " + str(learnerTime)
+        print "Teacher time(s)    : " + str(teacherTime)
+        print "Total Time(s)      : " + str(learnerTime + teacherTime)
 
-            print "--------------------------------------------------------------------------------"
-            print "Method Name        : " + putName
-            print "Final PostCondition : " + postcondition
-            print "Number of rounds   : " + str(rounds)
-            print "Number of Points   : " + str(numDataPoints)
-            print "Learner time(s)    : " + str(learnerTime)
-            print "Teacher time(s)    : " + str(teacherTime)
-            print "Total Time(s)      : " + str(learnerTime + teacherTime)
-
-        except Exception as e:
-            print "\n!!! Exception found !!!"
-            traceback.print_exc(file=sys.stdout)
+        #except Exception as e:
+        #    print "\n!!! Exception found !!!"
+        #    traceback.print_exc(file=sys.stdout)
 
     logger.info("done!")
     logger.info("")
@@ -114,13 +114,15 @@ def run_StackContractPostOnly():
     )
 
     methodParameters = [
-        ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
-        ('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
-        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+        ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x'])#,
+        #('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
+        #('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        #'PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
     ]
-    runnerPost(benchmark, methodParameters, "results/stack_postRegression.csv")
+    #file ="stack_post.csv"
+    file = "stack_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+ file)
 
 def run_QueueContractPostOnly():
 
@@ -139,9 +141,11 @@ def run_QueueContractPostOnly():
         ('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
         ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
         ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
     ]
-    runnerPost(benchmark, methodParameters, "results/queue_postRegression.csv")
+    #file ="queue_post.csv"
+    file = "queue_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
 
 def run_HashSetContractOnly():
 
@@ -154,14 +158,18 @@ def run_HashSetContractOnly():
         testType="HashSetContractTest",
         pexReportFolder="../ContractsSubjects/HashSet/HashSetTest/bin/Debug"
     )
-
+    
     methodParameters = [
         ('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
     ]
-    runnerPost(benchmark, methodParameters, "results/hashSet_postRegression.csv")
+    #file ="hashset_post.csv"
+    file ="hashset_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
 
 
 if __name__ == '__main__':
+    
+    print "starting"
     run_StackContractPostOnly()
     #run_QueueContractPostOnly()
     #run_HashSetContractOnly()
