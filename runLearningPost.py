@@ -101,7 +101,7 @@ def runnerPost(benchmark, methodParameters, logFile, exception=False):
     logger.info("")
 
 
-def run_StackCommuteOnly():
+def run_StackContractPostOnly():
 
     benchmark = Benchmark(
         solutionFile="../ContractsSubjects/Stack/Stack.sln",
@@ -115,14 +115,14 @@ def run_StackCommuteOnly():
 
     methodParameters = [
         ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
-        #('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
-        #('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] )#,
-        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        #('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+        ('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
+        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
     ]
-    runnerPost(benchmark, methodParameters, "results/stack_post.csv")
+    runnerPost(benchmark, methodParameters, "results/stack_postRegression.csv")
 
-def run_QueueCommuteOnly():
+def run_QueueContractPostOnly():
 
     benchmark = Benchmark(
         solutionFile="../ContractsSubjects/Queue/Queue.sln",
@@ -141,9 +141,27 @@ def run_QueueCommuteOnly():
         ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
         ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
     ]
-    runnerPost(benchmark, methodParameters, "results/queue_post.csv")
+    runnerPost(benchmark, methodParameters, "results/queue_postRegression.csv")
+
+def run_HashSetContractOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/HashSet/HashSet.sln",
+        testDll="../ContractsSubjects/HashSet/HashSetTest/bin/Debug/HashSetTest.dll",
+        testFile="../ContractsSubjects/HashSet/HashSetTest/HashSetContractTest.cs",
+        classFile='../ContractsSubjects/HashSet/HashSet/HashSet.cs',
+        testNamespace="HashSet.Test",
+        testType="HashSetContractTest",
+        pexReportFolder="../ContractsSubjects/HashSet/HashSetTest/bin/Debug"
+    )
+
+    methodParameters = [
+        ('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
+    ]
+    runnerPost(benchmark, methodParameters, "results/hashSet_postRegression.csv")
 
 
 if __name__ == '__main__':
-    run_StackCommuteOnly()
-    #run_QueueCommuteOnly()
+    run_StackContractPostOnly()
+    #run_QueueContractPostOnly()
+    #run_HashSetContractOnly()

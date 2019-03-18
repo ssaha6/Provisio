@@ -140,7 +140,6 @@ class DisjunctiveLearner(Learner):
 
     def learn(self, dataPoints, simplify=True):
         start_time = time.time()
-
         assert (len(dataPoints) != 0)
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
@@ -162,7 +161,6 @@ class DisjunctiveLearner(Learner):
         allInputVars = self.intVariables+self.boolVariables
         # the infix form of the predicates are used to evalute them (into true or false
         booleanData = houdiniEx.computeBooleanDataPoints(allInputVars, allSynthesizedPredicatesInfix, self.dataPoints)
-
         # Call Houdini directly
         # Compute All True predicates
         listAllSynthesizedPredInfix = list(allSynthesizedPredicatesInfix)
@@ -217,23 +215,11 @@ class DisjunctiveLearner(Learner):
                     rightDisjunct = pred['right']
                     break
 
-        #print "always true: "
-        #print alwaysTruePredicateInfix
-        #logger.info(' '.join(alwaysTruePredicateInfix))
         alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
                                                allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
-        
-        
-        #print "or"
-        #print leftDisjunct
-        #logger.info(' '.join(leftDisjunct))
-
         leftDisjunctPrefix = self.findPrefixForm(leftDisjunct,
                                                  allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-        #print rightDisjunct
-        #logger.info(' '.join(rightDisjunct))
-
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
