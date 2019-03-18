@@ -138,6 +138,15 @@ class DisjunctiveLearner(Learner):
 
         return score
 
+
+        # if len(mapPredicateScores) == 0:
+        #     # This is the case where we could not find a predicate to split on
+        #     alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
+        #                                        allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        #     z3StringFormula = "(and " +' '.join(alwaysTruePrefix)+")"
+        #     z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+        #     return z3StringFormula
+        
     def learn(self, dataPoints, simplify=True):
         start_time = time.time()
         assert (len(dataPoints) != 0)
@@ -183,15 +192,9 @@ class DisjunctiveLearner(Learner):
         mapPredicateScores = []
         sorteMapPredicateScores = []
 
+        assert(len(remainingPredicatesInfix) > 0)
+
         mapPredicateScores = self.scorePredicatesToSplitOn(remainingPredicatesInfix, houdiniEx, houd)
-        
-        if len(mapPredicateScores) == 0:
-            # This is the case where we could not find a predicate to split on
-            alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
-                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-            z3StringFormula = "(and " +' '.join(alwaysTruePrefix)+")"
-            z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
-            return z3StringFormula
                          
         mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
         leftDisjunct = []
