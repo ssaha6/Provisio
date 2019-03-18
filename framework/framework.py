@@ -26,6 +26,7 @@ from teacher import *
 from learner import *
 from benchmark import *
 
+logger = logging.getLogger("Runner.Framework")
 
 class Framework:
 
@@ -152,7 +153,6 @@ if __name__ == '__main__':
     putName = "PUT_PushContract"
     #putName = "PUT_PopContract"
             
-    logger = logging.getLogger("Framework")
     logger.setLevel(logging.INFO)
     
     # create the logging file handler

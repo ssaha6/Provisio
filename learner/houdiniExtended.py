@@ -35,24 +35,7 @@ class HoudiniExtended(Learner):
     def readResults(self):
         pass
     
-    
-    
-    
-    def createEqualityPredicates(self, intVars):
-        namesDataFile = list()
-        if len(intVars) >= 2:
-            all_combination = itertools.combinations(intVars, 2)
-            for (var1, var2) in all_combination:
-                namesExpr = "(= " + var1 + " " + var2 + ")"
-                dataExpr = "(" + var1 + " == " + var2 + ")"
-                namesDataFile.append((namesExpr, dataExpr))
-
-                namesExpr = "(not (= "  + var1 + " " + var2 + "))"
-                dataExpr = "(not ("  + var1 + " == " + var2 + "))"
-                namesDataFile.append((namesExpr, dataExpr))
-                
-        return namesDataFile
-        
+      
     def mappedVariablesPrePostStates(self, variableList):
         result = {}
         for i in range(0, len(variableList)):
@@ -131,11 +114,36 @@ class HoudiniExtended(Learner):
                         ))            
             
         return result
+     
+    def createEqualityPredicates(self, intVars):
+        namesDataFile = list()
+        if len(intVars) >= 2:
+            all_combination = itertools.combinations(intVars, 2)
+            for (var1, var2) in all_combination:
+                namesExpr = "(= " + var1 + " " + var2 + ")"
+                dataExpr = "(" + var1 + " == " + var2 + ")"
+                namesDataFile.append((namesExpr, dataExpr))
+
+                namesExpr = "(not (= "  + var1 + " " + var2 + "))"
+                dataExpr = "(not ("  + var1 + " == " + var2 + "))"
+                namesDataFile.append((namesExpr, dataExpr))
                 
+        return namesDataFile
+
+    def createNegationPredicate(self, boolVars):
+        namesDataFile = list()
+        for boolVar in boolVars:
+            namesExpr = "(not " +boolVar+")"
+            dataExpr = "(not " +boolVar+")"
+            namesDataFile.append((namesExpr, dataExpr))
+        return namesDataFile           
         
     #return list of tuples; list has size two (prefix and infix)
     def createAllPredicates(self):
+        #bool predicates
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
+        #negation of bool predicates
+        #allPredicates = allPredicates + self.createNegationPredicate(self.symbolicBoolVariables)
         allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
         allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
         if self.numerical:    

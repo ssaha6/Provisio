@@ -114,14 +114,36 @@ def run_StackCommuteOnly():
     )
 
     methodParameters = [
-        # ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
-        # ('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
-        # ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        # ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+        ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
+        #('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
+        #('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] )#,
+        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        #('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
     ]
     runnerPost(benchmark, methodParameters, "results/stack_post.csv")
+
+def run_QueueCommuteOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/Queue/Queue.sln",
+        testDll="../ContractsSubjects/Queue/QueueTest/bin/Debug/QueueTest.dll",
+        testFile="../ContractsSubjects/Queue/QueueTest/QueueContractTest.cs",
+        classFile='../ContractsSubjects/Queue/Queue/Queue.cs',
+        testNamespace="Queue.Test",
+        testType="QueueContractTest",
+        pexReportFolder="../ContractsSubjects/Queue/QueueTest/bin/Debug"
+    )
+
+    methodParameters = [
+        ('PUT_EnqueueContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
+        ('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
+        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+    ]
+    runnerPost(benchmark, methodParameters, "results/queue_post.csv")
 
 
 if __name__ == '__main__':
     run_StackCommuteOnly()
+    #run_QueueCommuteOnly()

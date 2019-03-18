@@ -28,7 +28,7 @@ import logging
 
 
 
-logger = logging.getLogger("Framework.DisjunctLearner")
+logger = logging.getLogger("Runner.Framework.DisjunctLearner")
 # TODO: calling learner.SetDataPoints changes list of list to list of tuples.
 
 class DisjunctiveLearner(Learner):
