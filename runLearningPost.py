@@ -138,10 +138,10 @@ def run_QueueContractPostOnly():
 
     methodParameters = [
         ('PUT_EnqueueContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
-        ('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
-        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        ('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
+        #('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
+        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] )#,
+        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        #('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
     ]
     #file ="queue_post.csv"
     file = "queue_postRegression.csv"
@@ -171,5 +171,5 @@ if __name__ == '__main__':
     
     print "starting"
     run_StackContractPostOnly()
-    #run_QueueContractPostOnly()
-    #run_HashSetContractOnly()
+    run_QueueContractPostOnly()
+    run_HashSetContractOnly()

@@ -86,7 +86,7 @@ class DisjunctiveLearner(Learner):
             #predicatesToSplitOn.insert(i,predicateSplitP)
             #boolPDatapoints.insert(i,columnPredicateSplitPosEval)
             #boolNegPDatapoints.insert(i,columnPredicateSplitNegEval)
-    def scorePredicatesToSplitOn(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
+    def scorePredicates(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
             positiveP = []
@@ -138,8 +138,47 @@ class DisjunctiveLearner(Learner):
 
         return score
 
-
+    def choosePredicateToSplit(self, mapPredicateScores,alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix ):
+        mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
+        leftDisjunct = []
+        rightDisjunct = []
+        choosePtoSplitOn = ""
+        if not self.entropy:
+            choosePtoSplitOn = mapPredicateScores[-1]['predicate']
+            leftDisjunct = mapPredicateScores[-1]['left']
+            rightDisjunct = mapPredicateScores[-1]['right']
+        else:
+            for pred in mapPredicateScores:
+                if pred['score'] != 0:
+                    #print "predicate:"
+                    #print pred['predicate']
+                    choosePtoSplitOn = pred['predicate']
+                    #print "left:"
+                    #print pred['left']
+                    leftDisjunct = pred['left']
+                    #print "right:"
+                    #print pred['right']
+                    rightDisjunct = pred['right']
+                    break
         
+        alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
+                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        
+        leftDisjunctPrefix = self.findPrefixForm(leftDisjunct,
+                                                 allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        rightDisjunctPrefix = self.findPrefixForm(
+            rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+        
+        self.debugSplitDisjunction(leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn)
+
+        if self.allPredicates:
+            z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
+            z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
+        else:
+            z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
+            z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"  
+
+        return (z3StringFormula, z3FormulaInfix)
 
     def learn(self, dataPoints, simplify=True):
         start_time = time.time()
@@ -189,7 +228,7 @@ class DisjunctiveLearner(Learner):
         # this checks that there is at least one predicate that is true all datapoints
         assert(len(remainingPredicatesInfix) > 0)
 
-        mapPredicateScores = self.scorePredicatesToSplitOn(remainingPredicatesInfix, houdiniEx, houd)
+        mapPredicateScores = self.scorePredicates(remainingPredicatesInfix, houdiniEx, houd)
         if len(mapPredicateScores) == 0:
             # This is the case where the predicates in remainingPredicatesInfix are always false or remainingPredicatesInfix is empty 
             alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
@@ -198,59 +237,19 @@ class DisjunctiveLearner(Learner):
             z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
             return z3StringFormula
 
-        mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
-        leftDisjunct = []
-        rightDisjunct = []
-        choosePtoSplitOn = ""
-        if not self.entropy:
-            choosePtoSplitOn = mapPredicateScores[-1]['predicate']
-            leftDisjunct = mapPredicateScores[-1]['left']
-            rightDisjunct = mapPredicateScores[-1]['right']
-        else:
-            for pred in mapPredicateScores:
-                if pred['score'] != 0:
-                    #print "predicate:"
-                    #print pred['predicate']
-                    choosePtoSplitOn = pred['predicate']
-                    #print "left:"
-                    #print pred['left']
-                    leftDisjunct = pred['left']
-                    #print "right:"
-                    #print pred['right']
-                    rightDisjunct = pred['right']
-                    break
+        (z3StringFormula, z3FormulaInfix) = self.choosePredicateToSplit(mapPredicateScores, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
 
-        alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
-                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-        
-        leftDisjunctPrefix = self.findPrefixForm(leftDisjunct,
-                                                 allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-        rightDisjunctPrefix = self.findPrefixForm(
-            rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-        
-        self.debugSplitDisjunction(leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn)
-        
-        if self.allPredicates:
-            z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
-            z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
-        else:
-            z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
-            z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"             
-
-        #logger.info("Raw z3 formula: "+ z3StringFormula)
         logger.info("###### Raw Z3: ")
         logger.info("###### "+z3FormulaInfix)
 
         z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
        
-        #logger.info("Simplified z3 formula: "+z3StringFormula)
         logger.info("###### Simplified Z3 Final formula: ")
         logger.info("###### "+z3StringFormula+ os.linesep)
-        #print z3StringFormula
-        #return alwaysTrueSimp + " && ( "+leftSimp+" || "+ rightSimp  +")"
+
         self.time = time.time() - start_time
+       
         return z3StringFormula
-        # return "(Old_s1Count != New_s1Count )"
 
     def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
         prefixForm = []
