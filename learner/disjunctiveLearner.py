@@ -245,7 +245,7 @@ class DisjunctiveLearner(Learner):
         #assert(len(remainingPredicatesInfix) > 0)
 
 
-        (RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,formulaSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
+        (RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,postconditionSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
 
         logger.info("###### Raw Postcondition infix: ")
         logger.info("###### "+RawPostconditionInfix)
@@ -258,11 +258,11 @@ class DisjunctiveLearner(Learner):
         logger.info("###### "+postconditionSimplifiedSeperately)
 
         logger.info("###### Final Simplified Postcondition: ")
-        logger.info("###### "+formulaSimplified+ os.linesep)
+        logger.info("###### "+postconditionSimplified+ os.linesep)
 
         self.time = time.time() - start_time
        
-        return formulaSimplified
+        return postconditionSimplified
 
     def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
         prefixForm = []
