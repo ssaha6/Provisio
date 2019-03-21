@@ -160,8 +160,13 @@ def run_HashSetContractOnly():
     )
     
     methodParameters = [
-        ('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
+        #('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
+        #('PUT_RemoveContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
+        #('PUT_CountContract', [], ['Old_hsCount', 'New_hsCount', 'Old_Ret', 'New_Ret']),
+        ('PUT_ContainsContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
+
     ]
+
     #file ="hashset_post.csv"
     file ="hashset_postRegression.csv"
     runnerPost(benchmark, methodParameters, "results/"+file)
@@ -170,6 +175,6 @@ def run_HashSetContractOnly():
 if __name__ == '__main__':
     
     print "starting"
-    run_StackContractPostOnly()
-    run_QueueContractPostOnly()
+    #run_StackContractPostOnly()
+    #run_QueueContractPostOnly()
     run_HashSetContractOnly()
