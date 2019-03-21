@@ -138,7 +138,19 @@ class DisjunctiveLearner(Learner):
 
         return score
 
-    def choosePredicateToSplit(self, mapPredicateScores,alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix ):
+    def learnDisjunction(self,remainingPredicatesInfix, houdiniEx, houd,alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix ):
+        mapPredicateScores = []
+        mapPredicateScores = self.scorePredicates(remainingPredicatesInfix, houdiniEx, houd)
+        
+        if len(mapPredicateScores) == 0:
+            # This is the case where the predicates in remainingPredicatesInfix are always false or remainingPredicatesInfix is empty 
+            alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
+                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
+            z3StringFormulaPrefix = "(and " +' '.join(alwaysTruePrefix)+")"
+            #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+            z3FormulaInfix =  ' && '.join(alwaysTruePredicateInfix)
+            return (z3StringFormulaPrefix, z3FormulaInfix)
+        
         mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
         leftDisjunct = []
         rightDisjunct = []
@@ -169,16 +181,21 @@ class DisjunctiveLearner(Learner):
         rightDisjunctPrefix = self.findPrefixForm(
             rightDisjunct, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
         
-        self.debugSplitDisjunction(leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn)
-
+        (alwaysTrueSimp , leftSimp, rightSimp ) = self.debugSplitDisjunction(leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn)
+        
+        z3StringFormulaSimplifiedSeparately = alwaysTrueSimp + "&& ("+leftSimp + " || "+ rightSimp +")"
+        
         if self.allPredicates:
-            z3StringFormula = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
+            z3StringFormulaPrefix = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
             z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
         else:
-            z3StringFormula = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
+            z3StringFormulaPrefix = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
             z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"  
-
-        return (z3StringFormula, z3FormulaInfix)
+        
+        z3StringFormulaSimplified = z3simplify.simplify(self.symbolicIntVariables, 
+        self.symbolicBoolVariables, z3StringFormulaPrefix)
+        
+        return (z3StringFormulaPrefix, z3FormulaInfix, z3StringFormulaSimplifiedSeparately, z3StringFormulaSimplified )
 
     def learn(self, dataPoints, simplify=True):
         start_time = time.time()
@@ -218,44 +235,42 @@ class DisjunctiveLearner(Learner):
         alwaysTruePredicateInfix = houd.learntConjuction
 
         # TODO: compute with prefix otherwie z3 throws error
-        remainingPredicatesInfix = list(set(
-            listAllSynthesizedPredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
         # remainingPredicatesPrefix = list(set(listAllSynthesizePredPrefix).symmetric_difference(set(alwaysTruePredicateInfix)))
         # for computing disjunctions, we only need to considr p or not p both not both
-        mapPredicateScores = []
-        sorteMapPredicateScores = []
+        
+        remainingPredicatesInfix = list(set(
+            listAllSynthesizedPredInfix).symmetric_difference(set(alwaysTruePredicateInfix)))
         
         # this checks that there is at least one predicate that is true all datapoints
-        assert(len(remainingPredicatesInfix) > 0)
+        #assert(len(remainingPredicatesInfix) > 0)
 
-        mapPredicateScores = self.scorePredicates(remainingPredicatesInfix, houdiniEx, houd)
-        if len(mapPredicateScores) == 0:
-            # This is the case where the predicates in remainingPredicatesInfix are always false or remainingPredicatesInfix is empty 
-            alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
-                                               allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)
-            z3StringFormula = "(and " +' '.join(alwaysTruePrefix)+")"
-            z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
-            return z3StringFormula
 
-        (z3StringFormula, z3FormulaInfix) = self.choosePredicateToSplit(mapPredicateScores, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
+        (z3RawFormulaPrefix, z3RawFormulaInfix, formulaSimplifiedSeperately,formulaSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
 
-        logger.info("###### Raw Z3: ")
-        logger.info("###### "+z3FormulaInfix)
+        logger.info("###### Raw Z3 infix: ")
+        logger.info("###### "+z3RawFormulaInfix)
 
-        z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
-       
+        logger.info("###### Raw Z3 Prefix: ")
+        logger.info("###### "+z3RawFormulaPrefix+ os.linesep)
+
+        #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+        logger.info("###### Simplified (Separately) Z3 Final formula: ")
+        logger.info("###### "+formulaSimplifiedSeperately)
+
         logger.info("###### Simplified Z3 Final formula: ")
-        logger.info("###### "+z3StringFormula+ os.linesep)
+        logger.info("###### "+formulaSimplified+ os.linesep)
 
         self.time = time.time() - start_time
        
-        return z3StringFormula
+        return formulaSimplified
 
     def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
         prefixForm = []
 
         for predToConvert in infixForm:
-            assert(not("false" == predToConvert))
+            #assert(not("false" == predToConvert))
+            if "false" == predToConvert:
+                return ["false"]
             if "true" == predToConvert:
                 return ["true"]
             indexToConvert = allInFixPredicateList.index(predToConvert)
@@ -306,6 +321,8 @@ class DisjunctiveLearner(Learner):
         logger.info("### Right Simplified:")
         rightSimp = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables,  "(and "+ ' '.join(rightDisjunctPrefix)+ " )" )
         logger.info(rightSimp+ os.linesep) 
+
+        return (alwaysTrueSimp , leftSimp, rightSimp )
         #end debug
 
 if __name__ == '__main__':
