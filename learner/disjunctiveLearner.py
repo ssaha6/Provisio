@@ -1,3 +1,6 @@
+Program started
+configuration: entropy: True numerical: False
+
 import subprocess
 import sys
 import re
@@ -38,7 +41,7 @@ class DisjunctiveLearner(Learner):
         Learner.__init__(self, name, binary, parameters, tempLocation)
         self.entropy = True
         self.numerical = True
-        self.allPredicates = True
+        
 
     def generateFiles(self):
         pass
@@ -185,12 +188,8 @@ class DisjunctiveLearner(Learner):
         
         z3StringFormulaSimplifiedSeparately = alwaysTrueSimp + "&& ("+leftSimp + " || "+ rightSimp +")"
         
-        if self.allPredicates:
-            z3StringFormulaPrefix = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
-            z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
-        else:
-            z3StringFormulaPrefix = "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +"))"
-            z3FormulaInfix = "("+ ' && '.join(leftDisjunct) +" || " +' && '.join(rightDisjunct)+ ")"  
+        z3StringFormulaPrefix = "(and " +' '.join(alwaysTruePrefix) + "(or " + "(and " + ' '.join(leftDisjunctPrefix) + ") " +"(and "+ ' '.join(rightDisjunctPrefix) +")))"
+        z3FormulaInfix = ' && '.join(alwaysTruePredicateInfix)  + " && ((" +' && '.join(leftDisjunct) +") || (" +' && '.join(rightDisjunct)+ "))"             
         
         z3StringFormulaSimplified = z3simplify.simplify(self.symbolicIntVariables, 
         self.symbolicBoolVariables, z3StringFormulaPrefix)
@@ -203,7 +202,7 @@ class DisjunctiveLearner(Learner):
         # Intuition: Only need HoudiniExt to call createAllPredicates()
         # Need Houdini to Learn conjunction
         self.setDataPoints(dataPoints)
-        ##logger.info("learner "+ str(self.entropy) +str(self.numerical)+ str(self.allPredicates))
+        ##logger.info("learner "+ str(self.entropy) +str(self.numerical))
         
         houdiniEx = HoudiniExtended("HoudiniExtended", "", "", "")
         houdiniEx.setVariables(self.intVariables, self.boolVariables)

@@ -167,12 +167,12 @@ if __name__ == '__main__':
     #for opt in options:
     entropy = True
     numerical = False
-    allPredicates = True
+    
     
     
     
     logger.info("Program started")
-    logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical)+ " all: "+ str(allPredicates) )
+    logger.info("configuration: "+ "entropy: "+str(entropy)+ " numerical: "+ str(numerical) )
     
     #learner = HoudiniExtended("HoudiniExtended","","","")
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
@@ -181,7 +181,7 @@ if __name__ == '__main__':
     learner = DisjunctiveLearner("DisjunctiveLearner", "", "", "")
     learner.entropy = entropy
     learner.numerical = numerical
-    learner.allPredicates = allPredicates
+    
 
     intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_x','New_x']
     #intVariables = ['Old_s1Count', 'New_s1Count','Old_Top','New_Top', 'Old_ret','New_ret']
