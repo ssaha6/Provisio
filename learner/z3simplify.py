@@ -50,32 +50,38 @@ def simplify(intVariables, boolVariables, precondition):
     works = Repeat(Then( 
     
     OrElse(Tactic('ctx-solver-simplify'),Tactic('skip')),
-    #OrElse(Tactic('unit-subsume-simplify'),Tactic('skip')),
-    #OrElse(Tactic('propagate-ineqs'),Tactic('skip')),
-    #OrElse(Tactic('purify-arith'),Tactic('skip')),
-    #OrElse(Tactic('ctx-simplify'),Tactic('skip')),
-    #OrElse(Tactic('dom-simplify'),Tactic('skip')),
-    #OrElse(Tactic('propagate-values'),Tactic('skip')),
+    
+    # OrElse(Tactic('unit-subsume-simplify'),Tactic('skip')),
+    # OrElse(Tactic('propagate-ineqs'),Tactic('skip')),
+    # OrElse(Tactic('purify-arith'),Tactic('skip')),
+    # OrElse(Tactic('ctx-simplify'),Tactic('skip')),
+    # OrElse(Tactic('dom-simplify'),Tactic('skip')),
+    # OrElse(Tactic('propagate-values'),Tactic('skip')),
+    
     OrElse(Tactic('simplify'),Tactic('skip')),
+    
     #OrElse(Tactic('aig'),Tactic('skip')),
     #OrElse(Tactic('degree-shift'),Tactic('skip')),
     #OrElse(Tactic('factor'),Tactic('skip')),
     #OrElse(Tactic('lia2pb'),Tactic('skip')),
     #OrElse(Tactic('recover-01'),Tactic('skip')),
+    
     OrElse(Tactic('elim-term-ite'),Tactic('skip')), #must to remove ite
-    #OrElse(Tactic('injectivity'),Tactic('skip')),
-    #OrElse(Tactic('snf'),Tactic('skip')),
-    #OrElse(Tactic('reduce-args'),Tactic('skip')),
-    #OrElse(Tactic('elim-and'),Tactic('skip')),
-    #OrElse(Tactic('symmetry-reduce'),Tactic('skip')),
-    #OrElse(Tactic('macro-finder'),Tactic('skip')),
-    #OrElse(Tactic('quasi-macros'),Tactic('skip')),
+    
+    # OrElse(Tactic('injectivity'),Tactic('skip')),
+    # OrElse(Tactic('snf'),Tactic('skip')),
+    # OrElse(Tactic('reduce-args'),Tactic('skip')),
+    # OrElse(Tactic('elim-and'),Tactic('skip')),
+    # OrElse(Tactic('symmetry-reduce'),Tactic('skip')),
+    # OrElse(Tactic('macro-finder'),Tactic('skip')),
+    # OrElse(Tactic('quasi-macros'),Tactic('skip')),
+    
     Repeat(OrElse(Tactic('split-clause'),Tactic('skip'))),
     ))
-    
+    #works1 = Tactic('simplify')    
 
     result = works(g)
-
+    #result = works1(g)
     # split_all = 
 
     # print str(result)
@@ -116,6 +122,90 @@ def simplify(intVariables, boolVariables, precondition):
     # tactic human_simplify =  tactic(ctx, "ctx-simplify") & tactic(ctx, "purify-arith")
     # tactic dnf_human_simplify =   human_simplify & repeat( (tactic(ctx, "split-clause") | tactic(ctx, "skip")));
 
+def simplifyOriginal(intVariables, boolVariables, precondition):
+    set_option(max_args = 10000000, max_lines = 1000000, max_depth = 10000000, max_visited = 1000000)
+    set_option(html_mode=False)
+    set_fpa_pretty(flag=False)
+    # print precondition
+    
+    intVars = [ Int(var) for var in intVariables]
+    boolVars = [ Bool(var) for var in boolVariables]
+    
+    declareInts = "\n".join([ "(declare-const " + var + " Int)" for var in intVariables ])
+    declareBools = "\n".join([ "(declare-const " + var + " Bool)" for var in boolVariables ])
+    stringToParse = "\n".join([declareInts,  declareBools, "( assert " + precondition + ")"])
+    
+    #logger = logging.getLogger("Framework.z3Simplify")
+    
+    #logger.info("############ z3 program")
+    #logger.info("############ " + stringToParse)
+    
+    expr = parse_smt2_string(stringToParse)
+    
+    g  = Goal()
+    g.add(expr)
+    
+    works = Repeat(Then( 
+    Repeat(OrElse(Tactic('split-clause'),Tactic('skip'))),
+    OrElse(Tactic('ctx-solver-simplify'),Tactic('skip')),
+    OrElse(Tactic('unit-subsume-simplify'),Tactic('skip')),
+    OrElse(Tactic('propagate-ineqs'),Tactic('skip')),
+    OrElse(Tactic('purify-arith'),Tactic('skip')),
+    OrElse(Tactic('ctx-simplify'),Tactic('skip')),
+    OrElse(Tactic('dom-simplify'),Tactic('skip')),
+    OrElse(Tactic('propagate-values'),Tactic('skip')),
+    OrElse(Tactic('simplify'),Tactic('skip')),
+    OrElse(Tactic('aig'),Tactic('skip')),
+    OrElse(Tactic('degree-shift'),Tactic('skip')),
+    OrElse(Tactic('factor'),Tactic('skip')),
+    OrElse(Tactic('lia2pb'),Tactic('skip')),
+    OrElse(Tactic('recover-01'),Tactic('skip')),
+    OrElse(Tactic('elim-term-ite'),Tactic('skip')), #must to remove ite
+    OrElse(Tactic('injectivity'),Tactic('skip')),
+    OrElse(Tactic('snf'),Tactic('skip')),
+    OrElse(Tactic('reduce-args'),Tactic('skip')),
+    OrElse(Tactic('elim-and'),Tactic('skip')),
+    OrElse(Tactic('symmetry-reduce'),Tactic('skip')),
+    OrElse(Tactic('macro-finder'),Tactic('skip')),
+    OrElse(Tactic('quasi-macros'),Tactic('skip')),
+    ))
+    
+    #works1 = Tactic('simplify')    
+
+    result = works(g)
+    #result = works1(g)
+    # split_all = 
+
+    # print str(result)
+    # result = [[ "d1", "d2", "d3"], #= conjunct && conjunct
+    #           [ "d4", "d5", "d6"]]
+    
+    #remove empty subgoals and check if resultant list is empty.
+    result = filter(None, result)
+    if not result:
+        return "true" 
+    
+    
+    completeConjunct = []
+    for conjunct in result: 
+        completeDisjunct = []
+        for disjunct in conjunct:
+                completeDisjunct.append("(" + str(disjunct) + ")")
+                
+        completeConjunct.append( "(" + " && ".join(completeDisjunct) + ")")
+    
+    simplifiedPrecondition = " || ".join(completeConjunct)
+    
+    simplifiedPrecondition = simplifiedPrecondition.replace("Not", " ! ")
+    simplifiedPrecondition = simplifiedPrecondition.replace("False", " false ")
+    simplifiedPrecondition = simplifiedPrecondition.replace("True", " true ")
+    simplifiedPrecondition = simplifiedPrecondition.replace("\n", "  ")
+
+    
+    # assert ( ( "And" not in simplifiedPrecondition) and ( "Or" not in simplifiedPrecondition ) )
+    
+    # print simplifiedPrecondition
+    return simplifiedPrecondition
 
 
 if __name__ == '__main__':
@@ -136,17 +226,19 @@ if __name__ == '__main__':
     # precondition = "(or variableBool000 (not ( <= ( + ( * (-1) variableInt000 ) ( * 0 variableInt001 ) ( * 1 variableInt002 ) ) 0 )))"
     precondition = "(not ( <= ( + ( * -1 variableInt000 ) ( * 1 variableInt001 ) ( * 0 variableInt002 ) ( * -1 variableInt003 ) ( * -1 variableInt004 ) ) 0 ))"
 
+    # synbolicIntVariables = ["variableInt001", "variableInt000", "variableInt002", "variableInt003", "variableInt004"]
+    # synbolicBoolVariables = ["variableBool000"]
+    # simplify(synbolicIntVariables, synbolicBoolVariables, precondition)
+    
+    
+    # intVariables = ['Old_s1Count', 'New_s1Count', 'Old_s1Peek', 'New_s1Peek', 'Old_x', 'New_x']
+    # boolVariables = ["s1Containsx"]
+    
+    intVariables = ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']
+    boolVariables = ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"]
 
-    synbolicIntVariables = ["variableInt001", "variableInt000", "variableInt002", "variableInt003", "variableInt004"]
-    synbolicBoolVariables = ["variableBool000"]
-    simplify(synbolicIntVariables, synbolicBoolVariables, precondition)
-    
-    
-    intVariables = ['Old_s1Count', 'New_s1Count', 'Old_s1Peek', 'New_s1Peek', 'Old_x', 'New_x']
-    boolVariables = ["s1Containsx"]
-    
-    intExpression = "( = New_x (+ Old_s1Count 1) )"
-    simplify(intVariables, boolVariables, intExpression)
+    simpExpression = "(and (= Old_hsCount New_hsCount) (= Old_x New_x) ( = New_x Old_x ) ( = New_hsCount Old_hsCount )(or (and New_Ret (not (= Old_hsCount New_x)) (not (= New_hsCount New_x)) (not (= New_hsCount Old_x)) New_hsContainsX Old_hsContainsX (not (= Old_hsCount Old_x))) (and false)))"
+    print simplify(intVariables, boolVariables, simpExpression)
 
     
 # LOOK FOR SIMPLIFY PROPAGATE
