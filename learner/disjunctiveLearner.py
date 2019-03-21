@@ -245,19 +245,19 @@ class DisjunctiveLearner(Learner):
         #assert(len(remainingPredicatesInfix) > 0)
 
 
-        (z3RawFormulaPrefix, z3RawFormulaInfix, formulaSimplifiedSeperately,formulaSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
+        (RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,formulaSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
 
-        logger.info("###### Raw Z3 infix: ")
-        logger.info("###### "+z3RawFormulaInfix)
+        logger.info("###### Raw Postcondition infix: ")
+        logger.info("###### "+RawPostconditionInfix)
 
-        logger.info("###### Raw Z3 Prefix: ")
-        logger.info("###### "+z3RawFormulaPrefix+ os.linesep)
+        logger.info("###### Raw Postcondition Prefix: ")
+        logger.info("###### "+RawPostconditionPrefix+ os.linesep)
 
         #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
-        logger.info("###### Simplified (Separately) Z3 Final formula: ")
-        logger.info("###### "+formulaSimplifiedSeperately)
+        logger.info("###### Final Simplified (Separately) Postcondition: ")
+        logger.info("###### "+postconditionSimplifiedSeperately)
 
-        logger.info("###### Simplified Z3 Final formula: ")
+        logger.info("###### Final Simplified Postcondition: ")
         logger.info("###### "+formulaSimplified+ os.linesep)
 
         self.time = time.time() - start_time
