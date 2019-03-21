@@ -114,14 +114,15 @@ def run_StackContractPostOnly():
     )
 
     methodParameters = [
-        ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x'])#,
-        #('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
-        #('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        #'PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'] )
+        ('PUT_PushContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
+        ('PUT_PopContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
+        ('PUT_PeekContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
+        ('PUT_CountContract', [], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']),
+        ('PUT_ContainsContract', ['Old_Ret', 'New_Ret', 'Old_s1ContainsX', 'New_s1ContainsX'], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
     ]
-    #file ="stack_post.csv"
-    file = "stack_postRegression.csv"
+
+    file ="stack_post.csv"
+    #file = "stack_postRegression.csv"
     runnerPost(benchmark, methodParameters, "results/"+ file)
 
 def run_QueueContractPostOnly():
@@ -138,13 +139,13 @@ def run_QueueContractPostOnly():
 
     methodParameters = [
         ('PUT_EnqueueContract', ["Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count', 'Old_Top', 'New_Top', 'Old_x', 'New_x']),
-        #('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
-        ('PUT_PeekContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] )#,
-        #('PUT_CountContract',[], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
-        #('PUT_ContainsContract',["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
+        ('PUT_DequeueContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret']) ,
+        ('PUT_PeekContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_CountContract', [], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top', 'Old_Ret', 'New_Ret'] ),
+        ('PUT_ContainsContract', ["Old_Ret", "New_Ret","Old_s1ContainsX", "New_s1ContainsX"], ['Old_s1Count', 'New_s1Count','Old_Top', 'New_Top'])
     ]
-    #file ="queue_post.csv"
-    file = "queue_postRegression.csv"
+    file ="queue_post.csv"
+    #file = "queue_postRegression.csv"
     runnerPost(benchmark, methodParameters, "results/"+file)
 
 def run_HashSetContractOnly():
@@ -160,16 +161,75 @@ def run_HashSetContractOnly():
     )
     
     methodParameters = [
-        ('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
+        ('PUT_AddContract', ['Old_Ret', 'New_Ret','Old_hsContainsX', 'New_hsContainsX'], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
+        ('PUT_RemoveContract', ['Old_Ret', 'New_Ret','Old_hsContainsX', 'New_hsContainsX'], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
+        ('PUT_CountContract', [], ['Old_hsCount', 'New_hsCount', 'Old_Ret', 'New_Ret']),
+        ('PUT_ContainsContract', ['Old_Ret', 'New_Ret','Old_hsContainsX', 'New_hsContainsX'], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
     ]
-    #file ="hashset_post.csv"
-    file ="hashset_postRegression.csv"
+    
+    file ="hashset_post.csv"
+    #file ="hashset_postRegression.csv"
     runnerPost(benchmark, methodParameters, "results/"+file)
 
+def run_DictionaryContractOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/Dictionary/Dictionary.sln",
+        testDll="../ContractsSubjects/Dictionary/DictionaryTest/bin/Debug/DictionaryTest.dll",
+        testFile="../ContractsSubjects/Dictionary/DictionaryTest/DictionaryContractTest.cs",
+        classFile='../ContractsSubjects/Dictionary/Dictionary/Dictionary.cs',
+        testNamespace="Dictionary.Test",
+        testType="DictionaryContractTest",
+        pexReportFolder="../ContractsSubjects/Dictionary/DictionaryTest/bin/Debug"
+    )
+    
+    methodParameters = [
+        ('PUT_AddContract', ['Old_dContainsKeyX', 'New_dContainsKeyX','Old_dContainsValueY', 'New_dContainsValueY'], ['Old_dCount', 'New_dCount', 'Old_x', 'New_x', 'Old_y', 'New_y']),
+        ('PUT_RemoveContract', ['Old_Ret', 'New_Ret','Old_dContainsKeyX', 'New_dContainsKeyX'], ['Old_dCount', 'New_dCount', 'Old_x', 'New_x']),
+        ('PUT_GetContract', ['Old_dContainsKeyX', 'New_dContainsKeyX'], ['Old_dCount', 'New_dCount', 'Old_x', 'New_x', 'Old_Ret', 'New_Ret']),
+        ('PUT_SetContract', ['Old_dContainsKeyX', 'New_dContainsKeyX','Old_dContainsValueY', 'New_dContainsValueY'], ['Old_dCount', 'New_dCount', 'Old_x', 'New_x', 'Old_y', 'New_y']),
+        ('PUT_ContainsKeyContract', ['Old_Ret', 'New_Ret','Old_dContainsKeyX', 'New_dContainsKeyX'], ['Old_dCount', 'New_dCount', 'Old_x', 'New_x']),   
+        ('PUT_ContainsValueContract', ['Old_Ret', 'New_Ret','Old_dContainsValueY', 'New_dContainsValueY'], ['Old_dCount', 'New_dCount', 'Old_y', 'New_y']),
+        ('PUT_CountContract', [], ['Old_dCount', 'New_dCount', 'Old_Ret', 'New_Ret'])
+    ]
+    
+    file ="dictionary_post.csv"
+    #file ="dictionary_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
+
+def run_ArrayListContractOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/ArrayList/ArrayList.sln",
+        testDll="../ContractsSubjects/ArrayList/ArrayListTest/bin/Debug/ArrayListTest.dll",
+        testFile="../ContractsSubjects/ArrayList/ArrayListTest/ArrayListContractTest.cs",
+        classFile='../ContractsSubjects/ArrayList/ArrayList/ArrayList.cs',
+        testNamespace="ArrayList.Test",
+        testType="ArrayListContractTest",
+        pexReportFolder="../ContractsSubjects/ArrayList/ArrayListTest/bin/Debug"
+    )
+    
+    methodParameters = [
+        ('PUT_AddContract', ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX', 'Old_Ret', 'New_Ret'])#,
+        # ('PUT_RemoveContract', ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX']),
+        # ('PUT_InsertContract', ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_index', 'New_index', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX']),
+        # ('PUT_SetContract',  ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_index', 'New_index', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX']),
+        # ('PUT_GetContract', [], ['Old_alCount', 'New_alCount', 'Old_index', 'New_index', 'Old_Ret', 'New_Ret']),
+        # ('PUT_ContainsContract', ['Old_Ret', 'New_Ret', 'Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX']),   
+        # ('PUT_IndexOfContract', ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX', 'Old_Ret', 'New_Ret']),
+        # ('PUT_LastIndexOfContract', ['Old_alContainsX', 'New_alContainsX'], ['Old_alCount', 'New_alCount', 'Old_x', 'New_x', 'Old_alIndexOfX', 'New_alIndexOfX', 'Old_alLastIndexOfX', 'New_alLastIndexOfX', 'Old_Ret', 'New_Ret']),
+        # ('PUT_CountContract', [], ['Old_alCount', 'New_alCount', 'Old_Ret', 'New_Ret'])
+    ]
+    
+    file ="arraylist_post.csv"
+    #file ="arraylist_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
 
 if __name__ == '__main__':
     
     print "starting"
-    run_StackContractPostOnly()
-    run_QueueContractPostOnly()
-    run_HashSetContractOnly()
+    #run_StackContractPostOnly()
+    #run_QueueContractPostOnly()
+    #run_HashSetContractOnly()
+    #run_DictionaryContractOnly()
+    run_ArrayListContractOnly()
