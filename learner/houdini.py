@@ -87,9 +87,10 @@ class Houdini(Learner):
         # This is also wrong!, if no positive predicates than we should not output false but rather TRUE;
         if len(posPred) == 0:
             conjunct = "true"
+            #conjunct = "false"
             # Quick Fix- to return list
             self.learntConjuction = ["true"]
-        
+            #self.learntConjuction = ["false"]
         elif len(posPred) == 1:
             conjunct = posPred[0]
             # Quick Fix- to return list
