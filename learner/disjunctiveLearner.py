@@ -1,6 +1,3 @@
-Program started
-configuration: entropy: True numerical: False
-
 import subprocess
 import sys
 import re
