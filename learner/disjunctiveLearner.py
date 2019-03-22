@@ -154,7 +154,9 @@ class DisjunctiveLearner(Learner):
             z3StringFormulaPrefix = "(and " +' '.join(alwaysTruePrefix)+")"
             #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
             z3FormulaInfix =  ' && '.join(alwaysTruePredicateInfix)
-            return (z3StringFormulaPrefix, z3FormulaInfix)
+            z3StringFormulaSimplified = z3simplify.simplify(self.symbolicIntVariables, 
+        self.symbolicBoolVariables, z3StringFormulaPrefix)
+            return (z3StringFormulaPrefix, z3FormulaInfix, z3StringFormulaSimplified, z3StringFormulaSimplified )
         
         mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
         leftDisjunct = []
