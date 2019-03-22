@@ -43,7 +43,6 @@ class Logging:
 def runnerPost(benchmark, methodParameters, logFile, exception=False):
     entropy = True
     numerical = False
-    allPredicates = True
 
     pexBinary = "pex.exe"
     #debug
@@ -57,13 +56,15 @@ def runnerPost(benchmark, methodParameters, logFile, exception=False):
     logger.addHandler(fh)
     logger.info("Program started")
     logger.info("configuration: " + "entropy: "+str(entropy) +
-                " numerical: " + str(numerical) + " all: " + str(allPredicates))
+                " numerical: " + str(numerical))
     #endDebug
     log = Logging(logFile)
     for element in methodParameters:
         # if exception:
         #    (putName, methodUnderTest, boolVariables, intVariables) = element
         (putName, boolVariables, intVariables) = element
+        logger.info("################### Method: "+ putName)
+        
         print "\n\nLearning postcondition for method: " + putName
         print "--------------------------------------------------------------------------------"
 
@@ -72,7 +73,7 @@ def runnerPost(benchmark, methodParameters, logFile, exception=False):
         # debug
         learner.entropy = entropy
         learner.numerical = numerical
-        learner.allPredicates = allPredicates
+        
         #enddebug
         learner.setVariables(intVariables, boolVariables)
         teacher = Pex(pexBinary, len(learner.intVariables) +
@@ -161,10 +162,10 @@ def run_HashSetContractOnly():
     )
     
     methodParameters = [
-        #('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
+        ('PUT_AddContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])#,
         #('PUT_RemoveContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x']),
         #('PUT_CountContract', [], ['Old_hsCount', 'New_hsCount', 'Old_Ret', 'New_Ret']),
-        ('PUT_ContainsContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
+        #('PUT_ContainsContract', ["Old_Ret", "New_Ret","Old_hsContainsX", "New_hsContainsX"], ['Old_hsCount', 'New_hsCount', 'Old_x', 'New_x'])
 
     ]
 
@@ -231,6 +232,6 @@ if __name__ == '__main__':
     print "starting"
     #run_StackContractPostOnly()
     #run_QueueContractPostOnly()
-    #run_HashSetContractOnly()
+    run_HashSetContractOnly()
     #run_DictionaryContractOnly()
-    run_ArrayListContractOnly()
+    #run_ArrayListContractOnly()
