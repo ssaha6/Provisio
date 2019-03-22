@@ -86,6 +86,10 @@ class  Learner:
             return True
         elif dataString == "false":
             return False
+        elif dataString.find("true (0x") != -1:
+            return True
+        elif dataString.find("false (0x") != -1:
+            return False
         else:
             #we can only have integers
             return int(dataString)

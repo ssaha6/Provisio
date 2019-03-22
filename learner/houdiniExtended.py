@@ -115,7 +115,7 @@ class HoudiniExtended(Learner):
             
         return result
      
-    def createEqualityPredicates(self, intVars):
+    def createEqualityNumericPredicates(self, intVars):
         namesDataFile = list()
         if len(intVars) >= 2:
             all_combination = itertools.combinations(intVars, 2)
@@ -130,21 +130,40 @@ class HoudiniExtended(Learner):
                 
         return namesDataFile
 
-    def createNegationPredicate(self, boolVars):
+    def createNegationPredicates(self, boolVars):
         namesDataFile = list()
         for boolVar in boolVars:
+            #if boolVar.find("New_Ret") != -1:
             namesExpr = "(not " +boolVar+")"
             dataExpr = "(not " +boolVar+")"
             namesDataFile.append((namesExpr, dataExpr))
         return namesDataFile           
-        
+
+    def createEqualityBooleanPredicates(self, boolVars):
+        namesDataFile = list()
+        #for boolVar in boolVars:
+        if len(boolVars) >= 2:
+            all_combination = itertools.combinations(boolVars, 2)
+            for (var1, var2) in all_combination:
+                #if boolVar.find("New_Ret") != -1:
+                namesExpr = "(= " + var1 + " " + var2 + ")"
+                dataExpr = "(" + var1 + " == " + var2 + ")"
+                namesDataFile.append((namesExpr, dataExpr))
+
+                namesExpr = "(not (= "  + var1 + " " + var2 + "))"
+                dataExpr = "(not ("  + var1 + " == " + var2 + "))"
+                namesDataFile.append((namesExpr, dataExpr))
+
+        return namesDataFile
+
     #return list of tuples; list has size two (prefix and infix)
     def createAllPredicates(self):
         #bool predicates
         allPredicates = [(x,x) for x in self.symbolicBoolVariables]
         #negation of bool predicates
-        #allPredicates = allPredicates + self.createNegationPredicate(self.symbolicBoolVariables)
-        allPredicates = allPredicates + self.createEqualityPredicates(self.symbolicIntVariables)
+        allPredicates = allPredicates + self.createNegationPredicates(self.symbolicBoolVariables)
+        allPredicates = allPredicates + self.createEqualityBooleanPredicates(self.symbolicBoolVariables)
+        allPredicates = allPredicates + self.createEqualityNumericPredicates(self.symbolicIntVariables)
         allPredicates = allPredicates + self.createFunctionPredicates(self.dataPoints)
         if self.numerical:    
             allPredicates = allPredicates + self.createThresholdPredicates(self.symbolicIntVariables, self.dataPoints)

@@ -88,11 +88,14 @@ class DisjunctiveLearner(Learner):
             #boolNegPDatapoints.insert(i,columnPredicateSplitNegEval)
     def scorePredicates(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
+        purity =[]
+        puritySorted=[]
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
             positiveP = []
             negativeP = []
             predicateSplitP = candidatePredicatesToSplitOn[i]
             positiveP, negativeP = self.splitSamples(predicateSplitP, houdiniEx, self.dataPoints)
+            purity.append({'predicate': predicateSplitP, '+': len(positiveP),'-': len(negativeP)  })
             assert(len(positiveP) + len(negativeP) == len(self.dataPoints))
             if len(positiveP) == 0 and len(negativeP) > 0:
                 #predicate is always false so skip it:
@@ -117,12 +120,14 @@ class DisjunctiveLearner(Learner):
             conjN = houd.learn(boolNegativeDatapoints, simplify=False)
             conjNList = houd.learntConjuction
             
-            posMultiplier = len(conjPList)
-            negMultiplier = len(conjNList)
-            if len(conjPList) == 1 and 'true' in conjPList:
-                posMultiplier = 0
-            if len(conjNList) == 1 and 'true' in conjPList:
-                negMultiplier = 0
+            posMultiplier = len(positiveP)
+            negMultiplier = len(negativeP)
+            #posMultiplier = len(conjPList)
+            #negMultiplier = len(conjNList)
+            #if len(conjPList) == 1 and 'true' in conjPList:
+            #    posMultiplier = 0
+            #if len(conjNList) == 1 and 'true' in conjNList:
+            #    negMultiplier = 0
 
             plusLabel = ['+'] * posMultiplier
             minusLabel = ['-'] * negMultiplier
@@ -135,7 +140,7 @@ class DisjunctiveLearner(Learner):
             # 'score':self.scoreByLen(conjPList, conjNList) , 'left': conjPList, 'right': conjNList})
             score.append({'predicate': predicateSplitP,
                           'score': entropyR, 'left': conjPList, 'right': conjNList})
-
+        puritySorted = sorted(purity, key=lambda x: abs(x['+']-x['-']) )
         return score
 
     def learnDisjunction(self,remainingPredicatesInfix, houdiniEx, houd,alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix ):
@@ -160,18 +165,21 @@ class DisjunctiveLearner(Learner):
             leftDisjunct = mapPredicateScores[-1]['left']
             rightDisjunct = mapPredicateScores[-1]['right']
         else:
-            for pred in mapPredicateScores:
-                if pred['score'] != 0:
-                    #print "predicate:"
-                    #print pred['predicate']
-                    choosePtoSplitOn = pred['predicate']
-                    #print "left:"
-                    #print pred['left']
-                    leftDisjunct = pred['left']
-                    #print "right:"
-                    #print pred['right']
-                    rightDisjunct = pred['right']
-                    break
+            choosePtoSplitOn = mapPredicateScores[-1]['predicate']
+            leftDisjunct = mapPredicateScores[-1]['left']
+            rightDisjunct = mapPredicateScores[-1]['right']
+            # for pred in mapPredicateScores:
+            #     if pred['score'] != 0:
+            #         #print "predicate:"
+            #         #print pred['predicate']
+            #         choosePtoSplitOn = pred['predicate']
+            #         #print "left:"
+            #         #print pred['left']
+            #         leftDisjunct = pred['left']
+            #         #print "right:"
+            #         #print pred['right']
+            #         rightDisjunct = pred['right']
+            #         break
         
         alwaysTruePrefix = self.findPrefixForm(alwaysTruePredicateInfix,
                                                allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix)

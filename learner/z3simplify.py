@@ -169,7 +169,7 @@ def simplifyOriginal(intVariables, boolVariables, precondition):
     OrElse(Tactic('macro-finder'),Tactic('skip')),
     OrElse(Tactic('quasi-macros'),Tactic('skip')),
     ))
-    
+
     #works1 = Tactic('simplify')    
 
     result = works(g)
