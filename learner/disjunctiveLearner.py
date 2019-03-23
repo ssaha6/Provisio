@@ -89,6 +89,8 @@ class DisjunctiveLearner(Learner):
     def scorePredicates(self,candidatePredicatesToSplitOn, houdiniEx, houd ):
         score = []
         purity =[]
+        maxConjuncts =[]
+        maxConjunctsSorted =[]
         puritySorted=[]
         for i in xrange(0, len(candidatePredicatesToSplitOn)):
             positiveP = []
@@ -119,7 +121,7 @@ class DisjunctiveLearner(Learner):
             conjPList = houd.learntConjuction
             conjN = houd.learn(boolNegativeDatapoints, simplify=False)
             conjNList = houd.learntConjuction
-            
+            #arguments for entropy computation
             posMultiplier = len(positiveP)
             negMultiplier = len(negativeP)
             #posMultiplier = len(conjPList)
@@ -128,6 +130,7 @@ class DisjunctiveLearner(Learner):
             #    posMultiplier = 0
             #if len(conjNList) == 1 and 'true' in conjNList:
             #    negMultiplier = 0
+            maxConjuncts.append({'predicate': predicateSplitP, '+': len(conjPList), "left": conjPList,  '-': len(conjNList),"right": conjNList  })
 
             plusLabel = ['+'] * posMultiplier
             minusLabel = ['-'] * negMultiplier
@@ -141,6 +144,7 @@ class DisjunctiveLearner(Learner):
             score.append({'predicate': predicateSplitP,
                           'score': entropyR, 'left': conjPList, 'right': conjNList})
         puritySorted = sorted(purity, key=lambda x: abs(x['+']-x['-']) )
+        maxConjunctsSorted =sorted(maxConjuncts, key=lambda x: x['+']+x['-'] )
         return score
 
     def learnDisjunction(self,remainingPredicatesInfix, houdiniEx, houd,alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix ):
@@ -159,6 +163,8 @@ class DisjunctiveLearner(Learner):
             return (z3StringFormulaPrefix, z3FormulaInfix, z3StringFormulaSimplified, z3StringFormulaSimplified )
         
         mapPredicateScores = sorted(mapPredicateScores, key=lambda x: x['score'])
+        
+        
         leftDisjunct = []
         rightDisjunct = []
         choosePtoSplitOn = ""
@@ -249,25 +255,11 @@ class DisjunctiveLearner(Learner):
         
         # this checks that there is at least one predicate that is true all datapoints
         #assert(len(remainingPredicatesInfix) > 0)
-
-
         (RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,postconditionSimplified ) = self.learnDisjunction(remainingPredicatesInfix, houdiniEx, houd, alwaysTruePredicateInfix, allSynthesizedPredicatesInfix, allSynthesizedPredicatesPrefix )
 
-        logger.info("###### Raw Postcondition infix: ")
-        logger.info("###### "+RawPostconditionInfix)
-
-        logger.info("###### Raw Postcondition Prefix: ")
-        logger.info("###### "+RawPostconditionPrefix+ os.linesep)
-
-        #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
-        logger.info("###### Final Simplified (Separately) Postcondition: ")
-        logger.info("###### "+postconditionSimplifiedSeperately)
-
-        logger.info("###### Final Simplified Postcondition: ")
-        logger.info("###### "+postconditionSimplified+ os.linesep)
-
+        self.debugFinalPostCondition(RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,postconditionSimplified)
+        
         self.time = time.time() - start_time
-       
         return postconditionSimplified
 
     def findPrefixForm(self, infixForm, allInFixPredicateList, allPrefixPredicateList):
@@ -296,6 +288,20 @@ class DisjunctiveLearner(Learner):
         norm_counts = np.true_divide(counts,totalSample )
         base = math.e if base is None else base
         return - (norm_counts * np.log(norm_counts) / np.log(base)).sum()
+
+    def debugFinalPostCondition(self,RawPostconditionPrefix, RawPostconditionInfix, postconditionSimplifiedSeperately,postconditionSimplified):
+        logger.info("###### Raw Postcondition infix: ")
+        logger.info("###### "+RawPostconditionInfix)
+
+        logger.info("###### Raw Postcondition Prefix: ")
+        logger.info("###### "+RawPostconditionPrefix+ os.linesep)
+
+        #z3StringFormula = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, z3StringFormula)
+        logger.info("###### Final Simplified (Separately) Postcondition: ")
+        logger.info("###### "+postconditionSimplifiedSeperately)
+
+        logger.info("###### Final Simplified Postcondition: ")
+        logger.info("###### "+postconditionSimplified+ os.linesep)        
 
     def debugSplitDisjunction(self,leftDisjunct,leftDisjunctPrefix,rightDisjunct,rightDisjunctPrefix,alwaysTruePrefix,choosePtoSplitOn):
         #Debug 
