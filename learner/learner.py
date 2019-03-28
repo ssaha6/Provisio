@@ -54,8 +54,8 @@ class  Learner:
         return map(lambda x: "variable" + type + '{0:03d}'.format(x), indexRange)
 
     def sanitizeNames(self, orinigalName):
-        return orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","").replace("(","").replace(")","").replace(" ","").replace("notEq", "NEQ")
-    
+        return '_V'  +  str(random.randint(1,11)) +  orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","dot").replace("(","LB").replace(")","RB").replace(" ","").replace("notEq", "NEQ") + '_'
+        
     
     def renameVariables(self):
         #self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
