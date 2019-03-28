@@ -50,25 +50,34 @@ class Pex(Teacher):
 		dataPoints = []
 		for test in tree.xpath('//generatedTest'):
 			
+			if test.get('status') == 'assumptionviolation' or test.get('status') == 'minimizationrequest':
+				continue
+			
 			singlePoint = []
+			saneValue = True
+
 			for value in test.xpath('./value'):
 				if re.match("^\$.*", value.xpath('./@name')[0]):
-					singlePoint.append(str(value.xpath('string()')))
+					# singlePoint.append(str(value.xpath('string()')))
+					val = str(value.xpath('string()'))
+					val = self.replaceIntMinAndMax(val)
+						
+					singlePoint.append(val)
+			
+			if len(singlePoint) < self.numVariables:
+				continue
 
 			if test.get('status') == 'normaltermination':
 				singlePoint.append('true')
-
-			elif test.get('status') == 'assumptionviolation':
-				continue
-			elif test.get('status') == 'minimizationrequest':
-				continue
-			# REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
 			else:
+				if test.get('name').find("TermDestruction") != -1:
+					print "here"
+					continue
 				singlePoint.append('false')
-			# alternatives: test.get('failed') => true / None
-			# exceptionState
-			# failureText
+			
+			
 			dataPoints.append(singlePoint)
+
 		return dataPoints
 	
 	
@@ -114,7 +123,12 @@ class Pex(Teacher):
 		
 		return cmd_exec
 
-
+	def replaceIntMinAndMax(self, number):
+		if number.find("int.MinValue") != -1:
+			return "-2147483648"
+		elif number.find("int.MaxValue") != -1:
+			return "2147483647"
+		return number
 	#def run_pex(args):
 		#try:
 			#pexOutput = executecommand.runCommand(args)

@@ -120,7 +120,6 @@ class  Learner:
 
         self.generateFiles()
         result =  self.runLearner()
-        
         if simplify:
             result = z3simplify.simplify(self.symbolicIntVariables, self.symbolicBoolVariables, result)
 
