@@ -50,14 +50,11 @@
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
     <Reference Include="PexAPIWrapper">
-      <HintPath>..\..\..\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
+      <HintPath>..\..\..\teacher\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
     </Reference>
     <Reference Include="QuickGraph, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\QuickGraph\bin\Debug\QuickGraph.dll</HintPath>
-    </Reference>
-    <Reference Include="ReportParserLearning">
-      <HintPath>..\..\..\ReportParser\ReportParserLearning\ReportParserLearning\bin\Debug\ReportParserLearning.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryHeapCommuteTest.cs" />
+    <Compile Include="BinaryHeapCommuteTest.PUT_CommutativityCapacityMinimumComm.g.cs">
+      <DependentUpon>BinaryHeapCommuteTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="BinaryHeapTest.cs" />
     <Compile Include="Factories\BinaryHeapFactory.cs" />
     <Compile Include="Factories\EdgeFactory.cs" />

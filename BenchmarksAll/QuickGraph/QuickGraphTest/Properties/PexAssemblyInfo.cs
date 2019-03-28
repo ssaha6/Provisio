@@ -9,13 +9,13 @@ using Microsoft.Pex.Framework.Using;
 using Microsoft.Pex.Linq;
 using Microsoft.Pex.Framework.Explorable;
 using Microsoft.Pex.Framework;
-using ReportParserLearning;
+//using ReportParserLearning;
 using QuickGraph;
 using QuickGraph.Utility;
 using System;
 using Microsoft.Pex.Framework.Suppression;
 
-[assembly: ReportParserExecution]
+//[assembly: ReportParserExecution]
 
 
 

@@ -42,15 +42,15 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IsEdgesEmpty", g1.IsEdgesEmpty);
             PexObserve.ValueForViewing("$input_AllowParallelEdges", g1.AllowParallelEdges);
 
-            AssumePrecondition.IsTrue(true);
+            AssumePrecondition.IsTrue(!(true));
             g1.AddVertex(node1);
             g1.AddVertex(node2);
 
             g2.AddVertex(node2);
             g2.AddVertex(node1);
 
-            //NotpAssume.IsTrue(eq.Equals(g1, g2));
-            //try{PexAssert.IsTrue(false);}catch{return;}
+            NotpAssume.IsTrue(eq.Equals(g1, g2));
+            try{PexAssert.IsTrue(false);}catch{return;}
             PexAssert.IsTrue(eq.Equals(g1, g2));
 
         }
