@@ -1,4 +1,4 @@
-// <copyright file="BitArrayTest.cs">Copyright ©  2018</copyright>
+// <copyright file="BitArrayTest.cs">Copyright ï¿½  2018</copyright>
 using System;
 using System.Collections;
 using DataStructures;
