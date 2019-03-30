@@ -67,14 +67,15 @@ class Framework:
             print  "Round " + str(self.rounds) + " : Running Pex",
             sys.stdout.flush()
             
-            PDataPoints = self.checkPrecondition(self.precondition, PTest = True)
-            notPDataPoints = self.checkPrecondition(self.precondition, PTest = False) 
-            self.dataPoints.extend(PDataPoints + notPDataPoints)
+            PosPDataPoints, NegPDataPoints = self.checkPrecondition(self.precondition, PTest = True)
+            PosnotPDataPoints, NegnotPDataPoints = self.checkPrecondition(self.precondition, PTest = False) 
 
+            self.dataPoints.extend(NegPDataPoints + PosnotPDataPoints)
+            
             print "P Datapoints"            
-            pprint(PDataPoints)
+            pprint(PosPDataPoints + NegPDataPoints)
             print "not P datapoints"
-            pprint(notPDataPoints)
+            pprint(PosnotPDataPoints+ NegnotPDataPoints)
 
             # conflict Resolver
             # self.dataPoints = filterDataPointConflicts(self.dataPoints)

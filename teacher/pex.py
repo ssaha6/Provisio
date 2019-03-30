@@ -48,6 +48,8 @@ class Pex(Teacher):
         pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
         tree = etree.parse(pexReportFile)
         dataPoints = []
+        PosPoints = []
+        NegPoints = []
         for test in tree.xpath('//generatedTest'):
             
             if test.get('status') == 'assumptionviolation' or test.get('status') == 'minimizationrequest':
@@ -79,15 +81,19 @@ class Pex(Teacher):
 
             if test.get('status') == 'normaltermination':
                 singlePoint.append('true')
+                PosPoints.append(singlePoint)
             else:
                 singlePoint.append('false')
+                NegPoints.append(singlePoint)
             # alternatives: test.get('failed') => true / None
             # exceptionState
             # failureText
             
-            dataPoints.append(singlePoint)
+            
+            # dataPoints.append(singlePoint)
         
-        return dataPoints
+        # return dataPoints
+        return(PosPoints, NegPoints)
     
     
     
