@@ -12,6 +12,7 @@ import time
 import shutil
 import io
 from os import sys,path
+from pprint import pprint
 sys.path.append(path.dirname(path.abspath(__file__)))
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
@@ -69,7 +70,12 @@ class Framework:
             PDataPoints = self.checkPrecondition(self.precondition, PTest = True)
             notPDataPoints = self.checkPrecondition(self.precondition, PTest = False) 
             self.dataPoints.extend(PDataPoints + notPDataPoints)
-            
+
+            print "P Datapoints"            
+            pprint(PDataPoints)
+            print "not P datapoints"
+            pprint(notPDataPoints)
+
             # conflict Resolver
             # self.dataPoints = filterDataPointConflicts(self.dataPoints)
             
