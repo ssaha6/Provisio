@@ -41,4 +41,3 @@ def run_compiler(args):
         return
     else:
         raise ValueError('Compilation Errors')
-
