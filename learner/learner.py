@@ -35,8 +35,10 @@ class  Learner:
         self.symbolicIntVariables = []
         self.time  = 0.0
         
-    
+    def setParameter(self, parameters):
+        self.parameters = parameters
 
+    
     def setVariables(self, intVariables = [], boolVariables = []):
         self.intVariables = intVariables
         self.boolVariables = boolVariables
@@ -54,8 +56,9 @@ class  Learner:
         return map(lambda x: "variable" + type + '{0:03d}'.format(x), indexRange)
 
     def sanitizeNames(self, orinigalName):
-        return '_V'  +  str(random.randint(1,11)) +  orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","dot").replace("(","LB").replace(")","RB").replace(" ","").replace("notEq", "NEQ") + '_'
-        
+        # return '_V'  +  str(random.randint(1,11)) +  orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","dot").replace("(","LB").replace(")","RB").replace(" ","").replace("notEq", "NEQ") + '_'
+        return '_V'  +  str(random.randint(1,11)) + orinigalName.replace("<=","LEQ").replace(">=","GEQ").replace("==","Equality").replace("=","Eq").replace("!=","NotEquality").replace(".","").replace("(","").replace(")","").replace(" ","").replace("notEq", "NEQ") + '_'
+
     
     def renameVariables(self):
         #self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))

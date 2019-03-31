@@ -425,20 +425,6 @@ void ConstructClassifiers()
 	{
 	    ForEach(Trial, 0, TRIALS-1)
 	    {
-		//Shambo: saving a rule
-		//Shambo: printing rules into json
-		const char *ser = serialize_to_JSON_RULES(RuleSet[Trial]);
-			
-		FILE *JSONfp;
-		if (!(JSONfp = GetFile(".json", "w")))
-		{
-			Error(NOFILE, "", "");
-		}
-
-		fprintf(JSONfp, ser);
-		fclose(JSONfp);
-		free(ser);
-			
 		SaveRules(RuleSet[Trial], ".rules");
 	    }
 	}

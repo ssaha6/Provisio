@@ -9,4 +9,5 @@
 
 from learner import Learner
 from dtlearner import DTLearner
+from p2nlearner import P2NLearner
 from reviewData import filterDataPointConflicts

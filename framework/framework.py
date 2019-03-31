@@ -69,23 +69,41 @@ class Framework:
             
             PosPDataPoints, NegPDataPoints = self.checkPrecondition(self.precondition, PTest = True)
             PosnotPDataPoints, NegnotPDataPoints = self.checkPrecondition(self.precondition, PTest = False) 
-
+            
             self.dataPoints.extend(NegPDataPoints + PosnotPDataPoints)
             
-            print "P Datapoints"            
+            print "P Datapoints"
             pprint(PosPDataPoints + NegPDataPoints)
             print "not P datapoints"
             pprint(PosnotPDataPoints+ NegnotPDataPoints)
-
+            
             # conflict Resolver
             # self.dataPoints = filterDataPointConflicts(self.dataPoints)
             
             print  "\rRound " + str(self.rounds) + " : Running Learner",
             sys.stdout.flush()
+            
+            # self.learner.setParameter(" -z 100 ")
+            # precondition1 = self.learner.learn(self.dataPoints)
+            
+            # self.learner.setParameter(" -z 98 ")
+            # precondition2 = self.learner.learn(self.dataPoints)
+            
+            # self.learner.setParameter(" -z 96 ")
+            # precondition3 = self.learner.learn(self.dataPoints)
+            
+            # self.learner.setParameter(" -z 94 ")
+            # precondition4 = self.learner.learn(self.dataPoints)
+            
+            # self.precondition = min([precondition1, precondition2, precondition3, precondition4], key=len)
+            
             self.precondition = self.learner.learn(self.dataPoints)
             self.learnerTime += self.learner.time
             
             print  "\rRound " + str(self.rounds) + " : Precondition Learned: " + self.precondition
+            
+            if len(NegPDataPoints) == 0 and float(len(PosnotPDataPoints))/float(len(self.dataPoints)) < 0.04  and len(self.dataPoints) > 3:
+                break
             
             if self.precondition in allPreconditions:
                 break

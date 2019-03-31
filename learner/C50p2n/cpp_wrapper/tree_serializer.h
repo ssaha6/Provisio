@@ -19,6 +19,5 @@
  * @returns a JSON serialization of a C5 decision tree.
  */
 char * serialize_to_JSON (Tree t);
-char *serialize_to_JSON_RULES(CRuleSet r);
 
 #endif

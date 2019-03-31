@@ -23,64 +23,82 @@ void _serialize_to_JSON (Tree t, std::ostream & out) {
 	
 	// Start of class
 	out << "{";
-		
-	//if leaf node
-	if (!t->NodeType) {
 
-		//Condition
-		out << "\"conditions\":[],"; 
+	// Inner node: continuous attribute
+	if (t->NodeType == BrThresh) {
 
-		// Classification
-		out << "\"classification\":" << ClassName[t->Leaf] << ",";
-
-		// Children
-		out << "\"children\":null";
-
-	}
-	else 
-	{	
-		// Starting of conditions
-		out <<"\"conditions\": [{"; 
+		// We can only handle two branches
+		assert (t->Forks == 3);
 
 		// Attribute
 		out << "\"attribute\":\"" << AttName[t->Tested] << "\",";
 
-		//Node types
-		switch(t->NodeType)
-		{
-			case BrThresh:
-
-				// Comparison			
-				out << "\"comparison\":\"<=\",";
-
-				// Cut
-				char some_char_array[20];
-				CValToStr(t->Cut, t->Tested, some_char_array);
-				out << "\"cut\":" << some_char_array ;
-				break; 
-
-			case BrDiscr:
-				
-				//Shambo: instead using partition for discrete values
-				out << "\"partition\":\""  << AttValName[t->Tested][2] << "\"";
-				break; 
-		}
-
-		//End of conditions
-		out << "}],";
+		// Cut
+		char some_char_array[20];
+		CValToStr(t->Cut, t->Tested, some_char_array);
+		out << "\"cut\":" << some_char_array << ",";
 
 		// Classification
-		//out << "\"classification\":0,";
+		out << "\"classification\":0,";
 
 		// Children
 		out << "\"children\":[";
-		for (int i = 2; i <= t->Forks; i++) 
-		{
+		_serialize_to_JSON (t->Branch[2], out);
+		out << ",";
+		_serialize_to_JSON (t->Branch[3], out);
+		out << "]";
+		
+	}
+
+	// Inner node: discrete attribute
+	if (t->NodeType == BrDiscr) {
+
+		// Attribute
+		out << "\"attribute\":\"" << AttName[t->Tested] << "\",";
+
+		
+		//Shambo: commented out cut for discrete attributes
+		// // Cut
+		//out << "\"cut\":0,";
+
+		//Shambo: instead using partition for discrete values
+		out << "\"partition\":\""  << AttValName[t->Tested][2] << "\",";
+		
+		// Classification
+		out << "\"classification\":0,";
+
+		// Children
+		out << "\"children\":[";
+		for (int i = 2; i <= t->Forks; i++) {
+
 			_serialize_to_JSON (t->Branch[i], out);
 			out << (i != t->Forks ? "," : "");
+			
 		}
 		out << "]";
 
+	}
+	
+	// Leaf node
+	else if (!t->NodeType) {
+
+		// Attribute
+		out << "\"attribute\":\"\",";
+
+		// Cut
+		out << "\"cut\":0,";
+
+		// Classification
+		out << "\"classification\":" << ClassName[t->Leaf] << ",";
+
+		// Left
+		out << "\"children\":null";
+
+	}
+
+	// Error
+	else {
+		//assert (false);;
 	}
 	
 	// End of class
@@ -102,97 +120,3 @@ char * serialize_to_JSON (Tree t) {
 }
 
 
-
-//Shambo: added: serialize rules to json
-void _serialize_condition(Condition C, std::ostream & out){
-
-	// Value
-	DiscrValue v;
-	v = C->TestValue;
-
-	//Attribute=
-	Attribute Att;
-	Att = C->Tested;
-
-	//Starting of condition
-	out << "{"; 
-
-	//Attribute
-	out << "\"attribute\":\"" << AttName[Att] << "\",";
-
-	//Node type
-	switch (C->NodeType)
-	{
-		case BrDiscr:
-					//Partition for discrete types
-					out << "\"partition\":\""  << AttValName[Att][v] << "\"";
-					break; 
-
-		case BrThresh:
-					//Comparison
-					out << "\"comparison\":\"" << ( v == 2 ? "<=" : ">" ) << "\",";
-
-					//cut
-					char some_char_array[20];
-					CValToStr(C->Cut, Att, some_char_array);
-					out << "\"cut\":" << some_char_array ;
-					break; 
-					
-	}
-	// end of comparison
-	out << "}"; 
-}
-
-void _serialize_to_JSON_RULES(CRuleSet RS, std::ostream &out, int index = 1)
-{
-    int	ri;
-	CRule R;
-	int	d;
-	
-	//starting of node
-	out << "{";
-
-	//current index ri, and current rule
-	ri = index; 
-	R = (RS->SRule[ri]);
-
-	//condition
-	out << "\"conditions\" : [ ";
-	
-	ForEach(d, 1, R->Size)
-	{	
-		_serialize_condition(R->Lhs[d], out); 
-		if (d < R->Size) out << ","; 
-	}
-	out << "], ";
-		
-
-	//Left Child including Classification
-	out << "\"children\": [{\"conditions\":[],\"classification\":" << ClassName[R->Rhs] << ",\"children\":null},";
-		
-	if (ri < RS->SNRules)
-	{
-		//Right child new node	
-		_serialize_to_JSON_RULES(RS, out, ri+1); 
-	}
-	else if ( ri == RS->SNRules)
-	{
-		//Right child default node
-		out << "{\"conditions\":[],\"classification\":" <<  ClassName[RS->SDefault] << ",\"children\":null}";
-	}
-
-	//end of node
-	out << "]}";
-}
-
-char * serialize_to_JSON_RULES(CRuleSet r)
-{
-	std::stringstream out;
-	_serialize_to_JSON_RULES(r, out);
-
-	std::string str = out.str();
-	char *cstr = (char *)malloc((str.length() + 1) * sizeof(char));
-	std::strcpy(cstr, str.c_str());
-
-	return cstr;
-}
