@@ -125,7 +125,7 @@ class Pex(Teacher):
 
 
     def sanitizeValue(self, value):
-        value = value.strip()
+        value = re.sub(r'\s+', '', value)
         
         try:
             int(value)
