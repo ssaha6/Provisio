@@ -47,7 +47,6 @@ class Pex(Teacher):
     def parseReportPre(self, pexReportFolder):
         pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
         tree = etree.parse(pexReportFile)
-        dataPoints = []
         PosPoints = []
         NegPoints = []
         for test in tree.xpath('//generatedTest'):
@@ -56,43 +55,29 @@ class Pex(Teacher):
                 continue
             
             singlePoint = []
-            saneValue = True
-
+            
             for value in test.xpath('./value'):
                 if re.match("^\$.*", value.xpath('./@name')[0]):
-                    # singlePoint.append(str(value.xpath('string()')))
                     val = str(value.xpath('string()'))
-                    val = self.replaceIntMinAndMax(val)
+                    val = self.sanitizeValue(val)
                     
-                    # try: 
-                    #     intValue = int(val)
-                    #     if intValue > 1000 or intValue < -1000:
-                    #         saneValue = False
-                    # except ValueError:
-                    #     pass
-                        
-                    singlePoint.append(val)
-                    
-            if not saneValue:
-                continue 
+                    if val:
+                        singlePoint.append(val)
             
-            if len(singlePoint) < self.numVariables:
+            if len(singlePoint) != self.numVariables:
                 continue
-
+            
             if test.get('status') == 'normaltermination':
                 singlePoint.append('true')
                 PosPoints.append(singlePoint)
+            
             else:
+                # DuplicatePath SystemEnvironmentExit Retry PathBoundsExceeded MissingException InconclusiveException ExpectedException Exception
+                # ? Which of these statuses means ignore point
                 singlePoint.append('false')
                 NegPoints.append(singlePoint)
-            # alternatives: test.get('failed') => true / None
-            # exceptionState
-            # failureText
             
             
-            # dataPoints.append(singlePoint)
-        
-        # return dataPoints
         return(PosPoints, NegPoints)
     
     
@@ -139,10 +124,39 @@ class Pex(Teacher):
         return cmd_exec
 
 
-    def replaceIntMinAndMax(self, number):
-        if number.find("int.MinValue") != -1:
+    def sanitizeValue(self, value):
+        value = value.strip()
+        
+        try:
+            int(value)
+            return value
+        except :
+            pass 
+    
+        if value == "true" or value == "false":
+            return value
+    
+        try:
+            float(value)
+            return value
+        except :
+            pass 
+         
+        if value.find("int.MinValue") != -1:
             return "-2147483648"
-        elif number.find("int.MaxValue") != -1:
+        elif value.find("int.MaxValue") != -1:
             return "2147483647"
-        return number
+        
+        if value.find("Count") != -1:
+            return ""
+        elif value.find('0x') != -1:
+            return ""
+        else:
+            return ""
+        
+        # other possible values 
+        # short.MaxValue, short.MinValue
+        # uint.MaxValue, 
+        # ulong.MaxValue
+        # long.MaxValue, long.MinValue
         
