@@ -139,11 +139,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PexAPIWrapper">
-      <HintPath>..\..\..\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="ReportParserLearning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ReportParser\ReportParserLearning\ReportParserLearning\bin\Debug\ReportParserLearning.dll</HintPath>
+      <HintPath>..\..\..\teacher\PexAPIWrapper\PexAPIWrapper\bin\Debug\PexAPIWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

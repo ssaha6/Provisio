@@ -28,8 +28,8 @@ namespace DataStructures.Test
             DataStructures.ArrayList s2 = new DataStructures.ArrayList(s1);
             ArrayListEqualityComparer eq = new ArrayListEqualityComparer();
 
-            PexAssume.IsTrue(x > -11 && x < 11);
-            PexAssume.IsTrue(y > -11 && y < 11);
+            PexAssume.IsTrue(x > -101 && x < 101);
+            PexAssume.IsTrue(y > -101 && y < 101);
 
             PexObserve.ValueForViewing("$input_s1.Count", s1.Count);
             PexObserve.ValueForViewing("$input_x", x);
@@ -57,7 +57,7 @@ namespace DataStructures.Test
             a2 = s2.Add(x);
 
 
-            NotpAssume.IsTrue(a1 == a2 && ad1 == ad2 && eq.Equals(s1, s2));
+            //NotpAssume.IsTrue(a1 == a2 && ad1 == ad2 && eq.Equals(s1, s2));
             PexAssert.IsTrue(a1 == a2 && ad1 == ad2 && eq.Equals(s1, s2));
         }
 
@@ -149,7 +149,8 @@ namespace DataStructures.Test
             PexObserve.ValueForViewing("$input_s1.LastIndexOf(y)", s1.LastIndexOf(y));
             PexObserve.ValueForViewing("$input_s1.Contains(x)", s1.Contains(x));
             PexObserve.ValueForViewing("$input_s1.Contains(y)", s1.Contains(y));
-            AssumePrecondition.IsTrue(  ((!(y <= -1)) && ((-s1.Count + y <= -1))) );
+
+            AssumePrecondition.IsTrue(!(((y == s1.LastIndexOf(x)) && (s1.Contains(x))) || (( ! (s1.IndexOf(x) == s1.LastIndexOf(x))) && (y == s1.IndexOf(x))) || (( ! (y == s1.LastIndexOf(x))) && ( ! (y == s1.IndexOf(x))) && (-1*s1.Count +  y +  -1*s1.IndexOf(x) +  -1*s1.IndexOf(y) +  s1.LastIndexOf(x) +  s1.LastIndexOf(y) <=  -1) && (y >= 0))));
 
             int a1 = -1, a2 = -1;
             Object ad1 = -1, ad2 = -1;

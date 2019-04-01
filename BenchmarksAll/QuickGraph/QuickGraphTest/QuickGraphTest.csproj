@@ -66,9 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryHeapCommuteTest.cs" />
-    <Compile Include="BinaryHeapCommuteTest.PUT_CommutativityCapacityMinimumComm.g.cs">
-      <DependentUpon>BinaryHeapCommuteTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="BinaryHeapTest.cs" />
     <Compile Include="Factories\BinaryHeapFactory.cs" />
     <Compile Include="Factories\EdgeFactory.cs" />

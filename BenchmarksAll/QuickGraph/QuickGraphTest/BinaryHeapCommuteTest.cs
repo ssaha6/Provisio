@@ -52,7 +52,7 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(!(true));
+            AssumePrecondition.IsTrue((true));
 
             int c11 = 0, c12 = 0;
             int c21 = 0, c22 = 0;
@@ -63,7 +63,7 @@ namespace QuickGraphTest
             c22 = bh2.Capacity;
             c21 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+            //NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
             PexAssert.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
         }
 
