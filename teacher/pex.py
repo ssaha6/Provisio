@@ -74,6 +74,7 @@ class Pex(Teacher):
             else:
                 # DuplicatePath SystemEnvironmentExit Retry PathBoundsExceeded MissingException InconclusiveException ExpectedException Exception
                 # ? Which of these statuses means ignore point
+                print test.get('status')
                 singlePoint.append('false')
                 NegPoints.append(singlePoint)
             
@@ -132,10 +133,10 @@ class Pex(Teacher):
             return value
         except :
             pass 
-    
+        
         if value == "true" or value == "false":
             return value
-    
+        
         try:
             float(value)
             return value
@@ -148,11 +149,14 @@ class Pex(Teacher):
             return "2147483647"
         
         if value.find("Count") != -1:
+            print "count found"
             return ""
         elif value.find('0x') != -1:
+            print "0x found"
             return ""
         else:
-            return ""
+            print "else"
+            return value
         
         # other possible values 
         # short.MaxValue, short.MinValue

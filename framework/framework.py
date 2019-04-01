@@ -64,7 +64,7 @@ class Framework:
         self.teacherTime = 0.0
         while True:
             
-            print  "Round " + str(self.rounds) + " : Running Pex",
+            print  "Round " + str(self.rounds) + " : Running Pex"
             sys.stdout.flush()
             
             PosPDataPoints, NegPDataPoints = self.checkPrecondition(self.precondition, PTest = True)
