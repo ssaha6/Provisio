@@ -61,10 +61,10 @@ class  Learner:
 
     
     def renameVariables(self):
-        #self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
-        #self.symbolicBoolVariables  = self.generateSymbolicVariables('Bool', len(self.boolVariables))
-        self.symbolicIntVariables = map(lambda x: self.sanitizeNames(x), self.intVariables)
-        self.symbolicBoolVariables = map(lambda x: self.sanitizeNames(x), self.boolVariables)
+        self.symbolicIntVariables = self.generateSymbolicVariables('Int', len(self.intVariables))
+        self.symbolicBoolVariables  = self.generateSymbolicVariables('Bool', len(self.boolVariables))
+        # self.symbolicIntVariables = map(lambda x: self.sanitizeNames(x), self.intVariables)
+        # self.symbolicBoolVariables = map(lambda x: self.sanitizeNames(x), self.boolVariables)
 
     def restoreVariables(self, precondition):
         
