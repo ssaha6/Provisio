@@ -81,6 +81,12 @@ class Pex(Teacher):
             
         return(PosPoints, NegPoints)
     
+
+    # Check for only assertion violation
+    # if 'failureWikiTopic' in test.attrib:
+    #     if  test.attrib['failureWikiTopic'] == 'Assertion Violation':
+    #         singlePoint.append('false')
+    #         NegPoints.append(singlePoint)
     
     
     
