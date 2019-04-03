@@ -74,47 +74,16 @@ class Pex(Teacher):
             else:
                 # DuplicatePath SystemEnvironmentExit Retry PathBoundsExceeded MissingException InconclusiveException ExpectedException Exception
                 # ? Which of these statuses means ignore point
-                print test.get('status')
+                if test.get('name').find("TermDestruction") != -1:
+                    continue
                 singlePoint.append('false')
                 NegPoints.append(singlePoint)
-            
             
         return(PosPoints, NegPoints)
     
     
     
     
-    # refactor this later
-    def generateSamplesPost(self, pexReportFolder):
-        if True:  #learner.name == "HoudiniExtended":
-            pexReportFile = os.path.join(pexReportFolder, self.ro, self.rn, "report.per")
-            tree = etree.parse(pexReportFile)
-            dataPoints = []
-            for test in tree.xpath('//generatedTest'):
-                singlePoint = []
-                for value in test.xpath('./value'):
-                    if re.match("^\$.*", value.xpath('./@name')[0]):
-                        singlePoint.append(str(value.xpath('string()')))
-
-                if test.get('status') == 'normaltermination':
-                    singlePoint.append('true')
-
-                elif test.get('status') == 'assumptionviolation':
-                    continue
-                
-                elif test.get('status') == 'minimizationrequest':
-                    continue
-                # REMIENDER: will need to add more cases for pex internal failures such as the above. We do not want to create feature from these values
-                else:
-                    # Houdini - Only positive points
-                    singlePoint.append('')
-                    
-                if len(singlePoint) < self.numVariables:
-                    continue
-                
-                dataPoints.append(singlePoint)
-            
-            return dataPoints
 
     def getExecCommand(self,testDll, testMethod, testNamespace, testType):
         
@@ -142,20 +111,17 @@ class Pex(Teacher):
             return value
         except :
             pass 
-         
+        
         if value.find("int.MinValue") != -1:
             return "-2147483648"
         elif value.find("int.MaxValue") != -1:
             return "2147483647"
         
         if value.find("Count") != -1:
-            print "count found"
             return ""
         elif value.find('0x') != -1:
-            print "0x found"
             return ""
         else:
-            print "else"
             return value
         
         # other possible values 
