@@ -51,9 +51,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Count", bh1.Count);
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
-
-            AssumePrecondition.IsTrue(  true);
-
+            try
+            {
+                AssumePrecondition.IsTrue(!(true));
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
             int c11 = 0, c12 = 0;
             int c21 = 0, c22 = 0;
 
@@ -63,7 +68,7 @@ namespace QuickGraphTest
             c22 = bh2.Capacity;
             c21 = bh2.Capacity;
 
-            //NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
+            NotpAssume.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
             PexAssert.IsTrue(c11 == c21 && c12 == c22 && eq.Equals(bh1, bh2));
         }
 
@@ -80,7 +85,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  true);
+            try
+            {
+                AssumePrecondition.IsTrue(!(true));
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c11 = 0, c12 = 0;
             int c21 = 0, c22 = 0;
@@ -115,7 +127,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  ((!(bh1.Count == bh1.Capacity))) );
+            try
+            {
+                AssumePrecondition.IsTrue((( ! (bh1.Count == bh1.Capacity))));
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -124,7 +143,7 @@ namespace QuickGraphTest
             bh2.Add(priority, value);  //  adds to bh1 and bh2 --> capacity remains unchanged
             c2 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            //NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
             //try { PexAssert.IsTrue(false); }catch { return; }
             PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
         }
@@ -142,7 +161,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -152,8 +178,8 @@ namespace QuickGraphTest
             var m2 = bh2.Minimum();
             c2 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
-            //try { PexAssert.IsTrue(false); }catch { return; }
+            //NotpAssume.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            //try{PexAssert.IsTrue(false); }catch { return; }
             PexAssert.IsTrue(c1 == c2 && m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
         }
 
@@ -169,9 +195,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Count", bh1.Count);
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
-
-            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
-
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
             int c1 = 0, c2 = 0;
 
             c1 = bh1.Capacity;
@@ -180,8 +211,8 @@ namespace QuickGraphTest
             var rm2 = bh2.RemoveMinimum();
             c2 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
-            //try { PexAssert.IsTrue(false); }catch { return; }
+            //NotpAssume.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
+            //try{PexAssert.IsTrue(false); }catch { return; }
             PexAssert.IsTrue(c1 == c2 && rm1.Key == rm2.Key && rm1.Value == rm2.Value && eq.Equals(bh1, bh2));
         }
 
@@ -202,7 +233,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(((index >= 0) && (-1*index + bh1.Count >= 1) && (bh1.Count >= 1)));
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -213,8 +251,8 @@ namespace QuickGraphTest
             c2 = bh2.Capacity;
 
 
-            NotpAssume.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
-            try{PexAssert.IsTrue(false);}catch{return;}
+            //NotpAssume.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
+            //try{PexAssert.IsTrue(false);}catch{return;}
             PexAssert.IsTrue(c1 == c2 && ra1.Key == ra2.Key && ra1.Value == ra2.Value && eq.Equals(bh1, bh2));
         }
 
@@ -233,7 +271,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  true);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
             int io1 = 0, io2 = 0;
@@ -244,8 +289,8 @@ namespace QuickGraphTest
             io2 = bh2.IndexOf(value);
             c2 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
-            //try { PexAssert.IsTrue(false); }catch { return; }
+            //NotpAssume.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
+            //try{PexAssert.IsTrue(false); }catch { return; }
             PexAssert.IsTrue(c1 == c2 && io1 == io2 && eq.Equals(bh1, bh2));
         }
 
@@ -269,7 +314,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) <= -1))) );
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -279,8 +331,8 @@ namespace QuickGraphTest
             bh2.Update(priority, value);
             c2 = bh2.Capacity;
 
-            NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
-            //try { PexAssert.IsTrue(false); }catch { return; }
+            //NotpAssume.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
+            //try{PexAssert.IsTrue(false); }catch { return; }
             PexAssert.IsTrue(c1 == c2 && eq.Equals(bh1, bh2));
         }
 
@@ -297,7 +349,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  true);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c11 = 0, c12 = 0;
             int c21 = 0, c22 = 0;
@@ -331,7 +390,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  false);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -359,7 +425,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  ((!(bh1.Count <= 0))) );
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -386,7 +459,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  false);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -416,7 +496,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  false);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -447,7 +534,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  true);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
             int io1 = 0, io2 = 0;
@@ -481,7 +575,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(  ((!(bh1.IndexOf(value) <= -1))) );
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             int c1 = 0, c2 = 0;
 
@@ -519,7 +620,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_IndexOf2", bh1.IndexOf(value2));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(!(true));
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             bh1.Add(priority1, value1);
             bh1.Add(priority2, value2);
@@ -550,15 +658,23 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_IndexOf", bh1.IndexOf(value));
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            } 
 
-            AssumePrecondition.IsTrue((( false )));
+
             bh1.Add(priority, value);
             var m1 = bh1.Minimum();
 
             var m2 = bh2.Minimum();
             bh2.Add(priority, value);
 
-            NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
+            //NotpAssume.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
             PexAssert.IsTrue(m1.Key == m2.Key && m1.Value == m2.Value && eq.Equals(bh1, bh2));
         }
 
@@ -575,7 +691,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(((bh1.Count >= 1)));
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             var m11 = bh1.Minimum();
             var m12 = bh1.Minimum();
@@ -600,7 +723,14 @@ namespace QuickGraphTest
             PexObserve.ValueForViewing("$input_Capacity", bh1.Capacity);
             PexObserve.ValueForViewing("$input_MinimumPriority", bh1.Count > 0 ? bh1.Minimum().Key : global--);
 
-            AssumePrecondition.IsTrue(!((( false ))));
+            try
+            {
+                AssumePrecondition.IsTrue(true);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new PexAssumeFailedException();
+            }
 
             var m1 = bh1.Minimum();
             var rm1 = bh1.RemoveMinimum();
