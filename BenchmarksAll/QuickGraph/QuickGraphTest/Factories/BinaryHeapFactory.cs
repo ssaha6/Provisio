@@ -44,7 +44,7 @@ namespace QuickGraphTest.Factories
         public static Tuple<BinaryHeap<int, int>, BinaryHeap<int, int>> CreateBinaryHeapKeyValPair([PexAssumeNotNull]KeyValuePair<int, int>[] pairs, int capacity)
         {
             PexAssume.IsTrue(capacity < 11 && capacity > 0);
-            PexAssume.IsTrue(pairs.Length > 0);
+            //PexAssume.IsTrue(pairs.Length > 0);
             PexAssume.TrueForAll(0, pairs.Length, _i => pairs[_i].Key > -11 && pairs[_i].Key < 11);
 
             var bh1 = new BinaryHeap<int, int>(capacity, Comparer<int>.Default.Compare);
