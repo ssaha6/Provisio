@@ -227,6 +227,68 @@ def run_ArrayListContractOnly():
     #file ="arraylist_postRegression.csv"
     runnerPost(benchmark, methodParameters, "results/"+file)
 
+def run_UndirectedGraphContractOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/UndirectedGraph/UndirectedGraph.sln",
+        testDll="../ContractsSubjects/UndirectedGraph/UndirectedGraphTest/bin/Debug/UndirectedGraphTest.dll",
+        testFile="../ContractsSubjects/UndirectedGraph/UndirectedGraphTest/UndirectedGraphContractTest.cs",
+        classFile='../ContractsSubjects/UndirectedGraph/UndirectedGraph/UndirectedGraph.cs',
+        testNamespace="UndirectedGraph.Test",
+        testType="UndirectedGraphContractTest",
+        pexReportFolder="../ContractsSubjects/UndirectedGraph/UndirectedGraphTest/bin/Debug"
+    )
+    
+    methodParameters = [
+        # ('PUT_AddVertexContract', ['Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x']),
+
+        # ('PUT_AddVertexContract', ['Old_ugContainsVertexX', 'New_ugContainsVertexX'], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x']),
+        ('PUT_RemoveVertexContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x']),
+        ('PUT_ClearAdjacentEdgesContract', [ 'Old_ugContainsVertexX', 'New_ugContainsVertexX'  ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x']),
+        ('PUT_ContainsEdgeContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexSource', 'New_ugContainsVertexSource', 'Old_ugContainsVertexTarget', 'New_ugContainsVertexTarget' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeSource', 'New_ugAdjacentDegreeSource', 'Old_ugAdjacentDegreeTarget', 'New_ugAdjacentDegreeTarget', 'Old_source', 'New_source', 'Old_target', 'New_target']),
+        ('PUT_ContainsEdgeIntContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexSource', 'New_ugContainsVertexSource', 'Old_ugContainsVertexTarget', 'New_ugContainsVertexTarget' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeSource', 'New_ugAdjacentDegreeSource', 'Old_ugAdjacentDegreeTarget', 'New_ugAdjacentDegreeTarget', 'Old_source', 'New_source', 'Old_target', 'New_target']),
+        ('PUT_AdjacentEdgeContract', ['Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x', 'Old_index', 'New_index', 'Old_Ret_Source', 'New_Ret_Source', 'Old_Ret_Target', 'New_Ret_Target']),
+        ('PUT_IsVerticesEmptyContract', ['Old_Ret', 'New_Ret' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount']),
+        ('PUT_VertexCountContract', ['Old_ugAllowParallelEdges', 'New_ugAllowParallelEdges'], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_Ret', 'New_Ret']),
+        ('PUT_ContainsVertexContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x']),
+        ('PUT_AddEdgeContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexSource', 'New_ugContainsVertexSource', 'Old_ugContainsVertexTarget', 'New_ugContainsVertexTarget' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeSource', 'New_ugAdjacentDegreeSource', 'Old_ugAdjacentDegreeTarget', 'New_ugAdjacentDegreeTarget', 'Old_source', 'New_source', 'Old_target', 'New_target']),
+        ('PUT_RemoveEdgeContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexSource', 'New_ugContainsVertexSource', 'Old_ugContainsVertexTarget', 'New_ugContainsVertexTarget' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeSource', 'New_ugAdjacentDegreeSource', 'Old_ugAdjacentDegreeTarget', 'New_ugAdjacentDegreeTarget', 'Old_source', 'New_source', 'Old_target', 'New_target']),
+        ('PUT_IsEdgesEmptyContract', ['Old_Ret', 'New_Ret' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount']),
+        ('PUT_EdgeCountContract', ['Old_ugAllowParallelEdges', 'New_ugAllowParallelEdges'], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_Ret', 'New_Ret']),
+        ('PUT_AdjacentDegreeContract', ['Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x', 'Old_Ret', 'New_Ret']),
+        ('PUT_IsAdjacentEdgesEmptyContract', ['Old_Ret', 'New_Ret', 'Old_ugContainsVertexX', 'New_ugContainsVertexX' ], ['Old_ugVertexCount', 'New_ugVertexCount', 'Old_ugEdgeCount', 'New_ugEdgeCount', 'Old_ugAdjacentDegreeX', 'New_ugAdjacentDegreeX', 'Old_x', 'New_x'])
+    ]
+    
+    file ="undirectedgraph_post.csv"
+    #file ="undirectedgraph_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
+
+def run_BinaryHeapContractOnly():
+
+    benchmark = Benchmark(
+        solutionFile="../ContractsSubjects/BinaryHeap/BinaryHeap.sln",
+        testDll="../ContractsSubjects/BinaryHeap/BinaryHeapTest/bin/Debug/BinaryHeapTest.dll",
+        testFile="../ContractsSubjects/BinaryHeap/BinaryHeapTest/BinaryHeapContractTest.cs",
+        classFile='../ContractsSubjects/BinaryHeap/BinaryHeap/BinaryHeap.cs',
+        testNamespace="BinaryHeap.Test",
+        testType="BinaryHeapContractTest",
+        pexReportFolder="../ContractsSubjects/BinaryHeap/BinaryHeapTest/bin/Debug"
+    )
+    
+    methodParameters = [
+        ('PUT_AddContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhIndexOfValue', 'Newd_bhIndexOfValue', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_prioirty', 'New_prioirty', 'Old_value', 'New_value']),
+        ('PUT_MinimumContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_Ret_Key', 'New_Ret_Key', 'Old_Ret_Value', 'New_Ret_Value']),
+        ('PUT_RemoveMinimumContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_Ret_Key', 'New_Ret_Key', 'Old_Ret_Value', 'New_Ret_Value']),
+        ('PUT_RemoveAtContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_index', 'New_index', 'Old_Ret_Key', 'New_Ret_Key', 'Old_Ret_Value', 'New_Ret_Value']),
+        ('PUT_IndexOfContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_value', 'New_value', 'Old_Ret', 'New_Ret']),
+        ('PUT_UpdateContract', [], ['Old_bhCount', 'New_bhCount', 'Old_bhCapacity', 'New_bhCapacity', 'Old_bhIndexOfValue', 'Newd_bhIndexOfValue', 'Old_bhMinimumKey', 'New_bhMinimumKey', 'Old_bhMinimumValue', 'New_bhMinimumValue', 'Old_prioirty', 'New_prioirty', 'Old_value', 'New_value'])
+    ]
+    
+    file = "binaryheap_post.csv"
+    #file ="binaryheap_postRegression.csv"
+    runnerPost(benchmark, methodParameters, "results/"+file)
+
+
 if __name__ == '__main__':
     
     print "starting"
